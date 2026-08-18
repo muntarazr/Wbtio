@@ -1,0 +1,43 @@
+# روابط أغلفة المسلسلات — صيغة كل سطر:  الرقم <مسافة> الرابط
+# الرقم لازم يطابق رقم المسلسل بملف WATCHLIST.md
+# السطور اللي تبدأ بـ # تنتجاهل
+
+001 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f312a841-530b-5f35-978c-0b5611f236dc/da490250-9707-576e-bd32-685a62b4be72.jpg
+002 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f312a841-530b-5f35-978c-0b5611f236dc/da490250-9707-576e-bd32-685a62b4be72.jpg
+003 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/503cd81b-b1fb-5320-bf82-98adb966dedc/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+004 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/369bea9f-4868-5bf5-8b1b-b688c01a374c/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+005 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/55b7831c-3cb7-55dd-8faa-f5e2de20fcbc/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+006 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e423d923e0193ef58a2a5cefe0cb1ce617b1deb5549691e3970bc136a0eb23d6264d9be3a6f3c09148c2ce50a71b9407a842e05fe7d4152800a7a022c487e7edb
+007 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/77c37d1a-305f-5a08-bd21-a074ad8bd8a2/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+008 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e57c084736867a5e7f4ccc93c62242b0325aa8c0182d5a68667ec79e449cd82687e6e29806c0ca611035cfe155b30189ffb4adead71807613c1084aa0f12cedb6
+009 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/24b2b1ea-65b9-57ee-b448-a1897185ed42/c7562025-858a-52f9-9b87-56d12b452965.jpg
+010 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6ed94a9e6b4fe452a8a173d83f8b0ddc219a4e2536b629b6b2e3e30386dc58e6adc9d0407befdd2b7cc67dd1e11aea2f18f54de15310059ad05002cc2573c9c4bb
+011 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/0f27c0f2-4b34-5eb3-a7f2-ec5afb956094/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+012 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/48087ef2-c9ac-5df7-b9a8-092768f5a0a9/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+013 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e3697b0a84734c09196e9bc0453286c6c6ffed0faa9f540e7de0a43294068728f4e119e8b268c2b54e7c67737efb24be1408261e8fcfd78de794742665d7f7550
+014 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ea03983d-33bb-5a85-b6ff-d4584537a8f1/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+015 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e260d945e84a67a95611661517f39b9cf16547dc6e43d293169e9e497a9568378493133760e1f74adab492b3f875a51428751cec5839f626d63194208acdd2abf
+016 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/3e72f68c-81da-551f-84d6-92be2d224262/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+017 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/5ea59b99-4afb-58b7-ad4c-213b299eb084/96b84ec3-abf5-5825-9a49-3e2cad3ea731.jpg
+018 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e92edf54aee2ffdd3f750c1f7fab7ded05294c60edb61da1baf84d9d186f5e4dc9e21760cb130480c27165677730028b43f17111c401305066ddbd2e7200c5b49
+019 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/63872c90-9d42-554c-a34b-170174e074aa/faa53618-796e-55cb-b6e1-0f4e19ed80b6.jpg
+020 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/6d9c1a83-6cc0-5f2a-ac04-d30b63707c11/bf4094ff-ece3-574b-976e-fac8749e127c.jpg
+021 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/133c00cc-c969-5392-a4c4-9694c3f5cc8a/c7562025-858a-52f9-9b87-56d12b452965.jpg
+022 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/d52bb3e8-91e9-5668-9138-545910c56ce9/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+023 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f52fdbb5-87ea-5739-b722-ae2ffaea7404/96b84ec3-abf5-5825-9a49-3e2cad3ea731.jpg
+024 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/6b68509e-f3e4-5c00-946a-579dcf0874c2/7e846235-e798-539a-8dec-bf47d77ea6a9.jpg
+025 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/753eccba-e871-5ff7-aa12-b1bc03ee5762/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+026 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e85e6a00d1f4c138263743b7d00021d1864cff237789605cce8b5fc9b82bfa89e1d03368ddcafa79ac98589e42a83831b490485e73637b99fbeb0a55c2458152b
+027 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/731d0eda-4a26-5905-a0ab-69f4d80c71b9/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+030 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6eb57007b75457143c0a79bb7d40e8d345cbc96a3127270ce1485e223641690186bfa7a7cd90b28a11ef57581955db0bd507e9234d71dc922b8ee362740c320c60
+031 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e12c8a21959ec8d3fbbace3594333d06c1a24a166fc0e8373431880072a613de4e779f52e2a082d9eb9c3ee8f14cdc1ad580561da8f614b70dea04cb8b6a9d0a4
+032 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/86528f29-7728-56d0-88ac-eea0b49d7a02/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+033 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/0ae2097f-be66-5a81-9de3-97efe055378c/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+034 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/e47f7077-7173-5028-91a4-37f3ebd6e1d0/7e846235-e798-539a-8dec-bf47d77ea6a9.jpg
+035 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ae3d2953-a1d7-5ce2-8e33-bfeabcbb9884/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+036 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/827a6f74-608b-5e9c-a2f1-1a324cc50d78/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+037 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e250e0489b2945780ed4639d4bfee0834b850378c4ec36a8328bd93a6feb0e639a5a494454027ac9640df00076e71b2b5a6e470dfe21371fce12659a64d5128f0
+038 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/af0245d9-7c46-5f5f-a697-9885a99db8d4/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+040 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/0f27c0f2-4b34-5eb3-a7f2-ec5afb956094/19fff8e5-c8d2-5bcc-b34c-43e2ef28b80a.jpg
+050 https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e423d923e0193ef58a2a5cefe0cb1ce617b1deb5549691e3970bc136a0eb23d6264d9be3a6f3c09148c2ce50a71b9407a842e05fe7d4152800a7a022c487e7edb
+078 https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/63872c90-9d42-554c-a34b-170174e074aa/faa53618-796e-55cb-b6e1-0f4e19ed80b6.jpg
