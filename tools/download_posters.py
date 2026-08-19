@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-ينزّل أغلفة المسلسلات من ملف links.txt إلى مجلد images/
+ينزّل أغلفة المسلسلات من ملف tools/links.txt إلى مجلد images/
 
 الاستخدام:
     python3 tools/download_posters.py
-    python3 tools/download_posters.py --links links.txt --out images --force
+    python3 tools/download_posters.py --links tools/links.txt --out images --force
+
+المسارات الافتراضية محسوبة من مكان السكربت، يعني يشتغل من أي مجلد.
 
 صيغة links.txt — كل سطر:  الرقم <مسافة> الرابط
 مثال:  001 https://example.com/poster.jpg
@@ -20,6 +22,11 @@ import sys
 import time
 import urllib.error
 import urllib.request
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+DEFAULT_LINKS = os.path.join(HERE, "links.txt")
+DEFAULT_OUT = os.path.join(ROOT, "images")
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " \
      "(KHTML, like Gecko) Chrome/125.0 Safari/537.36"
@@ -77,8 +84,8 @@ def fetch(url, retries=3):
 
 def main():
     ap = argparse.ArgumentParser(description="تنزيل أغلفة المسلسلات")
-    ap.add_argument("--links", default="links.txt", help="ملف الروابط (افتراضي: links.txt)")
-    ap.add_argument("--out", default="images", help="مجلد الحفظ (افتراضي: images)")
+    ap.add_argument("--links", default=DEFAULT_LINKS, help="ملف الروابط (افتراضي: tools/links.txt)")
+    ap.add_argument("--out", default=DEFAULT_OUT, help="مجلد الحفظ (افتراضي: images/)")
     ap.add_argument("--force", action="store_true", help="أعد التنزيل حتى لو الملف موجود")
     args = ap.parse_args()
 

@@ -80,33 +80,33 @@
 
 | # | | العمل | السنة | ⭐ | النوع |
 |:-:|---|-------|:----:|:--:|-------|
-| 1 | <img src="images/021.jpg" width="52"> | **اعز ما عندي** — My Dearest | 2023 | 8.9 | تاريخي |
-| 2 | <img src="images/059.jpg" width="52"> | **ستة تنانين طائرة** — Six Flying Dragons | 2015 | 8.9 | دراما |
-| 3 | <img src="images/032.jpg" width="52"> | **الأكمام الحمراء** — The Red Sleeve | 2021 | 8.8 | دراما |
-| 4 | <img src="images/068.jpg" width="52"> | **صائد العبيد** — Chuno | 2010 | 8.7 | اكشن |
-| 5 | <img src="images/027.jpg" width="52"> | **تحت مظلة الملكة** — Under the Queen's Umbrella | 2022 | 8.5 | كوميدي |
-| 6 | <img src="images/043.jpg" width="52"> | **Jewel in the Palace** — Dae Jang Geum | 2003 | 8.5 | دراما |
-| 7 | <img src="images/048.jpg" width="52"> | **عهد جديد** — My Country: The New Age | 2019 | 8.3 | اكشن |
-| 8 | <img src="images/054.jpg" width="52"> | **الملك داي جو** — Dae Jo Yeong | 2006 | 8.3 | دراما |
-| 9 | <img src="images/062.jpg" width="52"> | **جومونك** — Jumong | 2006 | 8.3 | مغامرة |
-| 10 | <img src="images/013.jpg" width="52"> | **الملكة وو** — Queen Woo | 2024 | 8.1 | اكشن |
-| 11 | <img src="images/016.jpg" width="52"> | **حرب غوريو وخيتان** — Goryeo-Khitan War | 2023 | 8.1 | اكشن |
-| 12 | <img src="images/065.jpg" width="52"> | **الجندي** — God of War (Musin) | 2012 | 8.1 | تاريخي |
-| 13 | <img src="images/010.jpg" width="52"> | **The Tale of Lady Ok** | 2024 | 8.0 | دراما |
-| 14 | <img src="images/067.jpg" width="52"> | **سو بيك هيانغ أبنة الملك** — King's Daughter, Soo Baek Hyang | 2013 | 8.0 | دراما |
-| 15 | <img src="images/077.jpg" width="52"> | **The Phantom Thief** — Iljimae | 2008 | 8.0 | اكشن |
-| 16 | <img src="images/075.jpg" width="52"> | **فضيحة سونغ كيونكوان** — Sungkyunkwan Scandal | 2010 | 7.8 | كوميدي |
-| 17 | <img src="images/023.jpg" width="52"> | **محامي جوسون: الفضيلة** — Joseon Attorney | 2023 | 7.7 | دراما |
-| 18 | <img src="images/037.jpg" width="52"> | **بوسام: سرقة القدر** — Bossam: Steal the Fate | 2021 | 7.7 | دراما |
-| 19 | <img src="images/001.jpg" width="52"> | **القصر الشرقي** — The East Palace | 2026 | 7.6 | اكشن |
-| 20 | <img src="images/008.jpg" width="52"> | **عزيزي هونغرانغ** — Dear Hongrang | 2025 | 7.6 | دراما |
-| 21 | <img src="images/053.jpg" width="52"> | **100 Days My Prince** | 2018 | 7.6 | تاريخي |
-| 22 | <img src="images/004.jpg" width="52"> | **The Murky Stream** | 2025 | 7.5 | اكشن |
-| 23 | <img src="images/024.jpg" width="52"> | **بيت ضيافة رومانسي** | 2023 | 7.5 | تاريخي |
-| 24 | <img src="images/039.jpg" width="52"> | **مملكة الرياح** — The Kingdom of the Winds | 2008 | 7.5 | دراما |
-| 25 | <img src="images/022.jpg" width="52"> | **اغنية السيف** — Song of the Bandits | 2023 | 7.2 | اكشن |
-| 26 | <img src="images/058.jpg" width="52"> | **زهرة في السجن** — Flowers in Prison | 2016 | 7.2 | دراما |
-| 27 | <img src="images/014.jpg" width="52"> | **ولي العهد المفقود** — The Missing Crown Prince | 2024 | 6.9 | كوميدي |
+| 1 | <img src="../images/021.jpg" width="52"> | **اعز ما عندي** — My Dearest | 2023 | 8.9 | تاريخي |
+| 2 | <img src="../images/059.jpg" width="52"> | **ستة تنانين طائرة** — Six Flying Dragons | 2015 | 8.9 | دراما |
+| 3 | <img src="../images/032.jpg" width="52"> | **الأكمام الحمراء** — The Red Sleeve | 2021 | 8.8 | دراما |
+| 4 | <img src="../images/068.jpg" width="52"> | **صائد العبيد** — Chuno | 2010 | 8.7 | اكشن |
+| 5 | <img src="../images/027.jpg" width="52"> | **تحت مظلة الملكة** — Under the Queen's Umbrella | 2022 | 8.5 | كوميدي |
+| 6 | <img src="../images/043.jpg" width="52"> | **Jewel in the Palace** — Dae Jang Geum | 2003 | 8.5 | دراما |
+| 7 | <img src="../images/048.jpg" width="52"> | **عهد جديد** — My Country: The New Age | 2019 | 8.3 | اكشن |
+| 8 | <img src="../images/054.jpg" width="52"> | **الملك داي جو** — Dae Jo Yeong | 2006 | 8.3 | دراما |
+| 9 | <img src="../images/062.jpg" width="52"> | **جومونك** — Jumong | 2006 | 8.3 | مغامرة |
+| 10 | <img src="../images/013.jpg" width="52"> | **الملكة وو** — Queen Woo | 2024 | 8.1 | اكشن |
+| 11 | <img src="../images/016.jpg" width="52"> | **حرب غوريو وخيتان** — Goryeo-Khitan War | 2023 | 8.1 | اكشن |
+| 12 | <img src="../images/065.jpg" width="52"> | **الجندي** — God of War (Musin) | 2012 | 8.1 | تاريخي |
+| 13 | <img src="../images/010.jpg" width="52"> | **The Tale of Lady Ok** | 2024 | 8.0 | دراما |
+| 14 | <img src="../images/067.jpg" width="52"> | **سو بيك هيانغ أبنة الملك** — King's Daughter, Soo Baek Hyang | 2013 | 8.0 | دراما |
+| 15 | <img src="../images/077.jpg" width="52"> | **The Phantom Thief** — Iljimae | 2008 | 8.0 | اكشن |
+| 16 | <img src="../images/075.jpg" width="52"> | **فضيحة سونغ كيونكوان** — Sungkyunkwan Scandal | 2010 | 7.8 | كوميدي |
+| 17 | <img src="../images/023.jpg" width="52"> | **محامي جوسون: الفضيلة** — Joseon Attorney | 2023 | 7.7 | دراما |
+| 18 | <img src="../images/037.jpg" width="52"> | **بوسام: سرقة القدر** — Bossam: Steal the Fate | 2021 | 7.7 | دراما |
+| 19 | <img src="../images/001.jpg" width="52"> | **القصر الشرقي** — The East Palace | 2026 | 7.6 | اكشن |
+| 20 | <img src="../images/008.jpg" width="52"> | **عزيزي هونغرانغ** — Dear Hongrang | 2025 | 7.6 | دراما |
+| 21 | <img src="../images/053.jpg" width="52"> | **100 Days My Prince** | 2018 | 7.6 | تاريخي |
+| 22 | <img src="../images/004.jpg" width="52"> | **The Murky Stream** | 2025 | 7.5 | اكشن |
+| 23 | <img src="../images/024.jpg" width="52"> | **بيت ضيافة رومانسي** | 2023 | 7.5 | تاريخي |
+| 24 | <img src="../images/039.jpg" width="52"> | **مملكة الرياح** — The Kingdom of the Winds | 2008 | 7.5 | دراما |
+| 25 | <img src="../images/022.jpg" width="52"> | **اغنية السيف** — Song of the Bandits | 2023 | 7.2 | اكشن |
+| 26 | <img src="../images/058.jpg" width="52"> | **زهرة في السجن** — Flowers in Prison | 2016 | 7.2 | دراما |
+| 27 | <img src="../images/014.jpg" width="52"> | **ولي العهد المفقود** — The Missing Crown Prince | 2024 | 6.9 | كوميدي |
 
 ---
 
@@ -136,11 +136,11 @@
 
 | | العمل | السنة | ⭐ | ليش |
 |---|-------|:----:|:--:|-----|
-| <img src="images/086.jpg" width="46"> | **العراف العظيم** — The Great Seer | 2012 | 7.7 | صراع عرّافين على مصير المملكة بنهاية غوريو — **نفس حقبة *ستة تنانين طائرة* بالضبط** |
-| <img src="images/046.jpg" width="46"> | **The Merchant: Gaekju** | 2015 | 7.6 | صعود تاجر من الحضيض لأغنى رجل بجوسون — ملحمة اقتصادية بدل عسكرية، جانغ هيوك |
-| <img src="images/045.jpg" width="46"> | **The Tale of Nokdu** | 2019 | 7.9 | بطل رجل يبحث عن سر عائلته — أخف نبرة، فيه كوميديا |
-| <img src="images/074.jpg" width="46"> | **Joseon Gunman** | 2014 | 7.3 | سيّاف يمسك بندقية للانتقام بزمن انفتاح جوسون على الغرب — لي جون غي |
-| <img src="images/055.jpg" width="46"> | **The Royal Gambler** | 2016 | 7.5 | مقامر شارع يكتشف إنه ابن الملك — لعبة القمار الأكبر: العرش |
+| <img src="../images/086.jpg" width="46"> | **العراف العظيم** — The Great Seer | 2012 | 7.7 | صراع عرّافين على مصير المملكة بنهاية غوريو — **نفس حقبة *ستة تنانين طائرة* بالضبط** |
+| <img src="../images/046.jpg" width="46"> | **The Merchant: Gaekju** | 2015 | 7.6 | صعود تاجر من الحضيض لأغنى رجل بجوسون — ملحمة اقتصادية بدل عسكرية، جانغ هيوك |
+| <img src="../images/045.jpg" width="46"> | **The Tale of Nokdu** | 2019 | 7.9 | بطل رجل يبحث عن سر عائلته — أخف نبرة، فيه كوميديا |
+| <img src="../images/074.jpg" width="46"> | **Joseon Gunman** | 2014 | 7.3 | سيّاف يمسك بندقية للانتقام بزمن انفتاح جوسون على الغرب — لي جون غي |
+| <img src="../images/055.jpg" width="46"> | **The Royal Gambler** | 2016 | 7.5 | مقامر شارع يكتشف إنه ابن الملك — لعبة القمار الأكبر: العرش |
 
 ### 🚺 أعمال عالية التقييم بس بطولتها نسائية
 
