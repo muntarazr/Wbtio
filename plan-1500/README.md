@@ -220,6 +220,7 @@
 
 | الملف | المحتوى |
 |---|---|
+| [`branding/`](./branding/) | **هوية wbtio**: الاستراتيجية، الهوية البصرية، محرّك المحتوى، إعداد القنوات ([افتح دليل الهوية](./branding/BRAND-02-visual-identity-logo-colors-type-and-usage.html)) |
 | [`cv/`](./cv/) | **6 نسخ من السيرة الذاتية** + دليل «أي نسخة لأي جهة» ([افتح الدليل](./cv/INDEX-cv-guide-which-version-to-use-when.html)) |
 | [`market-2026.md`](./market-2026.md) | **دراسة السوق** بأرقام محدّثة ومصادر: الأسعار الحقيقية، جدول الفجوات، وين تقدّم |
 | [`profiles.md`](./profiles.md) | نصوص جاهزة للنسخ: Upwork، Fiverr، LinkedIn، مستقل |

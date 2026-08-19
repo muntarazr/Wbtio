@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="wbtio">
+  <rect width="64" height="64" rx="15" fill="#12161F"/>
+  <path d="M12 21 L20 43 L29 27 L38 43 L46 21" fill="none" stroke="#F4F1EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="52" cy="41" r="5" fill="#FF6A1F"/>
+</svg>
