@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muntadhar Ahmed Jawad — Full-Stack Product Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#16130f; --muted:#4a443c; --faint:#7b7368;
+  --rule:#ddd6cc; --accent:#8a3324;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Public Sans',-apple-system,'Segoe UI',Arial,sans-serif;
+  font-size:10.5pt;line-height:1.5;
+}
+.sheet{max-width:840px;margin:0 auto;padding:36px 48px 50px}
+
+h1{
+  font-family:'Newsreader',Georgia,serif;font-weight:600;
+  font-size:26pt;line-height:1.05;margin:0 0 4px;letter-spacing:-.5px;
+}
+.title{font-size:11pt;color:var(--muted);margin:0 0 3px;font-weight:500}
+.contact{font-size:9.5pt;color:var(--faint);margin:0}
+
+.pitch{
+  font-family:'Newsreader',Georgia,serif;font-size:13.4pt;line-height:1.45;
+  color:var(--ink);margin:18px 0 4px;border-left:3px solid var(--accent);padding-left:16px;
+}
+.pitch em{font-style:normal;color:var(--accent)}
+
+h2{
+  font-size:9.4pt;text-transform:uppercase;letter-spacing:1.5px;color:var(--faint);
+  font-weight:600;margin:22px 0 10px;
+}
+.entry{border-top:1px solid var(--rule);padding-top:11px;margin-bottom:14px}
+h3{font-size:11.6pt;margin:0 0 1px;font-weight:600;font-family:'Newsreader',Georgia,serif}
+.meta{font-size:9.3pt;color:var(--faint);margin:0 0 7px}
+.meta .sep{color:var(--rule);padding:0 5px}
+p{margin:0 0 8px}
+ul{margin:0 0 6px;padding-left:17px}
+li{margin-bottom:4.5px}
+li::marker{color:var(--accent)}
+.shipped{font-size:9.4pt;color:var(--accent);font-weight:600;margin:0 0 6px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px 30px}
+.grid2 p{margin:0 0 3px;font-size:10pt}
+.grid2 b{font-weight:600}
+
+@media print{
+  @page{size:A4;margin:12mm 14mm}
+  body{font-size:9.8pt}
+  .sheet{max-width:none;padding:0}
+  h2,h3{break-after:avoid}
+  .entry{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>Muntadhar Ahmed Jawad</h1>
+<p class="title">Full-Stack Product Engineer — web, mobile and the platform underneath</p>
+<p class="contact">muntzr557@gmail.com &nbsp;·&nbsp; +964 787 629 4108 &nbsp;·&nbsp; github.com/wbtio &nbsp;·&nbsp; Basra, Iraq — remote</p>
+
+<p class="pitch">
+  I have shipped <em>three products to production on my own</em> — a corporate platform, an e-commerce
+  business and an AI application — each including the web app, the admin system and, twice, the
+  Android and iOS apps. I am the engineer a small team hires when someone has to own the whole thing.
+</p>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <h3>IT Manager &amp; Lead Developer — JAZ (Joint Annual Zone)</h3>
+  <p class="meta">Basra, Iraq <span class="sep">/</span> December 2025 – July 2026 <span class="sep">/</span> sole engineer</p>
+  <p class="shipped">Shipped: public website · admin platform · Android &amp; iOS app — in 7 months</p>
+  <ul>
+    <li>Led the IT function of a leading international exhibitions and conferences organiser in Iraq, from architecture decisions through deployment and day-to-day maintenance.</li>
+    <li>Built jaz.iq and its admin dashboard: content management, operations tooling and role-based access control for [N] internal users across [N] roles.</li>
+    <li>Shipped a cross-platform mobile app for Android and iOS from a single React Native codebase, sharing one backend with the web platform.</li>
+    <li>Automated [N] recurring departmental workflows with n8n and built internal dashboards, cutting roughly [N] hours of manual work per week.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <h3>Full-Stack Developer — Al-Amal Center</h3>
+  <p class="meta">E-commerce venture affiliated with JAZ <span class="sep">/</span> 2024 – 2026 <span class="sep">/</span> sole engineer</p>
+  <p class="shipped">Shipped: storefront · admin dashboard · Android &amp; iOS app — centeralamal.shop</p>
+  <ul>
+    <li>Built and launched the full commerce stack independently, from database schema to store checkout to the operator's dashboard.</li>
+    <li>Implemented real-time inventory, order processing and analytics, keeping stock accurate across web and mobile at the same time.</li>
+    <li>Ran the platform in production as its only engineer — releases, bugs, data and uptime.</li>
+  </ul>
+</div>
+
+<h2>Products &amp; Projects</h2>
+
+<div class="entry">
+  <h3>METRIX — AI Goal-Achievement Platform</h3>
+  <p class="meta">Next.js <span class="sep">/</span> Google Gemini API <span class="sep">/</span> Supabase <span class="sep">/</span> 2025 – 2026 <span class="sep">/</span> metrix-bete.vercel.app</p>
+  <ul>
+    <li>Designed and built a product that turns a free-text goal into a structured, personalised plan through a Gemini generation pipeline, with a prompt layer and validated JSON output.</li>
+    <li>Built the retention loop myself: daily and weekly check-ins with progress statistics, plus Google OAuth sign-in.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <h3>Personal Brand Website — client project</h3>
+  <p class="meta">React <span class="sep">/</span> Vercel <span class="sep">/</span> 2024 <span class="sep">/</span> syedmr.online</p>
+  <ul>
+    <li>Responsive site designed, built and deployed to production on a custom domain for an individual client.</li>
+  </ul>
+</div>
+
+<h2>Stack</h2>
+<div class="grid2">
+  <p><b>Frontend</b> — React, Next.js, TypeScript, HTML, CSS</p>
+  <p><b>Mobile</b> — React Native (Android &amp; iOS)</p>
+  <p><b>Backend</b> — Node.js, Python, REST APIs, OAuth</p>
+  <p><b>Data</b> — Supabase, PostgreSQL, schema design</p>
+  <p><b>Systems</b> — Admin dashboards, CMS, RBAC, analytics</p>
+  <p><b>AI &amp; automation</b> — Gemini API, OpenAI API, structured output, n8n</p>
+  <p><b>Delivery</b> — Vercel, Git &amp; GitHub, CI, production maintenance</p>
+  <p><b>Working style</b> — remote-first, sole ownership, written handover docs</p>
+</div>
+
+<h2>Education</h2>
+<div class="entry" style="margin-bottom:0">
+  <h3>B.Sc. Computer Science — University of Basrah</h3>
+  <p class="meta">College of Computer Science <span class="sep">/</span> expected 2027, fourth year <span class="sep">/</span> CS50x, Harvard University via edX, 2024</p>
+  <p style="margin:0">Arabic — native. English — full professional proficiency.</p>
+</div>
+
+</div>
+
+<!-- =====================================================================
+FILE: cv-03-fullstack-product-engineer-web-mobile-EN.html
+PURPOSE: For startups and product teams hiring a Full-Stack, Product or
+Founding Engineer — anywhere the posting cares about ownership and
+shipping speed more than a specific AI stack.
+
+WHY IT IS DIFFERENT: it leads with the one claim almost no other junior
+applicant can make — three products shipped to production solo, including
+mobile. AI is present but demoted to one line in the stack, because to a
+product team it reads as one more capability, not the headline.
+
+BEFORE SENDING, EVERY TIME:
+1. Replace every [N] with a real number.
+2. If the posting names a framework you have used, make sure it appears
+   by name in Stack.
+3. Print to PDF at A4.
+
+NOTE: this version uses a rule-and-serif layout that is still single-column
+and parseable, but for a strict online portal prefer cv-01.
+
+UPDATE EVERY 6 MONTHS:
+- Update the opening pitch line to the current product count.
+- Add each shipped product as a new entry with what it shipped and when.
+- Keep every entry to four bullets; cut the weakest before adding a fifth.
+====================================================================== -->
+</body>
+</html>
