@@ -34,7 +34,8 @@
   .card h3{margin:0 0 8px;font-size:16px}
   .card p{margin:0;font-size:14.5px;color:#2A323F}
   ul{margin:0;padding-left:20px} li{margin:8px 0}
-  .tbl{width:100%;border-collapse:collapse;background:var(--panel);
+  .scroll{overflow-x:auto}
+  .tbl{width:100%;min-width:520px;border-collapse:collapse;background:var(--panel);
        border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px}
   .tbl th,.tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
   .tbl th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
@@ -114,6 +115,7 @@
 </ul>
 
 <h2>Packages</h2>
+<div class="scroll">
 <table class="tbl">
   <tr>
     <th>&nbsp;</th>
@@ -136,6 +138,7 @@
     <td class="c price">$1,500</td>
   </tr>
 </table>
+</div>
 <p style="font-size:14.5px;color:var(--muted);margin:14px 0 0">
   Ongoing care afterwards — monitoring, tuning on new cases, monthly report —
   $150–250 / month. 50% on start, balance on delivery.
