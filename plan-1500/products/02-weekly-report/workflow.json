@@ -1,0 +1,274 @@
+{
+  "name": "Automated Weekly Business Report — wbtio",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                0
+              ],
+              "triggerAtHour": 7,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "b2000000-0000-4000-8000-000000000001",
+      "name": "Every Sunday 07:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -780,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "data",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "id": "b2000000-0000-4000-8000-000000000002",
+      "name": "Read Business Data",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -560,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Client Google Sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// كل الحساب هنا — بالكود، لا بالنموذج.\n// النماذج اللغوية تخطئ بالحساب، ورقم خاطئ بتقرير أسبوعي يهدم ثقة العميل كلها.\n// دور النموذج لاحقاً هو الصياغة فقط، على أرقام محسوبة سلفاً.\n\nconst MS_DAY = 86400000;\nconst rows = $input.all().map(i => i.json);\n\n// الأعمدة المتوقعة — يعدّلها المنفّذ لكل عميل. هذا هو سطح التخصيص الوحيد.\nconst COL = { date: 'date', amount: 'amount', category: 'category', customer: 'customer' };\n\nconst now = new Date();\nconst startThis = new Date(now.getTime() - 7 * MS_DAY);\nconst startPrev = new Date(now.getTime() - 14 * MS_DAY);\n\nconst parse = r => {\n  const d = new Date(r[COL.date]);\n  const amount = Number(String(r[COL.amount] ?? '').replace(/[^0-9.-]/g, ''));\n  return { d, amount: Number.isFinite(amount) ? amount : 0, row: r };\n};\n\nconst clean = rows.map(parse).filter(x => !isNaN(x.d.getTime()));\nconst skipped = rows.length - clean.length;\n\nconst thisWeek = clean.filter(x => x.d >= startThis);\nconst prevWeek = clean.filter(x => x.d >= startPrev && x.d < startThis);\n\nconst sum   = a => a.reduce((t, x) => t + x.amount, 0);\nconst money = n => Math.round(n * 100) / 100;\n\n// النسبة تُحسب فقط إذا كانت القاعدة غير صفرية — القسمة على صفر تنتج Infinity\n// وتظهر بالتقرير كـ\"نمو ∞%\" وهذا يفضح النظام أمام العميل.\nconst pct = (a, b) => (b === 0 ? null : Math.round(((a - b) / b) * 1000) / 10);\n\nconst revThis = sum(thisWeek), revPrev = sum(prevWeek);\n\nconst byKey = (arr, key) => {\n  const m = {};\n  for (const x of arr) {\n    const k = String(x.row[key] ?? 'غير محدد').trim() || 'غير محدد';\n    m[k] = (m[k] || 0) + x.amount;\n  }\n  return Object.entries(m)\n    .sort((a, b) => b[1] - a[1])\n    .slice(0, 5)\n    .map(([name, total]) => ({ name, total: money(total) }));\n};\n\nreturn [{\n  json: {\n    period: {\n      from: startThis.toISOString().slice(0, 10),\n      to:   now.toISOString().slice(0, 10)\n    },\n    revenue: {\n      current:  money(revThis),\n      previous: money(revPrev),\n      changePct: pct(revThis, revPrev)\n    },\n    orders: {\n      current:  thisWeek.length,\n      previous: prevWeek.length,\n      changePct: pct(thisWeek.length, prevWeek.length)\n    },\n    averageOrder: {\n      current:  thisWeek.length ? money(revThis / thisWeek.length) : 0,\n      previous: prevWeek.length ? money(revPrev / prevWeek.length) : 0\n    },\n    topCategories: byKey(thisWeek, COL.category),\n    topCustomers:  byKey(thisWeek, COL.customer),\n    dataQuality: { totalRows: rows.length, skippedRows: skipped }\n  }\n}];"
+      },
+      "id": "b2000000-0000-4000-8000-000000000003",
+      "name": "Compute Metrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -340,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  model: 'claude-haiku-4-5-20251001',\n  max_tokens: 1400,\n  system: $vars.WEEKLY_REPORT_SYSTEM_PROMPT,\n  tools: [{\n    name: 'write_report',\n    description: 'Turn the pre-computed weekly metrics into a short business narrative.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        headline: { type: 'string', description: 'One sentence a busy owner reads first' },\n        summary: { type: 'string', description: 'Two or three sentences on what happened and why it matters' },\n        wins: { type: 'array', items: { type: 'string' }, description: 'Up to 3 things that went well' },\n        concerns: { type: 'array', items: { type: 'string' }, description: 'Up to 3 things worth attention. Empty array if none.' },\n        actions: { type: 'array', items: { type: 'string' }, description: 'Up to 3 concrete actions for next week' },\n        tone: { type: 'string', enum: ['good','steady','watch'], description: 'Overall read of the week' }\n      },\n      required: ['headline','summary','wins','concerns','actions','tone']\n    }\n  }],\n  tool_choice: { type: 'tool', name: 'write_report' },\n  messages: [{ role: 'user', content: 'Weekly metrics (already calculated — do not recalculate):\\n\\n' + JSON.stringify($json, null, 2) }]\n}) }}",
+        "options": {
+          "timeout": 45000
+        }
+      },
+      "id": "b2000000-0000-4000-8000-000000000004",
+      "name": "Write Narrative (Claude)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -120,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME",
+          "name": "Anthropic API (x-api-key)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// بناء الإيميل. الأرقام تُقرأ من عقدة الحساب مباشرة، لا من مخرجات النموذج —\n// حتى لو هلوس النموذج برقم في نصه، الجدول يظل صحيحاً.\nconst block = ($json.content ?? []).find(c => c.type === 'tool_use');\nif (!block || !block.input) throw new Error('No tool_use block in model response.');\n\nconst r = block.input;\nconst m = $('Compute Metrics').first().json;\n\nconst COLORS = { good: '#1C7A52', steady: '#B5761A', watch: '#B3341F' };\nconst accent = COLORS[r.tone] || '#B5761A';\n\n// العملة دائماً بمنزلتين: \"$2,871.5\" يقرأها صاحب العمل كخطأ تنسيق ويشك بالباقي\nconst cash = n => new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);\nconst fmt  = n => new Intl.NumberFormat('en-US').format(n);\nconst plural = (n, w) => `${fmt(n)} ${w}${n === 1 ? '' : 's'}`;\nconst delta = p => (p === null ? '—' : (p > 0 ? '▲ ' : p < 0 ? '▼ ' : '') + Math.abs(p) + '%');\nconst deltaColor = p => (p === null ? '#6B7480' : p > 0 ? '#1C7A52' : p < 0 ? '#B3341F' : '#6B7480');\n\nconst esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst list = (items, color) => (items && items.length)\n  ? '<ul style=\"margin:6px 0 0;padding-left:20px;color:' + color + '\">' +\n    items.map(i => '<li style=\"margin:4px 0\">' + esc(i) + '</li>').join('') + '</ul>'\n  : '<p style=\"margin:6px 0 0;color:#6B7480\">None this week.</p>';\n\nconst rows = [\n  ['Revenue',       '$' + cash(m.revenue.current),     m.revenue.changePct],\n  ['Orders',        fmt(m.orders.current),              m.orders.changePct],\n  ['Average order', '$' + cash(m.averageOrder.current), null]\n];\n\nconst html = `<!doctype html><html><body style=\"margin:0;background:#F4F1EC;padding:24px;\n  font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#12161F\">\n<div style=\"max-width:620px;margin:0 auto;background:#fff;border:1px solid #E4DFD6;border-radius:12px;overflow:hidden\">\n  <div style=\"border-top:4px solid ${accent};padding:26px 26px 6px\">\n    <p style=\"margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6B7480\">\n      Weekly report · ${m.period.from} → ${m.period.to}</p>\n    <h1 style=\"margin:8px 0 0;font-size:21px;line-height:1.35\">${esc(r.headline)}</h1>\n    <p style=\"margin:12px 0 0;color:#2A323F;line-height:1.6\">${esc(r.summary)}</p>\n  </div>\n\n  <table style=\"width:100%;border-collapse:collapse;margin:22px 0 0\">\n    ${rows.map(([label, value, pct]) => `<tr>\n      <td style=\"padding:12px 26px;border-top:1px solid #EFEBE4;color:#6B7480;font-size:14px\">${label}</td>\n      <td style=\"padding:12px 8px;border-top:1px solid #EFEBE4;font-size:18px;font-weight:700;text-align:right\">${value}</td>\n      <td style=\"padding:12px 26px;border-top:1px solid #EFEBE4;text-align:right;font-size:14px;font-weight:600;color:${deltaColor(pct)}\">${delta(pct)}</td>\n    </tr>`).join('')}\n  </table>\n\n  <div style=\"padding:22px 26px\">\n    <h2 style=\"margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6B7480\">What went well</h2>\n    ${list(r.wins, '#12161F')}\n    <h2 style=\"margin:20px 0 0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6B7480\">Worth attention</h2>\n    ${list(r.concerns, '#12161F')}\n    <h2 style=\"margin:20px 0 0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6B7480\">Do next week</h2>\n    ${list(r.actions, '#12161F')}\n  </div>\n\n  ${m.topCategories.length ? `<div style=\"padding:0 26px 22px\">\n    <h2 style=\"margin:0 0 8px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6B7480\">Top categories</h2>\n    ${m.topCategories.map(c => `<div style=\"display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #EFEBE4\">\n      <span>${esc(c.name)}</span><b>$${cash(c.total)}</b></div>`).join('')}\n  </div>` : ''}\n\n  <div style=\"padding:16px 26px;background:#FAF8F5;border-top:1px solid #EFEBE4;font-size:12px;color:#6B7480\">\n    Generated automatically from ${plural(m.dataQuality.totalRows, 'row')}${m.dataQuality.skippedRows ? ` · ${plural(m.dataQuality.skippedRows, 'row')} skipped (unreadable date)` : ''}.\n    All figures calculated from source data, not estimated.\n  </div>\n</div></body></html>`;\n\nreturn [{ json: { html, subject: 'Weekly report · ' + m.period.from + ' → ' + m.period.to, tone: r.tone, metrics: m, report: r } }];"
+      },
+      "id": "b2000000-0000-4000-8000-000000000005",
+      "name": "Build Email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "REPLACE_WITH_OWNER_EMAIL",
+        "subject": "={{ $json.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "b2000000-0000-4000-8000-000000000006",
+      "name": "Send Report",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        320,
+        0
+      ],
+      "webhookId": "weekly-report",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_ME",
+          "name": "Client Gmail"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "report_log",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "period_from": "={{ $json.metrics.period.from }}",
+            "period_to": "={{ $json.metrics.period.to }}",
+            "revenue": "={{ $json.metrics.revenue.current }}",
+            "orders": "={{ $json.metrics.orders.current }}",
+            "change_pct": "={{ $json.metrics.revenue.changePct }}",
+            "tone": "={{ $json.tone }}",
+            "headline": "={{ $json.report.headline }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "b2000000-0000-4000-8000-000000000007",
+      "name": "Log Report",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        540,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Client Google Sheets"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every Sunday 07:00": {
+      "main": [
+        [
+          {
+            "node": "Read Business Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Business Data": {
+      "main": [
+        [
+          {
+            "node": "Compute Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Metrics": {
+      "main": [
+        [
+          {
+            "node": "Write Narrative (Claude)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Narrative (Claude)": {
+      "main": [
+        [
+          {
+            "node": "Build Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Email": {
+      "main": [
+        [
+          {
+            "node": "Send Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Report": {
+      "main": [
+        [
+          {
+            "node": "Log Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveExecutionProgress": true
+  },
+  "tags": [
+    {
+      "name": "wbtio-product"
+    }
+  ]
+}

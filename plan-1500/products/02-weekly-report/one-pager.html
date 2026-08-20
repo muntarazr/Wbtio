@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Business Report — wbtio</title>
+<style>
+  :root{--ink:#12161F;--paper:#F4F1EC;--accent:#FF6A1F;--muted:#6B7480;
+        --line:#E4DFD6;--panel:#fff;--good:#1c7a52;--bad:#B3341F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.65 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:840px;margin:0 auto;padding:56px 24px 80px}
+  header{display:flex;align-items:baseline;gap:12px;margin-bottom:44px}
+  .logo{font-weight:800;letter-spacing:-.02em;font-size:20px}
+  .logo span{color:var(--accent)}
+  .tag{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  h1{font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.025em;margin:0 0 16px;max-width:18ch}
+  .lede{font-size:19px;color:#2A323F;max-width:60ch;margin:0 0 40px}
+  h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+     margin:52px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:0;font-size:14.5px;color:#2A323F}
+  ul{margin:0;padding-left:20px}li{margin:8px 0}
+  .sample{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .sample .top{border-top:4px solid var(--bad);padding:20px 22px 4px}
+  .sample .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+  .sample h4{margin:6px 0 0;font-size:17px;line-height:1.35}
+  .sample .s{margin:8px 0 0;color:#2A323F;font-size:14.5px}
+  .sample table{width:100%;border-collapse:collapse;margin-top:14px}
+  .sample td{padding:10px 22px;border-top:1px solid #EFEBE4;font-size:14px}
+  .sample td.v{text-align:right;font-size:17px;font-weight:700}
+  .sample td.d{text-align:right;font-weight:600;width:90px}
+  .up{color:var(--good)}.down{color:var(--bad)}
+  .tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);
+       border-radius:12px;overflow:hidden;font-size:14.5px}
+  .tbl th,.tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  .tbl th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+          background:#FAF8F5;font-weight:600}
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl td.c,.tbl th.c{text-align:center}
+  .pick{background:#FFF6F0}
+  .yes{color:var(--good);font-weight:700}.no{color:#C4BFB6}
+  .price{font-weight:800;font-size:17px}
+  .note{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+        padding:16px 18px;font-size:15px}
+  .scroll{overflow-x:auto}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  @media print{body{background:#fff}.wrap{padding:0}h2{margin-top:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">wbtio<span>.</span></div>
+  <div class="tag">AI &amp; Automation</div>
+</header>
+
+<h1>Your week, on your phone, every Sunday at seven.</h1>
+<p class="lede">
+  You already have the data. What you do not have is someone to sit down every Sunday,
+  work out what changed, and tell you what to do about it. This does that — automatically,
+  from your own numbers, in ninety seconds of reading.
+</p>
+
+<h2>What arrives</h2>
+<div class="sample">
+  <div class="top">
+    <p class="k">Weekly report · 13 Aug → 20 Aug</p>
+    <h4>Revenue dipped 22% while order count rose — average order value is the story.</h4>
+    <p class="s">Seven orders came in against six last week, but each was worth roughly a
+      third less. The drop is concentrated in machines: one large order carried last week
+      and did not repeat.</p>
+  </div>
+  <table>
+    <tr><td>Revenue</td><td class="v">$2,871.50</td><td class="d down">▼ 22.4%</td></tr>
+    <tr><td>Orders</td><td class="v">7</td><td class="d up">▲ 16.7%</td></tr>
+    <tr><td>Average order</td><td class="v">$410.21</td><td class="d">—</td></tr>
+  </table>
+  <div style="padding:16px 22px 20px">
+    <p class="k" style="margin:0 0 4px">Do next week</p>
+    <ul style="margin:0;font-size:14.5px">
+      <li>Call the account that ordered twice last week and not at all this week</li>
+      <li>Check machine stock before the December ramp-up</li>
+      <li>Fix the date format in the source sheet — one row was unreadable</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Why you can trust the numbers</h2>
+<div class="note">
+  <strong>Every figure is calculated in code from your data. The AI never does arithmetic.</strong>
+  It receives the finished numbers and writes the commentary around them — and the email
+  reads the figures back from the calculation, not from the AI's text. Language models are
+  unreliable at maths, and one wrong number would undermine every number after it.
+  This design removes that risk rather than reducing it.
+</div>
+
+<h2>What it does for you</h2>
+<div class="grid">
+  <div class="card"><h3>You stop guessing</h3>
+    <p>Not "I think last week was slower" — an actual figure, against the week before.</p></div>
+  <div class="card"><h3>You catch it early</h3>
+    <p>A quiet decline shows up in week one, not in the quarter-end that surprises you.</p></div>
+  <div class="card"><h3>Nothing to remember</h3>
+    <p>No dashboard to log into, no report to request. It simply arrives.</p></div>
+  <div class="card"><h3>Three things to do</h3>
+    <p>Every report ends with concrete actions, drawn from what actually happened.</p></div>
+</div>
+
+<h2>What it will never do</h2>
+<ul>
+  <li>Estimate, round, or invent a figure — every number traces to a row in your data.</li>
+  <li>Show "infinite growth" when last week was zero. It says no comparison is available.</li>
+  <li>Silently drop unreadable rows. They are counted and disclosed at the foot of the report.</li>
+  <li>Manufacture a concern to look thorough. A good week is reported as a good week.</li>
+</ul>
+
+<h2>Packages</h2>
+<div class="scroll">
+<table class="tbl">
+  <tr><th>&nbsp;</th><th class="c">Essential</th><th class="c pick">Recommended</th><th class="c">Advanced</th></tr>
+  <tr><td>One data source</td><td class="c yes">✓</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Multiple sources (store · CRM · ads)</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Weekly email report</td><td class="c yes">✓</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Week-on-week comparison</td><td class="c yes">✓</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Top categories &amp; customers</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Instant alert on a sharp drop</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Monthly roll-up</td><td class="c no">—</td><td class="c pick no">—</td><td class="c yes">✓</td></tr>
+  <tr><td>Live figures dashboard</td><td class="c no">—</td><td class="c pick no">—</td><td class="c yes">✓</td></tr>
+  <tr><td>Support included</td><td class="c">14 days</td><td class="c pick">1 month</td><td class="c">3 months</td></tr>
+  <tr><td><strong>One-time</strong></td><td class="c price">$350</td>
+      <td class="c pick price" style="color:var(--accent)">$650</td><td class="c price">$1,100</td></tr>
+</table>
+</div>
+<p style="font-size:14.5px;color:var(--muted);margin:14px 0 0">
+  Ongoing care afterwards — monitoring, tuning, new metrics as you need them —
+  $120–200 / month. 50% on start, balance on delivery.
+</p>
+
+<h2>See it on your own week</h2>
+<p style="max-width:60ch">
+  Export the last two weeks from your store or spreadsheet — date, amount, category,
+  customer. You will get back the exact report your business would have received last
+  Sunday. Takes a day, costs nothing, and your raw customer rows never leave your file.
+</p>
+
+<footer>
+  <span><strong>Muntadhar Ahmed Jawad</strong> — AI &amp; Automation Engineer</span>
+  <span>Basra, Iraq · working with clients worldwide</span>
+  <span>info@jaz.iq</span>
+</footer>
+
+</div>
+</body>
+</html>
