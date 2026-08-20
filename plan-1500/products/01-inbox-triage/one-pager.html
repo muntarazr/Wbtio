@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Inbox Triage — wbtio</title>
+<style>
+  :root{
+    --ink:#12161F; --paper:#F4F1EC; --accent:#FF6A1F;
+    --muted:#6B7480; --line:#E4DFD6; --panel:#fff; --good:#1c7a52;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.65 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:56px 24px 80px}
+  header{display:flex;align-items:baseline;gap:12px;margin-bottom:44px}
+  .logo{font-weight:800;letter-spacing:-.02em;font-size:20px}
+  .logo span{color:var(--accent)}
+  .tag{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  h1{font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.025em;margin:0 0 16px;max-width:16ch}
+  .lede{font-size:19px;color:#2A323F;max-width:60ch;margin:0 0 40px}
+  h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+     margin:52px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 8px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+        padding:9px 14px;font-size:14px;font-weight:600}
+  .step.acc{border-color:var(--accent);color:var(--accent)}
+  .arrow{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:0;font-size:14.5px;color:#2A323F}
+  ul{margin:0;padding-left:20px} li{margin:8px 0}
+  .tbl{width:100%;border-collapse:collapse;background:var(--panel);
+       border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px}
+  .tbl th,.tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  .tbl th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+          background:#FAF8F5;font-weight:600}
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl td.c,.tbl th.c{text-align:center}
+  .pick{background:#FFF6F0}
+  .yes{color:var(--good);font-weight:700}
+  .no{color:#C4BFB6}
+  .price{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .note{background:var(--panel);border-left:3px solid var(--accent);
+        border-radius:0 8px 8px 0;padding:16px 18px;font-size:15px}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  a{color:var(--accent)}
+  @media print{body{background:#fff}.wrap{padding:0}h2{margin-top:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">wbtio<span>.</span></div>
+  <div class="tag">AI &amp; Automation</div>
+</header>
+
+<h1>Your inbox answers itself. The hard messages still reach a person.</h1>
+<p class="lede">
+  Every email, WhatsApp message, and web form enquiry is read, classified, and
+  either answered in seconds or handed to your team with a draft already written —
+  in whatever language the customer wrote in.
+</p>
+
+<h2>How it works</h2>
+<div class="flow">
+  <div class="step">Message arrives</div><span class="arrow">→</span>
+  <div class="step">Classified by AI</div><span class="arrow">→</span>
+  <div class="step acc">Answered instantly</div>
+  <span class="arrow">/</span>
+  <div class="step acc">Escalated with a draft</div>
+</div>
+<p style="font-size:14.5px;color:var(--muted);margin:10px 0 0">
+  Every message is logged with its category, urgency, and outcome — so the effect is
+  a number you can read, not a claim you have to believe.
+</p>
+
+<h2>What you get back</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Replies in seconds</h3>
+    <p>Routine questions get a correct answer immediately, at 3am and on holidays,
+    without anyone opening a laptop.</p>
+  </div>
+  <div class="card">
+    <h3>Nothing falls through</h3>
+    <p>Complaints and urgent messages are flagged and pushed to your team the moment
+    they arrive, never buried under newsletters.</p>
+  </div>
+  <div class="card">
+    <h3>Any language</h3>
+    <p>Arabic, English, or mixed. The reply comes back in the customer's own
+    language and matches how they wrote.</p>
+  </div>
+  <div class="card">
+    <h3>Your team, faster</h3>
+    <p>Escalated messages arrive with a suggested reply attached. Your staff edit
+    and send instead of writing from nothing.</p>
+  </div>
+</div>
+
+<h2>What it will never do</h2>
+<ul>
+  <li>Quote a price, date, or policy you have not approved in writing.</li>
+  <li>Auto-answer a complaint, a refund request, or a billing dispute — those always
+      go to a person.</li>
+  <li>Guess. When the answer needs information it was not given, it escalates.</li>
+</ul>
+
+<h2>Packages</h2>
+<table class="tbl">
+  <tr>
+    <th>&nbsp;</th>
+    <th class="c">Essential</th>
+    <th class="c pick">Recommended</th>
+    <th class="c">Advanced</th>
+  </tr>
+  <tr><td>Email</td><td class="c yes">✓</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>WhatsApp + website form</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>AI classification &amp; auto-reply</td><td class="c yes">✓</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Escalation to your team</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Reporting dashboard</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Tuned on your real messages</td><td class="c no">—</td><td class="c pick yes">✓</td><td class="c yes">✓</td></tr>
+  <tr><td>Team training</td><td class="c no">—</td><td class="c pick">30 min</td><td class="c">Full session</td></tr>
+  <tr><td>Support included</td><td class="c">14 days</td><td class="c pick">1 month</td><td class="c">3 months</td></tr>
+  <tr>
+    <td><strong>One-time</strong></td>
+    <td class="c price">$450</td>
+    <td class="c pick price" style="color:var(--accent)">$850</td>
+    <td class="c price">$1,500</td>
+  </tr>
+</table>
+<p style="font-size:14.5px;color:var(--muted);margin:14px 0 0">
+  Ongoing care afterwards — monitoring, tuning on new cases, monthly report —
+  $150–250 / month. 50% on start, balance on delivery.
+</p>
+
+<h2>Rollout</h2>
+<div class="note">
+  <strong>Week 1 — shadow mode.</strong> Nothing is sent to your customers. Every
+  message is classified and routed to your team with a draft, so you see exactly
+  what the system <em>would</em> have done.<br>
+  <strong>Week 2 — tuning</strong> on the calls you disagree with.<br>
+  <strong>Week 3 — live</strong> on the categories you have signed off, and only those.
+</div>
+
+<h2>See it on your own messages</h2>
+<p style="max-width:60ch">
+  Send three real messages from your inbox — any three — and you will get back
+  exactly how the system classifies them, what it would reply, and which ones it
+  would refuse to answer without you. Takes a day, costs nothing.
+</p>
+
+<footer>
+  <span><strong>Muntadhar Ahmed Jawad</strong> — AI &amp; Automation Engineer</span>
+  <span>Basra, Iraq · working with clients worldwide</span>
+  <span>info@jaz.iq</span>
+</footer>
+
+</div>
+</body>
+</html>
