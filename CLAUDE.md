@@ -136,6 +136,14 @@
 | **سيرة ذاتية · وظائف** | [`career/README.md`](career/README.md) |
 | **قرار كبير أو تفاوض سعر** | [`goal/DECISION-RULES.md`](goal/DECISION-RULES.md) — **قبل القرار لا بعده** |
 | **الوجهة الكاملة** | [`goal/NORTH-STAR.md`](goal/NORTH-STAR.md) |
+| **مهارة · أداة · «شنو أثبّت؟»** | [`skills/README.md`](skills/README.md) — **حكم صريح على كل مهارة** · لا تثبّت شيئاً قبله |
+| **بحث أو تحقق من رقم** | اكتب `/research` — بروتوكول المصدر والتاريخ ودرجة الثقة |
+| **دراسة اليوم (إنكليزي/كوري)** | اكتب `/study` — جلسة بمخرَج ملموس لا وقت مقضي |
+
+**المهارات المثبَّتة:** `/money` · `/research` · `/study` (محلية) · `supabase` ·
+`supabase-postgres-best-practices` · `vercel-react-best-practices` · `vercel-react-native-skills` ·
+`deploy-to-vercel` · `web-design-guidelines`. **الحكم الكامل ولماذا رُفض غيرها:**
+[`skills/README.md`](skills/README.md). 🔴 **لا تثبّت مهارة جديدة بلا فحص القسم 6 فيه.**
 
 **الأدوات التي تشتغل offline:**
 ```bash
