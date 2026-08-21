@@ -11,6 +11,7 @@
 |---|---|---|
 | **1** | [`dashboard/index.html`](dashboard/index.html) | **اللوحة** — انقر مرتين. تشتغل بلا إنترنت وتحفظ بمتصفحك. هذا نظامك اليومي |
 | **2** | [`korea/BEST-PATH.md`](korea/BEST-PATH.md) | 🆕 **القرار** — المسار الموصى به بعد جولة التحقق الثانية. **يتقدّم على أي ترتيب أقدم** |
+| **2ب** | [`korea/PROBLEMS.md`](korea/PROBLEMS.md) | 🆕 **سجل المشاكل** — أي عائق مشكلة فعلية وأيها لا · تكلفة الطريق بالدولار · أسوأ سيناريو |
 | **3** | [`goal/NORTH-STAR.md`](goal/NORTH-STAR.md) | **الوجهة** — اقرأها أول كل شهر |
 | **4** | [`system/MINIMUM-VIABLE-DAY.md`](system/MINIMUM-VIABLE-DAY.md) | **اليوم الأدنى** — أربع ساعات تقرر نجاح يومك |
 
