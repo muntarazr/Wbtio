@@ -1,6 +1,6 @@
 # 🎯 ai-job-search — دليل التنصيب والاستعمال
 
-إطار البحث عن وظيفة المبني على Claude Code، منصَّب جوّا Wbtio بمجلد `ai-job-search/`.
+إطار البحث عن وظيفة المبني على Claude Code، منصَّب جوّا Wbtio بمجلد `career/job-search/`.
 
 - **المصدر:** [`MadsLorentzen/ai-job-search`](https://github.com/MadsLorentzen/ai-job-search)
 - **النسخة:** `v1.6.0` (`ab91c60`)
@@ -14,7 +14,7 @@
 
 **مستودع Wbtio عام (public).** وأمر `/setup` يكتب بروفايلك بملفات **متتبَّعة بـgit** — يعني نظرياً أي `git push` ينشرها للكل.
 
-**الحل المنصَّب:** حارس `pre-push` بـ[`.githooks/pre-push`](../.githooks/pre-push) **يوقف الدفع تلقائياً** إذا لكى بيانات شخصية بأي ملف من هذول:
+**الحل المنصَّب:** حارس `pre-push` بـ[`.githooks/pre-push`](../../.githooks/pre-push) **يوقف الدفع تلقائياً** إذا لكى بيانات شخصية بأي ملف من هذول:
 
 | الملف | العنصر النائب اللي يراقبه |
 |---|---|
@@ -56,7 +56,7 @@ git push --no-verify
 
 ### لو تريد أمان كامل
 
-حوّل Wbtio لمستودع **خاص** من إعدادات GitHub، أو خلّي مجلد `ai-job-search/` محلي بدون `push`. الحارس يحميك من الغلطة، بس ما يحمي من قرار واعي.
+حوّل Wbtio لمستودع **خاص** من إعدادات GitHub، أو خلّي مجلد `career/job-search/` محلي بدون `push`. الحارس يحميك من الغلطة، بس ما يحمي من قرار واعي.
 
 ---
 
@@ -65,7 +65,7 @@ git push --no-verify
 الإطار يتوقّع نفسه بجذر مجلد العمل، فشغّل Claude Code **من داخل المجلد**:
 
 ```bash
-cd ai-job-search
+cd career/job-search
 claude
 ```
 
@@ -148,7 +148,7 @@ cd cover_letters && xelatex cover_<company>_<role>.tex && cd ..
 
 ```bash
 # شوف شنو تغيّر بملفات البروفايل المخصّصة
-cd ai-job-search && python3 tools/check_upstream_updates.py --remote upstream
+cd career/job-search && python3 tools/check_upstream_updates.py --remote upstream
 
 # نزّل آخر نسخة
 cd /home/user/Wbtio
@@ -160,4 +160,4 @@ git subtree pull --prefix=ai-job-search upstream master --squash
 
 > `tools/upstream_triage.py` يشتغل بس أوامر `git cherry-pick` اللي يطبعها مبنية على مسارات جذر المستودع الأصلي، فما تنطبق مباشرة على مجلد فرعي — استعمله للقراءة بس.
 >
-> `ai-job-search/.github/workflows/upstream-watch.yml` ما راح يشتغل، لأن GitHub يقرا `.github/workflows/` من جذر المستودع بس. هذا مقصود — ما إله أي تأثير.
+> `career/job-search/.github/workflows/upstream-watch.yml` ما راح يشتغل، لأن GitHub يقرا `.github/workflows/` من جذر المستودع بس. هذا مقصود — ما إله أي تأثير.

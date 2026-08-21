@@ -1,19 +1,19 @@
 ---
-description: (ai-job-search) دوّر على وظائف جديدة تناسب بروفايلك
+description: (career/job-search) دوّر على وظائف جديدة تناسب بروفايلك
 ---
 
-هذا أمر وسيط. المنطق الحقيقي بسكِل `job-scraper` مال إطار ai-job-search،
+هذا أمر وسيط. المنطق الحقيقي بسكِل `job-scraper` مال إطار career/job-search،
 وهو منصَّب بمجلد فرعي فـClaude Code ما يشوفه.
 
 نفّذ التالي:
 
-1. اقرأ `ai-job-search/.claude/skills/job-scraper/SKILL.md` — هذا هو السكِل الأصلي.
-2. اقرأ `ai-job-search/.claude/skills/job-scraper/search-queries.md` — استراتيجية البحث،
+1. اقرأ `career/job-search/.claude/skills/job-scraper/SKILL.md` — هذا هو السكِل الأصلي.
+2. اقرأ `career/job-search/.claude/skills/job-scraper/search-queries.md` — استراتيجية البحث،
    مضبوطة أصلاً للعمل عن بُعد من البصرة.
-3. اتبع خطوات السكِل حرفياً، **بس اعتبر `ai-job-search/` هو جذر مجلد العمل**.
+3. اتبع خطوات السكِل حرفياً، **بس اعتبر `career/job-search/` هو جذر مجلد العمل**.
    `job_scraper/seen_jobs.json` و`job_search_tracker.csv` وكل مسار نسبي ثاني
-   يُقرأ ويُكتب تحت `ai-job-search/`.
-4. أوامر bun شغّلها بعد `cd ai-job-search`، مثلاً:
+   يُقرأ ويُكتب تحت `career/job-search/`.
+4. أوامر bun شغّلها بعد `cd career/job-search`، مثلاً:
    `bun run .agents/skills/linkedin-search/cli/src/cli.ts search -q "AI engineer" -l "Remote" --format table`
 
 الوسائط المُمرَّرة: $ARGUMENTS

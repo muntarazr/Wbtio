@@ -15,7 +15,7 @@ framework_version: 1.1.1
 - **LinkedIn:** <!-- NOT POPULATED — add your profile URL -->
 - **GitHub:** https://github.com/wbtio
 - **Status:** Available — final-year CS student already working professionally; open to remote roles and contracts
-- **Constraints:** Fully remote only. No relocation, no on-site, no hybrid.
+- **Constraints:** Remote-first. **Exception — South Korea: on-site and hybrid are welcome**, and E-7 visa sponsorship is a primary goal. Relocation outside South Korea is not sought.
 
 ### Languages
 

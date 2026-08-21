@@ -127,7 +127,7 @@ Does this role advance career goals and contain tasks that energize?
 
 **Life situation alignment:** Consider personal constraints:
 - **Security**: Income target is $1,500/month; currently between the JAZ role (ended Jul 2026) and the next engagement, so a predictable retainer or salary outranks a one-off project.
-- **Flexibility**: Final-year CS student at the University of Basrah (degree expected 2027) — study commitments run alongside work. Remote and asynchronous only; no relocation and no on-site.
+- **Flexibility**: Final-year CS student at the University of Basrah (degree expected 2027) — study commitments run alongside work. Remote and asynchronous by default. **South Korea is the exception: on-site roles there are a primary target, and E-7 visa sponsorship is a strong positive signal, not a blocker.**
 - **Professional development**: Priority is building the three missing capabilities (RAG, agents, evals) on real projects — a role that funds that learning outranks a slightly better-paid role that does not.
 
 ### 6. Salary Benchmark (Optional)

@@ -128,11 +128,11 @@
 
 | الأصل | وين |
 |---|---|
-| استراتيجية البراند | [`../plan-1500/branding/BRAND-01-strategy-what-branding-earns-you-and-what-it-doesnt.md`](../plan-1500/branding/BRAND-01-strategy-what-branding-earns-you-and-what-it-doesnt.md) |
-| الهوية البصرية والألوان | [`../plan-1500/branding/BRAND-02-visual-identity-logo-colors-type-and-usage.html`](../plan-1500/branding/BRAND-02-visual-identity-logo-colors-type-and-usage.html) |
-| محرّك المحتوى | [`../plan-1500/branding/BRAND-03-content-engine-youtube-instagram-first-90-days.md`](../plan-1500/branding/BRAND-03-content-engine-youtube-instagram-first-90-days.md) |
-| إعداد القنوات | [`../plan-1500/branding/BRAND-04-channel-setup-handles-bios-and-assets-checklist.md`](../plan-1500/branding/BRAND-04-channel-setup-handles-bios-and-assets-checklist.md) |
-| نصوص الملفات الشخصية | [`../plan-1500/profiles.md`](../plan-1500/profiles.md) |
-| البورتفوليو | [`../plan-1500/portfolio/`](../plan-1500/portfolio/) |
+| استراتيجية البراند | [`../brand/01-strategy.md`](../brand/01-strategy.md) |
+| الهوية البصرية والألوان | [`../brand/02-visual-identity.html`](../brand/02-visual-identity.html) |
+| محرّك المحتوى | [`../brand/03-content-engine.md`](../brand/03-content-engine.md) |
+| إعداد القنوات | [`../brand/04-channels.md`](../brand/04-channels.md) |
+| نصوص الملفات الشخصية | [`../career/profiles.md`](../career/profiles.md) |
+| البورتفوليو | [`../career/portfolio/`](../career/portfolio/) |
 
 **الهوية جاهزة. الناقص المخرَج.** ألوانك: `#12161F` · `#F4F1EC` · `#FF6A1F`.

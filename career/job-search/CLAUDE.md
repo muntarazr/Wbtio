@@ -15,7 +15,7 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ### Identity
 - **Name:** Muntadhar Ahmed Jawad (منتظر أحمد جواد)
-- **Location:** Basrah, Iraq (fully remote only — no relocation, no on-site)
+- **Location:** Basrah, Iraq. Open to **remote work** AND to **relocation to South Korea** (visa-sponsored roles are a primary target — see `../../korea/BEST-PATH.md`). Not seeking on-site roles elsewhere.
 - **Contact:** muntzr557@gmail.com · +964 787 629 4108 · github.com/wbtio
 - **Languages:**
   | Language | Level |
@@ -86,7 +86,7 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 - Gulf and Iraq businesses needing web, mobile and e-commerce platforms
 
 ### Deal-breakers
-- On-site or hybrid roles — remote only, no relocation
+- On-site or hybrid roles **outside South Korea** — remote otherwise; Korean on-site roles with E-7 visa sponsorship are actively wanted
 - Anything requiring a work permit or physical presence outside Iraq
 
 ### Behavioral Profile

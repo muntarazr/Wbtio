@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # حارس الخصوصية — يمنع دفع البيانات الشخصية لمستودع Wbtio العام.
 #
-# ليش موجود: مستودع Wbtio عام، وأمر /setup مال إطار ai-job-search
+# ليش موجود: مستودع Wbtio عام، وأمر /setup مال إطار البحث عن وظيفة
 # يكتب البروفايل الشخصي بملفات متتبَّعة بـgit. الملفات أدناه تنشحن
 # بالمستودع وهي مليانة عناصر نائبة مثل [YOUR_NAME]. لمّا /setup يملأها،
 # العنصر النائب يختفي — وهذا بالضبط اللي يكشفه الحارس هذا.
@@ -16,7 +16,7 @@
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)" || exit 0
 
-BASE="ai-job-search"
+BASE="career/job-search"
 [ -d "$BASE" ] || exit 0
 
 fail=0
@@ -29,7 +29,7 @@ report() {
 }
 
 # قائمة الاستثناء الواعي: مسارات وافق صاحب المستودع على نشرها.
-# مسار بكل سطر، نسبةً لـai-job-search/. السطور الفارغة و# تعليق.
+# مسار بكل سطر، نسبةً لـcareer/job-search/. السطور الفارغة و# تعليق.
 ALLOW=".githooks/allow-personal"
 allowed() {
   [ -f "$ALLOW" ] || return 1
