@@ -1,0 +1,34 @@
+[
+  {
+    "id": "demo-1",
+    "channel": "email",
+    "from_name": "Sarah Mitchell",
+    "from": "s.mitchell@example.com",
+    "subject": "Question about bulk pricing",
+    "text": "Hi, we're a small cafe chain and we'd need about 40 units a month. Do you offer any discount at that volume? Also can you ship to two different addresses on one invoice?"
+  },
+  {
+    "id": "demo-2",
+    "channel": "whatsapp",
+    "from_name": "أحمد",
+    "from": "+9647700000000",
+    "subject": "",
+    "text": "سلام عليكم، طلبي وصلني ناقص قطعة وحدة وصار أسبوع محد رد عليّ. أريد حل اليوم أو أريد أرجّع الطلب كامل."
+  },
+  {
+    "id": "demo-3",
+    "channel": "web_form",
+    "from_name": "Growth Partners",
+    "from": "noreply@growthpartners.example",
+    "subject": "Boost your SEO ranking 10x",
+    "text": "Dear Sir/Madam, we noticed your website is not ranking. Our agency guarantees first page results. Reply STOP to unsubscribe."
+  },
+  {
+    "id": "demo-4",
+    "channel": "email",
+    "from_name": "Tom Reyes",
+    "from": "tom.reyes@example.com",
+    "subject": "Site is down",
+    "text": "Our checkout page has been throwing a 500 for the last twenty minutes and orders are failing. Who do I call?"
+  }
+]
