@@ -12,7 +12,7 @@
 | [`cv/`](./cv/) | **ست نسخ من السيرة الذاتية** + دليل أي نسخة لأي جهة ([`INDEX.html`](./cv/INDEX.html)) |
 | [`cv/SOURCE-OF-TRUTH.md`](./cv/SOURCE-OF-TRUTH.md) | **مصدر الحقيقة الوحيد** لكل حقيقة بسيرتك — غيّرها هنا أولاً ثم انشرها |
 | [`portfolio/`](./portfolio/) | صفحة البورتفوليو — جاهزة للنشر على Vercel |
-| [`profiles.md`](./profiles.md) | نصوص جاهزة: Upwork · Fiverr · LinkedIn · مستقل |
+| [`profiles.md`](./profiles.md) | نصوص جاهزة: **LinkedIn** · Fiverr · مستقل · (~~Upwork~~ — العراق غير مدعوم) |
 | [`job-search/`](./job-search/) | **إطار البحث عن وظيفة** — يقيّم الإعلانات، يخصّص السيرة، يكتب خطابات التقديم، يحضّر للمقابلة |
 
 ---
