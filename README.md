@@ -13,7 +13,8 @@
 | **2** | [`korea/BEST-PATH.md`](korea/BEST-PATH.md) | **القرار** — المسار الموصى به. يتقدّم على أي ترتيب أقدم |
 | **3** | [`korea/PROBLEMS.md`](korea/PROBLEMS.md) | **سجل المشاكل** — أي عائق مشكلة فعلية وأيها لا · تكلفة الطريق بالدولار |
 | **4** | [`goal/THE-WINDOW.md`](goal/THE-WINDOW.md) | **النافذة** — أيلول 2026 إلى أيار 2027 · ماذا تُنجز فيها وبأي ترتيب |
-| **5** | [`goal/NORTH-STAR.md`](goal/NORTH-STAR.md) | **الوجهة** — اقرأها أول كل شهر |
+| **5** | [`income/MONEY-ENGINE.md`](income/MONEY-ENGINE.md) | **محرّك الدخل** — بنفسك أو بشركة · قنوات الاستلام · حساب هدف 150,000$ |
+| **6** | [`goal/NORTH-STAR.md`](goal/NORTH-STAR.md) | **الوجهة** — اقرأها أول كل شهر |
 
 **أول ثلاثة أشياء هذا الأسبوع** (أقل من خمس ساعات مجتمعة):
 امتحان IELTS تجريبي كامل · احجز موعد IELTS بجامعة البصرة · راسل السفارة الكورية ببغداد.
@@ -29,7 +30,7 @@
 | 🇰🇷 [**`korea/`**](korea/) | القرار · سجل المشاكل · المسارات · الوثائق · النقاط · الجامعات · بروتوكول التحقق | [`BEST-PATH.md`](korea/BEST-PATH.md) |
 | ⚙️ [**`system/`**](system/) | نظام التشغيل — اليوم الأدنى · الدورات · الانضباط · قاعدة المهام | [`MINIMUM-VIABLE-DAY.md`](system/MINIMUM-VIABLE-DAY.md) |
 | 📚 [**`learn/`**](learn/) | المناهج — الإنكليزي (IELTS) · الكوري (TOPIK) · التقني | [`README.md`](learn/README.md) |
-| 💰 [**`income/`**](income/) | الدخل كعمل — الخطة · السلّم · السوق · التسعير · التواصل · المنتجات · المتابعة | [`README.md`](income/README.md) |
+| 💰 [**`income/`**](income/) | الدخل كعمل — **محرّك الدخل** · الخطة · السلّم · السوق · التسعير · المنتجات | [`MONEY-ENGINE.md`](income/MONEY-ENGINE.md) |
 | 🧑‍💼 [**`career/`**](career/) | ما يُقدَّم لجهة توظيف — السير الذاتية · البورتفوليو · الملفات · إطار البحث عن وظيفة | [`README.md`](career/README.md) |
 | 📣 [**`brand/`**](brand/) | البراند كأصل مالي — الاستراتيجية · الهوية البصرية · محرّك المحتوى · القنوات | [`README.md`](brand/README.md) |
 | 🎛️ [**`dashboard/`**](dashboard/) | اللوحة — تسع شاشات تشتغل offline | [`index.html`](dashboard/index.html) |
