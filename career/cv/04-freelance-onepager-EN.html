@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muntadhar Ahmed Jawad — Capabilities &amp; Packages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#14120f; --muted:#4b463f; --faint:#767065;
+  --rule:#e2ded6; --band:#14120f; --accent:#b45309; --soft:#fdf6ec;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Public Sans',-apple-system,'Segoe UI',Arial,sans-serif;
+  font-size:10.4pt;line-height:1.5;
+}
+.sheet{max-width:860px;margin:0 auto;padding:0 0 46px}
+
+.band{background:var(--band);color:#fff;padding:30px 44px 26px}
+.band h1{
+  font-family:'Archivo',Arial,sans-serif;font-weight:700;font-size:23pt;
+  line-height:1.08;margin:0 0 5px;letter-spacing:-.6px;
+}
+.band .role{font-size:10.6pt;color:#c9c2b6;margin:0 0 16px}
+.band .promise{
+  font-family:'Archivo',Arial,sans-serif;font-weight:600;font-size:14pt;line-height:1.35;
+  margin:0;max-width:56ch;
+}
+.band .promise span{color:#f0a340}
+.band .contact{font-size:9.4pt;color:#a49c90;margin:16px 0 0}
+
+.body{padding:0 44px}
+h2{
+  font-family:'Archivo',Arial,sans-serif;font-size:10pt;text-transform:uppercase;
+  letter-spacing:1.6px;color:var(--accent);margin:26px 0 12px;font-weight:700;
+}
+h3{font-size:11pt;margin:0 0 3px;font-weight:600}
+p{margin:0 0 9px}
+
+.probs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.prob{border-top:2px solid var(--ink);padding-top:9px}
+.prob p{font-size:9.9pt;color:var(--muted);margin:0}
+
+.pack{border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-bottom:9px}
+.pack .top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 16px;background:var(--soft)}
+.pack .top h3{margin:0}
+.pack .price{font-weight:700;color:var(--accent);white-space:nowrap;font-size:11pt}
+.pack ul{margin:9px 0 11px;padding:0 16px 0 34px}
+.pack li{margin-bottom:4px;font-size:10pt;color:var(--muted)}
+.pack li::marker{color:var(--accent)}
+
+.proof{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.pf{border-left:2px solid var(--accent);padding-left:12px}
+.pf b{display:block;font-size:10.4pt}
+.pf span{font-size:9.6pt;color:var(--faint);display:block;margin-top:2px}
+
+ol.steps{margin:0;padding-left:19px}
+ol.steps li{margin-bottom:5px;color:var(--muted)}
+ol.steps b{color:var(--ink);font-weight:600}
+
+.terms{background:var(--soft);border-radius:6px;padding:13px 17px;font-size:9.9pt;color:var(--muted)}
+.terms b{color:var(--ink)}
+
+.cta{border-top:2px solid var(--ink);margin-top:24px;padding-top:14px}
+.cta p{font-family:'Archivo',Arial,sans-serif;font-weight:600;font-size:12.6pt;margin:0 0 5px}
+.cta span{color:var(--faint);font-size:9.8pt}
+
+@media print{
+  @page{size:A4;margin:0}
+  body{font-size:9.6pt}
+  .sheet{max-width:none}
+  .band{padding:22mm 14mm 10mm}
+  .body{padding:0 14mm}
+  h2{break-after:avoid}
+  .pack,.prob,.pf{break-inside:avoid}
+}
+@media (max-width:640px){
+  .probs,.proof{grid-template-columns:1fr}
+  .band,.body{padding-left:22px;padding-right:22px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="band">
+  <h1>Muntadhar Ahmed Jawad</h1>
+  <p class="role">AI &amp; Automation Engineer · Full-Stack Developer · working remotely from Basra, Iraq</p>
+  <p class="promise">
+    If your team repeats the same task every week, <span>it should not be done by hand.</span>
+    I build the system that does it — and I have shipped three platforms to production that prove I finish.
+  </p>
+  <p class="contact">muntzr557@gmail.com · +964 787 629 4108 · github.com/wbtio</p>
+</div>
+
+<div class="body">
+
+  <h2>What I fix</h2>
+  <div class="probs">
+    <div class="prob">
+      <h3>Manual work that never ends</h3>
+      <p>Copying data between systems, chasing orders, rebuilding the same weekly report. I connect the systems and the work runs itself.</p>
+    </div>
+    <div class="prob">
+      <h3>Customers waiting for answers</h3>
+      <p>Messages piling up across channels. I build AI-assisted intake that classifies, drafts and routes — with a human still in control.</p>
+    </div>
+    <div class="prob">
+      <h3>A business running blind</h3>
+      <p>No dashboard, no stock accuracy, no numbers you trust. I build the platform and the reporting layer under it.</p>
+    </div>
+  </div>
+
+  <h2>Packages</h2>
+
+  <div class="pack">
+    <div class="top"><h3>Automation — Starter</h3><span class="price">$300 – 500</span></div>
+    <ul>
+      <li>One workflow built in n8n, connecting your existing tools</li>
+      <li>Error alerts so a silent failure never goes unnoticed</li>
+      <li>Written documentation and a handover walkthrough · 3 – 5 days</li>
+    </ul>
+  </div>
+
+  <div class="pack">
+    <div class="top"><h3>Automation + AI — Recommended</h3><span class="price">$700 – 1,200</span></div>
+    <ul>
+      <li>Multi-step automation with an AI step (classification, drafting, extraction)</li>
+      <li>Structured output with validation, so downstream systems can rely on it</li>
+      <li>Retry and error handling, plus one month of maintenance · 1 – 2 weeks</li>
+    </ul>
+  </div>
+
+  <div class="pack">
+    <div class="top"><h3>Platform build</h3><span class="price">$1,200 – 3,000</span></div>
+    <ul>
+      <li>Web application or e-commerce platform with an admin dashboard</li>
+      <li>Roles and permissions, analytics, production deployment</li>
+      <li>Optional Android and iOS app on the same backend · 3 – 6 weeks</li>
+    </ul>
+  </div>
+
+  <div class="pack">
+    <div class="top"><h3>Monthly retainer</h3><span class="price">$600 – 900 / month</span></div>
+    <ul>
+      <li>20 – 25 hours: maintenance, fixes, small features, priority response</li>
+      <li>Your systems stay alive and keep improving without a new contract each time</li>
+    </ul>
+  </div>
+
+  <h2>Proof — all live, all built by me</h2>
+  <div class="proof">
+    <div class="pf"><b>jaz.iq</b><span>Website, admin platform and Android/iOS app for a leading exhibitions organiser — delivered in 7 months.</span></div>
+    <div class="pf"><b>centeralamal.shop</b><span>Full e-commerce platform: storefront, dashboard, mobile apps, real-time inventory and analytics.</span></div>
+    <div class="pf"><b>metrix-bete.vercel.app</b><span>AI application on the Gemini API turning a free-text goal into a structured plan.</span></div>
+  </div>
+
+  <h2>How we work</h2>
+  <ol class="steps">
+    <li><b>Free 20-minute diagnosis.</b> You describe the bottleneck. I tell you honestly whether software is the right fix — sometimes it is not.</li>
+    <li><b>Fixed scope and fixed price.</b> You know the deliverable, the date and the cost before anything starts.</li>
+    <li><b>Something you can click on early.</b> First working version inside the first week, so you are never buying on faith.</li>
+    <li><b>Handover, not dependency.</b> Documentation and a recorded walkthrough. You own the code.</li>
+  </ol>
+
+  <h2>Terms</h2>
+  <p class="terms">
+    <b>50% upfront</b> for new clients, balance on delivery — projects above $1,500 split across three milestones.
+    <b>Two rounds of revisions</b> included; anything beyond the agreed scope is quoted separately.
+    <b>Ownership transfers to you</b> once payment completes. Payments via Payoneer, Upwork or bank transfer.
+  </p>
+
+  <div class="cta">
+    <p>Tell me what's slowing your business down.</p>
+    <span>muntzr557@gmail.com · +964 787 629 4108 · github.com/wbtio · Arabic and English · fully remote</span>
+  </div>
+
+</div>
+</div>
+
+<!-- =====================================================================
+FILE: 04-freelance-onepager-EN.html
+PURPOSE: This is NOT a CV. It is a capabilities sheet for CLIENTS —
+attach it to Upwork proposals, cold emails to agencies, and any
+conversation where the reader is buying an outcome, not hiring an employee.
+
+WHY IT IS DIFFERENT: a client does not care about your degree or your job
+titles. They care what breaks in their business and what it costs to fix.
+So this page leads with their problem, prices the fix, and only then shows
+proof. Sending a normal CV to a client is the most common reason a
+freelancer sounds like a job applicant instead of a supplier.
+
+BEFORE SENDING, EVERY TIME:
+1. Adjust the "What I fix" wording to the client's actual industry.
+2. Keep prices as they are — they match the 2026 market rates in
+   income/market-2026.md. Do not discount to win; it costs you the
+   next client too.
+3. Print to PDF at A4 and name it
+   Muntadhar-Ahmed-Jawad-Capabilities.pdf
+
+UPDATE EVERY 6 MONTHS:
+- Re-check package prices against current market rates and raise them
+  once you have three or more five-star reviews.
+- Swap the weakest proof card for your newest shipped project.
+- Rewrite one "What I fix" card to match the problem clients keep asking
+  you about — that sentence is your best market research.
+====================================================================== -->
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل نسخ السيرة الذاتية — أي ملف ترسل ومتى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#f7f7fb; --surface:#fff; --surface-2:#eeeef7;
+  --ink:#15151f; --ink-2:#4c4c60; --ink-3:#7a7a90;
+  --line:#e0e0ec; --line-2:#c8c8dc;
+  --accent:#3f3d9e; --accent-soft:#e9e9f8;
+  --warn:#a13a1e; --warn-soft:#fbeee9;
+  --ok:#1c6b4a; --ok-soft:#e6f2ec;
+  --shadow:0 1px 3px rgba(21,21,31,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0d0d13; --surface:#15151e; --surface-2:#1c1c28;
+    --ink:#eeeef5; --ink-2:#a9a9be; --ink-3:#7d7d94;
+    --line:#262634; --line-2:#343446;
+    --accent:#9b98ff; --accent-soft:#1b1b30;
+    --warn:#e0916f; --warn-soft:#2a1a13;
+    --ok:#6bc79c; --ok-soft:#12241c;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0d0d13; --surface:#15151e; --surface-2:#1c1c28;
+  --ink:#eeeef5; --ink-2:#a9a9be; --ink-3:#7d7d94;
+  --line:#262634; --line-2:#343446;
+  --accent:#9b98ff; --accent-soft:#1b1b30;
+  --warn:#e0916f; --warn-soft:#2a1a13;
+  --ok:#6bc79c; --ok-soft:#12241c;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);direction:rtl;text-align:right;
+  font-family:'IBM Plex Sans Arabic',-apple-system,'Segoe UI',sans-serif;
+  font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px 90px}
+code,.mono{font-family:'IBM Plex Mono',monospace;font-size:.86em;direction:ltr;unicode-bidi:embed}
+
+header{padding:56px 0 30px;border-bottom:2px solid var(--line-2)}
+.kick{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+      color:var(--accent);text-transform:uppercase;display:block;margin-bottom:14px}
+h1{font-family:'Noto Kufi Arabic',sans-serif;font-weight:700;
+   font-size:clamp(26px,5.4vw,38px);line-height:1.35;margin:0 0 12px;text-wrap:balance}
+header p{color:var(--ink-2);margin:0;max-width:62ch}
+header p b{color:var(--ink)}
+
+section{padding-top:44px}
+h2{font-family:'Noto Kufi Arabic',sans-serif;font-weight:700;
+   font-size:clamp(19px,3.4vw,23px);margin:0 0 6px;line-height:1.5}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.15em;
+     color:var(--ink-3);display:block;margin-bottom:8px}
+p{margin:0 0 14px;max-width:66ch}
+
+/* decision table */
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;
+        background:var(--surface);box-shadow:var(--shadow);margin-bottom:8px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th,td{padding:12px 16px;text-align:right;border-bottom:1px solid var(--line)}
+thead th{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;
+         font-weight:500;color:var(--ink-3);border-bottom:1px solid var(--line-2)}
+tbody tr:last-child td{border-bottom:0}
+td.f{white-space:nowrap}
+td.f a{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);
+       font-weight:500;text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+td.f a:hover{border-bottom-color:currentColor}
+
+/* file cards */
+.files{display:flex;flex-direction:column;gap:16px;margin-top:22px}
+.file{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+      padding:22px 24px;box-shadow:var(--shadow)}
+.file .no{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+          color:var(--accent);display:block;margin-bottom:5px}
+.file h3{font-family:'Noto Kufi Arabic',sans-serif;font-weight:600;font-size:18px;margin:0 0 4px;line-height:1.5}
+.file .fname{display:block;margin:0 0 12px}
+.file .fname a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-3);
+               text-decoration:none;word-break:break-all;direction:ltr;display:inline-block}
+.file .fname a:hover{color:var(--accent)}
+.file p{margin:0 0 12px;color:var(--ink-2);font-size:15.5px}
+.rows{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14.5px;
+      border-top:1px solid var(--line);padding-top:12px}
+.rows dt{font-weight:600;white-space:nowrap}
+.rows dd{margin:0;color:var(--ink-2)}
+.rows dt.use{color:var(--ok)}
+.rows dt.no{color:var(--warn)}
+.tagline{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;
+         background:var(--accent-soft);color:var(--accent);margin-bottom:10px}
+
+/* callouts */
+.note{border-radius:12px;padding:18px 20px;margin:18px 0;font-size:15.5px}
+.note.warn{background:var(--warn-soft);border:1px solid var(--warn);color:var(--ink-2)}
+.note.warn b{color:var(--warn)}
+.note.ok{background:var(--ok-soft);border:1px solid var(--ok);color:var(--ink-2)}
+.note.ok b{color:var(--ok)}
+.note p:last-child{margin-bottom:0}
+.note ul{margin:8px 0 0;padding-inline-start:20px}
+.note li{margin-bottom:5px}
+
+ol.steps{padding-inline-start:22px;margin:0}
+ol.steps li{margin-bottom:9px;color:var(--ink-2)}
+ol.steps b{color:var(--ink)}
+
+.check{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:9px}
+.check li{background:var(--surface);border:1px solid var(--line);border-radius:10px;
+          padding:12px 16px;font-size:15px;color:var(--ink-2);box-shadow:var(--shadow)}
+.check li b{color:var(--ink)}
+
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+       font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-3)}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+@media (max-width:560px){ .rows{grid-template-columns:1fr;gap:2px 0} .rows dt{margin-top:8px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="kick">دليل الاستخدام · آب 2026</span>
+  <h1>ست نسخ من سيرتك — وكل وحدة لها مكان واحد صح</h1>
+  <p>
+    السبب اللي يخلي مرشحاً قوياً ينرفض مو ضعف خبرته، بل إنه يرسل <b>الملف الغلط للجهة الغلط</b>.
+    نسخة مصمَّمة بصرياً تنكسر بأنظمة الفرز الآلي، ونسخة تقنية جافة تخوّف صاحب محل بالبصرة.
+    هذا الدليل يگلك بالضبط: أي ملف، لأي جهة، ومتى <b>لا</b> ترسله.
+  </p>
+</header>
+
+<section>
+  <span class="lbl">القرار السريع</span>
+  <h2>أرسل إلى… ← استعمل</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>الجهة اللي راح تستلم</th><th>الملف</th><th>ليش</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>استمارة تقديم إلكترونية · Bayt · LinkedIn Easy Apply · بوابة شركة</td>
+            <td class="f"><a href="01-ats-ai-automation-EN.html">cv-01</a></td>
+            <td>نظام آلي يقرأ أول — لازم عمود واحد بلا زخرفة</td></tr>
+        <tr><td>إعلان يذكر LLM أو RAG أو agents أو AI automation</td>
+            <td class="f"><a href="02-ai-llm-engineer-EN.html">cv-02</a></td>
+            <td>يرفع شغل الـAI فوق ويقدّم METRIX كعمل رئيسي</td></tr>
+        <tr><td>إعلان Full-Stack أو Product أو Founding Engineer</td>
+            <td class="f"><a href="03-fullstack-engineer-EN.html">cv-03</a></td>
+            <td>يقود بورقتك الأقوى: 3 منتجات بالإنتاج بمفردك</td></tr>
+        <tr><td>عرض Upwork · وكالة أجنبية · عميل دولي</td>
+            <td class="f"><a href="04-freelance-onepager-EN.html">cv-04</a></td>
+            <td>العميل يشتري نتيجة مو يوظف شخص</td></tr>
+        <tr><td>رسالة مباشرة لمؤسس أو مدير توظيف (LinkedIn / إيميل)</td>
+            <td class="f"><a href="05-premium-outreach-EN.html">cv-05</a></td>
+            <td>إنسان راح يفتحه — الانطباع البصري يشتغل هنا</td></tr>
+        <tr><td>صاحب شغل بالعراق أو الخليج بلا خلفية تقنية</td>
+            <td class="f"><a href="06-arabic-clients-AR.html">cv-06</a></td>
+            <td>بلا مصطلحات نهائياً — بلغة شغله هو</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">الملفات</span>
+  <h2>شنو كل ملف بالضبط</h2>
+
+  <div class="files">
+
+    <article class="file">
+      <span class="no">ملف 01 · الأساس</span>
+      <h3>النسخة اللي تعبر أنظمة الفرز الآلي</h3>
+      <span class="fname"><a href="01-ats-ai-automation-EN.html">01-ats-ai-automation-EN.html</a></span>
+      <span class="tagline">استعملها بـ 70% من التقديمات</span>
+      <p>
+        عمود واحد، بلا جداول ولا أعمدة ولا صور ولا أيقونات ولا أشرطة مهارات — لأن كل واحد من هذولا
+        يكسر قارئ الـATS. المصطلحات مكتوبة بالمختصر والكامل معاً (<code>Retrieval-Augmented Generation (RAG)</code>)
+        لأن النظام يدوّر على الصيغتين. فيها كتلة RAG جاهزة **معطّلة** داخل تعليق، تفعّلها لما تبني المشروع.
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>أي استمارة إلكترونية، أي بوابة توظيف، أي مكان ما تعرف منو يقرأ</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>لما ترسل مباشرة لشخص تعرفه — النسخة 05 أقوى انطباعاً</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف 02 · تخصص</span>
+      <h3>نسخة مهندس الذكاء الاصطناعي</h3>
+      <span class="fname"><a href="02-ai-llm-engineer-EN.html">02-ai-llm-engineer-EN.html</a></span>
+      <span class="tagline">للإعلانات اللي تذكر LLM / RAG / agents</span>
+      <p>
+        METRIX يتقدّم كعمل رئيسي مو مشروع جانبي، وأتمتة n8n مكتوبة كإنجاز هندسي مو كمهمة إدارية.
+        فيها قسم <b>«AI Engineering Stack»</b> بالأعلى مباشرة — لأن مسؤول التوظيف بهذي الوظائف يدوّر عليه بأول 7 ثوانٍ.
+        وبأسفلها ملاحظة تظهر على الشاشة فقط (ما تنطبع) تذكّرك بالفجوات المتبقية.
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>وظائف AI Engineer · LLM Engineer · AI Automation Engineer</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>وظائف ويب عامة — راح تبدو متخصصاً أكثر من اللازم</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف 03 · تخصص</span>
+      <h3>نسخة مهندس المنتج والـFull-Stack</h3>
+      <span class="fname"><a href="03-fullstack-engineer-EN.html">03-fullstack-engineer-EN.html</a></span>
+      <span class="tagline">للستارت أبات والفرق الصغيرة</span>
+      <p>
+        تفتح بجملة واحدة: <b>«سلّمت ثلاثة منتجات للإنتاج بمفردي»</b> — وهذي الورقة اللي ما يگدر يلعبها
+        أغلب المتقدمين بمستواك. الـAI موجود بس منزّل لسطر واحد بقائمة التقنيات، لأن فريق المنتج يقرأه
+        كقدرة إضافية مو كعنوان.
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>Full-Stack · Product Engineer · Founding Engineer · ستارت أبات</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>بوابات فرز صارمة — التخطيط بخطوط وحواف قد يربك بعض الأنظمة</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف 04 · عملاء</span>
+      <h3>صفحة القدرات والباقات (إنكليزي)</h3>
+      <span class="fname"><a href="04-freelance-onepager-EN.html">04-freelance-onepager-EN.html</a></span>
+      <span class="tagline">هذي ليست سيرة ذاتية</span>
+      <p>
+        العميل ما يهمه تخرّجك ولا مسمياتك — يهمه شنو ينكسر بشغله وشكد يكلّف تصليحه. فهذي الصفحة تبدأ
+        بمشكلته، بعدين تسعّر الحل، وبالآخر تعرض الدليل. الأسعار مضبوطة على سوق 2026 من
+        <code>market-2026.md</code>. أرسل سيرة ذاتية عادية لعميل = تبدو مثل باحث عن وظيفة مو مثل مورّد خدمة.
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>مرفقة مع عروض Upwork · إيميلات باردة للوكالات · عملاء دوليين</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>أي تقديم على وظيفة — ما فيها تسلسل وظيفي أصلاً</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف 05 · انطباع</span>
+      <h3>النسخة المصمَّمة — سجل التسليم</h3>
+      <span class="fname"><a href="05-premium-outreach-EN.html">05-premium-outreach-EN.html</a></span>
+      <span class="tagline">فقط لما تعرف إن إنساناً راح يفتحها</span>
+      <p>
+        مبنية كـ<b>سجل تسليم</b> مو كتاريخ وظيفي: صف أرقام بالأعلى (3 منصات · 7 أشهر · تطبيقان · مهندس واحد)،
+        وكل نظام معلّم بختم <span class="mono">IN PRODUCTION</span>. تنتهي بجملة تطلب بالضبط نوع الشغل اللي تريده.
+        هذا التصميم مقصود: أقوى ادعاء عندك هو إنك <b>تسلّم فعلاً</b>، فالملف كله مبني حول إثبات هذا.
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>رد على مؤسس · إحالة من معرفة · مدير توظيف راسلك مباشرة</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>Bayt · LinkedIn Easy Apply · أي استمارة — التخطيط للعين مو للنظام</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف 06 · عملاء محليون</span>
+      <h3>النسخة العربية بلغة صاحب الشغل</h3>
+      <span class="fname"><a href="06-arabic-clients-AR.html">06-arabic-clients-AR.html</a></span>
+      <span class="tagline">صفر مصطلحات تقنية</span>
+      <p>
+        ما بيها ولا كلمة مثل React أو API أو LLM. كل شي مكتوب بلغة صاحب المحل أو الشركة: شنو يضايقه،
+        شنو راح يتغير، شكد يكلّف. وأهم قسم فيها هو <b>«أسئلة يسألها كل صاحب شغل»</b> — لأن هذا الزبون
+        لما يحس إن الموضوع صعب <b>ما يسأل، بس ينسحب بصمت</b>. فأجبنا عن أسئلته قبل ما يسألها:
+        «أني ما أفهم بالبرمجة شلون أتابع؟» · «لازم أجي مكتب؟» · «شلون أضمن فلوسي؟» · «البرنامج يبقى إلي؟»
+      </p>
+      <dl class="rows">
+        <dt class="use">✔ استعملها</dt><dd>محلات وشركات بالعراق والخليج · أرسلها بالواتساب PDF</dd>
+        <dt class="no">✘ لا تستعملها</dt><dd>شركات تقنية أو تقديم وظيفة — راح تبدو غير تقني</dd>
+      </dl>
+    </article>
+
+    <article class="file">
+      <span class="no">ملف مساند</span>
+      <h3>مصدر المحتوى الموحّد وقائمة التحديث</h3>
+      <span class="fname"><a href="SOURCE-OF-TRUTH.md">SOURCE-OF-TRUTH.md</a></span>
+      <p>
+        كل حقائقك بمكان واحد، بنك الكلمات المفتاحية، قائمة الأرقام الناقصة، وقائمة تحديث كل 6 أشهر.
+        <b>هذا الملف هو اللي يخلي النسخ الستة صالحة بعد 2026:</b> تعدّل هنا أول، وبعدين تنقل — بدونه
+        بعد سنة راح تصير عندك ست نسخ متناقضة وما تعرف أيها الصح.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <span class="lbl">قبل أي إرسال</span>
+  <h2>ثلاث قواعد لا تُكسر</h2>
+
+  <div class="note warn">
+    <p><b>1 — لا ترسل ملفاً فيه <span class="mono">[N]</span>.</b></p>
+    <p>
+      الملفات فيها أقواس <span class="mono">[N]</span> بمكان الأرقام اللي أنت وحدك تعرفها (عدد الـworkflows،
+      الساعات المُوفَّرة، عدد المستخدمين). املأها مرة وحدة من قائمة القسم 4 بملف المصدر وخلّص.
+      وإذا رقم ما تگدر تحصله بدقة — <b>احذف الجملة كلها ولا تخمّن</b>. الرقم الخاطئ ينكشف بالمقابلة.
+    </p>
+  </div>
+
+  <div class="note warn">
+    <p><b>2 — لا تكتب مهارة قبل ما تبنيها.</b></p>
+    <p>
+      RAG والوكلاء والـevals مطلوبة بسوق 2026 بقوة، لكنها <b>مو مكتوبة بسيرتك الآن عن قصد</b> —
+      لأنك ما بنيتها بعد. النص جاهز داخل تعليق بملف <code>cv-01</code>، تفعّله <b>بعد</b> ما تخلص
+      المشاريع الثلاثة بـ<code>market-2026.md §4</code>. سؤالان بالمقابلة يكشفان الادعاء، والخسارة أكبر من المكسب.
+    </p>
+  </div>
+
+  <div class="note ok">
+    <p><b>3 — طابق الملف على الإعلان قبل الإرسال.</b></p>
+    <ul>
+      <li>افتح الإعلان وسجّل أكثر 5 كلمات تتكرر بيه</li>
+      <li>تأكد إن كل وحدة موجودة بالملف بصياغة طبيعية — مو محشورة</li>
+      <li>غيّر سطر المسمّى تحت اسمك ليطابق مسمّى الإعلان (إذا كان صادقاً)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">التصدير</span>
+  <h2>شلون تطلّعها PDF</h2>
+  <ol class="steps">
+    <li><b>افتح الملف بالمتصفح</b> (نقرة مزدوجة عليه، أو من الروابط بهذي الصفحة).</li>
+    <li><b>اضغط Ctrl+P</b> (أو Cmd+P على الماك).</li>
+    <li><b>الوجهة:</b> اختر «حفظ كـPDF» · <b>المقاس:</b> A4 · <b>الهوامش:</b> افتراضية.</li>
+    <li>ألغِ خيار «الرؤوس والتذييلات» (Headers and footers) حتى ما يطبع الرابط والتاريخ.</li>
+    <li><b>سمّي الملف باسمك:</b> <span class="mono">Muntadhar-Ahmed-Jawad-AI-Automation-Engineer.pdf</span> — مو <span class="mono">cv-final-2.pdf</span>. اسم الملف أول انطباع.</li>
+  </ol>
+  <p style="margin-top:12px;color:var(--ink-3);font-size:14.5px">
+    التنسيقات مضبوطة على A4 وتقسيم الصفحات محسوب — العناوين ما تنفصل عن محتواها عند الطباعة.
+  </p>
+</section>
+
+<section>
+  <span class="lbl">كل 6 أشهر</span>
+  <h2>حتى تبقى صالحة بعد 2026</h2>
+  <ul class="check">
+    <li><b>اقرأ 3 إعلانات جديدة</b> لدورك المستهدف وسجّل الكلمات المتكررة اللي ما موجودة عندك.</li>
+    <li><b>حدّث بنك الكلمات المفتاحية</b> بملف المصدر — هذا القسم يشيخ أسرع من كل شي بالملف.</li>
+    <li><b>حدّث الأرقام</b> — المشاريع كبرت، والأرقام القديمة تقلّل قيمتك مو تزيدها.</li>
+    <li><b>أضف كل مشروع وصل للإنتاج</b> بسطر واحد + رقم واحد.</li>
+    <li><b>احذف أي أداة ما لمستها من سنة</b> — القائمة الطويلة تضعف الملف مو تقوّيه.</li>
+    <li><b>راجع الأسعار</b> بملفي 04 و06 مقابل <code>../offers.md</code>، وارفعها بعد كل 3 تقييمات جديدة.</li>
+    <li><b>أعد قراءة جملة الافتتاح بكل نسخة:</b> هل لا تزال أجرأ جملة صادقة تگدر تكتبها عن نفسك؟</li>
+  </ul>
+</section>
+
+<footer>
+  ست نسخ + ملف مصدر · منتظر أحمد جواد · آب 2026 · مبنية على متطلبات الفرز الآلي وسوق 2026 الموثّق في market-2026.md
+</footer>
+
+</div>
+</body>
+</html>

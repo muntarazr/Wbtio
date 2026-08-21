@@ -1,0 +1,17 @@
+[
+  { "date": "2026-08-19", "amount": "420.00", "category": "Espresso machines", "customer": "Cafe Noor" },
+  { "date": "2026-08-18", "amount": "180.50", "category": "Coffee beans",      "customer": "Cafe Noor" },
+  { "date": "2026-08-18", "amount": "95.00",  "category": "Accessories",       "customer": "Bloom Coffee" },
+  { "date": "2026-08-17", "amount": "1250.00","category": "Espresso machines", "customer": "Harbor Roasters" },
+  { "date": "2026-08-16", "amount": "310.00", "category": "Coffee beans",      "customer": "Bloom Coffee" },
+  { "date": "2026-08-15", "amount": "76.00",  "category": "Accessories",       "customer": "Cafe Noor" },
+  { "date": "2026-08-14", "amount": "540.00", "category": "Grinders",          "customer": "Harbor Roasters" },
+
+  { "date": "2026-08-12", "amount": "890.00", "category": "Espresso machines", "customer": "Bloom Coffee" },
+  { "date": "2026-08-11", "amount": "220.00", "category": "Coffee beans",      "customer": "Cafe Noor" },
+  { "date": "2026-08-10", "amount": "1400.00","category": "Espresso machines", "customer": "Summit Cafe" },
+  { "date": "2026-08-09", "amount": "410.00", "category": "Grinders",          "customer": "Harbor Roasters" },
+  { "date": "2026-08-08", "amount": "150.00", "category": "Accessories",       "customer": "Summit Cafe" },
+  { "date": "2026-08-07", "amount": "630.00", "category": "Coffee beans",      "customer": "Bloom Coffee" },
+  { "date": "not a date", "amount": "99.00",  "category": "Accessories",       "customer": "Broken Row" }
+]

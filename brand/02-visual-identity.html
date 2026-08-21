@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wbtio — دليل الهوية البصرية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#12161F; --ink-2:#1B212C; --ink-3:#252D3A;
+  --paper:#F4F1EC; --paper-2:#E4DFD6;
+  --signal:#FF6A1F; --signal-dim:#B94A11;
+  --muted:#9AA3B0; --faint:#6B7480;
+  --line:#2A323F;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ink);color:var(--paper);direction:rtl;text-align:right;
+  font-family:'IBM Plex Sans Arabic',-apple-system,'Segoe UI',sans-serif;
+  font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:embed}
+.arch{font-family:'Archivo',Helvetica,Arial,sans-serif}
+
+/* header */
+header{padding:54px 0 34px;border-bottom:1px solid var(--line)}
+.idbar{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+.idbar svg{width:60px;height:60px;flex:none}
+.idbar .wm{font-family:'Archivo',sans-serif;font-weight:700;font-size:40px;letter-spacing:-1.6px;line-height:1}
+.idbar .dot{width:10px;height:10px;border-radius:50%;background:var(--signal);align-self:flex-end;margin-bottom:9px}
+h1{font-weight:700;font-size:clamp(24px,4.6vw,33px);line-height:1.4;margin:0 0 10px;text-wrap:balance}
+header p{color:var(--muted);margin:0;max-width:60ch}
+.pos{border-inline-start:3px solid var(--signal);padding-inline-start:16px;margin:22px 0 0;
+     font-size:clamp(17px,2.8vw,21px);font-weight:600;line-height:1.6;max-width:52ch}
+
+section{padding-top:52px}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+     color:var(--signal);text-transform:uppercase;display:block;margin-bottom:9px}
+h2{font-weight:700;font-size:clamp(19px,3.4vw,24px);margin:0 0 10px;line-height:1.5}
+h3{font-weight:600;font-size:17px;margin:24px 0 6px}
+p{margin:0 0 14px;color:var(--muted);max-width:66ch}
+p.plain{color:var(--paper)}
+strong{color:var(--paper);font-weight:600}
+
+/* logo sizes */
+.sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;
+       background:var(--paper);border-radius:14px;padding:26px 28px;margin-bottom:12px}
+.sizes.dk{background:var(--ink-2);border:1px solid var(--line)}
+.sizes figure{margin:0;text-align:center}
+.sizes figcaption{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--faint);margin-top:8px}
+.sizes.lt figcaption{color:#8A8478}
+
+/* alt directions */
+.alts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
+.alt{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+.alt.rec{border-color:var(--signal)}
+.alt svg{width:76px;height:76px}
+.alt h4{margin:14px 0 4px;font-size:15.5px;font-weight:600}
+.alt p{font-size:13.5px;margin:0;color:var(--faint);text-align:center;max-width:none}
+.alt .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+          padding:3px 9px;border-radius:99px;background:var(--signal);color:#1a0d04;font-weight:500;margin-bottom:4px}
+
+/* palette */
+.pal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.sw .chip{height:86px}
+.sw .info{padding:11px 13px;background:var(--ink-2)}
+.sw b{display:block;font-size:14px;font-weight:600}
+.sw span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--faint);display:block}
+.sw em{font-style:normal;font-size:12px;color:var(--muted);display:block;margin-top:4px}
+
+/* type */
+.spec{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:12px}
+.spec .demo{font-size:30px;line-height:1.35;margin-bottom:10px;color:var(--paper)}
+.spec .demo.ar{font-weight:700}
+.spec .meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)}
+
+/* thumbnail mock */
+.thumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+       background:var(--ink-2);border:1px solid var(--line);display:flex;align-items:center;padding:0 30px}
+.thumb .txt{font-weight:700;font-size:clamp(22px,4.4vw,40px);line-height:1.25;max-width:62%;z-index:2}
+.thumb .txt u{text-decoration:none;color:var(--signal)}
+.thumb .blob{position:absolute;inset-inline-start:-40px;top:-30px;width:230px;height:230px;
+             border-radius:50%;background:var(--signal);opacity:.16;filter:blur(10px)}
+.thumb .face{position:absolute;inset-inline-start:26px;bottom:0;width:150px;height:82%;
+             background:linear-gradient(180deg,var(--ink-3),transparent);border-radius:80px 80px 0 0;
+             display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:12px}
+.thumb .badge{position:absolute;inset-inline-end:18px;bottom:16px;display:flex;align-items:center;gap:7px}
+.thumb .badge svg{width:26px;height:26px}
+
+/* do / dont */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.rule{border-radius:12px;padding:18px 20px;border:1px solid var(--line);background:var(--ink-2)}
+.rule.no{border-color:#7d3a24}
+.rule h4{margin:0 0 8px;font-size:15px;font-weight:600}
+.rule.yes h4{color:#6bc79c}
+.rule.no h4{color:#e0916f}
+.rule ul{margin:0;padding-inline-start:18px}
+.rule li{margin-bottom:6px;color:var(--muted);font-size:14.5px}
+
+.note{background:var(--ink-2);border:1px solid var(--signal);border-radius:12px;padding:17px 20px;margin:18px 0}
+.note b{color:var(--signal)}
+.note p{margin:0;color:var(--muted)}
+.note p+p{margin-top:9px}
+
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--ink-2)}
+th,td{padding:11px 15px;text-align:right;border-bottom:1px solid var(--line)}
+thead th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--faint);font-weight:500}
+tbody tr:last-child td{border-bottom:0}
+td.mono{color:var(--muted)}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+       font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)}
+@media (max-width:600px){ .rules{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="idbar">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="wbtio">
+      <rect width="64" height="64" rx="14" fill="#F4F1EC"/>
+      <path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#12161F"/>
+      <path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#12161F" stroke-width="5"/>
+      <rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/>
+    </svg>
+    <span class="wm">wbtio</span>
+    <span class="dot"></span>
+  </div>
+
+  <h1>دليل الهوية البصرية</h1>
+  <p>
+    كل قرار بهذي الصفحة مأخوذ لسبب عملي، مو ذوقي. البراند مو تزيين —
+    هو <strong>أداة تعريف</strong>: تخلي شخصاً يعرف إن هذا شغلك قبل ما يقرأ اسمك.
+  </p>
+
+  <p class="pos">الشغل اللي يتكرر كل أسبوع، ما لازم ينعمل بالإيد.</p>
+</header>
+
+<section>
+  <span class="lbl">العلامة</span>
+  <h2>لوغوك — منقّحاً، مو مستبدلاً</h2>
+  <p>
+    العلامة الأصلية مالك فيها فكرة صحيحة: <strong>شكلان متشابكان</strong>، واحد مصمت وواحد مفرّغ.
+    المنقّح يحافظ على نفس البنية بالضبط، ويصلّح ثلاث مشاكل تنفيذية فقط:
+    <strong>حواف منتظمة على شبكة هندسية</strong> بدل الحواف المرتجفة ·
+    <strong>حذف الشريط الثاني</strong> اللي كان يختفي تحت 48 بكسل ·
+    و<strong>نواة برتقالية</strong> تعطي اللوغو حياة بالثمبنيل والفيد.
+  </p>
+
+  <div class="sizes lt">
+    <figure>
+      <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#12161F"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>96px</figcaption>
+    </figure>
+    <figure>
+      <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#12161F"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>48px — أفتار</figcaption>
+    </figure>
+    <figure>
+      <svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#12161F"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>28px — تعليق</figcaption>
+    </figure>
+    <figure>
+      <svg width="18" height="18" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#12161F"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>18px — فافيكون</figcaption>
+    </figure>
+  </div>
+
+  <div class="sizes dk">
+    <figure>
+      <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#F4F1EC"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#12161F"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#12161F" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>نسخة الخلفية الغامقة</figcaption>
+    </figure>
+    <figure>
+      <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#F4F1EC"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#12161F"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#12161F" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+      <figcaption>48px</figcaption>
+    </figure>
+    <figure>
+      <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#F4F1EC"/></svg>
+      <figcaption>أحادي اللون — للطباعة والختم</figcaption>
+    </figure>
+  </div>
+
+  <div class="note">
+    <p><b>الوردمارك (الكتابة) — لا تلمسه بعد.</b></p>
+    <p>
+      الكتابة اللي رسمتها بالأصل فيها شخصية حقيقية: حروف مقطوعة بزوايا، نقطة الـ i مايلة،
+      قطع مائل بالـ b. هذا الشي <strong>نادر</strong> بسوق كله خطوط جاهزة متشابهة — ولا يُرمى.
+      لكن تنقيحه بدقة يحتاج <b>الملف الأصلي</b> (SVG أو AI أو PNG بدقة عالية).
+      أرسله وأنقّحه: توحيد سماكات، تعديل الزوايا، وتصدير نسخ جاهزة.
+      لحد ذلك، استعمل <span class="mono">Archivo 700</span> كوردمارك مؤقت بالواجهات والمستندات.
+    </p>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">بدائل</span>
+  <h2>اتجاهات ثانية — إذا حبيت تقارن</h2>
+  <p>صمّمت اتجاهين إضافيين قبل ما أشوف لوغوك الكامل. أتركهم للمقارنة، بس <strong>توصيتي المنقّح</strong> — لأنه يحافظ على هوية بنيتها من قبل، والاستمرارية أثمن من البداية من جديد.</p>
+
+  <div class="alts">
+    <div class="alt rec">
+      <span class="tag">الموصى به</span>
+      <div><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#F4F1EC"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#12161F"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#12161F" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg></div>
+      <h4>التشابك — منقّح</h4>
+      <p>لوغوك نفسه، بحواف نظيفة ونواة ملوّنة. تحافظ على كل ما بنيته.</p>
+    </div>
+    <div class="alt">
+      <div><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="15" fill="#12161F"/><path d="M15 27 L23 46 L32 31 L41 46 L49 27" fill="none" stroke="#F4F1EC" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M49 27 C49 14 15 14 15 27" fill="none" stroke="#FF6A1F" stroke-width="4.2" stroke-linecap="round"/><path d="M10.4 22.4 L15 27.4 L19.6 22.4" fill="none" stroke="#FF6A1F" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h4>الحلقة</h4>
+      <p>حرف W وفوقه قوس راجع بسهم = الشغل يدور لحاله. أوضح معنى، بس يلغي هويتك الحالية.</p>
+    </div>
+    <div class="alt">
+      <div><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="15" fill="#12161F"/><path d="M12 21 L20 43 L29 27 L38 43 L46 21" fill="none" stroke="#F4F1EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="41" r="5" fill="#FF6A1F"/></svg></div>
+      <h4>النقطة</h4>
+      <p>حرف W ونقطة برتقالية = «بث مباشر». الأنسب لبراند إعلامي بحت، والأضعف كعلامة خدمات.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">الألوان</span>
+  <h2>أربعة ألوان — لا خامس</h2>
+  <p>البراند اللي عنده 8 ألوان ما عنده لون. <strong>الحبر أساس، البرتقالي إشارة، الورقي للنص، والرمادي للثانوي.</strong></p>
+
+  <div class="pal">
+    <div class="sw"><div class="chip" style="background:#12161F;border-bottom:1px solid #2A323F"></div>
+      <div class="info"><b>الحبر</b><span>#12161F</span><em>الأساس · خلفيات · نص على فاتح</em></div></div>
+    <div class="sw"><div class="chip" style="background:#FF6A1F"></div>
+      <div class="info"><b>الإشارة</b><span>#FF6A1F</span><em>نقطة واحدة فقط بكل شاشة</em></div></div>
+    <div class="sw"><div class="chip" style="background:#F4F1EC"></div>
+      <div class="info"><b>الورقي</b><span>#F4F1EC</span><em>النص على غامق · خلفيات فاتحة</em></div></div>
+    <div class="sw"><div class="chip" style="background:#9AA3B0"></div>
+      <div class="info"><b>الرمادي</b><span>#9AA3B0</span><em>نص ثانوي · تسميات</em></div></div>
+  </div>
+
+  <h3>قاعدة الاستعمال — 60 / 30 / 10</h3>
+  <p>
+    <strong>60%</strong> حبر · <strong>30%</strong> ورقي ورمادي · <strong>10% برتقالي فقط</strong>.
+    البرتقالي اللي ينستعمل بكل مكان يوقف يكون إشارة ويصير ضوضاء. استعمله للشي الواحد اللي تريد
+    العين تروحله: زر، رقم، كلمة بالثمبنيل.
+  </p>
+  <p>
+    <strong>ليش البرتقالي تحديداً؟</strong> مو ذوق — بالفيد أغلب المحتوى التقني أزرق وأبيض ورمادي.
+    البرتقالي `#FF6A1F` أعلى شي يقطع هذا البحر، ويبقى مقروءاً على الغامق والفاتح. القرار وظيفي.
+  </p>
+</section>
+
+<section>
+  <span class="lbl">الخطوط</span>
+  <h2>ثلاثة خطوط بأدوار محددة</h2>
+
+  <div class="spec">
+    <div class="demo arch">wbtio — Systems that run themselves</div>
+    <div class="meta">Archivo · 600–700 · العناوين والوردمارك · تتبّع مضغوط −1.5%</div>
+  </div>
+  <div class="spec">
+    <div class="demo ar">أنظمة تشتغل بدال الشغل اليدوي</div>
+    <div class="meta">IBM Plex Sans Arabic · 400–700 · كل النصوص العربية</div>
+  </div>
+  <div class="spec">
+    <div class="demo mono" style="font-size:22px">n8n · $1,200 · 04:12 · #FF6A1F</div>
+    <div class="meta">IBM Plex Mono · 400–500 · الأرقام والأكواد والتسميات الصغيرة</div>
+  </div>
+  <p>كلها من Google Fonts — مجانية، وتشتغل بالويب والمونتاج والمستندات بلا رخص.</p>
+</section>
+
+<section>
+  <span class="lbl">تطبيق</span>
+  <h2>قالب الثمبنيل</h2>
+  <p>وجه + ثلاث كلمات + برتقالي. هذا كل شي. ثبّته 20 فيديو، وبعدها الناس تعرف قناتك قبل ما تقرأ الاسم.</p>
+
+  <div class="thumb">
+    <div class="blob"></div>
+    <div class="face">صورتك هنا</div>
+    <div class="txt">6 ساعات<br>صارت <u>4 دقائق</u></div>
+    <div class="badge">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#F4F1EC"/><path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#12161F"/><path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#12161F" stroke-width="5"/><rect x="28" y="24" width="9" height="17" fill="#FF6A1F"/></svg>
+    </div>
+  </div>
+
+  <div class="scroll" style="margin-top:16px">
+    <table>
+      <thead><tr><th>العنصر</th><th>القاعدة</th></tr></thead>
+      <tbody>
+        <tr><td>النص</td><td class="mono">3 كلمات كحد أقصى · يُقرأ بعرض 3 سم على الموبايل</td></tr>
+        <tr><td>البرتقالي</td><td class="mono">كلمة واحدة فقط — النتيجة أو الرقم</td></tr>
+        <tr><td>الوجه</td><td class="mono">يسار الإطار · تعبير واضح · مو ابتسامة محايدة</td></tr>
+        <tr><td>العلامة</td><td class="mono">زاوية سفلية · صغيرة · ما تنافس النص</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">قواعد</span>
+  <h2>افعل ولا تفعل</h2>
+  <div class="rules">
+    <div class="rule yes">
+      <h4>✔ افعل</h4>
+      <ul>
+        <li>استعمل <strong>العلامة وحدها</strong> بالأفتار — بلا كتابة</li>
+        <li>اترك فراغاً حول العلامة يساوي نصف عرضها</li>
+        <li>استعمل الحبر خلفية أساسية بكل مكان</li>
+        <li>لون برتقالي واحد فقط بكل شاشة</li>
+        <li>نفس الأفتار ونفس المعرّف بكل المنصات</li>
+      </ul>
+    </div>
+    <div class="rule no">
+      <h4>✘ لا تفعل</h4>
+      <ul>
+        <li>لا تحط الوردمارك بالأفتار — يصير بقعة غير مقروءة</li>
+        <li>لا تدوّر العلامة ولا تمططها ولا تضيف ظلاً</li>
+        <li>لا تغيّر لون النواة البرتقالية</li>
+        <li>لا تستعمل تدرجات لونية (gradients) — البراند مسطّح</li>
+        <li>لا تحط العلامة على صورة مزدحمة بلا خلفية صلبة</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="lbl">الملفات</span>
+  <h2>الأصول الجاهزة</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>الملف</th><th>الاستعمال</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">wbtio-mark-refined-dark.svg</td><td>الأساسي — علامة على خلفية حبر</td></tr>
+        <tr><td class="mono">wbtio-mark-refined-light.svg</td><td>على الخلفيات الغامقة</td></tr>
+        <tr><td class="mono">wbtio-mark-refined-mono.svg</td><td>أحادي اللون — طباعة وختم وفاتورة</td></tr>
+        <tr><td class="mono">wbtio-mark-refined-transparent.svg</td><td>بلا خلفية — يرث لون النص</td></tr>
+        <tr><td class="mono">wbtio-dirA / dirB / dirC-*.svg</td><td>الاتجاهات البديلة للمقارنة</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:14px">
+    كلها <span class="mono">SVG</span> — تكبر لأي حجم بلا ما تتبكسل، وتفتح بـFigma وIllustrator
+    وCanva وأي برنامج مونتاج.
+  </p>
+</section>
+
+<footer>wbtio · دليل الهوية البصرية · آب 2026 · الموقع الذهني والاستراتيجية في BRAND-01</footer>
+
+</div>
+</body>
+</html>
