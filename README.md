@@ -6,6 +6,22 @@
 |---|---|---|
 | 💼 [**`plan-1500/`**](plan-1500/) | خطة الوصول إلى **1500$ شهرياً** — تسعير، تواصل، سير ذاتية، براند، بورتفوليو، متابعة أسبوعية | [`plan-1500/README.md`](plan-1500/README.md) |
 | 📺 [**`sageuk/`**](sageuk/) | **سجلّ الساغوك** — متتبّع 87 مسلسلاً كورياً تاريخياً بصفحة تفاعلية وأغلفة وإحصائيات | [`sageuk/README.md`](sageuk/README.md) |
+| 🎯 [**`ai-job-search/`**](ai-job-search/) | **إطار البحث عن وظيفة** — يقيّم الإعلانات، يخصّص السيرة الذاتية، يكتب خطابات التقديم، ويحضّرك للمقابلات | [`ai-job-search/INSTALL-AR.md`](ai-job-search/INSTALL-AR.md) |
+
+---
+
+## 🎯 ai-job-search — إطار البحث عن وظيفة
+
+إطار مبني على Claude Code: يدوّر على الوظائف، يقيّم ملاءمتها لبروفايلك، يخصّص سيرتك الذاتية،
+يكتب خطاب التقديم، ويحضّرك للمقابلة. منصَّب من [`MadsLorentzen/ai-job-search`](https://github.com/MadsLorentzen/ai-job-search) نسخة `v1.6.0` عبر `git subtree`.
+
+```bash
+cd ai-job-search
+claude          # بعدين شغّل /setup
+```
+
+> ⚠️ **قبل ما تسوي `git push`:** `/setup` يكتب بروفايلك بملفات متتبَّعة، ومستودع Wbtio عام.
+> التفاصيل والبدائل بـ[`ai-job-search/INSTALL-AR.md`](ai-job-search/INSTALL-AR.md).
 
 ---
 
