@@ -20,8 +20,15 @@ cd ai-job-search
 claude          # بعدين شغّل /setup
 ```
 
-> ⚠️ **قبل ما تسوي `git push`:** `/setup` يكتب بروفايلك بملفات متتبَّعة، ومستودع Wbtio عام.
-> التفاصيل والبدائل بـ[`ai-job-search/INSTALL-AR.md`](ai-job-search/INSTALL-AR.md).
+> 🔒 **الخصوصية محلولة:** مستودع Wbtio عام و`/setup` يكتب بروفايلك بملفات متتبَّعة —
+> فحارس [`.githooks/pre-push`](.githooks/pre-push) يوقف أي `git push` يحمل بيانات شخصية.
+> شغّله مرّة وحدة بعد كل `clone`:
+>
+> ```bash
+> git config core.hooksPath .githooks
+> ```
+>
+> التفاصيل بـ[`ai-job-search/INSTALL-AR.md`](ai-job-search/INSTALL-AR.md).
 
 ---
 

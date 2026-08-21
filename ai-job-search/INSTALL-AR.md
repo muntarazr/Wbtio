@@ -10,28 +10,53 @@
 
 ---
 
-## ⚠️ اقرأ هذا قبل ما تشغّل `/setup`
+## 🔒 الخصوصية — محلولة بحارس تلقائي
 
-**مستودع Wbtio عام (public).** أمر `/setup` يكتب بروفايلك الشخصي بملفات **متتبَّعة بـgit**:
+**مستودع Wbtio عام (public).** وأمر `/setup` يكتب بروفايلك بملفات **متتبَّعة بـgit** — يعني نظرياً أي `git push` ينشرها للكل.
 
-`CLAUDE.md` · `01-candidate-profile.md` · `02-behavioral-profile.md` · `04-job-evaluation.md` · `05-cv-templates.md` · `07-interview-prep.md` · `cv/main_example.tex` · `search-queries.md`
+**الحل المنصَّب:** حارس `pre-push` بـ[`.githooks/pre-push`](../.githooks/pre-push) **يوقف الدفع تلقائياً** إذا لكى بيانات شخصية بأي ملف من هذول:
 
-يعني بمجرّد ما تسوي `git push`، هاي الملفات تصير **مكشوفة لأي واحد**. البروفايل السلوكي وتحضير المقابلات بالذات أشياء ما تنراد تنشر.
+| الملف | العنصر النائب اللي يراقبه |
+|---|---|
+| `CLAUDE.md` | `[YOUR_NAME]` |
+| `cv/main_example.tex` | `\name{[First]}{[Last]}` · `\email{[your.email@example.com]}` |
+| `cover_letters/cover_example.tex` | `[YOUR NAME]` |
+| `01-candidate-profile.md` | `[YOUR_EMAIL]` |
+| `02-behavioral-profile.md` | `[PROFILE_TYPE]` |
+| `04-job-evaluation.md` | `[YOUR_PRIMARY_SKILLS]` |
+| `05-cv-templates.md` | `[YOUR_PRIMARY_ROLE_TYPE]` |
+| `07-interview-prep.md` | `[PROJECT_NAME]` |
+| `search-queries.md` | `[YOUR_CITY]` |
 
-**الملفات الحسّاسة محميّة أصلاً** — تحقّقت منها وكلها مستثناة بـ`.gitignore`:
+الفكرة بسيطة: هاي الملفات تجي مليانة عناصر نائبة. لمّا `/setup` يملأها ببياناتك، العنصر النائب يختفي — والحارس يشوف هذا ويوقف الدفع برسالة تشرح الخيارات.
 
-| الملف | الحالة |
-|---|:---:|
-| `job_search_tracker.csv` (متتبّع التقديمات) | ✅ مستثنى |
-| `salary_data.json` (بيانات الرواتب) | ✅ مستثنى |
-| `documents/` (سيرتك، شهاداتك، توصياتك) | ✅ مستثنى |
-| `job_scraper/seen_jobs.json` | ✅ مستثنى |
-| `node_modules/` | ✅ مستثنى |
+> نفس منطق فحص `placeholder-integrity` بـ`ci.yml` مال المشروع الأصلي، بس منقول لـhook لأن GitHub ما يشغّل `.github/workflows/` من مجلد فرعي.
 
-**خياراتك:**
-1. تشتغل محلياً بدون `git push` لمجلد `ai-job-search/` — أأمن شي.
-2. تحوّل Wbtio لمستودع **خاص** من إعدادات GitHub.
-3. تكمّل عادي، وتعرف إن بروفايلك منشور — نصف هاي المعلومات موجودة أصلاً بـ`plan-1500/cv/`.
+### التنصيب على جهازك
+
+الـhook **مدفوع بالمستودع**، بس git يحتاج سطر واحد يشغّله (مرّة وحدة بعد كل `clone`):
+
+```bash
+git config core.hooksPath .githooks
+```
+
+### التجاوز
+
+إذا قرّرت تنشر بروفايلك عن قصد:
+
+```bash
+git push --no-verify
+```
+
+### الملفات الحسّاسة — محميّة أصلاً
+
+هاي ولا مرّة تدخل git، مستثناة بـ`.gitignore` مال الإطار (تحقّقت منها وحدة وحدة):
+
+`job_search_tracker.csv` · `salary_data.json` · `documents/` · `job_scraper/seen_jobs.json` · `reports/` · `gmail_sync/` · `cv/main_<company>_<role>.tex` · `cover_letters/cover_*.tex` · `node_modules/`
+
+### لو تريد أمان كامل
+
+حوّل Wbtio لمستودع **خاص** من إعدادات GitHub، أو خلّي مجلد `ai-job-search/` محلي بدون `push`. الحارس يحميك من الغلطة، بس ما يحمي من قرار واعي.
 
 ---
 
@@ -106,7 +131,7 @@ cd cover_letters && xelatex cover_<company>_<role>.tex && cd ..
 
 ## 🌍 ملاحظة عن المنصّات
 
-الأدوات الجاهزة سِتّة، أربعة منهن دنماركية (`jobindex`, `jobnet`, `jobdanmark`, `jobbank`) — ما تنفعك.
+الأدوات الجاهزة سِتّة، أربعة منهن دنماركية (`jobindex`, `jobnet`, `jobdanmark`, `jobbank`) — ما تنفعك، بس **مطفيّة أصلاً** (`enabled: false` بالـfrontmatter مالتهن)، فـ`/scrape` يتخطّاهن بدون ما تسوي شي. تحقّقت من هذا.
 
 **اللي ينفعك:**
 - **`linkedin-search`** — أي بلد أو منطقة، وكذلك `Remote`

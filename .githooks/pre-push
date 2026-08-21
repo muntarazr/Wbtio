@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# حارس الخصوصية — يمنع دفع البيانات الشخصية لمستودع Wbtio العام.
+#
+# ليش موجود: مستودع Wbtio عام، وأمر /setup مال إطار ai-job-search
+# يكتب البروفايل الشخصي بملفات متتبَّعة بـgit. الملفات أدناه تنشحن
+# بالمستودع وهي مليانة عناصر نائبة مثل [YOUR_NAME]. لمّا /setup يملأها،
+# العنصر النائب يختفي — وهذا بالضبط اللي يكشفه الحارس هذا.
+#
+# نفس فكرة فحص placeholder-integrity بـci.yml مال الإطار الأصلي، بس
+# ذاك ما يشتغل هنا لأن GitHub يقرا .github/workflows/ من جذر المستودع بس.
+#
+# التنصيب:  git config core.hooksPath .githooks
+# التجاوز:  git push --no-verify   (بس إذا متأكد إنك تريد تنشر البيانات)
+
+set -uo pipefail
+cd "$(git rev-parse --show-toplevel)" || exit 0
+
+BASE="ai-job-search"
+[ -d "$BASE" ] || exit 0
+
+fail=0
+report() {
+  if [ $fail -eq 0 ]; then
+    printf '\n\033[1;31m⛔ الدفع متوقّف — بيانات شخصية بمستودع عام\033[0m\n\n' >&2
+  fi
+  fail=1
+  printf '   • %s\n     ما لكيت العنصر النائب: %s\n' "$1" "$2" >&2
+}
+
+# ملف : عنصر نائب لازم يظل موجود طالما الملف ما انملى ببيانات حقيقية
+check() {
+  local file="$BASE/$1" token="$2"
+  [ -f "$file" ] || return 0
+  git ls-files --error-unmatch "$file" >/dev/null 2>&1 || return 0
+  grep -qF -- "$token" "$file" || report "$1" "$token"
+}
+
+check "CLAUDE.md"                                                      '[YOUR_NAME]'
+check "cv/main_example.tex"                                            '\name{[First]}{[Last]}'
+check "cv/main_example.tex"                                            '\email{[your.email@example.com]}'
+check "cover_letters/cover_example.tex"                                '[YOUR NAME]'
+check ".claude/skills/job-application-assistant/01-candidate-profile.md" '[YOUR_EMAIL]'
+check ".claude/skills/job-application-assistant/02-behavioral-profile.md" '[PROFILE_TYPE]'
+check ".claude/skills/job-application-assistant/04-job-evaluation.md"  '[YOUR_PRIMARY_SKILLS]'
+check ".claude/skills/job-application-assistant/05-cv-templates.md"    '[YOUR_PRIMARY_ROLE_TYPE]'
+check ".claude/skills/job-application-assistant/07-interview-prep.md"  '[PROJECT_NAME]'
+check ".claude/skills/job-scraper/search-queries.md"                   '[YOUR_CITY]'
+
+if [ $fail -ne 0 ]; then
+  cat >&2 <<'MSG'
+
+   الملفات هذي انملت ببياناتك الشخصية، ومستودع Wbtio عام —
+   يعني الدفع راح ينشرها للكل.
+
+   خياراتك:
+     1) لا تدفع — اشتغل محلياً. بياناتك تبقى بجهازك.
+     2) حوّل Wbtio لمستودع خاص (private) من إعدادات GitHub.
+     3) إذا متأكد وتريد تنشرها:  git push --no-verify
+
+   التفاصيل: ai-job-search/INSTALL-AR.md
+
+MSG
+  exit 1
+fi
+
+exit 0
