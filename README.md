@@ -42,6 +42,7 @@
 | الملف | الغرض |
 |---|---|
 | [`AI-BRIEFING.md`](AI-BRIEFING.md) | **الصقه لأي أداة ذكاء اصطناعي** تكمل بيها الشغل — من أنت، والهدف، والقيود، وما بُني |
+| [`.claude/skills/money/`](.claude/skills/money/) | 🆕 **مهارة محرّك الدخل** — افتح Claude Code واكتب `/money`. تحسب مؤشراتك، وتولّد عروضك، وتعطيك حركة اليوم |
 | [`.githooks/`](.githooks/) | حارس خصوصية يمنع دفع البيانات الشخصية · فعّله: `git config core.hooksPath .githooks` |
 | `.claude/commands/` | أوامر Claude Code — وسائط لأوامر إطار البحث عن وظيفة |
 

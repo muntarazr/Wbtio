@@ -1,0 +1,38 @@
+{
+  "currency": "USD",
+  "floor": 1500,
+  "note": "بذرة أولية. الأنظمة الثلاثة مُدرجة كفرص بلا مبالغ — املأ amount بعد ما تحدد سعرك، وغيّر status عند كل تقدّم.",
+  "contracts": [
+    {
+      "id": "C01",
+      "client": "JAZ",
+      "type": "maintenance",
+      "amount": 0,
+      "status": "prospect",
+      "started": null,
+      "ended": null,
+      "notes": "jaz.iq شغّال بالإنتاج — بنيته أنت، ولا أحد غيرك يعرف كوده. كلفة اكتساب صفر."
+    },
+    {
+      "id": "C02",
+      "client": "مركز الأمل",
+      "type": "maintenance",
+      "amount": 0,
+      "status": "prospect",
+      "started": null,
+      "ended": null,
+      "notes": "centeralamal.shop — نفس الحالة."
+    },
+    {
+      "id": "C03",
+      "client": "METRIX",
+      "type": "maintenance",
+      "amount": 0,
+      "status": "prospect",
+      "started": null,
+      "ended": null,
+      "notes": "تأكد من حالة النظام ومن يملك قرار الصيانة."
+    }
+  ],
+  "applications": []
+}
