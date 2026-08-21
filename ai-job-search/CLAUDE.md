@@ -24,7 +24,16 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
   | English | Full professional proficiency |
 - **CV language:** English (an Arabic variant for Iraq/Gulf clients lives at `plan-1500/cv/cv-06`)
 - **Status:** Available — final-year CS student already working professionally; open to remote roles and contracts
-- **LinkedIn headline:** "AI Automation & Full-Stack Engineer | n8n, Next.js, React Native"
+- **LinkedIn headline (live, Aug 2026):** "AI Engineer & Full-Stack Developer at JAZ - Joint Annual Zone"
+  <!-- Two mismatches worth fixing on LinkedIn itself, recorded here so /apply doesn't inherit them:
+       1. `plan-1500/profiles.md` recommends "AI Automation & Full-Stack Engineer | n8n, Next.js,
+          React Native" — keyword-richer and better for recruiter search. The live headline drops
+          every tool name.
+       2. The headline still reads "at JAZ", but that role ended Jul 2026 (see Experience below). -->
+- **LinkedIn "Open to work" roles (live):** JavaScript Developer, Full-Stack Web Developer, Software Engineer — set to recruiters only.
+  <!-- These do not include AI / automation / LLM roles, which is the stated career direction
+       (see 04-job-evaluation.md Career goals). Worth widening on LinkedIn. -->
+- **LinkedIn URL:** <!-- NOT POPULATED — needs the profile slug (linkedin.com/in/...) -->
 
 ### Education
 - **B.Sc. in Computer Science** (expected 2027) - University of Basrah
@@ -81,13 +90,19 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 - Anything requiring a work permit or physical presence outside Iraq
 
 ### Behavioral Profile
-<!-- NOT POPULATED. /setup could not derive this from existing documents — it needs a
-     behavioral assessment (PI, DISC, Myers-Briggs, StrengthsFinder) or your own self-assessment.
-     Fill it with: /setup --section behavioral -->
+<!-- Self-assessment only — no formal instrument (PI/DISC/MBTI) taken yet.
+     Full detail in 02-behavioral-profile.md. -->
+- **Autonomy (high, stated)** - Motivated by working independently from his own space; every role so far was sole-engineer ownership.
+- **End-to-end ownership** - Ships complete products alone: web, admin, mobile, infrastructure, deployment, maintenance.
+- **Growth area:** No experience working inside an engineering team — no code review, pairing or sprint process. Never imply otherwise.
+- **Thrives in:** Fully remote, asynchronous, self-directed work.
 
 ### What Excites You
-<!-- NOT POPULATED. Needs your own words, not an inference.
-     Fill it with: /setup --section motivation -->
+- **Working remotely from home.** This is the stated primary motivator, not a perk — treat it as load-bearing in every fit assessment.
+- Owning a product end to end rather than a slice of one.
+
+### What Drains You
+- **On-site / in-person work.** His own words: this is the thing that genuinely irritates and drains him. Combined with the Deal-breakers below, hybrid and on-site roles are rejected, not flagged.
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)

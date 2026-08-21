@@ -121,8 +121,8 @@ Does this role advance career goals and contain tasks that energize?
 - Work with international clients and teams rather than the local Iraqi market only.
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: <!-- NOT POPULATED — your own words. /setup --section motivation -->
-- Tasks that drain: <!-- NOT POPULATED — your own words. /setup --section motivation -->
+- Tasks that energize: Working remotely from home — stated as the primary motivator, not a convenience. Owning a product end to end rather than one slice of it.
+- Tasks that drain: On-site / in-person work. His own words: this is what genuinely irritates and drains him. Score a hybrid or on-site role as a Motivation failure even when every other dimension is strong — and note that the Deal-breakers in CLAUDE.md already reject it outright before scoring.
 - Non-task factors: leadership style, department culture, company values, degree of autonomy
 
 **Life situation alignment:** Consider personal constraints:
