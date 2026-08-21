@@ -1,4 +1,4 @@
-%% Example CV - [YOUR_NAME]
+%% CV - Muntadhar Ahmed Jawad
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
@@ -33,7 +33,7 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Muntadhar Ahmed Jawad - CV},
     % Keep pdfpagemode=UseNone: this block runs after moderncv's own
     % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
     % value here would win and open every CV in fullscreen presentation mode.
@@ -43,13 +43,13 @@
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
+\name{Muntadhar}{Ahmed Jawad}
 % If you have no address to list, DELETE this whole line. \address{}{}{} fails
 % with "There's no line here to end" on every moderncv version.
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\address{Basrah, Iraq --- available for fully remote work}{}{}
+\phone[mobile]{+964 787 629 4108}
+\email{muntzr557@gmail.com}
+\extrainfo{\href{https://github.com/wbtio}{github.com/wbtio}}
 
 \begin{document}
 
@@ -60,7 +60,13 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+% NOTE: /apply rewrites this statement for each specific role. This is the neutral default.
+\small{AI \& Automation Engineer and Full-Stack Developer who has shipped and owned complete
+products alone --- public websites, admin dashboards with role-based permissions, cross-platform
+mobile apps, and an e-commerce platform running in production. Builds LLM features that behave
+predictably in production: Gemini and OpenAI APIs behind a prompt layer with validated structured
+JSON output. Automates the repetitive work around them with n8n. Works fully remotely from Basrah,
+Iraq, in English and Arabic.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -70,15 +76,20 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{LLM Application Development}: Google Gemini API, OpenAI API, prompt engineering,
+structured JSON output with schema validation, generation pipelines.
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Workflow Automation}: n8n, API integration, webhooks, error handling and alerting,
+internal operations dashboards.
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Frontend \& Mobile}: React, Next.js, TypeScript, React Native (Android and iOS from
+a single codebase).
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Backend \& Data}: Node.js, Python, Supabase, PostgreSQL, role-based access control
+(RBAC), REST APIs.
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Delivery}: Production deployment on Vercel, infrastructure ownership, maintenance,
+Git/GitHub, agentic coding with Claude Code.
 
 \end{itemize}
 
@@ -91,31 +102,40 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY-Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2025--2026}{IT Manager \& Lead Developer}{JAZ (Joint Annual Zone)}{Basrah, Iraq}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1 - be specific, use numbers where possible]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
-    \item {[Achievement or responsibility 4]}
+    \item {Led the IT department of one of Iraq's largest international exhibition and conference organisers, as the sole engineer.}
+    \item {Built \href{https://jaz.iq}{jaz.iq} end to end: public website plus an admin dashboard covering content, operations and role-based permissions.}
+    \item {Shipped an Android and iOS mobile app from a single React Native codebase.}
+    \item {Automated recurring business processes with n8n, replacing manual operations work with monitored workflows.}
+    \item {Owned infrastructure, deployment and ongoing maintenance.}
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2024--2026}{Full-Stack Developer}{Al-Amal Center (e-commerce project under JAZ)}{Basrah, Iraq}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
+    \item {Built the entire platform single-handedly: storefront, admin dashboard, and Android/iOS app.}
+    \item {Implemented real-time inventory, order processing and analytics.}
+    \item {Live in production at \href{https://centeralamal.shop}{centeralamal.shop}.}
 \end{itemize}}}
 
-\vspace{3pt}
+\end{itemize}
 
-% --- Earlier Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+% ============================================================
+%     SELECTED PROJECTS
+% ============================================================
+
+\section{Selected Projects}
+\vspace{3pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
+
+\item{\cventry{2025--2026}{METRIX --- AI planning application}{Next.js, Gemini API, Supabase, Vercel}{\href{https://metrix-bete.vercel.app}{metrix-bete.vercel.app}}{}{\vspace{1pt}
+\begin{itemize}
+    \item {Turns a free-text goal into a structured plan through a Gemini generation pipeline.}
+    \item {Prompt layer producing validated structured JSON output, so downstream code can rely on the shape.}
+    \item {Daily and weekly follow-ups with statistics; Google OAuth sign-in.}
 \end{itemize}}}
 
 \end{itemize}
@@ -128,14 +148,8 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
-
-\vspace{3pt}
-
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
+\item{\cventry{expected 2027}{B.Sc. in Computer Science}{University of Basrah}{Basrah, Iraq}{}{\vspace{1pt}
+Fourth year, studied alongside full-time professional work.
 }}
 
 \end{itemize}
@@ -147,27 +161,17 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item {[Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).}
+\item {Arabic (native), English (full professional proficiency).}
 \end{itemize}
 
 % ============================================================
-%     PUBLICATIONS (optional)
+%     CERTIFICATIONS
 % ============================================================
 
-\section{Publications}
+\section{Certifications}
 \vspace{1pt}
 \begin{itemize}
-\item {[Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item{\textbf{CS50x --- Introduction to Computer Science} -- Harvard University via edX (2024).}
 \end{itemize}
 
 % ============================================================

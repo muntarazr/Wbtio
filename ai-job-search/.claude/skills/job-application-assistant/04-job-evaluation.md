@@ -60,9 +60,16 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** LLM application development (Gemini API, OpenAI API), prompt engineering, structured JSON output, n8n workflow automation, API integration and webhooks, React / Next.js / TypeScript, React Native, Supabase / PostgreSQL, admin dashboards and RBAC, production deployment
+
+**Moderate match areas:** Node.js, Python, e-commerce platform work, real-time inventory and order processing, analytics dashboards, infrastructure and maintenance ownership
+
+**Weak match areas (genuine gaps — never claim these):**
+- RAG, vector databases, pgvector, embeddings, chunking, hybrid search, reranking
+- Agent orchestration, LangGraph, MCP
+- Evals, guardrails, observability, token-cost optimisation
+- Large-team engineering: no experience in a team of engineers — every role so far was sole-engineer ownership
+- Formal CS degree not yet completed (expected 2027)
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for? Match on the function and nature of the work performed, not the literal job title - a "Data Consultant" and a "Data Scientist" role can be functionally identical.
@@ -74,9 +81,11 @@ Does work history align with what they're looking for? Match on the function and
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** Sole-engineer ownership of a product end to end (web + admin + mobile + deployment); business process automation with n8n; e-commerce platforms in production; internal tooling with role-based permissions; integrating an LLM into a real product with validated structured output.
+
+**Moderate:** Leading an IT function for a non-technical organisation; cross-platform mobile delivery; analytics and reporting; direct client and stakeholder communication.
+
+**Entry-level:** Working inside an established engineering team (code review, shared ownership, sprint process); roles requiring formal ML/data-science background; anything demanding a completed degree today.
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -107,19 +116,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Reach a stable $1,500+/month from remote work (see `plan-1500/README.md`), then raise the hourly rate from $35-45 toward $60-100.
+- Move from generalist full-stack work into a specialised AI/automation engineer position — RAG, agent orchestration and evals, backed by real shipped projects rather than claims.
+- Work with international clients and teams rather than the local Iraqi market only.
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
+- Tasks that energize: <!-- NOT POPULATED — your own words. /setup --section motivation -->
+- Tasks that drain: <!-- NOT POPULATED — your own words. /setup --section motivation -->
 - Non-task factors: leadership style, department culture, company values, degree of autonomy
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: Income target is $1,500/month; currently between the JAZ role (ended Jul 2026) and the next engagement, so a predictable retainer or salary outranks a one-off project.
+- **Flexibility**: Final-year CS student at the University of Basrah (degree expected 2027) — study commitments run alongside work. Remote and asynchronous only; no relocation and no on-site.
+- **Professional development**: Priority is building the three missing capabilities (RAG, agents, evals) on real projects — a role that funds that learning outranks a slightly better-paid role that does not.
 
 ### 6. Salary Benchmark (Optional)
 

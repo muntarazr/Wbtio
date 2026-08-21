@@ -10,6 +10,7 @@
 # ذاك ما يشتغل هنا لأن GitHub يقرا .github/workflows/ من جذر المستودع بس.
 #
 # التنصيب:  git config core.hooksPath .githooks
+# استثناء:  ضيف المسار لـ.githooks/allow-personal
 # التجاوز:  git push --no-verify   (بس إذا متأكد إنك تريد تنشر البيانات)
 
 set -uo pipefail
@@ -27,11 +28,21 @@ report() {
   printf '   • %s\n     ما لكيت العنصر النائب: %s\n' "$1" "$2" >&2
 }
 
+# قائمة الاستثناء الواعي: مسارات وافق صاحب المستودع على نشرها.
+# مسار بكل سطر، نسبةً لـai-job-search/. السطور الفارغة و# تعليق.
+ALLOW=".githooks/allow-personal"
+allowed() {
+  [ -f "$ALLOW" ] || return 1
+  grep -v '^[[:space:]]*#' "$ALLOW" 2>/dev/null | grep -v '^[[:space:]]*$' \
+    | grep -qxF -- "$1"
+}
+
 # ملف : عنصر نائب لازم يظل موجود طالما الملف ما انملى ببيانات حقيقية
 check() {
   local file="$BASE/$1" token="$2"
   [ -f "$file" ] || return 0
   git ls-files --error-unmatch "$file" >/dev/null 2>&1 || return 0
+  allowed "$1" && return 0
   grep -qF -- "$token" "$file" || report "$1" "$token"
 }
 
@@ -55,7 +66,9 @@ if [ $fail -ne 0 ]; then
    خياراتك:
      1) لا تدفع — اشتغل محلياً. بياناتك تبقى بجهازك.
      2) حوّل Wbtio لمستودع خاص (private) من إعدادات GitHub.
-     3) إذا متأكد وتريد تنشرها:  git push --no-verify
+     3) تجاوز لمرّة وحدة:  git push --no-verify
+     4) موافق على نشر ملف معيّن دائماً؟ ضيف مساره لـ
+        .githooks/allow-personal  (مسار بكل سطر، نسبةً لـai-job-search/)
 
    التفاصيل: ai-job-search/INSTALL-AR.md
 
