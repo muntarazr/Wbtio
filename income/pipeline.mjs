@@ -85,14 +85,20 @@ if (apps.length || mrr < FLOOR) {
   if (apps.length < 30) console.log(`    باقي ${30 - apps.length} — طلب واحد يومياً`);
 }
 
+// خط أحمر — جهات مقطوعة
+if ((db.excluded || []).length) {
+  console.log('\n  🚫 مقطوعون نهائياً — لا صيانة ولا إحالة ولا توصية:');
+  for (const x of db.excluded) console.log(`    · ${x.client} (منذ ${x.since})`);
+}
+
 // الحركة التالية
 console.log('\n  ➜ الحركة التالية:');
 if (!db.contracts.length) {
-  console.log('    فعّل قناة استلام (Payoneer + Wayl)، ثم اعرض صيانة على نظام قائم.');
+  console.log('    فعّل قناة استلام (Payoneer + Wayl)، ثم ابدأ تدقيقاً مجاناً بفيديو لعميل جديد.');
 } else if (mrr === 0) {
-  console.log('    عرض صيانة على نظام بنيته فعلاً — أسرع دولار متكرر عندك.');
+  console.log('    تدقيق مجاني بفيديو لثلاثة عملاء جدد — قناة الصيانة على أنظمتك القديمة مقطوعة.');
 } else if (mrr < 600) {
-  console.log('    عرض صيانة إضافي + حوّل أقرب عميل مشروع إلى ريتينر (قبل التسليم).');
+  console.log('    حوّل أقرب عميل مشروع إلى ريتينر قبل التسليم + تدقيق مجاني لثلاثة جدد.');
 } else if (mrr < FLOOR) {
   console.log('    ريتينر متوسط + ابدأ اختبار الـ30 تقديماً بالتوازي.');
 } else if (topShare > 40) {
