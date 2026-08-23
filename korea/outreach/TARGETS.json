@@ -1,0 +1,415 @@
+{
+  "_meta": {
+    "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
+    "updated": "2026-08-23",
+    "owner_email": "muntarazr@gmail.com",
+    "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
+    "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
+  },
+  "statuses": {
+    "pending": "لم يُبحث بعد",
+    "researched": "بُحث وله ملف تفصيلي — بلا مسودة",
+    "drafted": "مسودة جاهزة بـGmail — تنتظر موافقته",
+    "sent": "أُرسل — بانتظار رد",
+    "replied": "ردّوا — الجواب بالملف",
+    "no_reply": "مرّ ١٤ يوماً بلا رد — يستحق متابعة",
+    "closed": "انتهى — الجواب كافٍ أو الجهة مستبعدة"
+  },
+  "targets": [
+    {
+      "id": "POSTECH",
+      "name": "POSTECH · بوهانغ للعلوم والتكنولوجيا",
+      "tier": "A",
+      "status": "drafted",
+      "dept": "كلية الذكاء الاصطناعي (Graduate School of AI)",
+      "emails": {
+        "admissions": "grad-admission@postech.ac.kr",
+        "dept": "postech-ai@postech.ac.kr"
+      },
+      "phone": "+82-54-279-3782",
+      "sites": [
+        "ai.postech.ac.kr",
+        "adm-g.postech.ac.kr"
+      ],
+      "open_question": "هل يخضع المتقدمون الدوليون للامتحان التحريري (기초수학 · 기초AI) بالمرحلة الثانية، أم للمقابلة فقط؟ وهل إعلان 2026-03-17 لدول الشرق الأوسط ساري على دورة 2027؟",
+      "why_matters": "الامتحان التحريري هو قناة التعويض الوحيدة عن معدله بين كل الجهات الثلاثين.",
+      "researched_at": "2026-08-23",
+      "dossier": "korea/outreach/dossiers/POSTECH.md",
+      "draft_id": "r-3010557506130491156",
+      "thread_id": "1a02e3e7edf3ee9b",
+      "drafted_at": "2026-08-23",
+      "verdict": "صعب لكن ممكن — أقوى فرصة بين الثلاثين"
+    },
+    {
+      "id": "KAIST",
+      "name": "KAIST",
+      "tier": "A",
+      "status": "pending",
+      "dept": "كلية كيم جاي-تشول للذكاء الاصطناعي",
+      "emails": {
+        "admissions": "advanced.adm@kaist.ac.kr"
+      },
+      "phone": "+82-42-350-2352",
+      "sites": [
+        "gsai.kaist.ac.kr",
+        "admission.kaist.ac.kr"
+      ],
+      "open_question": "هل الحوالة البنكية الدولية من العراق مقبولة لدفع رسوم التقديم؟ وما وزن المعدل مقابل الخبرة العملية في التقييم؟",
+      "why_matters": "أعلنوا صراحةً: لا حد أدنى للمعدل ولا للعمر — الجهة الوحيدة التي نفت الاثنين كتابةً."
+    },
+    {
+      "id": "UNIST",
+      "name": "UNIST · أُلسان",
+      "tier": "A",
+      "status": "pending",
+      "dept": "인공지능대학원",
+      "emails": {
+        "admissions": "adm-g@unist.ac.kr"
+      },
+      "phone": "+82-52-217-1190",
+      "sites": [
+        "aigs.unist.ac.kr",
+        "admg-intl.unist.ac.kr"
+      ],
+      "open_question": "هل العمل الحر عن بُعد يُحتسب «توظيفاً لدى جهة خارجية» يمنع المنحة الحكومية؟ ومتى تفتح الجولة الثانية لخريف 2027؟",
+      "why_matters": "دخله المستقبلي قد يُسقط منحته — سؤال يمسّ خطته المالية كلها."
+    },
+    {
+      "id": "GIST",
+      "name": "GIST · غوانغجو",
+      "tier": "A",
+      "status": "pending",
+      "dept": "AI학과",
+      "emails": {
+        "admissions": "admis@gist.ac.kr"
+      },
+      "phone": "",
+      "sites": [
+        "ai.gist.ac.kr",
+        "gist.ac.kr/iadm"
+      ],
+      "open_question": "«القبول المشروط لعبء اقتصادي» — ما الوثيقة المطلوبة بالضبط؟ وهل يُعفى رسم التقديم لمتقدم من العراق؟",
+      "why_matters": "ميزانيته صفر — إعفاء الرسم يقرر إذا يقدر يقدّم أصلاً."
+    },
+    {
+      "id": "DGIST",
+      "name": "DGIST · دايغو",
+      "tier": "A",
+      "status": "pending",
+      "dept": "قسم الهندسة والعلوم — مسار AI",
+      "emails": {
+        "admissions": "admission@dgist.ac.kr"
+      },
+      "phone": "+82-53-785-5143",
+      "sites": [
+        "dgist.ac.kr/iadm"
+      ],
+      "open_question": "هل التصديق القنصلي مطلوب مع التقديم أم تكفي نسخة ممسوحة؟ (العراق ليس طرفاً في لاهاي — تصديق قنصلي لا أبوستيل)",
+      "why_matters": "التصديق يبدأ قبل ٦ أشهر — الجواب يحدد متى يبدأ."
+    },
+    {
+      "id": "KHU",
+      "name": "Kyung Hee · كيونغ هي",
+      "tier": "A",
+      "status": "pending",
+      "dept": "인공지능융합혁신인재양성사업단",
+      "emails": {
+        "admissions": "ciss_gc@khu.ac.kr",
+        "dept": "aici@khu.ac.kr"
+      },
+      "phone": "031-201-5350",
+      "sites": [
+        "khu.ac.kr"
+      ],
+      "open_question": "هل 인공지능학과 ضمن فئة «الكفاءة الكورية» أم «الإنكليزية»؟ وما الحد الأدنى المعلن للمعدل؟",
+      "why_matters": "إذا الفئة كورية، TOPIK 5 شرط لا هدف — يغيّر أولوية سنتين كاملتين."
+    },
+    {
+      "id": "SKKU",
+      "name": "SKKU · سونغ كيون كوان",
+      "tier": "A",
+      "status": "pending",
+      "dept": "인공지능학과",
+      "emails": {
+        "admissions": "admissions@skku.edu",
+        "dept": "ai.dept@skku.edu"
+      },
+      "phone": "031-290-5828",
+      "sites": [
+        "ai.skku.edu",
+        "admission.skku.edu"
+      ],
+      "open_question": "كيف أحصل على رسالة الأستاذ الإلزامية وأنا خارج كوريا بلا شبكة أكاديمية؟",
+      "why_matters": "رسالة الأستاذ شرط إلزامي — وهذي أكبر ثغرة بملفه بعد المعدل."
+    },
+    {
+      "id": "HANYANG",
+      "name": "Hanyang · هانيانغ",
+      "tier": "A",
+      "status": "pending",
+      "dept": "NextAI 인공지능대학원 (일반대학원 — لا 특수대학원)",
+      "emails": {
+        "admissions": "intladms@hanyang.ac.kr",
+        "dept": "hygsai@hanyang.ac.kr"
+      },
+      "phone": "02-2220-4139",
+      "sites": [
+        "nextai.hanyang.ac.kr",
+        "oia.hanyang.ac.kr"
+      ],
+      "open_question": "ما الفرق بمسار القبول بين 일반대학원 و인공지능융합대학원؟ وأيّهما يمنح فيزا D-2 لطالب دولي بدوام كامل؟",
+      "why_matters": "الـ특수대학원 عندهم مسائي وللموظفين ولا يمنح D-2 — فخّ يضيّع تقديماً كاملاً."
+    },
+    {
+      "id": "INHA",
+      "name": "Inha · إنها",
+      "tier": "A",
+      "status": "pending",
+      "dept": "인공지능융합연구센터 (AIX)",
+      "emails": {
+        "admissions": "graduate@inha.ac.kr",
+        "dept": "aix@inha.ac.kr",
+        "apply": "gradapply@inha.ac.kr"
+      },
+      "phone": "032-860-8383",
+      "sites": [
+        "grad.inha.ac.kr"
+      ],
+      "open_question": "هل Flywire أو البطاقة الأجنبية عبر StudyinKorea تقبل الدفع من العراق؟ وما الحد الأدنى للمعدل؟",
+      "why_matters": "الجهة الوحيدة التي رُصد لها مسار دفع قد يعمل من العراق."
+    },
+    {
+      "id": "SNU",
+      "name": "SNU · سيول الوطنية",
+      "tier": "B",
+      "status": "pending",
+      "dept": "협동과정 인공지능전공 (IPAI)",
+      "emails": {
+        "admissions": "snuadmit2@snu.ac.kr",
+        "dept": "gsai@snu.ac.kr"
+      },
+      "phone": "+82-2-880-6971",
+      "sites": [
+        "gsai.snu.ac.kr",
+        "admission.snu.ac.kr"
+      ],
+      "open_question": "هل يمكن دخول IPAI عبر القبول العام بدل مسار الأجانب؟ وما الحد الأدنى الفعلي للمعدل؟",
+      "why_matters": "طموح فوق مستواه — لكن الجواب يعطيه سقف السوق."
+    },
+    {
+      "id": "YONSEI",
+      "name": "Yonsei · يونسي",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능학과",
+      "emails": {
+        "admissions": "ysgrad@yonsei.ac.kr",
+        "dept": "ai@yonsei.ac.kr"
+      },
+      "phone": "+82-2-2123-3229",
+      "sites": [
+        "ai.yonsei.ac.kr"
+      ],
+      "open_question": "ما بدائل PayPal لدفع رسوم التقديم من العراق؟ وهل إثبات الـ22 مليون وون إلزامي عند التقديم أم عند الفيزا؟",
+      "why_matters": "إثبات الرصيد قد يكون الحاجز الفعلي لا المعدل."
+    },
+    {
+      "id": "KOREA-U",
+      "name": "Korea University · جامعة كوريا",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능학과",
+      "emails": {
+        "admissions": "graduate1@korea.ac.kr",
+        "academic": "graduate2@korea.ac.kr"
+      },
+      "phone": "+82-2-3290-1358",
+      "sites": [
+        "xai.korea.ac.kr"
+      ],
+      "open_question": "هل شرط الرصيد المجمّد ٢٠ مليون وون عند التقديم أم عند الفيزا؟ وهل بوابة التقديم تعمل على غير Windows؟",
+      "why_matters": "بوابتهم Windows فقط — وجهازه آيباد. حاجز تقني لا أكاديمي."
+    },
+    {
+      "id": "CAU",
+      "name": "Chung-Ang · تشونغ آنغ",
+      "tier": "B",
+      "status": "pending",
+      "dept": "AI학과",
+      "emails": {
+        "admissions": "gsadmin@cau.ac.kr",
+        "dept": "cauai@cau.ac.kr",
+        "supervisor": "curseor@cau.ac.kr"
+      },
+      "phone": "02-820-6357",
+      "sites": [
+        "ai.cau.ac.kr"
+      ],
+      "open_question": "هل شرط 2.64/4.0 خاص بمنحة CAYSS فقط أم شرط قبول أيضاً؟",
+      "why_matters": "الرقم الوحيد المنشور عن المعدل بكل البحث — ومعدله تحته."
+    },
+    {
+      "id": "AJOU",
+      "name": "Ajou · آجو",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능학과",
+      "emails": {
+        "admissions": "iss@ajou.ac.kr",
+        "dept": "kasohn@ajou.ac.kr"
+      },
+      "phone": "+82-31-219-2114",
+      "sites": [
+        "ajou.ac.kr/iadmissions"
+      ],
+      "open_question": "ما الحد الأدنى للمعدل ولدرجة اللغة لماجستير AI للطلبة الدوليين؟",
+      "why_matters": "احتياط واقعي لمستوى معدله."
+    },
+    {
+      "id": "DONGGUK",
+      "name": "Dongguk · دونغ‌غوك",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능융합 (AIX)",
+      "emails": {
+        "admissions": "adm@dongguk.edu",
+        "grad": "dgugs@dongguk.edu"
+      },
+      "phone": "",
+      "sites": [
+        "gradu.dongguk.edu"
+      ],
+      "open_question": "هل يوجد مسار ماجستير AI بالإنكليزية بالكامل؟ وما شروط القبول للدوليين؟",
+      "why_matters": "احتياط."
+    },
+    {
+      "id": "SOGANG",
+      "name": "Sogang · سوغانغ",
+      "tier": "B",
+      "status": "pending",
+      "dept": "ثلاثة مسارات AI: AI Convergence · Digital Human · Smart AI",
+      "emails": {
+        "admissions": "gradsch@sogang.ac.kr"
+      },
+      "phone": "+82-2-705-8168",
+      "sites": [
+        "gradsch.sogang.ac.kr"
+      ],
+      "open_question": "أي من المسارات الثلاثة بحثي يمنح D-2 ومناسب لخلفية هندسة برمجيات؟",
+      "why_matters": "ثلاثة مسارات = ثلاثة أبواب، واحد منها قد يناسبه."
+    },
+    {
+      "id": "PNU",
+      "name": "Pusan National · بوسان الوطنية",
+      "tier": "B",
+      "status": "pending",
+      "dept": "AI대학원",
+      "emails": {
+        "dept": "yangju@pusan.ac.kr",
+        "admin": "pnuadmin@pusan.ac.kr"
+      },
+      "phone": "",
+      "sites": [
+        "pusan.ac.kr"
+      ],
+      "open_question": "ما شروط القبول والتمويل لماجستير AI للدوليين؟",
+      "why_matters": "جامعة وطنية — رسومها أقل."
+    },
+    {
+      "id": "JNU",
+      "name": "Chonnam National · تشونام",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능융합학과",
+      "emails": {
+        "intl": "internia@jnu.ac.kr",
+        "alt": "5yeah@jnu.ac.kr"
+      },
+      "phone": "062-530-1189",
+      "sites": [
+        "jnu.ac.kr"
+      ],
+      "open_question": "هل يوجد بريد مباشر لقبول الدراسات العليا؟ وما شروط ماجستير AI للدوليين؟",
+      "why_matters": "جامعة وطنية — لم يُنشر بريد قبول."
+    },
+    {
+      "id": "CNU",
+      "name": "Chungnam National · تشونغ‌نام",
+      "tier": "B",
+      "status": "pending",
+      "dept": "인공지능융합",
+      "emails": {},
+      "phone": "1644-8433",
+      "sites": [
+        "cnu.ac.kr"
+      ],
+      "open_question": "لم يُرصد بريد — يحتاج بحثاً بالمتصفح المدمج أولاً.",
+      "why_matters": "جهة بلا قناة تواصل حتى الآن."
+    },
+    {
+      "id": "SEJONG",
+      "name": "Sejong · سيجونغ",
+      "tier": "C",
+      "status": "pending",
+      "dept": "AI",
+      "emails": {
+        "grad": "grad@sejong.ac.kr",
+        "web": "webmaster@sejong.ac.kr"
+      },
+      "phone": "02-3408-3114",
+      "sites": [
+        "sejong.ac.kr"
+      ],
+      "open_question": "هل عندكم ماجستير AI بحثي للدوليين؟ وما شروطه؟",
+      "why_matters": "طبقة ثالثة — احتياط."
+    },
+    {
+      "id": "KW",
+      "name": "Kwangwoon · كوانغ وون",
+      "tier": "C",
+      "status": "pending",
+      "dept": "AI",
+      "emails": {
+        "dept": "dhim@kw.ac.kr"
+      },
+      "phone": "",
+      "sites": [
+        "kw.ac.kr"
+      ],
+      "open_question": "هل عندكم ماجستير AI بحثي للدوليين؟ وما شروطه؟",
+      "why_matters": "طبقة ثالثة."
+    },
+    {
+      "id": "UOS",
+      "name": "University of Seoul",
+      "tier": "C",
+      "status": "pending",
+      "dept": "هندسة",
+      "emails": {
+        "dept": "engineer@uos.ac.kr"
+      },
+      "phone": "",
+      "sites": [
+        "uos.ac.kr"
+      ],
+      "open_question": "هل عندكم مسار ماجستير AI للدوليين؟",
+      "why_matters": "جامعة بلدية — رسوم منخفضة."
+    },
+    {
+      "id": "EWHA",
+      "name": "Ewha · إيوها",
+      "tier": "X",
+      "status": "closed",
+      "dept": "كلية AI",
+      "emails": {
+        "dept": "ai@ewha.ac.kr"
+      },
+      "phone": "",
+      "sites": [
+        "ewha.ac.kr"
+      ],
+      "open_question": "—",
+      "why_matters": "🚫 مستبعدة نهائياً: لا تقبل الذكور بأي برنامج يمنح درجة. لا تُراسَل."
+    }
+  ]
+}
