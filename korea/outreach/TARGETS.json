@@ -98,18 +98,24 @@
       "id": "GIST",
       "name": "GIST · غوانغجو",
       "tier": "A",
-      "status": "pending",
-      "dept": "AI학과",
+      "status": "drafted",
+      "dept": "AI학과 / Department of AI Convergence",
       "emails": {
         "admissions": "admis@gist.ac.kr"
       },
       "phone": "",
       "sites": [
         "ai.gist.ac.kr",
-        "gist.ac.kr/iadm"
+        "ewww.gist.ac.kr/iadm"
       ],
-      "open_question": "«القبول المشروط لعبء اقتصادي» — ما الوثيقة المطلوبة بالضبط؟ وهل يُعفى رسم التقديم لمتقدم من العراق؟",
-      "why_matters": "ميزانيته صفر — إعفاء الرسم يقرر إذا يقدر يقدّم أصلاً."
+      "open_question": "مبلغ رسوم التقديم بالضبط وقناة الدفع من العراق — وهل يشمل إعفاء «العبء الاقتصادي» رسوم التقديم لا اختبار اللغة فقط؟",
+      "why_matters": "التمويل الوحيد المؤكَّد التلقائي الكامل بين الثلاثين جهة — لا حد معدل ولا عمر منشور، والعائق الوحيد المتبقي جهاز Windows.",
+      "researched_at": "2026-08-23",
+      "dossier": "korea/outreach/dossiers/GIST.md",
+      "draft_id": "r-7129916226333945974",
+      "thread_id": "1a02efd7d844d60d",
+      "drafted_at": "2026-08-23",
+      "verdict": "واقعي — أقوى الثلاثين من ناحية التمويل: رسوم مدعومة تلقائياً بالكامل لكل الطلبة، بلا امتحان تحريري ولا رسالة أستاذ إلزامية ولا رصيد مجمّد. القيد الوحيد: بوابة Windows فقط."
     },
     {
       "id": "DGIST",
