@@ -20,7 +20,7 @@
       "id": "POSTECH",
       "name": "POSTECH · بوهانغ للعلوم والتكنولوجيا",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "كلية الذكاء الاصطناعي (Graduate School of AI)",
       "emails": {
         "admissions": "grad-admission@postech.ac.kr",
@@ -38,7 +38,10 @@
       "draft_id": "r-3010557506130491156",
       "thread_id": "1a02e3e7edf3ee9b",
       "drafted_at": "2026-08-23",
-      "verdict": "صعب لكن ممكن — أقوى فرصة بين الثلاثين"
+      "verdict": "صعب لكن ممكن — أقوى فرصة بين الثلاثين",
+      "sent_at": "2026-08-23T12:32:56Z",
+      "message_id": "1a02e9c16f97553a",
+      "follow_up_due": "2026-09-06"
     },
     {
       "id": "KAIST",
