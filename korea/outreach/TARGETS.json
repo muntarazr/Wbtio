@@ -44,18 +44,23 @@
       "id": "KAIST",
       "name": "KAIST",
       "tier": "A",
-      "status": "pending",
+      "status": "drafted",
       "dept": "كلية كيم جاي-تشول للذكاء الاصطناعي",
       "emails": {
-        "admissions": "advanced.adm@kaist.ac.kr"
+        "admissions": "advanced.adm@kaist.ac.kr",
+        "dept": "eunzi@kaist.ac.kr",
+        "registrar": "registrar@kaist.ac.kr"
       },
       "phone": "+82-42-350-2352",
       "sites": [
         "gsai.kaist.ac.kr",
         "admission.kaist.ac.kr"
       ],
-      "open_question": "هل الحوالة البنكية الدولية من العراق مقبولة لدفع رسوم التقديم؟ وما وزن المعدل مقابل الخبرة العملية في التقييم؟",
-      "why_matters": "أعلنوا صراحةً: لا حد أدنى للمعدل ولا للعمر — الجهة الوحيدة التي نفت الاثنين كتابةً."
+      "open_question": "كيف يُوزَن معدل ضعيف مقابل خبرة عملية بالتقييم الشامل؟ وهل يُشترط مشرف بحثي مسبق للماجستير المستقل؟",
+      "why_matters": "أعلنوا صراحةً: لا حد أدنى للمعدل ولا للعمر — الجهة الوحيدة التي نفت الاثنين كتابةً.",
+      "researched_at": "2026-08-23",
+      "dossier": "korea/outreach/dossiers/KAIST.md",
+      "verdict": "مستبعد — لا حاجز رسمي واحد لكن لا آلية تعويض عن المعدل بمنافسة عالمية"
     },
     {
       "id": "UNIST",
