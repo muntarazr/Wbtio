@@ -72,18 +72,27 @@
       "id": "UNIST",
       "name": "UNIST · أُلسان",
       "tier": "A",
-      "status": "pending",
-      "dept": "인공지능대학원",
+      "status": "drafted",
+      "dept": "인공지능대학원 (AI Graduate School)",
       "emails": {
-        "admissions": "adm-g@unist.ac.kr"
+        "admissions": "adm-g@unist.ac.kr",
+        "dept": "happyh220@unist.ac.kr",
+        "admin": "cjoh@unist.ac.kr"
       },
       "phone": "+82-52-217-1190",
       "sites": [
         "aigs.unist.ac.kr",
-        "admg-intl.unist.ac.kr"
+        "admg-intl.unist.ac.kr",
+        "adm-g.unist.ac.kr"
       ],
-      "open_question": "هل العمل الحر عن بُعد يُحتسب «توظيفاً لدى جهة خارجية» يمنع المنحة الحكومية؟ ومتى تفتح الجولة الثانية لخريف 2027؟",
-      "why_matters": "دخله المستقبلي قد يُسقط منحته — سؤال يمسّ خطته المالية كلها."
+      "open_question": "هل العمل الحر عن بُعد لعميل أجنبي يُحتسب «توظيفاً بجهة خارجية» يمنع فقط مسار 국비/UNIST الممنوح؟ ومتى تُنشر جولة خريف 2027 أو ربيع 2028؟",
+      "why_matters": "لا حد أدنى معلن للمعدل ولا للعمر — من أقوى الجهات الثلاثين. الحاجز الفعلي المكتشف: قيد جهاز (يمنع الآيباد صراحة بنص التقديم) وإثبات رصيد 13,000$ للمسار ذاتي التمويل.",
+      "researched_at": "2026-08-23",
+      "dossier": "korea/outreach/dossiers/UNIST.md",
+      "draft_id": "r7460286652791313596",
+      "thread_id": "1a02ec8ef216bc5d",
+      "drafted_at": "2026-08-23",
+      "verdict": "صعب لكن ممكن — من أقوى الثلاثين: لا امتحان تحريري ولا حد معدل معلن، لكن قيد جهاز آيباد حقيقي عند التقديم"
     },
     {
       "id": "GIST",
