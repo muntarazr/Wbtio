@@ -162,7 +162,7 @@ node income/wayl/render.mjs              # متجر Wayl — صور + STORE + MA
 | **فرع واحد** | كل الشغل على `main` · بلا فروع منفصلة |
 | **كل مجلد فيه README** | يشرح محتواه ومن أين تبدأ |
 | **لا تكرار** | معلومة واحدة بمكان واحد · والباقي يحيل إليه |
-| **الملفات المولَّدة** | `system/TASKS.md` و`MONTHLY-SPRINTS.md` و`income/catalog/CATALOG.md` و`income/wayl/STORE.md` و`MARGINS.md` و`pick.html` و`income/wayl/images/` — **لا تعدّلها يدوياً**، عدّل المصدر وأعد التوليد |
+| **الملفات المولَّدة** | `system/TASKS.md` و`MONTHLY-SPRINTS.md` و`income/catalog/CATALOG.md` و`income/wayl/STORE.md` و`MARGINS.md` و`WAYL-SETUP.md` و`pick.html` و`income/wayl/images/` — **لا تعدّلها يدوياً**، عدّل المصدر وأعد التوليد |
 | **مصادر الحقيقة** | `career/cv/SOURCE-OF-TRUTH.md` للحقائق الشخصية · `income/catalog/catalog.json` للخدمات · `income/wayl/items.json` لمتجر Wayl · `dashboard/assets/tasks.js` للمهام · `income/pipeline.json` للدخل |
 | **افحص الروابط** | بعد أي نقل أو إعادة تسمية — صفر روابط مكسورة شرط |
 | **حارس الخصوصية** | `git config core.hooksPath .githooks` بعد كل clone |
