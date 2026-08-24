@@ -62,8 +62,9 @@
 | **Ewha** | كلية الذكاء الاصطناعي | **ai@ewha.ac.kr** · cse@ewha.ac.kr | 02-3277-2181 / 2305 |
 | **Ewha** | 인공지능융합전공 — أساتذة | choij@ewha.ac.kr · hyungjune.lee@ewha.ac.kr · jh.sim@ewha.ac.kr · jihyun-kim@ewha.ac.kr | 02-3277-2593 |
 | **Inha** | 인공지능융합연구센터 | **aix@inha.ac.kr** | 032-860-9469 · 032-232-9390 |
-| **Ajou** | 인공지능학과 | **kasohn@ajou.ac.kr** | +82-31-219-2114 |
+| **Ajou** | 인공지능학과 — 🟢 صُحِّح 2026-08-24: قسم بحثي مستقل ضمن 일반대학원 (تأسس نيسان 2020، يمنح D-2)، **ليس تقاربياً فقط** — كان مصنَّفاً خطأً بهذا القسم | **kasohn@ajou.ac.kr** (손경아، أستاذة متفرغة فعلية) | +82-31-219-2114 |
 | **Ajou** | أساتذة | dskang@ajou.ac.kr · hongbo@ajou.ac.kr · hyjang2@ajou.ac.kr · jskoh@ajou.ac.kr · sungjuyu@ajou.ac.kr · sy84han@ajou.ac.kr | — |
+| **Ajou** | مكتب الدراسات العليا العام — 🟢 مؤكَّد 2026-08-24 (دليل القبول وتذييل grad.ajou.ac.kr) | **grad@ajou.ac.kr** | — |
 | **Pusan National** | AI대학원 | **yangju@pusan.ac.kr** | — |
 | **Hanyang ERICA** | معهد AI التقاربي | **ktkang@hanyang.ac.kr** · sasohyun@hanyang.ac.kr | 031-503-6304 / 6306 |
 | **Chonnam National** | 인공지능융합학과 | — | 062-530-1167 / 1189 |
@@ -115,6 +116,7 @@ Hanyang NextAI · Dongguk AIX · Chungnam `bioairc` · Konkuk. **أعد المح
 | Kyung Hee | 🟢 حُلّت 2026-08-23: الفئتان معاً (TOPIK 4 أو IELTS 6.0). الثغرة الجديدة: هل القبول يمنح تلقائياً دعم 사업단 أم انتقاء منفصل؟ |
 | Yonsei | ما بدائل PayPal لدفع رسوم التقديم من العراق؟ |
 | SKKU | كيف أحصل على رسالة الأستاذ الإلزامية وأنا خارج كوريا؟ |
+| Ajou | 🟢 بُحث 2026-08-24: لا حاجز معدل/عمر، تصديق قنصلي مقبول صراحة. الثغرة: نوع مسار اللغة (Type A/B) لقسم AI تحديداً، ومصدر «رسالة تأكيد الأستاذ»، وأثقل رصيد مجمَّد مكتشف (20,000$+) — [`دوسيه`](outreach/dossiers/AJOU.md) |
 
 ---
 

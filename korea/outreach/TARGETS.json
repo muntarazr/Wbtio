@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24 (CAU researched + drafted)",
+    "updated": "2026-08-24 (AJOU researched+drafted · INHA/SNU/YONSEI/CAU corrected to sent)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -246,7 +246,7 @@
       "draft_id": "r4040608499807371617",
       "thread_id": "1a0318b03ec21054",
       "drafted_at": "2026-08-24",
-      "sent_at": "2026-08-24T13:00:00Z",
+      "sent_at": "2026-08-24T02:13:09Z",
       "message_id": "1a0318b03ec21054",
       "follow_up_due": "2026-09-07",
       "_note": "تشغيل متزامن آخر لنفس الروتين أنشأ مسودة مكررة (r-4692720374047996527) بفارق ثوانٍ — حُذفت من Gmail وأُبقيت هذي فقط، 2026-08-24. كذلك صُحِّح رقم «ثلاث سنوات خبرة» غير المدعوم بـSOURCE-OF-TRUTH.md، وصُحِّحت عبارة «since 2024» غير الدقيقة (الدور بدأ كانون الأول 2025) من نص المسودة قبل الإرسال الفعلي 2026-08-24. أُرسلت مباشرة بـsend_message (بلا مسودة Gmail منفصلة، thread_id هو نفس message_id لأنها رسالة جديدة لا رد)."
@@ -255,7 +255,7 @@
       "id": "INHA",
       "name": "Inha · إنها",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능융합연구센터 (AI Convergence Research Center / AIX) — 일반대학원",
       "emails": {
         "admissions": "gradapply@inha.ac.kr",
@@ -275,13 +275,17 @@
       "verdict": "صعب لكن ممكن — الحاجز الحقيقي شرط مشرف مسبق إلزامي (سعة أكاديمية) لا المعدل ولا العمر؛ يحتاج جواباً حاسماً قبل أي استثمار وقت إضافي بهذي الجهة",
       "draft_id": "r3099179354541906487",
       "thread_id": "1a03143023462cb9",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T01:25:08Z",
+      "message_id": "1a0315f116dbbc4c",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "SNU",
       "name": "SNU · سيول الوطنية",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "협동과정 인공지능전공 (IPAI) — برنامج تعاوني تابع لـ일반대학원، قبول مباشر بلا حاجة لقسم أم",
       "emails": {
         "admissions": "snuadmit2@snu.ac.kr",
@@ -300,13 +304,17 @@
       "verdict": "صعب لكن ممكن — أثقل من الطبقة A بسبب امتحان شفهي إلزامي وغموض قبول IELTS، لكن الأقوى بالثلاثين بملف التصديق القنصلي",
       "draft_id": "r-1591372251502170443",
       "thread_id": "1a0315a03971796d",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T01:24:51Z",
+      "message_id": "1a0315ecd467eb92",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "YONSEI",
       "name": "Yonsei · يونسي",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능학과 (Department of Artificial Intelligence) — 인공지능융합대학, 일반대학원",
       "emails": {
         "admissions": "ysgrad@yonsei.ac.kr",
@@ -325,7 +333,11 @@
       "draft_id": "r-5732316484330781873",
       "thread_id": "1a03171cf156178b",
       "drafted_at": "2026-08-24",
-      "verdict": "صعب لكن ممكن — نمط شبيه بـSNU: لا حاجز معدل/عمر مؤكَّد، لكن امتحان شفهي إلزامي ورسالة توصية إلزامية حاجزان إجرائيان حقيقيان"
+      "verdict": "صعب لكن ممكن — نمط شبيه بـSNU: لا حاجز معدل/عمر مؤكَّد، لكن امتحان شفهي إلزامي ورسالة توصية إلزامية حاجزان إجرائيان حقيقيان",
+      "sent_at": "2026-08-24T01:52:53Z",
+      "message_id": "1a0317878f397950",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "KOREA-U",
@@ -352,7 +364,7 @@
       "id": "CAU",
       "name": "Chung-Ang · تشونغ آنغ",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "AI학과 (Department of AI) — كلية الهندسة, 일반대학원 —석사/박사/석박통합 كلها مفتوحة",
       "emails": {
         "admissions": "gsadmin@cau.ac.kr",
@@ -372,24 +384,38 @@
       "verdict": "واقعي — من أفضل جهات الطبقة B: لا حاجز معدل أو عمر للقبول العام (2.64 كان خطأ افتراضي، خاص بمنحة CAYSS فقط)، تمويل تلقائي محتمل قوي، تصديق قنصلي مقبول صراحة. الثغرة الحقيقية: صرامة موعد التخرج الفعلي قبل بدء الفصل بلا استثناء للعراق.",
       "draft_id": "r898589245330193502",
       "thread_id": "1a031a844b954395",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T03:19:04Z",
+      "message_id": "1a031c75f5c09ece",
+      "follow_up_due": "2026-09-07",
+      "_note": "الرسالة أُرسلت مباشرة بـsend_message (لا عبر draftId — thread المسودة الأصلية أعطى خطأ صلاحية عند get_thread، فأُعيد إرسال النص نفسه من الملف مباشرة). draft_id/thread_id أعلاه يخصان المسودة الأصلية غير المُرسَلة؛ message_id الفعلي أدناه."
     },
     {
       "id": "AJOU",
       "name": "Ajou · آجو",
       "tier": "B",
-      "status": "pending",
-      "dept": "인공지능학과",
+      "status": "drafted",
+      "dept": "인공지능학과 (Department of Artificial Intelligence) — 일반대학원 (عام بحثي، أُنشئ نيسان 2020، يمنح D-2). ثلاث تخصصات فرعية: 인공지능전공 (AI) · AI의료융합전공 (AI Medical Convergence) · AI심리전공 (AI Psychology).",
       "emails": {
         "admissions": "iss@ajou.ac.kr",
-        "dept": "kasohn@ajou.ac.kr"
+        "grad_office": "grad@ajou.ac.kr",
+        "dept": "kasohn@ajou.ac.kr",
+        "admissions_unverified": "admission@ajou.ac.kr"
       },
-      "phone": "+82-31-219-2114",
+      "phone": "031-219-3897 (AI Major dept.) / +82-31-219-2114 (International Admissions)",
       "sites": [
-        "ajou.ac.kr/iadmissions"
+        "ajou.ac.kr/iadmissions_en",
+        "grad.ajou.ac.kr/gs_eng",
+        "ai.ajou.ac.kr"
       ],
-      "open_question": "ما الحد الأدنى للمعدل ولدرجة اللغة لماجستير AI للطلبة الدوليين؟",
-      "why_matters": "احتياط واقعي لمستوى معدله."
+      "open_question": "هل عندهم حد أدنى للمعدل بقسم الـAI تحديداً؟ وهل يقع القسم ضمن مسار اللغة Type A (يقبل TOEFL/IELTS/TOPIK) أم Type B (يشترط TOPIK بلا بديل إنكليزي)؟",
+      "why_matters": "🟢 حُلَّ جزئياً اليوم (2026-08-24): لا حد معدل ولا عمر منشور بصفحة الأهلية العامة، والتصديق القنصلي مقبول صراحةً كبديل للأبوستيل لدول خارج لاهاي (يطابق حالة العراق). 🔴 لكن اكتُشفت أثقل عتبة مالية بين كل الجهات المفحوصة حتى الآن: شهادة رصيد بنكي 20,000\\$+ مطلوبة عند التقديم (أعلى من KHU 13,700\\$)، بالإضافة لرسوم دراسية 8,400–14,400\\$/سنة تقريباً (غير مؤكَّد تصنيف قسم AI بينها). كذلك الوثائق تشترط «study plan and professor confirmation letter» و«رسالة توصية» — لم يتحدد إن كانت تحتاج أستاذاً داخل Ajou أم تُقبل من جامعة البصرة (نفس نمط ثغرة SKKU/Inha). منحة Ajou Global (40% ماجستير) تنافسية بترشيح القسم لا تلقائية، وتشترط الحفاظ على معدل 3.5 أثناء الدراسة لا عند القبول.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/AJOU.md",
+      "verdict": "صعب لكن ممكن — لا حاجز معدل أو عمر أو أبوستيل، لكن الرصيد المجمَّد 20,000$+ أثقل عتبة مالية مكتشفة حتى الآن، ومسار اللغة (Type A/B) ورسالة الأستاذ لهذا القسم تحديداً غير محسومين",
+      "draft_id": "r4346914106835593276",
+      "thread_id": "1a031c5e88d07a6a",
+      "drafted_at": "2026-08-24"
     },
     {
       "id": "DONGGUK",
