@@ -137,3 +137,24 @@ github.com/wbtio
 
 **فحص ما قبل الإرسال:** ✅ لا JAZ · ✅ لا apostille · ✅ المعدل صريح · ✅ IELTS كهدف ·
 ✅ ٣ أسئلة · ✅ ١٧٤ كلمة · ✅ بلا مرفقات · ✅ الشركة بالوصف لا بالاسم
+
+---
+
+## 7. الجواب الرسمي — وصل 2026-08-24
+
+> **من:** So Jung Han (한소정) — 입학학생처 입학팀 POSTECH Admissions · `sandrasj@postech.ac.kr`
+> **بتاريخ:** 2026-08-24T01:36:18Z
+
+> Dear Applicant,
+>
+> International applicants will be comprehensively evaluated through document review and interviews, and the evaluation method may vary depending on the department.
+>
+> While the document review evaluation method also varies by department, there is no minimum GPA requirement for admission.
+> Please refer to the guide for other criteria.
+>
+> Thank you.
+
+**القراءة:**
+- 🟢 **يؤكد صراحة: لا حد أدنى للمعدل للقبول** — يثبّت ما استُنتج من الصفحات الرسمية سابقاً، الآن بتوقيع رسمي من مكتب القبول نفسه.
+- 🟠 **لم يُجب عن سؤالي ١ و٢ تحديداً** (الامتحان التحريري 기초수학/기초AI مقابل المقابلة فقط) — الجواب عام «تقييم شامل بمستندات ومقابلات، يختلف حسب القسم» بلا تفصيل لقسم AI تحديداً. **يستحق متابعة لاحقاً** إن احتاج تأكيداً أدق قبل موعد التقديم الفعلي.
+- ✅ لا تعارض مع `CLAUDE.md` §3 ولا `korea/AI-PROGRAMS.md`.
