@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24 (SOGANG researched+drafted — AI Convergence Core only, not 3 tracks · no new replies on 10 sent threads)",
+    "updated": "2026-08-24 (PNU researched+drafted — no language cert required for admission · KOREA-U sent 2 role-specific emails · no new replies on 11 sent threads)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -343,7 +343,7 @@
       "id": "KOREA-U",
       "name": "Korea University · جامعة كوريا",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Department of Artificial Intelligence — College of Informatics, 일반대학원 (General Graduate School)",
       "emails": {
         "admissions": "graduate1@korea.ac.kr",
@@ -361,7 +361,15 @@
       "verdict": "واقعي — من أفضل جهات الطبقة B: لا حاجز معدل/عمر/لغة/توصية، لكن تناقض توقيت دورة الخريف والرصيد المجمَّد غير المحدَّد يحتاجان جواباً حاسماً قبل بناء جدول زمني عليها",
       "draft_id": "r-4454943470602679766",
       "thread_id": "1a031cfc49bfe699",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T03:38:37Z",
+      "message_id": "1a031d944c6d97a2",
+      "follow_up_due": "2026-09-07",
+      "sent_log": [
+        {"email": "graduate1@korea.ac.kr", "role": "Admissions", "message_id": "1a031d944c6d97a2", "thread_id": "1a031cfc49bfe699", "sent_at": "2026-08-24T03:38:37Z"},
+        {"email": "graduate2@korea.ac.kr", "role": "Academic Affairs", "message_id": "1a0322f7286be142", "thread_id": "1a0322f7286be142", "sent_at": "2026-08-24"}
+      ],
+      "_note": "graduate1@korea.ac.kr أُرسلت بتشغيل سابق (اكتُشفت اليوم عبر get_thread، لم تُسجَّل بالحالة وقتها) · graduate2@korea.ac.kr (Academic Affairs، رسالة منفصلة بزاوية المعدل مقابل الخبرة والمشرف) أُرسلت هذا التشغيل 2026-08-24"
     },
     {
       "id": "CAU",
@@ -473,18 +481,27 @@
       "id": "PNU",
       "name": "Pusan National · بوسان الوطنية",
       "tier": "B",
-      "status": "pending",
-      "dept": "AI대학원",
+      "status": "drafted",
+      "dept": "Graduate School of AI (Artificial Intelligence Convergence Research Center) — General Graduate School of Information Convergence Engineering, AI Major (일반대학원)",
       "emails": {
-        "dept": "yangju@pusan.ac.kr",
-        "admin": "pnuadmin@pusan.ac.kr"
+        "dept_ai": "lms077@pusan.ac.kr",
+        "admissions_general_unverified": "iadmissiong@pusan.ac.kr",
+        "contact_general": "pnuadmin@pusan.ac.kr",
+        "dept_unconfirmed": "yangju@pusan.ac.kr"
       },
-      "phone": "",
+      "phone": "051-510-3356",
       "sites": [
+        "aieng.pusan.ac.kr",
         "pusan.ac.kr"
       ],
-      "open_question": "ما شروط القبول والتمويل لماجستير AI للدوليين؟",
-      "why_matters": "جامعة وطنية — رسومها أقل."
+      "open_question": "هل الجدول والتمويل (رسوم + راتب بحثي) المعروضان بدليل القبول (بتاريخ 2021 ظاهرياً) لا يزالان ساريين اليوم؟ ومتى تُفتح نافذة تقديم فعلية قريبة من خريف 2027؟",
+      "why_matters": "🟢 اكتُشف اليوم (2026-08-24) من الموقع الرسمي المباشر لكلية AI: أول جهة بين الثلاثين تنص صراحة أن شهادة اللغة (TOPIK/IELTS/TOEFL) غير مطلوبة للقبول إطلاقاً — يُسقط أكبر مخاوف الملف الشخصي لهذي الجهة تحديداً. لا حد معدل رسمي منفصل (تقييم مركّب وثائق+مقابلة بعتبة 60/100)، ولا عمر، وقبول أي تخصص جامعي. ودليل القبول يذكر تمويلاً شبه كامل (رسوم + راتب بحثي) — لو ساري. 🔴 لكن صفحة الجدول الزمني والتمويل بتاريخ دورة 2021 ولم تُحدَّث ظاهرياً — الحداثة غير مؤكَّدة.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/PNU.md",
+      "verdict": "واقعي — استثنائية على محور اللغة (لا شهادة لغة مطلوبة للقبول إطلاقاً، أول جهة من الثلاثين)، لا حاجز معدل/عمر/تخصص، وتمويل محتمل قوي. الثغرة الوحيدة: حداثة صفحة الجدول والتمويل غير مؤكَّدة (بتاريخ 2021 ظاهرياً).",
+      "draft_id": "r6143382872157433571",
+      "thread_id": "1a03238af0e53ca3",
+      "drafted_at": "2026-08-24"
     },
     {
       "id": "JNU",
