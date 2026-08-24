@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24 (JNU researched+drafted — IELTS 5.5 alone sufficient, no GPA/age barrier, cheapest tuition found so far · draft only, not sent · no new replies checked this run)",
+    "updated": "2026-08-24 (تصحيح: AJOU/DONGGUK/SOGANG/PNU/JNU أُرسلت فعلياً بتشغيلات سابقة اليوم ولم تُحدَّث الحالة — صُحِّحت · PNU ارتدّت (bounce) وتحتاج قناة بديلة · لم يبدأ بحث CNU بعد هذا التشغيل)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -368,8 +368,20 @@
       "message_id": "1a031d944c6d97a2",
       "follow_up_due": "2026-09-07",
       "sent_log": [
-        {"email": "graduate1@korea.ac.kr", "role": "Admissions", "message_id": "1a031d944c6d97a2", "thread_id": "1a031cfc49bfe699", "sent_at": "2026-08-24T03:38:37Z"},
-        {"email": "graduate2@korea.ac.kr", "role": "Academic Affairs", "message_id": "1a0322f7286be142", "thread_id": "1a0322f7286be142", "sent_at": "2026-08-24"}
+        {
+          "email": "graduate1@korea.ac.kr",
+          "role": "Admissions",
+          "message_id": "1a031d944c6d97a2",
+          "thread_id": "1a031cfc49bfe699",
+          "sent_at": "2026-08-24T03:38:37Z"
+        },
+        {
+          "email": "graduate2@korea.ac.kr",
+          "role": "Academic Affairs",
+          "message_id": "1a0322f7286be142",
+          "thread_id": "1a0322f7286be142",
+          "sent_at": "2026-08-24"
+        }
       ],
       "_note": "graduate1@korea.ac.kr أُرسلت بتشغيل سابق (اكتُشفت اليوم عبر get_thread، لم تُسجَّل بالحالة وقتها) · graduate2@korea.ac.kr (Academic Affairs، رسالة منفصلة بزاوية المعدل مقابل الخبرة والمشرف) أُرسلت هذا التشغيل 2026-08-24"
     },
@@ -407,7 +419,7 @@
       "id": "AJOU",
       "name": "Ajou · آجو",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능학과 (Department of Artificial Intelligence) — 일반대학원 (عام بحثي، أُنشئ نيسان 2020، يمنح D-2). ثلاث تخصصات فرعية: 인공지능전공 (AI) · AI의료융합전공 (AI Medical Convergence) · AI심리전공 (AI Psychology).",
       "emails": {
         "admissions": "iss@ajou.ac.kr",
@@ -428,13 +440,17 @@
       "verdict": "صعب لكن ممكن — لا حاجز معدل أو عمر أو أبوستيل، لكن الرصيد المجمَّد 20,000$+ أثقل عتبة مالية مكتشفة حتى الآن، ومسار اللغة (Type A/B) ورسالة الأستاذ لهذا القسم تحديداً غير محسومين",
       "draft_id": "r4346914106835593276",
       "thread_id": "1a031c5e88d07a6a",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T03:28:09Z",
+      "message_id": "1a031cfb0db2bbba",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "DONGGUK",
       "name": "Dongguk · دونغ‌غوك",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "컴퓨터·AI학과 (Computer·AI Department, يضم 인공지능/AI) — 일반대학원. الاسم القديم «인공지능융합 (AIX)» المسجَّل سابقاً لم يُعثر عليه — يبدو أن القسم أُعيد تسميته.",
       "emails": {
         "admissions": "adm@dongguk.edu",
@@ -453,13 +469,17 @@
       "verdict": "صعب لكن ممكن — بلا حاجز معدل/عمر ظاهر، لكن أقل الجهات توثيقاً حتى الآن بسبب فجوة 6 سنوات بين آخر دليل قبول دولي متاح وهيكلة القسم الحالية",
       "draft_id": "r6092410567536843366",
       "thread_id": "1a031d70eca670b7",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T03:38:35Z",
+      "message_id": "1a031d93ea38b2ba",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "SOGANG",
       "name": "Sogang · سوغانغ",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Department of Artificial Intelligence — كلية الهندسة، 일반대학원 (بحثي، يمنح D-2). المسار المفتوح رسمياً حسب دليل القبول: AI Convergence Core فقط — مساري Digital Human وSmart AI غير مؤكَّدين للتقديم العام.",
       "emails": {
         "admissions": "gradsch@sogang.ac.kr",
@@ -477,13 +497,17 @@
       "verdict": "واقعي — من أفضل جهات الطبقة B: بلا حاجز معدل/عمر/امتحان تحريري، ورسالة توصية بلا شبكة كورية، ومنحة لغوية تلقائية قوية. الثغرة: شرط اللغة الدقيق لقسم AI ومسارات Digital Human/Smart AI تحتاجان تأكيداً.",
       "draft_id": "r-5613573567147996792",
       "thread_id": "1a031fded5bc8ef5",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T04:23:14Z",
+      "message_id": "1a03202215fa8f51",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "PNU",
       "name": "Pusan National · بوسان الوطنية",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Graduate School of AI (Artificial Intelligence Convergence Research Center) — General Graduate School of Information Convergence Engineering, AI Major (일반대학원)",
       "emails": {
         "dept_ai": "lms077@pusan.ac.kr",
@@ -503,13 +527,19 @@
       "verdict": "واقعي — استثنائية على محور اللغة (لا شهادة لغة مطلوبة للقبول إطلاقاً، أول جهة من الثلاثين)، لا حاجز معدل/عمر/تخصص، وتمويل محتمل قوي. الثغرة الوحيدة: حداثة صفحة الجدول والتمويل غير مؤكَّدة (بتاريخ 2021 ظاهرياً).",
       "draft_id": "r6143382872157433571",
       "thread_id": "1a03238af0e53ca3",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T05:27:07Z",
+      "message_id": "1a0323c9ca837e20",
+      "follow_up_due": null,
+      "bounced": true,
+      "bounce_reason": "553 sorry, no mail-box here by that name (#5.1.1) — lms077@pusan.ac.kr غير موجود، يحتاج إرسالاً جديداً لعنوان بديل مؤكَّد من إيميلات الجهة الأخرى (iadmissiong@pusan.ac.kr أو pnuadmin@pusan.ac.kr) بعد التحقق",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread · ⚠️ الإرسال إلى lms077@pusan.ac.kr ارتدّ (Address not found) — يحتاج قناة بديلة"
     },
     {
       "id": "JNU",
       "name": "Chonnam National · تشونام",
       "tier": "B",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Department of Artificial Intelligence Convergence (인공지능융합학과) — College of Engineering, Gwangju Campus, gsai.jnu.ac.kr",
       "emails": {
         "intl": "internia@jnu.ac.kr",
@@ -528,21 +558,28 @@
       "verdict": "واقعي — من أفضل جهات الطبقة B: بلا حاجز معدل/عمر، IELTS 5.5 بلا رسالة أستاذ مسبقة لهذا القسم، وأرخص تكلفة فعلية رُصدت. الثغرة: لا قناة بريد مؤكدة للتواصل المباشر.",
       "draft_id": "r3307473851844579689",
       "thread_id": "1a0324fbe2bc7719",
-      "drafted_at": "2026-08-24"
+      "drafted_at": "2026-08-24",
+      "sent_at": "2026-08-24T05:56:17Z",
+      "message_id": "1a0325750d8ef41f",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "CNU",
       "name": "Chungnam National · تشونغ‌نام",
       "tier": "B",
       "status": "pending",
-      "dept": "인공지능융합",
+      "dept": "بلا اسم مؤكَّد — أقرب تطابق: 바이오AI융합학과 (Bio-AI Convergence, 일반대학원, دكتوراه، رؤية حاسوبية) — غير مؤكَّد الماجستير",
       "emails": {},
       "phone": "1644-8433",
       "sites": [
         "cnu.ac.kr"
       ],
-      "open_question": "لم يُرصد بريد — يحتاج بحثاً بالمتصفح المدمج أولاً.",
-      "why_matters": "جهة بلا قناة تواصل حتى الآن."
+      "open_question": "ما اسم القسم الصحيح للدراسات العليا بالذكاء الاصطناعي (إن وُجد بخلاف Bio-AI)؟ وما بريده؟ يحتاج محاولة بأداة بحث مختلفة أو اتصالاً هاتفياً بـ1644-8433 تحويلة ②",
+      "why_matters": "لا بريد مؤكَّد بعد — لا يمكن صياغة رسالة. يحتاج إعادة محاولة بحث بطريقة مختلفة قبل أي مسودة.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/CNU.md",
+      "verdict": "غير محسوم — بحث تقني فاشل لا استبعاد فعلي: أغلب نطاقات cnu.ac.kr الفرعية (bioai/cbb/eng/cnuint) رفضت الاتصال، ودليل القبول بصيغة PDF/JS متعذّر القراءة آلياً"
     },
     {
       "id": "SEJONG",
