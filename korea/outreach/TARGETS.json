@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-23",
+    "updated": "2026-08-24",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -171,19 +171,26 @@
       "id": "SKKU",
       "name": "SKKU · سونغ كيون كوان",
       "tier": "A",
-      "status": "pending",
-      "dept": "인공지능학과",
+      "status": "drafted",
+      "dept": "인공지능학과 (Department of Artificial Intelligence) — كلية الحوسبة والمعلوماتية، حرم Suwon، 일반대학원",
       "emails": {
-        "admissions": "admissions@skku.edu",
+        "admissions": "intlgrad@skku.edu",
         "dept": "ai.dept@skku.edu"
       },
       "phone": "031-290-5828",
       "sites": [
         "ai.skku.edu",
-        "admission.skku.edu"
+        "sw.skku.edu",
+        "admission-global.skku.edu"
       ],
       "open_question": "كيف أحصل على رسالة الأستاذ الإلزامية وأنا خارج كوريا بلا شبكة أكاديمية؟",
-      "why_matters": "رسالة الأستاذ شرط إلزامي — وهذي أكبر ثغرة بملفه بعد المعدل."
+      "why_matters": "🟢 تأكَّد اليوم (2026-08-24): بريد القبول المركزي الصحيح intlgrad@skku.edu (لا admissions@skku.edu كما كان مسجَّلاً — بريد غير موجود فعلياً)، ومواعيد الدورة تأكَّدت مباشرة من الموقع الرسمي. 🔴 لكنها تبقى الأغلى مادياً بين الجهات المدروسة (~14,230$/سنة أولى، بلا منحة قبول للهندسة)، والحاجز الحقيقي رسالة أستاذ إلزامية من داخل SKKU تحتاج تحضيراً بسنة على الأقل.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/SKKU.md",
+      "draft_id": "r-5425563331336181884",
+      "thread_id": "1a0311939a9e264e",
+      "drafted_at": "2026-08-24",
+      "verdict": "صعب لكن ممكن — الأغلى مادياً بين الجهات المدروسة، والحاجز الحقيقي رسالة أستاذ مسبقة لا المعدل ولا العمر ولا اللغة"
     },
     {
       "id": "HANYANG",
