@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24 (SNU researched)",
+    "updated": "2026-08-24 (KOREA-U researched, HANYANG sent)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -225,7 +225,7 @@
       "id": "HANYANG",
       "name": "Hanyang · هانيانغ",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Department of Artificial Intelligence — Engineering Software college, 일반대학원 (General Graduate School, NOT 특수대학원)",
       "emails": {
         "admissions": "admingrad@hanyang.ac.kr",
@@ -244,9 +244,12 @@
       "dossier": "korea/outreach/dossiers/HANYANG.md",
       "verdict": "صعب — الحاجز الجديد هو إغلاق الماجستير المستقل بقسم AI (إن كان دائماً) لا المعدل ولا العمر؛ وثائقياً ومالياً هي من أخف الجهات (لا توصية، لا رصيد مجمّد، منحة هندسة 50% شبه تلقائية)",
       "draft_id": "r4040608499807371617",
-      "thread_id": "1a03145bc7e20f88",
+      "thread_id": "1a0318b03ec21054",
       "drafted_at": "2026-08-24",
-      "_note": "تشغيل متزامن آخر لنفس الروتين أنشأ مسودة مكررة (r-4692720374047996527) بفارق ثوانٍ — حُذفت من Gmail وأُبقيت هذي فقط، 2026-08-24. كذلك صُحِّح رقم «ثلاث سنوات خبرة» غير المدعوم بـSOURCE-OF-TRUTH.md من نص المسودة نفسها قبل الإرسال."
+      "sent_at": "2026-08-24T13:00:00Z",
+      "message_id": "1a0318b03ec21054",
+      "follow_up_due": "2026-09-07",
+      "_note": "تشغيل متزامن آخر لنفس الروتين أنشأ مسودة مكررة (r-4692720374047996527) بفارق ثوانٍ — حُذفت من Gmail وأُبقيت هذي فقط، 2026-08-24. كذلك صُحِّح رقم «ثلاث سنوات خبرة» غير المدعوم بـSOURCE-OF-TRUTH.md، وصُحِّحت عبارة «since 2024» غير الدقيقة (الدور بدأ كانون الأول 2025) من نص المسودة قبل الإرسال الفعلي 2026-08-24. أُرسلت مباشرة بـsend_message (بلا مسودة Gmail منفصلة، thread_id هو نفس message_id لأنها رسالة جديدة لا رد)."
     },
     {
       "id": "INHA",
@@ -328,18 +331,22 @@
       "id": "KOREA-U",
       "name": "Korea University · جامعة كوريا",
       "tier": "B",
-      "status": "pending",
-      "dept": "인공지능학과",
+      "status": "drafted",
+      "dept": "Department of Artificial Intelligence — College of Informatics, 일반대학원 (General Graduate School)",
       "emails": {
         "admissions": "graduate1@korea.ac.kr",
         "academic": "graduate2@korea.ac.kr"
       },
       "phone": "+82-2-3290-1358",
       "sites": [
-        "xai.korea.ac.kr"
+        "graduate2.korea.ac.kr",
+        "gsc.korea.ac.kr"
       ],
-      "open_question": "هل شرط الرصيد المجمّد ٢٠ مليون وون عند التقديم أم عند الفيزا؟ وهل بوابة التقديم تعمل على غير Windows؟",
-      "why_matters": "بوابتهم Windows فقط — وجهازه آيباد. حاجز تقني لا أكاديمي."
+      "open_question": "هل دورة خريف 2027 مشمولة بنافذة تقديم أيلول 2026 المعلنة أم تفتح نافذة منفصلة بآذار 2027؟ وهل التصديق القنصلي (بديل الأبوستيل) مقبول لدولة خارج لاهاي كالعراق؟ وما مبلغ شهادة الرصيد المجمَّد وتوقيتها؟",
+      "why_matters": "🟢 تأكَّد اليوم (2026-08-24): لا حد معدل ولا عمر منشور بصفحة الأهلية الرسمية، وIELTS 5.5 يفتح الباب لغوياً (هدفه 7.0 يتجاوزه بمسافة كبيرة) — أفضل نتيجة لغوية بين كل الجهات المفحوصة. رسالة التوصية تُقبل من أي أستاذ بجامعة البصرة (لا تحتاج شبكة أكاديمية كورية) — أخف من SKKU وInha. 🔴 لكن اكتُشف تناقض حقيقي بين صفحتين رسميتين (schedule.html وprocedure.html) حول توقيت تقديم دورة خريف 2027 — قد تكون النافذة أيلول 2026 (أقرب بكثير من المخطَّط) أو آذار 2027 (يطابق الخطة). كذلك: شهادة رصيد مجمَّد مطلوبة بمبلغ غير منشور، وبوابة Windows فقط (يؤكد قيد الآيباد)، والموقع القديم xai.korea.ac.kr شهادته منتهية والموقع الصحيح graduate2.korea.ac.kr.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/KOREA-U.md",
+      "verdict": "واقعي — من أفضل جهات الطبقة B: لا حاجز معدل/عمر/لغة/توصية، لكن تناقض توقيت دورة الخريف والرصيد المجمَّد غير المحدَّد يحتاجان جواباً حاسماً قبل بناء جدول زمني عليها"
     },
     {
       "id": "CAU",
