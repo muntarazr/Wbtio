@@ -449,17 +449,25 @@
       "id": "SOGANG",
       "name": "Sogang · سوغانغ",
       "tier": "B",
-      "status": "pending",
-      "dept": "ثلاثة مسارات AI: AI Convergence · Digital Human · Smart AI",
+      "status": "drafted",
+      "dept": "Department of Artificial Intelligence — كلية الهندسة، 일반대학원 (بحثي، يمنح D-2). المسار المفتوح رسمياً حسب دليل القبول: AI Convergence Core فقط — مساري Digital Human وSmart AI غير مؤكَّدين للتقديم العام.",
       "emails": {
-        "admissions": "gradsch@sogang.ac.kr"
+        "admissions": "gradsch@sogang.ac.kr",
+        "dept": "ai_admin@sogang.ac.kr"
       },
       "phone": "+82-2-705-8168",
       "sites": [
-        "gradsch.sogang.ac.kr"
+        "gradsch.sogang.ac.kr",
+        "ai.sogang.ac.kr"
       ],
-      "open_question": "أي من المسارات الثلاثة بحثي يمنح D-2 ومناسب لخلفية هندسة برمجيات؟",
-      "why_matters": "ثلاثة مسارات = ثلاثة أبواب، واحد منها قد يناسبه."
+      "open_question": "ما شرط اللغة الدقيق لقسم AI تحديداً (غامض بالدليل الرسمي)؟ وهل مساري Digital Human وSmart AI مفتوحان للتقديم العام أم حصراً بترشيح الشركتين؟ وهل يوجد قبول ربيعي أصلاً؟",
+      "why_matters": "🟢 من أقوى جهات الطبقة B: لا حد معدل ولا عمر منشور، بلا امتحان تحريري (فحص وثائق + مقابلة Zoom فقط)، رسالة التوصية تُقبل من أستاذ جامعة البصرة مباشرة (لا شبكة كورية)، الرصيد المصرفي يُطلب بعد القبول لا معه، والتصديق القنصلي مقبول صراحةً. وهدف IELTS 7.0 يفتح منحة Sogang Global تلقائية 80% من الرسوم (+RISE المحتملة). 🔴 العائق: شرط اللغة الدقيق لقسم AI غامض بالنص المستخرج، وتوفر مسارين من الثلاثة للتقديم العام غير مؤكَّد.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/SOGANG.md",
+      "verdict": "واقعي — من أفضل جهات الطبقة B: بلا حاجز معدل/عمر/امتحان تحريري، ورسالة توصية بلا شبكة كورية، ومنحة لغوية تلقائية قوية. الثغرة: شرط اللغة الدقيق لقسم AI ومسارات Digital Human/Smart AI تحتاجان تأكيداً.",
+      "draft_id": "r-5613573567147996792",
+      "thread_id": "1a031fded5bc8ef5",
+      "drafted_at": "2026-08-24"
     },
     {
       "id": "PNU",

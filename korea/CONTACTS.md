@@ -23,7 +23,7 @@
 | **Yonsei** — الدراسات العليا | **ysgrad@yonsei.ac.kr** | +82-2-2123-3229 | إثبات 22 مليون وون · قناة الدفع |
 | **SKKU** — القبول الدولي المركزي | **intlgrad@skku.edu** | +82-2-760-0014 | رسالة الأستاذ الإلزامية · الرسوم — 🟢 مؤكَّد 2026-08-24 مباشرة من `admission-global.skku.edu` (يصحّح `admissions@skku.edu` القديم غير الموجود فعلياً) |
 | **Kyung Hee** — القبول الدولي (الحرم الدولي) | **ciss_gc@khu.ac.kr** | 031-201-3961~4 | الوثائق والتصديق والرصيد المجمّد |
-| **Sogang** — الدراسات العليا | **gradsch@sogang.ac.kr** | +82-2-705-8168 | مسارات AI الثلاثة |
+| **Sogang** — الدراسات العليا | **gradsch@sogang.ac.kr** | +82-2-705-8168 | 🟢 مؤكَّد 2026-08-24 من دليل القبول الرسمي — المسار المفتوح رسمياً AI Convergence Core فقط (Digital Human وSmart AI غير مؤكَّدين للتقديم العام) |
 | **Hanyang** — القبول الدولي | **admingrad@hanyang.ac.kr** | +82-2-2220-2445~2448 | 🟢 مؤكَّد 2026-08-24 من دليل القبول الرسمي 2027 — يصحّح `intladms@hanyang.ac.kr` المسجَّل سابقاً (قد يكون صندوقاً موازياً لا خطأ) · هل يفتح الماجستير المستقل بقسم AI بدورة الخريف |
 | **Hanyang** — الدراسات العليا العامة (بعد القبول) | sgs@hanyang.ac.kr | 82-2-2220-0224~8 | أسئلة أكاديمية بعد القبول |
 
@@ -182,9 +182,12 @@ Hanyang NextAI · Dongguk AIX · Chungnam `bioairc` · Konkuk. **أعد المح
 
 ### سوغانغ · Sogang
 
-**`gradsch@sogang.ac.kr`** · +82-2-705-8168
-**مسارات AI الثلاثة:** AI Convergence · Digital Human & Entertainment (بالشراكة مع Smilegate) ·
-Smart AI (بالشراكة مع LG Electronics).
+**`gradsch@sogang.ac.kr`** (القبول العام) · **`ai_admin@sogang.ac.kr`** (قسم AI) · +82-2-705-8168
+🟢 مؤكَّد 2026-08-24 من دليل القبول الرسمي: المسار المفتوح رسمياً للتقديم العام **AI Convergence Core** فقط —
+مساري Digital Human & Entertainment (Smilegate) وSmart AI (LG Electronics) غير مؤكَّدين للعموم، قد يكونان
+حصراً بترشيح الشركتين الراعيتين. **لم يُنشر — يحتاج تأكيداً.**
+🔴 **تحذير:** `gsinfo.sogang.ac.kr` (AI·SW대학원، بريد `gsinfot@sogang.ac.kr`) **كلية منفصلة تماماً** —
+كلية خاصة/مسائية (특수대학원)، أعيدت تسميتها 2024 من «정보통신대학원» — **ليست جهة القبول D-2 المستهدفة، لا تُراسَل.**
 
 ### تشونغ-آنغ · Chung-Ang
 
