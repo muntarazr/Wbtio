@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24",
+    "updated": "2026-08-24 (SNU researched)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -275,19 +275,26 @@
       "id": "SNU",
       "name": "SNU · سيول الوطنية",
       "tier": "B",
-      "status": "pending",
-      "dept": "협동과정 인공지능전공 (IPAI)",
+      "status": "drafted",
+      "dept": "협동과정 인공지능전공 (IPAI) — برنامج تعاوني تابع لـ일반대학원، قبول مباشر بلا حاجة لقسم أم",
       "emails": {
         "admissions": "snuadmit2@snu.ac.kr",
         "dept": "gsai@snu.ac.kr"
       },
-      "phone": "+82-2-880-6971",
+      "phone": "+82-2-880-6971 / 02-880-2461 (مكتب البرنامج)",
       "sites": [
         "gsai.snu.ac.kr",
-        "admission.snu.ac.kr"
+        "admission.snu.ac.kr",
+        "en.snu.ac.kr/admission"
       ],
-      "open_question": "هل يمكن دخول IPAI عبر القبول العام بدل مسار الأجانب؟ وما الحد الأدنى الفعلي للمعدل؟",
-      "why_matters": "طموح فوق مستواه — لكن الجواب يعطيه سقف السوق."
+      "open_question": "هل يقبل gsai@snu.ac.kr IELTS أصلاً أم TOEFL/TEPS حصراً؟ وهل الامتحان الشفهي إلزامي للمتقدمين خارج كوريا؟ ومتى تُعلن دورة خريف 2027؟",
+      "why_matters": "🟢 لا حد معدل ولا عمر منشور، وأول جهة تقبل صراحة التصديق القنصلي كبديل للأبوستيل. 🔴 لكن اكتُشف حاجزان جديدان: امتحان شفهي تقني إلزامي (برمجة/خوارزميات/جبر خطي) للماجستير، وشرط لغة يبدو TOEFL/TEPS حصراً بلا ذكر IELTS بالمسار المباشر — قد يُبطل خطة IELTS 7.0 لهذي الجهة تحديداً.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/SNU.md",
+      "verdict": "صعب لكن ممكن — أثقل من الطبقة A بسبب امتحان شفهي إلزامي وغموض قبول IELTS، لكن الأقوى بالثلاثين بملف التصديق القنصلي",
+      "draft_id": "r-1591372251502170443",
+      "thread_id": "1a0315a03971796d",
+      "drafted_at": "2026-08-24"
     },
     {
       "id": "YONSEI",
