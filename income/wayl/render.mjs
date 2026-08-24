@@ -413,6 +413,164 @@ ${i.tiers.filter(t => t.name !== base.name).map(t => `- ${t.name}: **+$${t.price
 `);
 console.log('✓ WAYL-SETUP.md');
 
+// ── product/ — مجلد الخدمات بالجذر، فئة فئة ─────────────────────────────
+const ROOT = path.resolve(DIR, '..', '..', 'product');
+const GROUPS = [
+  ['01-entry',       'ابدأ من هنا',                    i => i.cat === 'مدخل',                          'خدمات رخيصة هدفها أول تعامل لا الربح · تُعرض أولاً بالمتجر'],
+  ['02-web',         'مواقع ومتاجر',                    i => i.cat === 'ويب',                            'أعلى طلب بالسوق العربي · تصميم البطاقة بإطار متصفح'],
+  ['03-mobile',      'تطبيقات موبايل',                  i => i.cat === 'موبايل',                         'قاعدة كود واحدة لأندرويد وآيفون · بطاقة بهيكل جهاز'],
+  ['04-automation',  'أتمتة على قياسك',                 i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat),  'تُبنى لحالة العميل من الصفر · بطاقة بمسار وأسهم'],
+  ['05-ready-sales', 'حلول جاهزة — زبائن ومبيعات',      i => i.sub === 'زبائن ومبيعات',                  'مبنية مسبقاً · تُركَّب بأيام · بطاقة بخطوات مرقّمة وختم'],
+  ['06-ready-ops',   'حلول جاهزة — إدارة ومستندات',     i => i.sub === 'إدارة ومستندات',                 'نفس النموذج: ابنِ مرة، بِع مراراً'],
+  ['07-data',        'بيانات وتقارير',                  i => i.cat === 'بيانات',                         'بطاقة بشبكة خلايا'],
+  ['08-monthly',     'باقات شهرية',                     i => i.kind === 'subscription',                  '🔴 Wayl لا تجدد تلقائياً — رابط دفع كل شهر · بطاقة بأسابيع'],
+  ['09-payment',     'مراحل الدفع',                     i => i.kind === 'payment_tool',                  'أخفِها عن الواجهة — تُرسل بالرابط فقط · بطاقة بقصاصة'],
+];
+
+fs.rmSync(ROOT, { recursive: true, force: true });
+fs.mkdirSync(ROOT, { recursive: true });
+
+const deltas = (i) => {
+  const base = entryTier(i);
+  if (!base || i.tiers.length < 2) return '';
+  return `\n### فروق أسعار الخيارات — أدخلها بـWayl كما هي\n\nالسعر الأساسي للمنتج: **$${base.price}** (${base.name})\n\n| الخيار | الفرق المضاف | السعر النهائي |\n|---|---|---|\n${
+    i.tiers.filter(t => t.name !== base.name)
+      .map(t => `| ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | **+$${t.price - base.price}** | $${t.price} · ${toIQD(t.price, fx.rate)} د.ع |`).join('\n')}\n`;
+};
+
+const waylFile = (i, g) => `# ${i.name}
+
+\`${i.sku}\` · ${g[1]} · ${(i.tiers || []).length || 1} ${(i.tiers || []).length > 1 ? 'خيارات' : 'خيار'}
+
+> **هذا الملف = حقول Wayl جاهزة للنسخ.** لا تعدّله — عدّل \`income/wayl/items.json\`
+> وشغّل \`node income/wayl/render.mjs\`.
+
+## 1️⃣ اسم المنتج
+
+\`\`\`
+${i.name}
+\`\`\`
+
+## 2️⃣ الوصف — انسخه كاملاً
+
+\`\`\`
+${i.desc || i.note}
+\`\`\`
+
+## 3️⃣ السعر الأساسي
+
+${(() => {
+  const e = entryTier(i);
+  if (e) return `**$${e.price}** · ${toIQD(e.price, fx.rate)} د.ع${i.kind === 'subscription' ? ' /شهر' : ''}  \n*(سعر أرخص خيار — الباقي يُضاف كفروق أدناه)*`;
+  if (i.price != null) return `**$${i.price}** · ${toIQD(i.price, fx.rate)} د.ع`;
+  return `**${i.price_label}** — 🔴 مبلغ مفتوح. أدخله بأقل قيمة ممكنة واذكر الآلية بالوصف.`;
+})()}
+
+## 4️⃣ الخيارات
+${i.tiers?.length > 1 ? `
+| الخيار | السعر | يشمل | التسليم |
+|---|---|---|---|
+${i.tiers.map(t => `| ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | $${t.price} · ${toIQD(t.price, fx.rate)} د.ع | ${(t.includes || []).join(' · ')} | ${t.delivery} |`).join('\n')}
+${deltas(i)}` : '\nبلا خيارات — منتج بسعر واحد.\n'}
+## 5️⃣ الصورة
+
+![${i.sku}](card.png)
+
+**\`card.png\`** بنفس المجلد · 1200×1200 · **بلا سعر وبلا درجات على الصورة** —
+الأسعار بحقل الوصف حصراً.
+
+## 6️⃣ إعدادات أخرى
+
+| الحقل | القيمة |
+|---|---|
+| المخزون | **غير محدود** — خدمة لا بضاعة |
+| المجموعة | ${g[1]} |
+| الظهور | ${i.kind === 'payment_tool' ? '🔴 **مخفي** — يُرسل بالرابط فقط' : 'ظاهر'} |
+${i.build_hours !== undefined ? `| ⚠️ بناء لمرة واحدة | ${i.build_hours === 0 ? '**مبني أصلاً** بـ`income/products/`' : `${i.build_hours} ساعة — لا تبعه قبل ما تبنيه`} |\n` : ''}
+---
+
+⬅️ [رجوع لفئة ${g[1]}](../README.md) · [كل الفئات](../../README.md)
+`;
+
+const idx = [];
+for (const g of GROUPS) {
+  const [slug, title, filter, why] = g;
+  const list = ALL.filter(filter);
+  if (!list.length) continue;
+  const gdir = path.join(ROOT, slug);
+  fs.mkdirSync(gdir, { recursive: true });
+
+  for (const i of list) {
+    const sdir = path.join(gdir, i.sku);
+    fs.mkdirSync(sdir, { recursive: true });
+    fs.writeFileSync(path.join(sdir, 'wayl.md'), waylFile(i, g));
+    const img = path.join(IMAGES, `${i.sku}.png`);
+    if (fs.existsSync(img)) fs.copyFileSync(img, path.join(sdir, 'card.png'));
+  }
+
+  fs.writeFileSync(path.join(gdir, 'README.md'), `# ${title}
+
+${why}
+
+**${list.length} ${list.length === 1 ? 'خدمة' : 'خدمة'}** · كل مجلد فيه \`card.png\` + \`wayl.md\` (حقول جاهزة للنسخ)
+
+| # | الخدمة | المجلد | خيارات | يبدأ من |
+|---|---|---|---|---|
+${list.map((i, k) => {
+  const e = entryTier(i);
+  return `| ${k + 1} | ${i.name} | [\`${i.sku}/\`](${i.sku}/wayl.md) | ${(i.tiers || []).length || 1} | ${e ? `$${e.price}` : i.price != null ? `$${i.price}` : i.price_label} |`;
+}).join('\n')}
+
+⬅️ [كل الفئات](../README.md)
+`);
+  idx.push([slug, title, list.length, why, list]);
+}
+
+fs.writeFileSync(path.join(ROOT, 'README.md'), `# خدمات wbtio — مقسومة على الفئات
+
+> 🔴 **مجلد مولَّد بالكامل.** المصدر \`income/wayl/items.json\` — عدّله ثم
+> \`node income/wayl/render.mjs\`. أي تعديل يدوي هنا يُمحى بالتوليد القادم.
+>
+> **التاريخ:** ${data._meta.updated} · **${ALL.length} خدمة · ${priced.reduce((s, i) => s + i.tiers.length, 0)} خيار · ${idx.length} فئة**
+
+## قاعدتان بتصميم البطاقات
+
+1. 🔴 **لا سعر ولا قائمة درجات على الصورة.** الصورة تجاوب «شنو راح أحصل عليه؟» فقط.
+   الأسعار والدرجات بحقل الوصف — وهي جاهزة بملف \`wayl.md\` لكل خدمة.
+2. 🔴 **لكل فئة تخطيط بصري مختلف** — لا قالب واحد مكرَّر 36 مرة.
+   الويب بإطار متصفح · الموبايل بهيكل جهاز · الأتمتة بمسار وأسهم ·
+   الحلول الجاهزة بخطوات مرقّمة وختم · البيانات بشبكة · الذكاء الاصطناعي بعُقد ·
+   الاشتراك بأسابيع · مراحل الدفع بقصاصة · المدخل بتوسيط.
+
+## الفئات
+
+| # | الفئة | خدمات | التصميم والدور |
+|---|---|---|---|
+${idx.map(([slug, title, n, why]) => `| ${slug.slice(0, 2)} | **[${title}](${slug}/README.md)** | ${n} | ${why} |`).join('\n')}
+
+## البنية
+
+\`\`\`
+product/
+${idx.map(([slug, title, n, , list]) => `  ${slug}/            ${title} (${n})
+    README.md
+${list.slice(0, 2).map(i => `    ${i.sku}/
+      card.png       الصورة 1200×1200
+      wayl.md        حقول Wayl جاهزة للنسخ`).join('\n')}${list.length > 2 ? `\n    …و${list.length - 2} غيرها` : ''}`).join('\n')}
+\`\`\`
+
+## المراجع
+
+| للشغل على | الملف |
+|---|---|
+| الإدخال خطوة بخطوة | [\`income/wayl/WAYL-SETUP.md\`](../income/wayl/WAYL-SETUP.md) |
+| الكتالوج الكامل بمكان واحد | [\`income/wayl/STORE.md\`](../income/wayl/STORE.md) |
+| هوامش الربح و$/ساعة | [\`income/wayl/MARGINS.md\`](../income/wayl/MARGINS.md) |
+| نظام الهوية والألوان | [\`income/wayl/brand/BRAND.md\`](../income/wayl/brand/BRAND.md) |
+| اختيار ما تنشره | [\`income/wayl/pick.html\`](../income/wayl/pick.html) |
+`);
+console.log(`✓ product/ — ${idx.length} فئة · ${ALL.length} خدمة`);
+
 // ── pick.html ────────────────────────────────────────────────────────────
 const pick = priced.map(i => ({
   sku: i.sku, name: i.name, cat: i.kind === 'subscription' ? 'اشتراك' : i.cat,
