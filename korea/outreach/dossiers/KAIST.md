@@ -145,3 +145,39 @@ github.com/wbtio
 
 **فحص ما قبل الإرسال:** ✅ لا JAZ · ✅ لا apostille · ✅ المعدل صريح · ✅ IELTS كهدف ·
 ✅ ٣ أسئلة · ✅ تحت ١٨٠ كلمة · ✅ بلا مرفقات · ✅ الشركة بالوصف لا بالاسم · ✅ بلا طلب منحة
+
+**أُرسلت فعلياً 2026-08-23T12:32 UTC** (بلا تحديث `TARGETS.json` وقتها — صُحِّح 2026-08-24).
+
+---
+
+## 7. 🟢 الجواب الرسمي — وصل 2026-08-23T22:05 UTC
+
+**من:** Eunji Kim، Administrative Staff، Kim Jaechul Graduate School of AI، KAIST
+(`eunzi@kaist.ac.kr`)
+
+> «There is no specific minimum GPA requirement. We are unable to provide a specific
+> assessment or weighting of GPA against professional experience in advance, as
+> admission decisions are made through the application review process.
+> For Master's applicants, identifying a faculty advisor before applying is not
+> required. However, contacting faculty members whose research interests align
+> with yours is recommended.
+> For questions regarding international wire transfers for the application fee or
+> tuition, please contact the KAIST Admissions Office directly, as payment methods
+> are handled by the Admissions Office — advanced.adm@kaist.ac.kr»
+
+### التحليل — هل يناقض بحثنا أم يؤكده؟
+
+**يؤكده بالكامل، ولا تناقض مع `CLAUDE.md` §3 ولا `AI-PROGRAMS.md`:**
+
+1. **لا حد أدنى للمعدل** — يطابق ما استُخرج من صفحة الأهلية الرسمية سابقاً حرفياً. **لكن الجواب
+   يرفض صراحةً** أن يقول كيف يُوزَن معدل ضعيف مقابل خبرة عملية — «القرار عبر مراجعة الطلب» فقط،
+   بلا صيغة أو نقاط. **هذا يؤكد حكم القسم 3 أعلاه: لا آلية تعويض معلنة — الحاجز حقيقي رغم غياب رقم.**
+2. **🆕 معلومة جديدة توضّح ثغرة سابقة (`#2` بالقسم 5):** تسمية مشرف بحثي مسبق **غير إلزامية
+   للماجستير المستقل** — فقط "مستحسنة". هذا يُسقط عائقاً كان مفترَضاً أثقل (خلافاً لـSKKU
+   الذي يُلزم برسالة أستاذ من الداخل).
+3. سؤال الحوالة البنكية **حُوِّل بلا جواب مباشر** لمكتب القبول العام — لا يزال سؤالاً مفتوحاً.
+
+**لا موعد جديد كُشف. لا حاجة لتحديث `DEADLINES.json`.**
+
+**الحكم لا يتغيّر:** لا يزال **مستبعداً** — الجواب يؤكد أن الحاجز الحقيقي (تقييم شامل بلا آلية
+تعويض عن معدل 2.4/4.0 بمنافسة عالمية) قائم كما كان مفترَضاً، لا أقل ولا أكثر.

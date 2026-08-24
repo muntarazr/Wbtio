@@ -47,7 +47,7 @@
       "id": "KAIST",
       "name": "KAIST",
       "tier": "A",
-      "status": "drafted",
+      "status": "replied",
       "dept": "كلية كيم جاي-تشول للذكاء الاصطناعي",
       "emails": {
         "admissions": "advanced.adm@kaist.ac.kr",
@@ -66,13 +66,19 @@
       "draft_id": "r-6683399347166442674",
       "thread_id": "1a02e999995aed38",
       "drafted_at": "2026-08-23",
-      "verdict": "مستبعد — لا حاجز رسمي واحد لكن لا آلية تعويض عن المعدل بمنافسة عالمية"
+      "verdict": "مستبعد — لا حاجز رسمي واحد لكن لا آلية تعويض عن المعدل بمنافسة عالمية",
+      "sent_at": "2026-08-23T12:32:36Z",
+      "message_id": "1a02e9bd0888de34",
+      "replied_at": "2026-08-23T22:05:36Z",
+      "reply_message_id": "1a030a8687c128cd",
+      "reply_summary": "لا حد أدنى معدل رسمي (يؤكد المعروف) · تحديد مشرف قبل التقديم غير إلزامي للماجستير لكن مستحسن · سؤال الحوالة البنكية حُوِّل لمكتب القبول العام (لا جواب مباشر)",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "UNIST",
       "name": "UNIST · أُلسان",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능대학원 (AI Graduate School)",
       "emails": {
         "admissions": "adm-g@unist.ac.kr",
@@ -92,13 +98,17 @@
       "draft_id": "r7460286652791313596",
       "thread_id": "1a02ec8ef216bc5d",
       "drafted_at": "2026-08-23",
-      "verdict": "صعب لكن ممكن — من أقوى الثلاثين: لا امتحان تحريري ولا حد معدل معلن، لكن قيد جهاز آيباد حقيقي عند التقديم"
+      "verdict": "صعب لكن ممكن — من أقوى الثلاثين: لا امتحان تحريري ولا حد معدل معلن، لكن قيد جهاز آيباد حقيقي عند التقديم",
+      "sent_at": "2026-08-23T13:52:14Z",
+      "message_id": "1a02ee4b26b8a40b",
+      "follow_up_due": "2026-09-06",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "GIST",
       "name": "GIST · غوانغجو",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "AI학과 / Department of AI Convergence",
       "emails": {
         "admissions": "admis@gist.ac.kr"
@@ -115,13 +125,17 @@
       "draft_id": "r-7129916226333945974",
       "thread_id": "1a02efd7d844d60d",
       "drafted_at": "2026-08-23",
-      "verdict": "واقعي — أقوى الثلاثين من ناحية التمويل: رسوم مدعومة تلقائياً بالكامل لكل الطلبة، بلا امتحان تحريري ولا رسالة أستاذ إلزامية ولا رصيد مجمّد. القيد الوحيد: بوابة Windows فقط."
+      "verdict": "واقعي — أقوى الثلاثين من ناحية التمويل: رسوم مدعومة تلقائياً بالكامل لكل الطلبة، بلا امتحان تحريري ولا رسالة أستاذ إلزامية ولا رصيد مجمّد. القيد الوحيد: بوابة Windows فقط.",
+      "sent_at": "2026-08-23T14:23:36Z",
+      "message_id": "1a02f01695b44b0f",
+      "follow_up_due": "2026-09-06",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي 2026-08-23T14:23 — صُحِّح 2026-08-24؛ اكتُشفت مسودة مكررة أُنشئت خطأً بنفس التاريخ وحُذفت فوراً"
     },
     {
       "id": "DGIST",
       "name": "DGIST · دايغو",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "Artificial Intelligence Major in Interdisciplinary Studies (인공지능전공)",
       "emails": {
         "admissions": "admission@dgist.ac.kr",
@@ -139,13 +153,17 @@
       "verdict": "واقعي — من أقوى الثلاثين: بلا معدل أو عمر منشور، إنكليزي اختياري بلا حد أدنى، ومنحة حكومية تلقائية. الحاجز الوحيد: تصديق قنصلي يبدأ قبل التقديم بأشهر.",
       "draft_id": "r3069936893558815524",
       "thread_id": "1a02f3a9a24365f6",
-      "drafted_at": "2026-08-23"
+      "drafted_at": "2026-08-23",
+      "sent_at": "2026-08-23T15:39:52Z",
+      "message_id": "1a02f473df1195cf",
+      "follow_up_due": "2026-09-06",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "KHU",
       "name": "Kyung Hee · كيونغ هي",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능학과 (Department of Artificial Intelligence) — كلية الهندسة، الحرم الدولي، 일반대학원",
       "emails": {
         "admissions": "ciss_gc@khu.ac.kr",
@@ -165,13 +183,17 @@
       "draft_id": "r8162807115912338735",
       "thread_id": "1a02f704d79657e6",
       "drafted_at": "2026-08-23",
-      "verdict": "صعب لكن ممكن — لغة وعمر ومعدل ليست عوائق، لكن الرصيد المجمّد 13,700$ عند التقديم قيد مالي حقيقي على جدول الادخار السنتين"
+      "verdict": "صعب لكن ممكن — لغة وعمر ومعدل ليست عوائق، لكن الرصيد المجمّد 13,700$ عند التقديم قيد مالي حقيقي على جدول الادخار السنتين",
+      "sent_at": "2026-08-24T00:02:13Z",
+      "message_id": "1a031132811d14da",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "SKKU",
       "name": "SKKU · سونغ كيون كوان",
       "tier": "A",
-      "status": "drafted",
+      "status": "sent",
       "dept": "인공지능학과 (Department of Artificial Intelligence) — كلية الحوسبة والمعلوماتية، حرم Suwon، 일반대학원",
       "emails": {
         "admissions": "intlgrad@skku.edu",
@@ -190,25 +212,34 @@
       "draft_id": "r-5425563331336181884",
       "thread_id": "1a0311939a9e264e",
       "drafted_at": "2026-08-24",
-      "verdict": "صعب لكن ممكن — الأغلى مادياً بين الجهات المدروسة، والحاجز الحقيقي رسالة أستاذ مسبقة لا المعدل ولا العمر ولا اللغة"
+      "verdict": "صعب لكن ممكن — الأغلى مادياً بين الجهات المدروسة، والحاجز الحقيقي رسالة أستاذ مسبقة لا المعدل ولا العمر ولا اللغة",
+      "sent_at": "2026-08-24T00:14:22Z",
+      "message_id": "1a0311e54eafe8eb",
+      "follow_up_due": "2026-09-07",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
     },
     {
       "id": "HANYANG",
       "name": "Hanyang · هانيانغ",
       "tier": "A",
-      "status": "pending",
-      "dept": "NextAI 인공지능대학원 (일반대학원 — لا 특수대학원)",
+      "status": "drafted",
+      "dept": "Department of Artificial Intelligence — Engineering Software college, 일반대학원 (General Graduate School, NOT 특수대학원)",
       "emails": {
-        "admissions": "intladms@hanyang.ac.kr",
-        "dept": "hygsai@hanyang.ac.kr"
+        "admissions": "admingrad@hanyang.ac.kr",
+        "admissions_alt": "intladms@hanyang.ac.kr",
+        "general_grad": "sgs@hanyang.ac.kr",
+        "professional_ai_school": "hygsai@hanyang.ac.kr"
       },
-      "phone": "02-2220-4139",
+      "phone": "82-2-2220-2445~2448",
       "sites": [
-        "nextai.hanyang.ac.kr",
-        "oia.hanyang.ac.kr"
+        "oia.hanyang.ac.kr",
+        "nextai.hanyang.ac.kr"
       ],
-      "open_question": "ما الفرق بمسار القبول بين 일반대학원 و인공지능융합대학원؟ وأيّهما يمنح فيزا D-2 لطالب دولي بدوام كامل؟",
-      "why_matters": "الـ특수대학원 عندهم مسائي وللموظفين ولا يمنح D-2 — فخّ يضيّع تقديماً كاملاً."
+      "open_question": "هل إغلاق الماجستير المستقل (MA/MS: X) بقسم AI بدليل ربيع 2027 دائم أم يفتح بدورة الخريف؟ وهل القسم يُدرَّس بالإنكليزي (يُعفى من TOPIK 4 لبدء الدراسة) أم بالكورية؟",
+      "why_matters": "🔴 اكتُشف اليوم (2026-08-24) من دليل القبول الرسمي (32 صفحة صورة، قُرئ كاملاً): قسم AI تحديداً مؤشَّر MA/MS: X — يقبل فقط دكتوراه أو مساراً مدمجاً، خلافاً لكل الأقسام المجاورة بنفس الكلية. لو دائم، Hanyang تخرج من خطة «ماجستير مستقل». بالمقابل: لا رسالة توصية إلزامية، لا رصيد مجمّد مطلوب، ومنحة 50% تلقائية تقريباً لطلبة الهندسة الدوليين — أخف الجهات وثائقياً وأرخصها فعلياً بعد المنحة.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/HANYANG.md",
+      "verdict": "صعب — الحاجز الجديد هو إغلاق الماجستير المستقل بقسم AI (إن كان دائماً) لا المعدل ولا العمر؛ وثائقياً ومالياً هي من أخف الجهات (لا توصية، لا رصيد مجمّد، منحة هندسة 50% شبه تلقائية)"
     },
     {
       "id": "INHA",
