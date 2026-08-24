@@ -83,7 +83,7 @@
 | **Chonnam National** — قبول الدراسات العليا | مكتب التعاون الدولي — مبنى G&R HUB غرفة 214 | 062-530-1189 · 062-530-5114 | لم يُنشر بريد — اتصل أو راسل عبر النموذج |
 | **Chungnam National** — القبول | — | **1644-8433** (تحويلة ② للدراسات العليا · ⑥ للأجانب) · 042-823-5875 | |
 | **Pusan National** — الإدارة | pnuadmin@pusan.ac.kr | — | قسم AI: `yangju@pusan.ac.kr` |
-| **Sejong** | webmaster@sejong.ac.kr | 02-3408-3114 | لم يُنشر بريد قبول دولي مباشر |
+| **Sejong** — القبول الدولي (One Stop Service Center) | **intadmission@sejong.ac.kr** | 82-2-3408-3973 | مؤكَّد من دليل القبول الرسمي 2026-08-24 · قسمان AI (Robotics / Data Science)، لا بريد أكاديمي مباشر مؤكَّد |
 | **Sogang** — الدراسات العليا | **gradsch@sogang.ac.kr** | +82-2-705-8168 | ثلاثة مسارات AI: AI Convergence · Digital Human & Entertainment · Smart AI |
 | **Chung-Ang** — قبول الدراسات العليا الدولي | **gsadmin@cau.ac.kr** | 02-820-6618 | + `cauai@cau.ac.kr` (القسم) · `curseor@cau.ac.kr` (المشرف) |
 
@@ -209,7 +209,7 @@ Hanyang NextAI · Dongguk AIX · Chungnam `bioairc` · Konkuk. **أعد المح
 
 | الجامعة | القسم | البريد | الهاتف |
 |---|---|---|---|
-| **سيجونغ · Sejong** | 일반대학원 인공지능융합학과 | **grad@sejong.ac.kr** | 02-3408-3550 |
+| **سيجونغ · Sejong** | 일반대학원 — Artificial Intelligence and Robotics / Artificial Intelligence and Data Science (كلية الهندسة، مؤكَّد من الدليل الرسمي). "인공지능융합학과" اسم ثالث ظهر بمصدر ثانوي غير مؤكَّد | **intadmission@sejong.ac.kr** (قبول عام، مؤكَّد) · `grad@sejong.ac.kr` غير مؤكَّد | 82-2-3408-3973 |
 | **كوانغ‌وون · Kwangwoon** | 일반대학원 **인공지능응용학과** (ماجستير ودكتوراه) | **kwgs@kw.ac.kr** | 02-940-5082 |
 | **جامعة سيول البلدية · UOS** | 인공지능학과 · كلية الهندسة | **engineer@uos.ac.kr** | 02-6490-2307 / 2309 |
 | **كيونغ‌بوك الوطنية · KNU** | **대학원 인공지능학과** + BK21 | — (عبر الموقع) | — |
