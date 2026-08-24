@@ -1,7 +1,8 @@
 // بطاقة منتج متجر Wayl — 1200×1200
 // 🔴 قاعدة واحدة تحكم كل شي: **الصورة صورة منتج، لا صفحة بيع.**
-//    مثل صورة iPhone بالمتجر: الشكل + الاسم. وبس.
-//    ممنوع على الصورة: السعر · الدرجات · قائمة المزايا · الوصف · التسليم.
+//    مثل صورة iPhone بالمتجر: الشكل وبس — **ولا حتى الاسم**.
+//    Wayl تعرض اسم المنتج جنب الصورة، فكتابته داخلها تكرار.
+//    ممنوع على الصورة: الاسم · السعر · الدرجات · المزايا · الوصف · التسليم.
 //    كل ذلك مكانه حقل الوصف بـWayl — جاهز بـ product/<فئة>/<SKU>/wayl.md
 //
 // ولكل فئة **شكل بصري مختلف** — لا قالب واحد مكرَّر 36 مرة.
@@ -357,7 +358,6 @@ const SKU_ART = {
 export function renderCard(item, fx, logoDataUri) {
   const t = themeFor(item);
   const art = (SKU_ART[item.sku] || ART[t.art])(t.accent);
-  const long = item.name.length;
 
   return `<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8">
 <style>
@@ -365,13 +365,9 @@ export function renderCard(item, fx, logoDataUri) {
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1200px;height:1200px;background:${t.bg};position:relative;overflow:hidden;
   font-family:"SF Arabic","Geeza Pro",system-ui,sans-serif;color:${INK};
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:110px 110px 190px;text-align:center}
-.art{width:560px;height:560px}
+  display:flex;align-items:center;justify-content:center;padding:150px}
+.art{width:100%;max-width:760px;aspect-ratio:1}
 .art svg{width:100%;height:100%;overflow:visible}
-h1{font-family:"Jawhara","SF Arabic",sans-serif;
-  font-size:${long > 34 ? 62 : long > 24 ? 70 : 80}px;line-height:1.18;
-  letter-spacing:-1px;margin-top:36px;max-width:940px}
 .foot{position:absolute;inset:auto 0 74px 0;display:flex;align-items:center;
   justify-content:center;gap:16px}
 .foot img{width:56px;height:56px;border-radius:13px}
@@ -379,7 +375,6 @@ h1{font-family:"Jawhara","SF Arabic",sans-serif;
 .bar{position:absolute;inset:auto 0 0 0;height:9px;background:${t.accent}}
 </style></head><body>
 <div class="art">${art}</div>
-<h1>${item.name}</h1>
 <div class="foot"><img src="${logoDataUri}" alt="wbtio"><span>${item.sku}</span></div>
 <div class="bar"></div>
 </body></html>`;

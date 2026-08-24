@@ -7,6 +7,7 @@
 | [`WAYL-SETUP.md`](WAYL-SETUP.md) | **مولَّد** — 🔴 ابدأ منه عند الإدخال: المجموعات والحقول وفروق الخيارات |
 | [`MARGINS.md`](MARGINS.md) | **مولَّد** — $/ساعة لكل درجة + كم عميل تحتاج للأرضية |
 | [`brand/BRAND.md`](brand/BRAND.md) | نظام الهوية — الألوان والخطوط والشعاران وحدود Higgsfield |
+| [`store.html`](store.html) | **مولَّد** — 🛍️ معاينة المتجر: فئات + شبكة منتجات + صفحة منتج بخياراتها |
 | [`pick.html`](pick.html) | **مولَّد** — شاشة اختيار: علّم الخدمات وانسخها بزر واحد |
 | [`render.mjs`](render.mjs) | المولّد — الصور + `STORE.md` + `MARGINS.md` + `pick.html` |
 | [`card.html.mjs`](card.html.mjs) | قالب البطاقة 1200×1200 |
@@ -18,7 +19,7 @@
 node income/wayl/render.mjs
 ```
 
-يقرأ `items.json` ويكتب `images/*.png` و`STORE.md` و`MARGINS.md` و`WAYL-SETUP.md` و`pick.html`،
+يقرأ `items.json` ويكتب `images/*.png` و`STORE.md` و`MARGINS.md` و`WAYL-SETUP.md` و`store.html` و`pick.html`،
 ويحذّر إذا أي درجة نزلت تحت **$15/ساعة**. **بعد أي تغيير سعر شغّله** —
 لا تحرّر `STORE.md` ولا الصور يدوياً.
 

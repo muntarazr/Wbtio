@@ -739,6 +739,200 @@ sync();
 </body></html>`);
 console.log('✓ pick.html');
 
+// ── store.html — معاينة المتجر ───────────────────────────────────────────
+const md = (x) => (x || '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+  .replace(/`(.+?)`/g, '<code>$1</code>')
+  .replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+
+const CATS = [
+  ['ابدأ من هنا',                 i => i.cat === 'مدخل'],
+  ['مواقع ومتاجر',                i => i.cat === 'ويب'],
+  ['تطبيقات موبايل',              i => i.cat === 'موبايل'],
+  ['أتمتة على قياسك',             i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat)],
+  ['حلول جاهزة — زبائن ومبيعات',  i => i.sub === 'زبائن ومبيعات'],
+  ['حلول جاهزة — إدارة ومستندات', i => i.sub === 'إدارة ومستندات'],
+  ['بيانات وتقارير',              i => i.cat === 'بيانات'],
+  ['باقات شهرية',                 i => i.kind === 'subscription'],
+];
+
+const shop = CATS.flatMap(([cat, f]) => ALL.filter(f).map(i => {
+  const e = entryTier(i);
+  return {
+    sku: i.sku, name: i.name, cat, short: i.short, desc: md(i.desc || i.note),
+    from: e ? e.price : i.price, fromIQD: e ? toIQD(e.price, fx.rate) : i.price != null ? toIQD(i.price, fx.rate) : '',
+    sub: i.kind === 'subscription',
+    tiers: (i.tiers || []).map(t => ({
+      name: t.name, price: t.price, iqd: toIQD(t.price, fx.rate),
+      gc: t.market === 'GC', delivery: t.delivery, includes: t.includes || [],
+    })),
+  };
+}));
+
+fs.writeFileSync(path.join(DIR, 'store.html'), `<!doctype html>
+<html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>wbtio — الخدمات</title>
+<style>
+:root{--bg:#FBFBFC;--card:#fff;--ink:#0A0A0A;--mut:#52525B;--dim:#8A8A94;--line:#E7E7EA;--r:16px}
+@media(prefers-color-scheme:dark){:root{--bg:#0A0A0B;--card:#141416;--ink:#FAFAFA;--mut:#C4C4CC;--dim:#8A8A94;--line:#27272A}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"SF Arabic","Geeza Pro",system-ui,sans-serif;line-height:1.6}
+header{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:20}
+.hin{max-width:1080px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:40px;height:40px;border-radius:10px}
+.hin b{font-size:1.15rem}.hin small{color:var(--dim);font-size:.8rem}
+nav{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;overflow-x:auto;
+  scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{font:inherit;font-size:.86rem;white-space:nowrap;border:1px solid var(--line);
+  background:var(--card);color:var(--mut);border-radius:999px;padding:8px 16px;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+main{max-width:1080px;margin:0 auto;padding:8px 20px 60px}
+h2.sec{font-size:.95rem;color:var(--dim);margin:26px 0 12px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  cursor:pointer;transition:transform .12s,box-shadow .12s;text-align:right}
+.p:hover{transform:translateY(-3px);box-shadow:0 8px 24px #0000001a}
+.p img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.pb{padding:13px 15px 16px}
+.pn{font-weight:600;font-size:.95rem;line-height:1.35}
+.pp{margin-top:7px;font-size:.88rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.pp b{color:var(--ink)}
+.pp i{font-style:normal;color:var(--dim)}
+.tag{display:inline-block;margin-top:8px;font-size:.7rem;color:var(--dim);
+  border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+/* صفحة المنتج */
+#ov{position:fixed;inset:0;background:#00000088;backdrop-filter:blur(3px);z-index:50;
+  display:none;overflow-y:auto;padding:24px}
+#ov.open{display:block}
+.sheet{max-width:820px;margin:0 auto;background:var(--bg);border-radius:20px;overflow:hidden;
+  border:1px solid var(--line)}
+.sh-top{display:flex;gap:0;flex-wrap:wrap;background:var(--card)}
+.sh-top img{width:340px;max-width:100%;aspect-ratio:1;object-fit:cover}
+.sh-hd{flex:1;min-width:260px;padding:26px 24px;display:flex;flex-direction:column}
+.sh-hd h3{font-size:1.4rem;line-height:1.3}
+.sh-hd p{color:var(--mut);font-size:.92rem;margin-top:10px}
+.price{margin-top:auto;padding-top:18px}
+.price b{font-size:1.7rem}.price span{display:block;color:var(--dim);font-size:.88rem}
+.buy{margin-top:14px;width:100%;font:inherit;font-weight:600;font-size:.95rem;
+  background:var(--ink);color:var(--bg);border:0;border-radius:12px;padding:13px;cursor:pointer}
+.sh-bd{padding:24px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;cursor:pointer}
+.opt.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.opt input{margin-top:5px;accent-color:var(--ink);width:17px;height:17px;flex:none}
+.opt .ot{flex:1}
+.opt .on1{font-weight:600;font-size:.94rem}
+.opt .oi{color:var(--dim);font-size:.8rem;margin-top:3px}
+.opt .op{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums;text-align:left}
+.opt .op span{display:block;font-weight:400;color:var(--dim);font-size:.76rem}
+.gc{font-size:.66rem;background:var(--ink);color:var(--bg);border-radius:5px;padding:1px 6px;margin-inline-start:5px}
+.desc{margin-top:24px;color:var(--mut);font-size:.93rem}
+.desc p{margin:0 0 12px}.desc b{color:var(--ink)}
+.desc code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.85em}
+.x{position:absolute;inset-inline-end:34px;top:34px;width:38px;height:38px;border-radius:50%;
+  border:0;background:var(--card);color:var(--ink);font-size:1.3rem;cursor:pointer;z-index:60}
+h4{font-size:.82rem;color:var(--dim);margin-bottom:10px;font-weight:600}
+footer{text-align:center;color:var(--dim);font-size:.8rem;padding:30px 20px 50px}
+</style></head><body>
+
+<header>
+  <div class="hin">
+    <img class="logo" src="brand/logo-solid.svg" alt="wbtio">
+    <div><b>wbtio</b><br><small>خدمات برمجة وأتمتة أعمال</small></div>
+  </div>
+  <nav id="nav"></nav>
+</header>
+
+<main id="main"></main>
+<footer>معاينة محلية · ${ALL.length} خدمة · سعر الصرف ${fx.rate} د.ع/$ · ${data._meta.updated}<br>
+الأسعار مُضمَّنة عمولة الدفع 3.5%</footer>
+
+<div id="ov"><button class="x" onclick="close_()">✕</button><div id="sheet"></div></div>
+
+<script>
+const P = ${JSON.stringify(shop)};
+const CATS = [...new Set(P.map(p => p.cat))];
+let cur = 'الكل';
+
+document.getElementById('nav').innerHTML =
+  ['الكل', ...CATS].map(c => \`<button data-c="\${c}" class="\${c === cur ? 'on' : ''}">\${c}\${
+    c === 'الكل' ? ' (' + P.length + ')' : ' (' + P.filter(p => p.cat === c).length + ')'}</button>\`).join('');
+
+const card = p => \`<div class="p" onclick="open_('\${p.sku}')">
+  <img src="images/\${p.sku}.png" alt="\${p.name}" loading="lazy">
+  <div class="pb"><div class="pn">\${p.name}</div>
+    <div class="pp">\${p.tiers.length > 1 ? '<i>يبدأ من</i> ' : ''}<b>$\${p.from}</b>\${p.sub ? '/شهر' : ''}
+      <i>· \${p.fromIQD} د.ع</i></div>
+    \${p.tiers.length > 1 ? \`<span class="tag">\${p.tiers.length} خيارات</span>\` : ''}
+  </div></div>\`;
+
+function draw() {
+  const m = document.getElementById('main');
+  const cats = cur === 'الكل' ? CATS : [cur];
+  m.innerHTML = cats.map(c => {
+    const list = P.filter(p => p.cat === c);
+    if (!list.length) return '';
+    return \`<h2 class="sec">\${c}</h2><div class="grid">\${list.map(card).join('')}</div>\`;
+  }).join('');
+  document.querySelectorAll('#nav button').forEach(b =>
+    b.classList.toggle('on', b.dataset.c === cur));
+}
+
+document.getElementById('nav').onclick = e => {
+  if (!e.target.dataset.c) return;
+  cur = e.target.dataset.c; draw(); scrollTo(0, 0);
+};
+
+let pick = 0;
+function open_(sku) {
+  const p = P.find(x => x.sku === sku); pick = 0;
+  document.getElementById('sheet').innerHTML = \`<div class="sheet">
+    <div class="sh-top">
+      <img src="images/\${p.sku}.png" alt="\${p.name}">
+      <div class="sh-hd"><h3>\${p.name}</h3><p>\${p.short || ''}</p>
+        <div class="price" id="pz"></div>
+        <button class="buy">أضف للسلة — معاينة فقط</button>
+      </div>
+    </div>
+    <div class="sh-bd">
+      \${p.tiers.length > 1 ? \`<h4>اختر الخيار</h4><div class="opts" id="opts">\${
+        p.tiers.map((t, k) => \`<label class="opt" onclick="setT('\${sku}',\${k})">
+          <input type="radio" name="t" \${k ? '' : 'checked'}>
+          <span class="ot"><span class="on1">\${t.name}\${t.gc ? '<span class="gc">خليج</span>' : ''}</span>
+            <span class="oi">\${t.includes.join(' · ')}\${t.delivery ? ' — ' + t.delivery : ''}</span></span>
+          <span class="op">$\${t.price}<span>\${t.iqd} د.ع</span></span>
+        </label>\`).join('')}</div>\` : ''}
+      <div class="desc"><h4 style="margin-top:22px">الوصف</h4><p>\${p.desc}</p></div>
+    </div></div>\`;
+  setT(sku, 0);
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function setT(sku, k) {
+  const p = P.find(x => x.sku === sku); pick = k;
+  const t = p.tiers[k] || { price: p.from, iqd: p.fromIQD, delivery: '' };
+  document.getElementById('pz').innerHTML =
+    \`<b>$\${t.price}</b>\${p.sub ? '/شهر' : ''}<span>\${t.iqd} د.ع\${t.delivery ? ' · ' + t.delivery : ''}</span>\`;
+  document.querySelectorAll('#opts .opt').forEach((o, j) => {
+    o.classList.toggle('on', j === k);
+    o.querySelector('input').checked = j === k;
+  });
+}
+
+const close_ = () => { document.getElementById('ov').classList.remove('open'); document.body.style.overflow = ''; };
+document.getElementById('ov').onclick = e => { if (e.target.id === 'ov') close_(); };
+addEventListener('keydown', e => e.key === 'Escape' && close_());
+
+draw();
+</script>
+</body></html>`);
+console.log('✓ store.html');
+
 if (low.length) {
   console.log(`\n🔴 ${low.length} درجة تحت $${FLOOR}/ساعة: ${low.map(t => t.sku + '/' + t.name).join(', ')}`);
 } else {
