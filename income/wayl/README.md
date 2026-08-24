@@ -10,7 +10,7 @@
 | [`pick.html`](pick.html) | **مولَّد** — شاشة اختيار: علّم الخدمات وانسخها بزر واحد |
 | [`render.mjs`](render.mjs) | المولّد — الصور + `STORE.md` + `MARGINS.md` + `pick.html` |
 | [`card.html.mjs`](card.html.mjs) | قالب البطاقة 1200×1200 |
-| `images/` | 20 صورة · اسم الملف = SKU |
+| `images/` | 36 صورة · اسم الملف = SKU |
 
 ## إعادة التوليد
 

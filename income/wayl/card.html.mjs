@@ -11,6 +11,7 @@ export const THEME = {
   'مدخل':           { bg: '#EFF6FF', accent: '#2563EB' },
   'اشتراك':         { bg: '#F1F5F9', accent: '#475569' },
   'أداة دفع':       { bg: '#FAFAFA', accent: '#52525B' },
+  'أتمتة جاهزة':    { bg: '#FFF7ED', accent: '#EA580C' },
 };
 
 const INK = '#0A0A0A';
