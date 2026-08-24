@@ -5,7 +5,8 @@
 | [`items.json`](items.json) | 🔴 **مصدر الحقيقة** — الأسعار والأوصاف وسعر الصرف. عدّل هنا فقط |
 | [`STORE.md`](STORE.md) | **مولَّد** — الكتالوج بأوصاف جاهزة للنسخ + قواعد التسعير |
 | [`brand/BRAND.md`](brand/BRAND.md) | نظام الهوية — الألوان والخطوط والشعاران وحدود Higgsfield |
-| [`render.mjs`](render.mjs) | المولّد — الصور + `STORE.md` |
+| [`pick.html`](pick.html) | **مولَّد** — شاشة اختيار: علّم الخدمات وانسخها بزر واحد |
+| [`render.mjs`](render.mjs) | المولّد — الصور + `STORE.md` + `pick.html` |
 | [`card.html.mjs`](card.html.mjs) | قالب البطاقة 1200×1200 |
 | `images/` | 17 صورة · اسم الملف = SKU |
 
@@ -15,7 +16,7 @@
 node income/wayl/render.mjs
 ```
 
-يقرأ `items.json` ويكتب `images/*.png` و`STORE.md`. **بعد أي تغيير سعر شغّله** —
+يقرأ `items.json` ويكتب `images/*.png` و`STORE.md` و`pick.html`. **بعد أي تغيير سعر شغّله** —
 لا تحرّر `STORE.md` ولا الصور يدوياً.
 
 **سعر الصرف** بحقل واحد: `_meta.fx.rate` — حالياً **1,320 د.ع/$** (الرسمي · 2026-08-24).
