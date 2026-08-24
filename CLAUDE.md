@@ -150,6 +150,7 @@
 node income/pipeline.mjs                 # حالة الدخل والمؤشرات والحركة التالية
 node income/catalog/catalog.mjs          # 100 خدمة ومنتج · فلاتر
 node system/generate-docs.mjs            # يعيد توليد TASKS و MONTHLY-SPRINTS
+node income/wayl/render.mjs              # صور متجر Wayl الـ17 + STORE.md
 ```
 
 ---
@@ -161,8 +162,8 @@ node system/generate-docs.mjs            # يعيد توليد TASKS و MONTHLY-
 | **فرع واحد** | كل الشغل على `main` · بلا فروع منفصلة |
 | **كل مجلد فيه README** | يشرح محتواه ومن أين تبدأ |
 | **لا تكرار** | معلومة واحدة بمكان واحد · والباقي يحيل إليه |
-| **الملفات المولَّدة** | `system/TASKS.md` و`MONTHLY-SPRINTS.md` و`income/catalog/CATALOG.md` — **لا تعدّلها يدوياً**، عدّل المصدر وأعد التوليد |
-| **مصادر الحقيقة** | `career/cv/SOURCE-OF-TRUTH.md` للحقائق الشخصية · `income/catalog/catalog.json` للخدمات · `dashboard/assets/tasks.js` للمهام · `income/pipeline.json` للدخل |
+| **الملفات المولَّدة** | `system/TASKS.md` و`MONTHLY-SPRINTS.md` و`income/catalog/CATALOG.md` و`income/wayl/STORE.md` و`income/wayl/images/` — **لا تعدّلها يدوياً**، عدّل المصدر وأعد التوليد |
+| **مصادر الحقيقة** | `career/cv/SOURCE-OF-TRUTH.md` للحقائق الشخصية · `income/catalog/catalog.json` للخدمات · `income/wayl/items.json` لمتجر Wayl · `dashboard/assets/tasks.js` للمهام · `income/pipeline.json` للدخل |
 | **افحص الروابط** | بعد أي نقل أو إعادة تسمية — صفر روابط مكسورة شرط |
 | **حارس الخصوصية** | `git config core.hooksPath .githooks` بعد كل clone |
 | **إطار `career/job-search/`** | مستورد بـsubtree — **لا تعدّل ملفات المنبع**، فقط `INSTALL-AR.md` وملفات البروفايل |
