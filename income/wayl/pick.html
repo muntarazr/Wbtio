@@ -18,34 +18,36 @@ button:hover{border-color:var(--dim)}
 button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
 .count{margin-inline-start:auto;color:var(--dim);font-size:.9rem;font-variant-numeric:tabular-nums}
 h2{font-size:1rem;color:var(--dim);margin:26px 0 10px;font-weight:600}
-.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
-th{text-align:right;font-size:.78rem;color:var(--dim);font-weight:600;padding:10px 14px;border-bottom:1px solid var(--line)}
-td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-tr:last-child td{border-bottom:0}
-tr.on{background:color-mix(in srgb,var(--ink) 5%,transparent)}
-input[type=checkbox]{width:19px;height:19px;cursor:pointer;accent-color:var(--ink)}
-.nm{font-weight:600}
-.ds{color:var(--dim);font-size:.8rem;margin-top:3px;max-width:46ch}
-.sku{font-size:.72rem;color:var(--dim);letter-spacing:1px;font-family:ui-monospace,monospace}
-.pr{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:left;font-weight:600}
-.iq{display:block;font-weight:400;color:var(--dim);font-size:.78rem;margin-top:2px}
+.svc{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:12px;overflow:hidden}
+.hd{padding:14px 16px;border-bottom:1px solid var(--line)}
+.nm{font-weight:600;font-size:1.02rem}
+.ds{color:var(--dim);font-size:.84rem;margin-top:3px}
+.sku{font-size:.7rem;color:var(--dim);letter-spacing:1px;font-family:ui-monospace,monospace}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;vertical-align:1px}
-.note{color:var(--dim);font-size:.82rem;margin-bottom:8px}
-#out{width:100%;margin-top:24px;min-height:150px;background:var(--card);color:var(--ink);
+.tr{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--line);cursor:pointer}
+.tr:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.tr.on{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--ink);flex:none}
+.tn{flex:1;font-size:.92rem}
+.gc{font-size:.68rem;background:var(--ink);color:var(--bg);border-radius:5px;padding:1px 7px;margin-inline-start:6px}
+.hr{font-size:.72rem;color:var(--dim);font-variant-numeric:tabular-nums;margin-inline-start:8px}
+.tp{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600;text-align:left;font-size:.92rem}
+.tp span{display:block;font-weight:400;color:var(--dim);font-size:.74rem}
+#out{width:100%;margin-top:24px;min-height:170px;background:var(--card);color:var(--ink);
   border:1px solid var(--line);border-radius:14px;padding:16px;font-family:ui-monospace,monospace;
-  font-size:.82rem;line-height:1.7;white-space:pre;overflow-x:auto;direction:rtl}
-.ok{color:#059669;font-weight:600}
+  font-size:.8rem;line-height:1.7;white-space:pre;overflow-x:auto;direction:rtl}
+.note{color:var(--dim);font-size:.82rem;margin-bottom:8px}
 </style></head><body>
 
 <h1>اختيار الخدمات — متجر Wayl</h1>
-<p class="sub">علّم اللي راح تنشره فعلاً، بعدين اضغط «انسخ المحدَّد» وألصقه بالمحادثة.
-سعر الصرف 1320 د.ع/$ · 2026-08-24</p>
+<p class="sub">علّم <b>كل درجة</b> راح تنشرها. الدرجة هي «خيار المنتج» بـWayl.
+سعر الصرف 1320 د.ع/$ · الحد الأدنى $15/ساعة · 2026-08-24</p>
 
 <div class="bar">
   <button onclick="setAll(true)">حدّد الكل</button>
   <button onclick="setAll(false)">امسح الكل</button>
-  <button onclick="onlyProducts()">الباقات فقط</button>
+  <button onclick="onlyIQ()">العراق فقط</button>
+  <button onclick="onlyEntry()">أرخص درجة فقط</button>
   <button class="primary" onclick="copyOut()">📋 انسخ المحدَّد</button>
   <span class="count" id="count"></span>
 </div>
@@ -54,69 +56,82 @@ input[type=checkbox]{width:19px;height:19px;cursor:pointer;accent-color:var(--in
 <textarea id="out" readonly placeholder="النص المُولَّد يظهر هنا…"></textarea>
 
 <script>
-const ITEMS = [{"sku":"AUD-01","name":"تدقيق أتمتة شامل + خارطة طريق","group":"باقات المشاريع","kind":"product","cat":"مدخل","desc":"جلسة فحص لعملياتك، وتقرير مكتوب يحدد ما يمكن أتمتته وكم يوفّر.","unit":"مرة واحدة","delivery":"5 أيام عمل","price":300,"price_label":"","iqd":"396,000"},{"sku":"LND-01","name":"صفحة هبوط لحملة تسويقية","group":"باقات المشاريع","kind":"product","cat":"ويب","desc":"صفحة واحدة سريعة مصممة لهدف واحد: التحويل.","unit":"مرة واحدة","delivery":"5 أيام عمل","price":300,"price_label":"","iqd":"396,000"},{"sku":"WA-01","name":"أتمتة استقبال طلبات واتساب","group":"باقات المشاريع","kind":"product","cat":"أتمتة","desc":"كل طلب يصلك على واتساب يُسجَّل تلقائياً بجدول منظم مع تنبيه فوري.","unit":"مرة واحدة","delivery":"7 أيام عمل","price":550,"price_label":"","iqd":"726,000"},{"sku":"WEB-01","name":"موقع تعريفي احترافي","group":"باقات المشاريع","kind":"product","cat":"ويب","desc":"موقع شركة كامل بالعربي والإنكليزي، سريع وجاهز لمحركات البحث.","unit":"مرة واحدة","delivery":"14 يوم عمل","price":800,"price_label":"","iqd":"1,056,000"},{"sku":"BOT-01","name":"رد آلي ذكي على استفسارات العملاء","group":"باقات المشاريع","kind":"product","cat":"أتمتة","desc":"مساعد يرد على أسئلة عملائك المتكررة بلغتهم، على مدار الساعة.","unit":"مرة واحدة","delivery":"10 أيام عمل","price":700,"price_label":"","iqd":"924,000"},{"sku":"DSH-01","name":"لوحة تقارير تفاعلية","group":"باقات المشاريع","kind":"product","cat":"بيانات","desc":"أرقام نشاطك بمكان واحد، محدَّثة تلقائياً بدل جداول Excel المتفرقة.","unit":"مرة واحدة","delivery":"12 يوم عمل","price":850,"price_label":"","iqd":"1,122,000"},{"sku":"STR-01","name":"متجر إلكتروني كامل","group":"باقات المشاريع","kind":"product","cat":"ويب","desc":"متجر جاهز للبيع: منتجات، سلة، دفع إلكتروني، ولوحة إدارة.","unit":"مرة واحدة","delivery":"21 يوم عمل","price":2000,"price_label":"","iqd":"2,640,000"},{"sku":"APP-01","name":"تطبيق موبايل لمتجر قائم","group":"باقات المشاريع","kind":"product","cat":"موبايل","desc":"تطبيق iOS وAndroid مربوط بمتجرك الحالي، بإشعارات فورية.","unit":"مرة واحدة","delivery":"30 يوم عمل","price":2400,"price_label":"","iqd":"3,168,000"},{"sku":"AGT-01","name":"وكيل AI للرد على مستندات شركتك","group":"باقات المشاريع","kind":"product","cat":"ذكاء اصطناعي","desc":"ارفع عقودك وأدلتك ولوائحك، واسأل بلغتك — يجيبك مع مصدر الجواب.","unit":"مرة واحدة","delivery":"30 يوم عمل","price":2500,"price_label":"","iqd":"3,300,000"},{"sku":"SUB-BAS","name":"صيانة ودعم — الباقة الأساسية","group":"الاشتراكات الشهرية","kind":"subscription","cat":"اشتراك","desc":"يبقى ما بنيناه شغّالاً وآمناً ومحدَّثاً، بلا مفاجآت.","unit":"شهرياً","delivery":"رد خلال 48 ساعة","price":150,"price_label":"","iqd":"198,000"},{"sku":"SUB-GRW","name":"صيانة ودعم — باقة النمو","group":"الاشتراكات الشهرية","kind":"subscription","cat":"اشتراك","desc":"صيانة كاملة زائد تطوير مستمر — مطوّرك بلا عقد توظيف.","unit":"شهرياً","delivery":"رد خلال 24 ساعة","price":350,"price_label":"","iqd":"462,000"},{"sku":"SUB-AUT","name":"ريتينر أتمتة شهري","group":"الاشتراكات الشهرية","kind":"subscription","cat":"اشتراك","desc":"كل شهر نُؤتمت عملية جديدة من عملياتك، ونشغّل ونصون السابقة.","unit":"شهرياً","delivery":"رد خلال 24 ساعة","price":600,"price_label":"","iqd":"792,000"},{"sku":"PAY-DEP","name":"عربون بدء مشروع — 50%","group":"أدوات الدفع — ليست خدمات","kind":"payment_tool","cat":"أداة دفع","desc":"ليس منتجاً. الدفعة الأولى من مشروع متفق عليه. المبلغ يُحدَّد بالفاتورة.","unit":"","delivery":"","price":null,"price_label":"50% من قيمة العقد","iqd":""},{"sku":"PAY-MIL","name":"دفعة مرحلية","group":"أدوات الدفع — ليست خدمات","kind":"payment_tool","cat":"أداة دفع","desc":"ليس منتجاً. دفعة عند إنجاز مرحلة متفق عليها بالعقد.","unit":"","delivery":"","price":null,"price_label":"حسب العقد","iqd":""},{"sku":"PAY-FIN","name":"الدفعة النهائية عند التسليم","group":"أدوات الدفع — ليست خدمات","kind":"payment_tool","cat":"أداة دفع","desc":"ليس منتجاً. الرصيد المتبقي، يُدفع قبل تسليم الملفات والوصول.","unit":"","delivery":"","price":null,"price_label":"حسب العقد","iqd":""},{"sku":"PAY-HR","name":"ساعة عمل إضافية خارج نطاق العقد","group":"أدوات الدفع — ليست خدمات","kind":"payment_tool","cat":"أداة دفع","desc":"يحمي من تمدد النطاق. أي طلب خارج المتفق عليه يُسعَّر بالساعة.","unit":"للساعة","delivery":"","price":35,"price_label":"","iqd":"46,200"},{"sku":"PAY-RSH","name":"رسوم تنفيذ مستعجل","group":"أدوات الدفع — ليست خدمات","kind":"payment_tool","cat":"أداة دفع","desc":"ليس منتجاً. +25% على قيمة المشروع مقابل تقليص مدة التسليم.","unit":"","delivery":"","price":null,"price_label":"+25% على قيمة المشروع","iqd":""}];
+const ITEMS = [{"sku":"START-01","name":"جلسة تشخيص — وين تضيع فلوسك ووقتك","cat":"مدخل","kind":"product","desc":"ساعة معك بالمكالمة، وتقرير مكتوب: شنو ينفع يتحسّن بشغلك، وكم يوفّر، وشنو أول خطوة.","group":"مداخل رخيصة","tiers":[{"name":"جلسة + تقرير","price":40,"iqd":"52,800","market":"IQ","hours":2,"delivery":"خلال 3 أيام","rate":19.3,"label":""}]},{"sku":"FIX-01","name":"تسريع موقعك وإصلاح أخطائه","cat":"مدخل","kind":"product","desc":"موقعك بطيء أو فيه أشياء خربانة؟ أفحصه وأصلح اللي يقدر ينصلح، وأگلك الباقي بصراحة.","group":"مداخل رخيصة","tiers":[{"name":"فحص وإصلاح","price":70,"iqd":"92,400","market":"IQ","hours":3,"delivery":"3 أيام","rate":22.5,"label":""}]},{"sku":"SETUP-01","name":"دومين واستضافة وبريد باسم شركتك","cat":"مدخل","kind":"product","desc":"بدل ما تراسل زبائنك من Gmail، يصير عندك بريد باسم شركتك ودومين خاص.","group":"مداخل رخيصة","tiers":[{"name":"إعداد كامل","price":55,"iqd":"72,600","market":"IQ","hours":2,"delivery":"يومان","rate":26.5,"label":""}]},{"sku":"SITE-01","name":"موقع لشركتك","cat":"ويب","kind":"product","desc":"موقع يعرّف بشغلك، سريع، يشتغل على الموبايل، ويطلع بجوجل لما أحد يدوّر عليك.","group":"الخدمات","tiers":[{"name":"بسيط — 3 صفحات","price":250,"iqd":"330,000","market":"IQ","hours":12,"delivery":"7 أيام","rate":20.1,"label":""},{"name":"كامل — 6 صفحات بلغتين","price":550,"iqd":"726,000","market":"IQ","hours":25,"delivery":"14 يوم","rate":21.2,"label":""},{"name":"بلوحة تحكم","price":950,"iqd":"1,254,000","market":"IQ","hours":45,"delivery":"21 يوم","rate":20.4,"label":""},{"name":"نسخة الخليج","price":1800,"iqd":"2,376,000","market":"GC","hours":32,"delivery":"21 يوم","rate":54.3,"label":""}]},{"sku":"LAND-01","name":"صفحة إعلان تجيب لك زبائن","cat":"ويب","kind":"product","desc":"صفحة وحدة مصممة لهدف واحد: الزائر يترك رقمه أو يشتري. تنفع مع إعلانات فيسبوك وانستغرام.","group":"الخدمات","tiers":[{"name":"سريعة","price":120,"iqd":"158,000","market":"IQ","hours":5,"delivery":"3 أيام","rate":23.2,"label":""},{"name":"كاملة + اختبار A/B","price":250,"iqd":"330,000","market":"IQ","hours":10,"delivery":"6 أيام","rate":24.1,"label":""},{"name":"مع إعداد الحملة","price":420,"iqd":"554,000","market":"IQ","hours":16,"delivery":"10 أيام","rate":25.3,"label":""}]},{"sku":"SHOP-01","name":"متجر بيع أونلاين","cat":"ويب","kind":"product","desc":"متجرك الخاص بدومينك — يعرض منتجاتك، يستقبل الطلبات، ويقبل الدفع. مو صفحة انستغرام.","group":"الخدمات","tiers":[{"name":"مبتدئ — حتى 30 منتج","price":700,"iqd":"924,000","market":"IQ","hours":35,"delivery":"14 يوم","rate":19.3,"label":""},{"name":"متوسط — بلا حد","price":1400,"iqd":"1,848,000","market":"IQ","hours":65,"delivery":"21 يوم","rate":20.8,"label":""},{"name":"متقدم","price":2200,"iqd":"2,904,000","market":"IQ","hours":95,"delivery":"30 يوم","rate":22.3,"label":""},{"name":"نسخة الخليج","price":3500,"iqd":"4,620,000","market":"GC","hours":70,"delivery":"30 يوم","rate":48.3,"label":""}]},{"sku":"APP-01","name":"تطبيق موبايل لمتجرك","cat":"موبايل","kind":"product","desc":"تطبيق أندرويد وآيفون بقاعدة كود واحدة — أرخص 40% من بناء تطبيقين منفصلين.","group":"الخدمات","tiers":[{"name":"أساسي","price":1200,"iqd":"1,584,000","market":"IQ","hours":55,"delivery":"30 يوم","rate":21.1,"label":""},{"name":"كامل","price":2000,"iqd":"2,640,000","market":"IQ","hours":90,"delivery":"45 يوم","rate":21.4,"label":""},{"name":"متقدم","price":3200,"iqd":"4,224,000","market":"IQ","hours":140,"delivery":"60 يوم","rate":22.1,"label":""}]},{"sku":"WA-01","name":"طلبات الواتساب تنحفظ لحالها","cat":"أتمتة","kind":"product","desc":"كل طلب يجيك بالواتساب ينكتب تلقائياً بجدول مرتّب، وينبّهك. ما يضيع ولا طلب بين المحادثات.","group":"الخدمات","tiers":[{"name":"بسيط","price":150,"iqd":"198,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":24.1,"label":""},{"name":"متوسط","price":350,"iqd":"462,000","market":"IQ","hours":14,"delivery":"8 أيام","rate":24.1,"label":""},{"name":"متقدم","price":650,"iqd":"858,000","market":"IQ","hours":26,"delivery":"14 يوم","rate":24.1,"label":""},{"name":"نسخة الخليج","price":1400,"iqd":"1,848,000","market":"GC","hours":28,"delivery":"14 يوم","rate":48.3,"label":""}]},{"sku":"BOT-01","name":"رد آلي على أسئلة زبائنك","cat":"أتمتة","kind":"product","desc":"الأسئلة المتكررة (السعر؟ التوصيل؟ الدوام؟) تنجاوب لحالها 24 ساعة — بالعربي وباللهجة العراقية.","group":"الخدمات","tiers":[{"name":"بسيط","price":200,"iqd":"264,000","market":"IQ","hours":8,"delivery":"5 أيام","rate":24.1,"label":""},{"name":"متوسط","price":450,"iqd":"594,000","market":"IQ","hours":18,"delivery":"10 أيام","rate":24.1,"label":""},{"name":"متقدم","price":800,"iqd":"1,056,000","market":"IQ","hours":32,"delivery":"16 يوم","rate":24.1,"label":""},{"name":"نسخة الخليج","price":1700,"iqd":"2,244,000","market":"GC","hours":34,"delivery":"16 يوم","rate":48.3,"label":""}]},{"sku":"AUTO-01","name":"اربط برامجك ببعضها","cat":"أتمتة","kind":"product","desc":"بدل ما تنقل البيانات بيدك بين برنامج وبرنامج، تنتقل لحالها. كل عملية تكررها يومياً تنفع.","group":"الخدمات","tiers":[{"name":"عملية واحدة","price":120,"iqd":"158,000","market":"IQ","hours":5,"delivery":"4 أيام","rate":23.2,"label":""},{"name":"ثلاث عمليات","price":350,"iqd":"462,000","market":"IQ","hours":14,"delivery":"9 أيام","rate":24.1,"label":""},{"name":"منظومة — حتى 8 عمليات","price":700,"iqd":"924,000","market":"IQ","hours":28,"delivery":"18 يوم","rate":24.1,"label":""}]},{"sku":"DASH-01","name":"لوحة تعرض أرقام شغلك","cat":"بيانات","kind":"product","desc":"أرقامك كلها بشاشة وحدة محدَّثة تلقائياً — بدل ما تفتح خمس ملفات Excel وتجمع بيدك.","group":"الخدمات","tiers":[{"name":"بسيط","price":250,"iqd":"330,000","market":"IQ","hours":10,"delivery":"7 أيام","rate":24.1,"label":""},{"name":"متوسط","price":500,"iqd":"660,000","market":"IQ","hours":20,"delivery":"12 يوم","rate":24.1,"label":""},{"name":"متقدم","price":850,"iqd":"1,122,000","market":"IQ","hours":34,"delivery":"18 يوم","rate":24.1,"label":""}]},{"sku":"AGT-01","name":"مساعد يجاوب من مستندات شركتك","cat":"ذكاء اصطناعي","kind":"product","desc":"ترفع عقودك ولوائحك، وتسأل بلغتك — يجيبك مع الإشارة لمصدر الجواب بالمستند.","group":"الخدمات","tiers":[{"name":"تنفيذ أول — بضمان استرداد","price":600,"iqd":"792,000","market":"IQ","hours":30,"delivery":"21 يوم","rate":19.3,"label":""}]},{"sku":"CARE-01","name":"متابعة شهرية — موقعك بأمان","cat":"اشتراك","kind":"subscription","desc":"نسخ احتياطية، تحديثات أمان، وإصلاح أي عطل. تشتريها كل شهر بضغطة — بلا عقد ولا التزام.","group":"الباقات الشهرية","tiers":[{"name":"أساسي","price":60,"iqd":"79,200","market":"IQ","hours":3,"delivery":"رد خلال 48 ساعة","rate":19.3,"label":""},{"name":"نمو","price":150,"iqd":"198,000","market":"IQ","hours":8,"delivery":"رد خلال 24 ساعة","rate":18.1,"label":""},{"name":"أتمتة مستمرة","price":280,"iqd":"370,000","market":"IQ","hours":14,"delivery":"رد خلال 24 ساعة","rate":19.3,"label":""}]},{"sku":"PAY-DEP","name":"عربون بدء مشروع — 50%","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. الدفعة الأولى من مشروع متفق عليه — المبلغ يُحدَّد بالفاتورة المرسلة لك.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"50% من قيمة العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-MIL","name":"دفعة مرحلية","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. دفعة عند إنجاز مرحلة متفق عليها — تُستعمل بالمشاريع الطويلة فقط.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"حسب العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-FIN","name":"الدفعة النهائية عند التسليم","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. الرصيد المتبقي، يُدفع مقابل تسليم الملفات وكلمات المرور والملكية الكاملة.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"حسب العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-HR","name":"ساعة عمل إضافية خارج نطاق العقد","cat":"أداة دفع","kind":"payment_tool","desc":"أي طلب خارج المتفق عليه يُسعَّر بالساعة. يحمي الطرفين: أنت تعرف الكلفة قبل الموافقة، وأنا ما أشتغل مجاناً.","group":"أدوات الدفع","tiers":[{"name":"البند","price":25,"iqd":"33,000","label":"","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-RSH","name":"رسوم تنفيذ مستعجل","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. تقليص مدة التسليم للنصف تقريباً. تُطلب فقط إذا الموعد يهمك أكثر من الكلفة.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"+25% على قيمة المشروع","hours":null,"delivery":"","rate":null}]}];
 const COLOR = {'أتمتة':'#059669','ويب':'#0891B2','بيانات':'#7C3AED','موبايل':'#D97706',
   'ذكاء اصطناعي':'#DB2777','مدخل':'#2563EB','اشتراك':'#475569','أداة دفع':'#52525B'};
-const sel = new Set(ITEMS.filter(i => i.kind === 'product').map(i => i.sku));
+const key = (s, n) => s + '|' + n;
+const sel = new Set();
+const flat = () => ITEMS.flatMap(i => i.tiers.map(t => ({ ...i, t })));
+flat().filter(x => x.kind !== 'payment_tool' && x.t.market !== 'GC')
+      .forEach(x => sel.add(key(x.sku, x.t.name)));
 
-const groups = [...new Set(ITEMS.map(i => i.group))];
+const groups = ['مداخل رخيصة', 'الخدمات', 'الباقات الشهرية', 'أدوات الدفع'];
 document.getElementById('groups').innerHTML = groups.map(g => {
-  const rows = ITEMS.filter(i => i.group === g).map(i => `
-    <tr data-sku="${i.sku}">
-      <td><input type="checkbox" data-sku="${i.sku}"></td>
-      <td>
-        <div class="nm"><span class="dot" style="background:${COLOR[i.cat] || '#52525B'}"></span>${i.name}</div>
+  const list = ITEMS.filter(i => i.group === g);
+  if (!list.length) return '';
+  return '<h2>' + g + '</h2>' +
+    (g === 'أدوات الدفع' ? '<p class="note">خطوات دفع لا خدمات — انشرها فقط إذا تريد ترسل رابط دفع لكل مرحلة عقد.</p>' : '') +
+    list.map(i => `<div class="svc">
+      <div class="hd">
+        <div class="nm"><span class="dot" style="background:${COLOR[i.cat]}"></span>${i.name}</div>
         <div class="ds">${i.desc}</div>
-      </td>
-      <td class="sku">${i.sku}</td>
-      <td class="pr">${i.price != null
-        ? '$' + i.price.toLocaleString('en-US') + '<span class="iq">' + i.iqd + ' د.ع</span>'
-        : i.price_label}</td>
-      <td class="sku">${i.delivery || i.unit || '—'}</td>
-    </tr>`).join('');
-  return `<h2>${g}</h2>
-    ${g.includes('أدوات') ? '<p class="note">هذي خطوات دفع لا خدمات تُشترى — انشرها فقط إذا تريد ترسل رابط دفع لكل مرحلة عقد.</p>' : ''}
-    <div class="wrap"><table>
-      <thead><tr><th></th><th>الخدمة</th><th>SKU</th><th>السعر</th><th>المدة / الوحدة</th></tr></thead>
-      <tbody>${rows}</tbody></table></div>`;
+        <div class="sku">${i.sku}</div>
+      </div>
+      ${i.tiers.map(t => `<label class="tr" data-k="${key(i.sku, t.name)}">
+        <input type="checkbox" data-k="${key(i.sku, t.name)}">
+        <span class="tn">${t.name}${t.market === 'GC' ? '<span class="gc">خليج</span>' : ''}${
+          t.rate ? '<span class="hr">' + t.hours + ' ساعة · $' + t.rate + '/ساعة</span>' : ''}</span>
+        <span class="tp">${t.price != null ? '$' + t.price.toLocaleString('en-US') + '<span>' + t.iqd + ' د.ع</span>' : t.label}</span>
+      </label>`).join('')}
+    </div>`).join('');
 }).join('');
 
 function sync() {
   document.querySelectorAll('input[type=checkbox]').forEach(c => {
-    c.checked = sel.has(c.dataset.sku);
-    c.closest('tr').classList.toggle('on', c.checked);
+    c.checked = sel.has(c.dataset.k);
+    c.closest('.tr').classList.toggle('on', c.checked);
   });
-  const picked = ITEMS.filter(i => sel.has(i.sku));
-  const usd = picked.reduce((s, i) => s + (i.price || 0), 0);
+  const picked = flat().filter(x => sel.has(key(x.sku, x.t.name)));
   document.getElementById('count').textContent =
-    picked.length + ' محدَّد · مجموع الثابت $' + usd.toLocaleString('en-US');
+    picked.length + ' درجة · ' + new Set(picked.map(x => x.sku)).size + ' منتج بـWayl';
   render(picked);
 }
 
 function render(p) {
   if (!p.length) { document.getElementById('out').value = ''; return; }
-  const line = i => '  · ' + i.sku + ' — ' + i.name + ' — ' +
-    (i.price != null ? '$' + i.price + ' / ' + i.iqd + ' د.ع' : i.price_label);
-  const out = ['الخدمات المختارة للنشر على Wayl (' + p.length + ' بند):', ''];
+  const out = ['الخدمات المختارة للنشر على Wayl:', ''];
   for (const g of groups) {
-    const gi = p.filter(i => i.group === g);
-    if (gi.length) out.push(g + ':', ...gi.map(line), '');
+    const gi = p.filter(x => x.group === g);
+    if (!gi.length) continue;
+    out.push(g + ':');
+    for (const sku of [...new Set(gi.map(x => x.sku))]) {
+      const rws = gi.filter(x => x.sku === sku);
+      out.push('  ▸ ' + rws[0].name + ' [' + sku + ']');
+      rws.forEach(x => out.push('      · ' + x.t.name + ' — ' +
+        (x.t.price != null ? '$' + x.t.price + ' / ' + x.t.iqd + ' د.ع' : x.t.label)));
+    }
+    out.push('');
   }
-  const usd = p.reduce((s, i) => s + (i.price || 0), 0);
-  const mo = p.filter(i => i.kind === 'subscription').reduce((s, i) => s + i.price, 0);
-  out.push('مجموع الأسعار الثابتة: $' + usd.toLocaleString('en-US'));
-  if (mo) out.push('منها اشتراكات شهرية: $' + mo + '/شهر');
+  const mo = p.filter(x => x.kind === 'subscription' && x.t.price)
+              .reduce((s, x) => s + x.t.price, 0);
+  out.push('عدد المنتجات بـWayl: ' + new Set(p.map(x => x.sku)).size +
+           ' · عدد الخيارات: ' + p.length);
+  if (mo) out.push('مجموع الباقات الشهرية لو اشتراها عميل واحد: $' + mo + '/شهر');
   document.getElementById('out').value = out.join('\n');
 }
 
 document.addEventListener('change', e => {
   if (e.target.type !== 'checkbox') return;
-  e.target.checked ? sel.add(e.target.dataset.sku) : sel.delete(e.target.dataset.sku);
+  e.target.checked ? sel.add(e.target.dataset.k) : sel.delete(e.target.dataset.k);
   sync();
 });
 
-const setAll = on => { sel.clear(); if (on) ITEMS.forEach(i => sel.add(i.sku)); sync(); };
-const onlyProducts = () => { sel.clear(); ITEMS.filter(i => i.kind === 'product').forEach(i => sel.add(i.sku)); sync(); };
+const setAll = on => { sel.clear(); if (on) flat().forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyIQ = () => { sel.clear(); flat().filter(x => x.t.market !== 'GC' && x.kind !== 'payment_tool')
+  .forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyEntry = () => { sel.clear(); ITEMS.filter(i => i.kind !== 'payment_tool').forEach(i => {
+  const e = i.tiers.reduce((m, t) => (!m || t.price < m.price ? t : m), null);
+  if (e) sel.add(key(i.sku, e.name)); }); sync(); };
 
 async function copyOut() {
   const t = document.getElementById('out');
@@ -124,8 +139,7 @@ async function copyOut() {
   const btn = event.target;
   try { await navigator.clipboard.writeText(t.value); }
   catch { t.removeAttribute('readonly'); t.select(); document.execCommand('copy'); t.setAttribute('readonly',''); }
-  const old = btn.textContent;
-  btn.textContent = '✓ انتُسخ';
+  const old = btn.textContent; btn.textContent = '✓ انتُسخ';
   setTimeout(() => btn.textContent = old, 1600);
 }
 
