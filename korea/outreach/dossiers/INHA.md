@@ -85,3 +85,19 @@ Basra, Iraq
 muntarazr@gmail.com
 +964 787 629 4108
 https://github.com/wbtio
+
+## 7. 🟢 الجواب الرسمي — وصل 2026-08-24T05:32:44Z
+
+**من:** Global Talent Recruitment Team — Graduate Admissions for International Students, Inha University
+**عبر:** `gradapply@inha.ac.kr` — رد مباشر بنفس الخيط، خلال أقل من 4 ساعات من الإرسال.
+
+> 🔴 **الرد الرسمي يناقض استنتاج القسم 2-3 أعلاه** (بُني على نص "사전 면담(필수)" بموقع AIX) — **الرد الرسمي يتقدّم على بحثنا**، حسب قاعدة `SKILL.md`.
+
+**النص الحرفي (مقتبس):**
+1. *"This preliminary contact is not a requirement that automatically results in disqualification if it is not completed. However, securing a prospective academic advisor in advance may be advantageous during the admission process."* — يمكن ترتيبها عن بُعد بالإيميل (سيرة ذاتية + خطة دراسة + كشف درجات)، ويُنصح بالتواصل قبل فترة التقديم بوقت كافٍ.
+2. *"There is no specified minimum GPA requirement for the program. However, academic performance may be considered as one of the evaluation criteria."*
+3. *"Applicants applying from overseas can use Flywire to pay the application fee... applicants residing in Iraq may use the overseas payment channel."* — أول تأكيد رسمي مكتوب أن Flywire يعمل فعلياً من العراق، بين كل الجهات الثلاثين.
+
+**الأثر على الحكم:** الحاجز المفترض «رفض تلقائي بلا مشرف مسبق» **غير صحيح فعلياً** — التواصل المسبق أفضلية تنافسية لا شرط قبول. يرفع Inha من "صعب لكن ممكن بثغرة حرجة" إلى **"صعب لكن ممكن — بلا حاجز إلزامي فعلي"**، ويبقيها ضمن أقوى جهات الطبقة A بعد إسقاط شرط المعدل والمقابلة الإلزامية معاً.
+
+**ثغرة متبقية:** رقم TOPIK/IELTS الفعلي لقسم AIX تحديداً ما زال غير مؤكَّد (لم يُجب عنه الرد)، وكذلك الرسوم السنوية الكاملة.

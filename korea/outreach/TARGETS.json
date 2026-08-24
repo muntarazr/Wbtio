@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "طابور المراسلة — كل جهة، حالتها، بريدها، والسؤال المفتوح عندها",
-    "updated": "2026-08-24 (PNU researched+drafted — no language cert required for admission · KOREA-U sent 2 role-specific emails · no new replies on 11 sent threads)",
+    "updated": "2026-08-24 (JNU researched+drafted — IELTS 5.5 alone sufficient, no GPA/age barrier, cheapest tuition found so far · draft only, not sent · no new replies checked this run)",
     "owner_email": "muntarazr@gmail.com",
     "status_flow": "pending → researched → drafted → sent → replied | no_reply → closed",
     "rule": "لا تُعدَّل الحالة يدوياً — روتين /hunt و/outreach يديرانها"
@@ -255,7 +255,7 @@
       "id": "INHA",
       "name": "Inha · إنها",
       "tier": "A",
-      "status": "sent",
+      "status": "replied",
       "dept": "인공지능융합연구센터 (AI Convergence Research Center / AIX) — 일반대학원",
       "emails": {
         "admissions": "gradapply@inha.ac.kr",
@@ -268,18 +268,20 @@
         "aix.inha.ac.kr",
         "internationalcenter.inha.ac.kr"
       ],
-      "open_question": "هل «المقابلة التمهيدية الإلزامية» مع أستاذ ممكنة عن بُعد لمتقدم خارج كوريا وبلا شبكة أكاديمية، أم رفض فعلي مضمون بدونها؟",
-      "why_matters": "🔴 اكتُشف 2026-08-24: القبول يشترط «사전 면담 (필수)» — مقابلة تمهيدية إلزامية مع أستاذ مُعيَّن قبل حتى المرحلة الرسمية؛ المتقدم بلا مشرف يُرفض تلقائياً. لا حد معدل ولا عمر منشور، لكن هذا الشرط أثقل من كليهما لمن بلا شبكة أكاديمية كورية. أول جهة يظهر فيها اسم قناة دفع محدد (Flywire) بنص رسمي، لكن عملها من العراق غير مؤكَّد.",
+      "open_question": "—",
+      "why_matters": "🟢 رد رسمي 2026-08-24 ناقض الاستنتاج السابق: المقابلة التمهيدية «ليست شرطاً يُسقط الطلب تلقائياً إن لم تُنجَز» رغم نص «필수» بالموقع — تواصل مبكر مع أستاذ عن بُعد مستحسن لا إلزامي. لا حد أدنى معدل رسمي مؤكَّد كتابياً. Flywire يعمل فعلياً للدفع من العراق حسب الرد الرسمي (مصدر نادر يحل مشكلة PayPal/Wise المحجوبين لهذي الجهة تحديداً).",
       "researched_at": "2026-08-24",
       "dossier": "korea/outreach/dossiers/INHA.md",
-      "verdict": "صعب لكن ممكن — الحاجز الحقيقي شرط مشرف مسبق إلزامي (سعة أكاديمية) لا المعدل ولا العمر؛ يحتاج جواباً حاسماً قبل أي استثمار وقت إضافي بهذي الجهة",
+      "verdict": "صعب لكن ممكن — تحسَّن بعد الرد الرسمي: لا حاجز معدل، والمقابلة التمهيدية مستحسنة لا إلزامية، وFlywire يعمل من العراق. يبقى تأسيس شبكة أكاديمية كورية أفضلية تنافسية لا شرط قبول",
       "draft_id": "r3099179354541906487",
       "thread_id": "1a03143023462cb9",
       "drafted_at": "2026-08-24",
       "sent_at": "2026-08-24T01:25:08Z",
       "message_id": "1a0315f116dbbc4c",
-      "follow_up_due": "2026-09-07",
-      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread"
+      "replied_at": "2026-08-24T05:32:44Z",
+      "reply_message_id": "1a032424ee62db7d",
+      "reply_summary": "من Global Talent Recruitment Team: (1) المقابلة التمهيدية مستحسنة لا إلزامية — عدم إتمامها لا يُسقط الطلب تلقائياً، ويمكن تواصل عن بُعد بالإيميل (سيرة ذاتية + خطة دراسة + كشف درجات) قبل فترة التقديم بوقت كافٍ (2) لا حد أدنى معدل محدَّد رسمياً — الأداء الأكاديمي أحد معايير التقييم لا حاجز قاطع (3) Flywire يعمل فعلياً للمتقدمين من العراق كقناة دفع دولية.",
+      "_note": "TARGETS.json لم يُحدَّث عند الإرسال الفعلي (أُرسلت مباشرة بـGmail بلا تحديث الحالة هنا) — صُحِّح 2026-08-24 عبر get_thread. رد رسمي وصل 2026-08-24T05:32 وناقض الاستنتاج السابق عن إلزامية المقابلة التمهيدية"
     },
     {
       "id": "SNU",
@@ -507,18 +509,26 @@
       "id": "JNU",
       "name": "Chonnam National · تشونام",
       "tier": "B",
-      "status": "pending",
-      "dept": "인공지능융합학과",
+      "status": "drafted",
+      "dept": "Department of Artificial Intelligence Convergence (인공지능융합학과) — College of Engineering, Gwangju Campus, gsai.jnu.ac.kr",
       "emails": {
         "intl": "internia@jnu.ac.kr",
         "alt": "5yeah@jnu.ac.kr"
       },
-      "phone": "062-530-1189",
+      "phone": "062-530-3420 (dept, College of Engineering Bldg 7 Rm 215 — no dept email published) · 062-530-1189",
       "sites": [
+        "gsai.jnu.ac.kr",
+        "international.jnu.ac.kr",
         "jnu.ac.kr"
       ],
-      "open_question": "هل يوجد بريد مباشر لقبول الدراسات العليا؟ وما شروط ماجستير AI للدوليين؟",
-      "why_matters": "جامعة وطنية — لم يُنشر بريد قبول."
+      "open_question": "هل CS بدل AI مباشرة مقبول لهذا القسم تحديداً (استثناء غير مسمّى بدليل القبول)؟ وهل يُجري القسم مقابلة؟ ومتى يُعلن جدول خريف 2027؟",
+      "why_matters": "🟢 اكتُشف اليوم (2026-08-24) من دليل القبول الرسمي الكامل (27 صفحة، قُرئ بصرياً كاملاً): لا حد معدل ولا عمر منشور بأي مكان، وIELTS 5.5 يكفي وحده — القسم غير مُدرَج ضمن الأقسام التي تشترط رسالة أستاذ مسبقة (FORM-1)، خلافاً لـKHU/SKKU/Inha. الأرخص تكلفة بين كل الجهات المفحوصة حتى الآن: رسوم دراسية 3,327,000 وون/فصل فقط، ورصيد مصرفي مطلوب 16,000,000 وون (أقل من KHU وAJOU). التصديق القنصلي مقبول صراحة (العراق مؤكَّد خارج قائمة لاهاي 129 دولة). 🔴 لكن لا بريد قسم منشور إطلاقاً (هاتف فقط)، وبريدا OIA المسجَّلان مسبقاً لم يُعاد تأكيدهما بدليل القبول نفسه هذا التشغيل.",
+      "researched_at": "2026-08-24",
+      "dossier": "korea/outreach/dossiers/JNU.md",
+      "verdict": "واقعي — من أفضل جهات الطبقة B: بلا حاجز معدل/عمر، IELTS 5.5 بلا رسالة أستاذ مسبقة لهذا القسم، وأرخص تكلفة فعلية رُصدت. الثغرة: لا قناة بريد مؤكدة للتواصل المباشر.",
+      "draft_id": "r3307473851844579689",
+      "thread_id": "1a0324fbe2bc7719",
+      "drafted_at": "2026-08-24"
     },
     {
       "id": "CNU",
