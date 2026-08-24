@@ -47,7 +47,8 @@
 | **SKKU** | 인공지능학과 | **ai.dept@skku.edu** · skku.ai@skku.edu | 031-290-5828 | `ai.skku.edu` |
 | **SKKU** | Applied AI (인공지능융합) | عبر مكتب القسم | 82-2-740-1785 | — |
 | **Chung-Ang** | AI학과 | **cauai@cau.ac.kr** | 02-820-6357 | `ai.cau.ac.kr` |
-| **Chung-Ang** | استفسار القبول للمشرف | **curseor@cau.ac.kr** | 02-820-6618 | (أرسل معه كشف الدرجات والسيرة) |
+| **Chung-Ang** | 이재성 — مختبر أتمتة تعلّم الآلة (أقرب تخصص لخبرة n8n/LLM) | **curseor@cau.ac.kr** | 02-820-6618 | 🟢 مؤكَّد 2026-08-24 من `ai.cau.ac.kr/sub01/sub0101.php` — أستاذ متفرغ فعلي بقسم AI. مرشَّح CAYSS لاحقاً، لكن معدل 2.64 لبرنامج CAYSS نفسه غير محقَّق |
+| **Chung-Ang** | 13 أستاذاً إضافياً بقسم AI (احتياط حسب التخصص) | bgnkim · wyk7 · junyeongkim · junhyukkim · yjyoo3312 · sunjaeyoon · jiwonyoon · jaeyong · hwanheelee · ksjang · dahuinjung · yoonsik · hong — كلها `@cau.ac.kr` | — | 🟢 مؤكَّد 2026-08-24، نفس الصفحة — [`دوسيه CAU`](outreach/dossiers/CAU.md) |
 | **GIST** | AI학과 | admis@gist.ac.kr | — | `ai.gist.ac.kr` |
 | **UNIST** | 인공지능대학원 | adm-g@unist.ac.kr | +82-52-217-6333 | `aigs.unist.ac.kr` |
 | **Hanyang** | NextAI 인공지능대학원 | 🔴 الموقع لا يستجيب | 02-2220-4139 | `nextai.hanyang.ac.kr` |
@@ -107,6 +108,7 @@ Hanyang NextAI · Dongguk AIX · Chungnam `bioairc` · Konkuk. **أعد المح
 | POSTECH | هل إعلان 2026-03-17 الخاص بدول الشرق الأوسط (ومنها العراق) ساري على دورة 2027؟ |
 | KAIST | 🟢 حوالة بنكية دولية مقبولة (مؤكَّد). الثغرة المتبقية: كيف يُوزَن معدل ضعيف مقابل خبرة عملية؟ — [`دوسيه`](outreach/dossiers/KAIST.md) |
 | UNIST | هل العمل الحر يُحتسب «توظيفاً لدى جهة خارجية» يمنع المنحة الحكومية؟ |
+| Chung-Ang | 🟢 حُلَّ 2026-08-24: معدل 2.64 خاص بمنحة CAYSS فقط، لا شرط قبول. الثغرة المتبقية: وزن المعدل داخل تقييم الوثائق، ورسوم التقديم وقناة الدفع، وموعد نافذة خريف 2027/ربيع 2028 — [`دوسيه`](outreach/dossiers/CAU.md) |
 | GIST | «القبول المشروط لعبء اقتصادي» — ما الوثيقة المطلوبة بالضبط؟ |
 | DGIST | هل التصديق القنصلي مطلوب مع التقديم أم تكفي نسخة ممسوحة؟ |
 | SNU | هل يمكن دخول IPAI عبر القبول العام بدل مسار الأجانب؟ |
