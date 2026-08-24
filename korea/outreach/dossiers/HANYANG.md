@@ -85,7 +85,7 @@ Dear International Admissions Team,
 
 I am Muntadhar Ahmed Jawad, a final-year Computer Science student at the University of Basra, Iraq (graduating June 2027, GPA 60% ≈ 2.4/4.0). I am planning a self-funded application to the Department of Artificial Intelligence for Fall 2027, and want to know what should change in my file over the next year, not whether I qualify today.
 
-I have three years of production experience as a full-stack/automation developer (n8n, Next.js, Supabase, LLM integrations) for an exhibition and conference organizer in Iraq. By application time I am targeting IELTS 7.0 (November 2026) and TOPIK Level 5.
+I have production experience as a full-stack/automation developer (n8n, Next.js, Supabase, LLM integrations), including work for an exhibition and conference organizer in Iraq since 2024. By application time I am targeting IELTS 7.0 (November 2026) and TOPIK Level 5.
 
 In the current Spring 2027 admission guide, the Admission Unit table marks the Department of Artificial Intelligence as closed to standalone Master's applicants (MA/MS), open only to Ph.D. and the combined MA-Ph.D. track.
 
