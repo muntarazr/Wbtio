@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muntadhar Ahmed Jawad — AI &amp; Automation Engineer</title>
+<meta name="description" content="AI &amp; Automation Engineer and Full-Stack Developer. n8n, LLM pipelines, Next.js, React Native. Three products shipped to production.">
+<meta property="og:title" content="Muntadhar Ahmed Jawad — AI &amp; Automation Engineer">
+<meta property="og:description" content="I build and ship complete products — not prototypes. n8n automation, LLM applications, full-stack web and mobile.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#f6f7f9; --card:#ffffff; --line:#e4e7ec;
+    --ink:#0d1117; --ink-2:#4a5262; --ink-3:#767f8f;
+    --accent:#2563eb; --accent-soft:#eff4ff;
+    --radius:14px;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0b0d10; --bg-soft:#101318; --card:#13171d; --line:#232932;
+      --ink:#f2f4f7; --ink-2:#b0b8c4; --ink-3:#7c8695;
+      --accent:#6ea1ff; --accent-soft:#16233a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+  /* header */
+  header{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px;
+    font-weight:600;margin-bottom:22px;
+  }
+  h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:0 0 6px;letter-spacing:-.03em;font-weight:700}
+  .role{font-size:clamp(16px,2.4vw,20px);color:var(--ink-2);margin:0 0 22px;font-weight:500}
+  .lede{font-size:clamp(16px,2vw,18px);color:var(--ink-2);max-width:64ch;margin:0 0 30px}
+  .lede strong{color:var(--ink);font-weight:600}
+  .actions{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;
+    text-decoration:none;font-weight:600;font-size:15px;border:1px solid transparent;transition:.15s;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{filter:brightness(1.08)}
+  .btn-ghost{border-color:var(--line);color:var(--ink-2);background:var(--card)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);
+         border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:44px 0 0}
+  .stat{background:var(--card);padding:22px 20px}
+  .stat b{display:block;font-size:26px;letter-spacing:-.02em;line-height:1.2}
+  .stat span{font-size:13px;color:var(--ink-3)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+     margin:0 0 28px;font-weight:600}
+
+  /* projects */
+  .project{
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--card);
+    margin-bottom:16px;transition:.18s;
+  }
+  .project:hover{border-color:var(--accent)}
+  .p-top{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+  .project h3{margin:0;font-size:20px;letter-spacing:-.01em}
+  .p-link{font-family:var(--mono);font-size:13px;color:var(--accent);text-decoration:none;white-space:nowrap}
+  .p-link:hover{text-decoration:underline}
+  .p-meta{font-size:13px;color:var(--ink-3);margin:0 0 14px}
+  .project p.desc{margin:0 0 16px;color:var(--ink-2);font-size:15.5px}
+  .bullets{margin:0 0 16px;padding-left:18px;color:var(--ink-2);font-size:15px}
+  .bullets li{margin-bottom:5px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-family:var(--mono);font-size:11.5px;padding:4px 9px;border-radius:6px;
+       background:var(--bg-soft);color:var(--ink-3);border:1px solid var(--line)}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .svc{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--card)}
+  .svc h3{margin:0 0 10px;font-size:17px}
+  .svc p{margin:0;color:var(--ink-2);font-size:15px}
+
+  /* skills */
+  .skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+  .skillgrid h4{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .skillgrid p{margin:0;color:var(--ink-2);font-size:15px}
+
+  /* contact */
+  .contact{padding:64px 0 88px;border-bottom:0}
+  .contact h2{margin-bottom:14px}
+  .contact p.big{font-size:clamp(20px,3.4vw,28px);letter-spacing:-.02em;margin:0 0 8px;font-weight:600}
+  .contact p.sub{color:var(--ink-2);margin:0 0 26px;max-width:56ch}
+  .links{display:flex;flex-wrap:wrap;gap:22px;font-size:15px}
+  .links a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .links a:hover{color:var(--accent);border-color:var(--accent)}
+  footer{padding:26px 0 40px;font-size:13px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Available for remote work</span>
+    <h1>Muntadhar Ahmed Jawad</h1>
+    <p class="role">AI &amp; Automation Engineer · Full-Stack Developer</p>
+    <p class="lede">
+      I build products that go live — and stay live. I led the IT function at
+      <strong>JAZ</strong>, one of Iraq's largest exhibitions and conferences organisers, and
+      delivered a public website, an admin platform and a cross-platform mobile app
+      <strong>in seven months</strong>. I automate business operations with n8n and build
+      LLM applications on the Gemini and OpenAI APIs.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#contact">Work with me</a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="https://github.com/wbtio" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3</b><span>Platforms in production</span></div>
+      <div class="stat"><b>7 months</b><span>Web + admin + mobile at JAZ</span></div>
+      <div class="stat"><b>2</b><span>Cross-platform mobile apps</span></div>
+      <div class="stat"><b>CS50x</b><span>Harvard, via edX</span></div>
+    </div>
+  </header>
+
+  <section id="work">
+    <h2>Selected work</h2>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>JAZ — Corporate Digital Ecosystem</h3>
+        <a class="p-link" href="https://jaz.iq" target="_blank" rel="noopener">jaz.iq ↗</a>
+      </div>
+      <p class="p-meta">IT Manager &amp; Lead Developer · Dec 2025 – Jul 2026 · Basra, Iraq</p>
+      <p class="desc">
+        A leading international exhibitions and conferences organiser was running on manual
+        processes with no digital presence. I led the IT department and built the entire
+        stack myself.
+      </p>
+      <ul class="bullets">
+        <li>Public website plus an admin dashboard covering content, operations and role-based access</li>
+        <li>Cross-platform mobile app for Android and iOS</li>
+        <li>Recurring departmental workflows automated with n8n, plus internal dashboards</li>
+        <li>Owned infrastructure, deployment and maintenance end to end</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Next.js</span><span class="tag">React Native</span>
+        <span class="tag">Supabase</span><span class="tag">n8n</span>
+        <span class="tag">RBAC</span><span class="tag">Vercel</span>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Al-Amal Center — E-Commerce Platform</h3>
+        <a class="p-link" href="https://centeralamal.shop" target="_blank" rel="noopener">centeralamal.shop ↗</a>
+      </div>
+      <p class="p-meta">Full-Stack Developer · 2024 – 2026</p>
+      <p class="desc">
+        A complete commerce platform built independently — storefront, operations and mobile,
+        shipped to production and running live.
+      </p>
+      <ul class="bullets">
+        <li>Customer storefront, admin dashboard and Android/iOS mobile app</li>
+        <li>Real-time inventory, order processing and analytics</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">React</span><span class="tag">React Native</span>
+        <span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
+        <span class="tag">Supabase</span>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>METRIX — AI Goal-Achievement Platform</h3>
+        <a class="p-link" href="https://metrix-bete.vercel.app" target="_blank" rel="noopener">metrix-bete.vercel.app ↗</a>
+      </div>
+      <p class="p-meta">Personal product · 2025 – 2026</p>
+      <p class="desc">
+        A full-stack LLM application that turns a free-text goal into a structured,
+        personalised plan through a Gemini-powered generation pipeline.
+      </p>
+      <ul class="bullets">
+        <li>Prompt layer and structured-output handling built for reliability, not demos</li>
+        <li>Daily and weekly check-ins with progress statistics</li>
+        <li>Google OAuth, live in production</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Next.js</span><span class="tag">Gemini API</span>
+        <span class="tag">Structured JSON</span><span class="tag">Supabase</span>
+        <span class="tag">OAuth</span>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Personal Brand Website — Client Project</h3>
+        <a class="p-link" href="https://syedmr.online" target="_blank" rel="noopener">syedmr.online ↗</a>
+      </div>
+      <p class="p-meta">Client project · 2024</p>
+      <p class="desc">
+        Responsive personal brand site for Sayed Mohammed Ridha Al-Mousawi, shipped to
+        production on a custom domain.
+      </p>
+      <div class="tags"><span class="tag">React</span><span class="tag">Vercel</span></div>
+    </article>
+  </section>
+
+  <section>
+    <h2>What I do for clients</h2>
+    <div class="services">
+      <div class="svc">
+        <h3>Automation that removes work permanently</h3>
+        <p>n8n workflows, API and webhook integrations, internal dashboards. If your team repeats
+           it every week, it probably shouldn't be done by hand.</p>
+      </div>
+      <div class="svc">
+        <h3>LLM features you can depend on</h3>
+        <p>Gemini and OpenAI integrations with a real prompt layer, structured JSON output and
+           error handling — built to survive production, not just a demo.</p>
+      </div>
+      <div class="svc">
+        <h3>Web platforms end to end</h3>
+        <p>Next.js and React apps, admin dashboards, CMS, role-based access and analytics —
+           architecture through deployment and maintenance.</p>
+      </div>
+      <div class="svc">
+        <h3>Mobile apps for both stores</h3>
+        <p>React Native applications built and shipped to Android and iOS, sharing one codebase
+           and one backend with your web platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <div class="skillgrid">
+      <div><h4>AI &amp; Automation</h4><p>n8n · Google Gemini API · OpenAI API · Prompt engineering · Structured JSON outputs · API &amp; webhook integration</p></div>
+      <div><h4>Frontend</h4><p>React · Next.js · TypeScript · HTML/CSS</p></div>
+      <div><h4>Mobile</h4><p>React Native (Android &amp; iOS)</p></div>
+      <div><h4>Backend &amp; Data</h4><p>Node.js · Python · Supabase · PostgreSQL</p></div>
+      <div><h4>Systems</h4><p>Admin dashboards · CMS · Role-based access control · Analytics</p></div>
+      <div><h4>Education</h4><p>B.Sc. Computer Science, University of Basrah (expected 2027) · Harvard CS50x, 2024</p></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p class="big">Tell me what's slowing your business down.</p>
+    <p class="sub">
+      I'll tell you honestly whether software is the right fix — and if it is, what it costs
+      and how long it takes. Available immediately for remote contract or full-time work.
+    </p>
+    <div class="links">
+      <a href="mailto:muntzr557@gmail.com">muntzr557@gmail.com</a>
+      <a href="https://github.com/wbtio" target="_blank" rel="noopener">github.com/wbtio</a>
+      <!-- أضف رابط LinkedIn هنا بعد ما تكمل الملف -->
+      <span style="color:var(--ink-3)">Basra, Iraq · Arabic (native) · English (professional)</span>
+    </div>
+  </section>
+
+  <footer>© 2026 Muntadhar Ahmed Jawad</footer>
+
+</div>
+</body>
+</html>

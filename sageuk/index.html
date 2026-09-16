@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سجلّ الساغوك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="page">
+  <header class="mast">
+    <div class="eyebrow">사극 · دراما كورية تاريخية</div>
+    <h1>سجلّ الساغوك</h1>
+    <p>٨٧ عملاً مع قصصهن وتقييماتهن. اضغط الختم على أي غلاف حتى تعلّم إنك شفت المسلسل — السجل ينحفظ بمتصفحك، وبأي وقت تطلع قائمة اللي شاهدته وتنسخها.</p>
+    <div class="progress">
+      <div class="pcount"><b class="num" id="pNum">0</b><span>من ٨٧ عملاً</span></div>
+      <div class="rail"><i id="pBar"></i></div>
+    </div>
+    <dl class="stats">
+      <div class="stat"><dt>شاهدتها</dt><dd id="sSeen">0</dd></div>
+      <div class="stat"><dt>باقية عليك</dt><dd id="sLeft">87</dd></div>
+      <div class="stat"><dt>متوسط تقييم اللي شفته</dt><dd id="sAvg">—</dd></div>
+      <div class="stat"><dt>نوعك المفضّل</dt><dd id="sGenre">—</dd></div>
+    </dl>
+  </header>
+
+  <div class="controls">
+    <div class="search">
+      <input id="q" type="search" placeholder="دوّر باسم المسلسل أو القصة…" aria-label="بحث">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+    </div>
+    <div class="chips" role="group" aria-label="تصفية حسب المشاهدة">
+      <button data-st="all" aria-pressed="true">الكل</button>
+      <button data-st="seen" aria-pressed="false">شاهدته</button>
+      <button data-st="new" aria-pressed="false">ما شفته</button>
+    </div>
+    <select id="genre" aria-label="النوع"><option value="">كل الأنواع</option></select>
+    <select id="sort" aria-label="الترتيب">
+      <option value="orig">ترتيب القائمة</option>
+      <option value="rate">الأعلى تقييماً</option>
+      <option value="new">الأحدث إصداراً</option>
+      <option value="old">الأقدم إصداراً</option>
+      <option value="az">أبجدي</option>
+    </select>
+    <button class="ghost primary" id="btnExport">اطلع قائمتي</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>ما في نتائج مطابقة — جرّب كلمة ثانية.</div>
+
+  <div class="foot">
+    <span>الختم الأحمر = شاهدته · <span class="tag dup">مكرر</span> نفس العمل بترجمة ثانية · <span class="tag ask">تأكيد</span> محتاج اسمه الأصلي · اضغط على الوصف حتى ينفتح كامل</span>
+    <button class="ghost" id="btnReset">تصفير السجل</button>
+  </div>
+
+  <dialog id="dlg">
+    <form method="dialog" class="dlg">
+      <h2>قائمة اللي شاهدته</h2>
+      <p>انسخ النص وارسله لي وراح أسوي منه ملف README كامل.</p>
+      <textarea id="out" readonly></textarea>
+      <div class="actions">
+        <button class="ghost" value="close">إغلاق</button>
+        <button class="ghost primary" id="btnCopy" type="button">نسخ النص</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

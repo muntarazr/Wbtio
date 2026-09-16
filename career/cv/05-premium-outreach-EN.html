@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muntadhar Ahmed Jawad — Delivery Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#0e1113; --muted:#4a5158; --faint:#7d858c;
+  --rule:#e0e3e6; --hair:#f0f2f4;
+  --live:#0d6b4f; --live-bg:#e6f3ee;
+  --accent:#0e1113;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Public Sans',-apple-system,'Segoe UI',Arial,sans-serif;
+  font-size:10.4pt;line-height:1.5;
+}
+.sheet{max-width:880px;margin:0 auto;padding:38px 46px 50px}
+
+/* header */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;
+      border-bottom:3px solid var(--ink);padding-bottom:12px}
+h1{
+  font-family:'Bricolage Grotesque','Public Sans',sans-serif;font-weight:700;
+  font-size:30pt;line-height:.98;margin:0;letter-spacing:-1.2px;max-width:11ch;
+}
+.head .right{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:8.8pt;
+             color:var(--muted);line-height:1.75;white-space:nowrap}
+.head .right b{color:var(--ink);font-weight:600}
+
+.role{
+  font-family:'IBM Plex Mono',monospace;font-size:9.4pt;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--muted);margin:11px 0 0;
+}
+
+.thesis{
+  font-family:'Bricolage Grotesque','Public Sans',sans-serif;font-weight:600;
+  font-size:15pt;line-height:1.38;margin:16px 0 0;max-width:52ch;letter-spacing:-.3px;
+}
+
+/* ledger */
+h2{
+  font-family:'IBM Plex Mono',monospace;font-size:8.8pt;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--faint);font-weight:600;
+  margin:28px 0 0;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.row{display:grid;grid-template-columns:1fr 96px;gap:20px;
+     border-bottom:1px solid var(--hair);padding:13px 0}
+.row h3{
+  font-family:'Bricolage Grotesque','Public Sans',sans-serif;font-weight:600;
+  font-size:12.4pt;margin:0 0 2px;letter-spacing:-.3px;
+}
+.row .sub{font-family:'IBM Plex Mono',monospace;font-size:8.7pt;color:var(--faint);margin:0 0 7px}
+.row ul{margin:0;padding-left:16px}
+.row li{margin-bottom:3.5px;color:var(--muted)}
+.row li b{color:var(--ink);font-weight:600}
+.stamp{text-align:right}
+.chip{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:8pt;font-weight:600;
+  letter-spacing:.7px;color:var(--live);background:var(--live-bg);
+  padding:3px 8px;border-radius:3px;white-space:nowrap;
+}
+.when{display:block;font-family:'IBM Plex Mono',monospace;font-size:8.4pt;
+      color:var(--faint);margin-top:5px}
+
+/* figures */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+      border:1px solid var(--rule);margin-top:16px}
+.fig{background:#fff;padding:13px 14px}
+.fig b{
+  display:block;font-family:'Bricolage Grotesque','Public Sans',sans-serif;font-weight:700;
+  font-size:19pt;line-height:1.1;letter-spacing:-.8px;font-variant-numeric:tabular-nums;
+}
+.fig span{font-family:'IBM Plex Mono',monospace;font-size:7.9pt;color:var(--faint);
+          line-height:1.45;display:block;margin-top:3px}
+
+/* two-col bottom */
+.cols{display:grid;grid-template-columns:1.35fr 1fr;gap:34px;margin-top:8px}
+.cols h4{font-family:'IBM Plex Mono',monospace;font-size:8.6pt;letter-spacing:1.4px;
+         text-transform:uppercase;color:var(--faint);font-weight:600;margin:16px 0 7px}
+.cols p{margin:0 0 6px}
+.cols p b{font-weight:600}
+.cols .line{font-size:9.9pt;color:var(--muted)}
+
+.foot{
+  margin-top:26px;border-top:3px solid var(--ink);padding-top:12px;
+  display:flex;justify-content:space-between;gap:20px;align-items:baseline;flex-wrap:wrap;
+}
+.foot .ask{font-family:'Bricolage Grotesque','Public Sans',sans-serif;font-weight:600;font-size:12.6pt;letter-spacing:-.2px}
+.foot .how{font-family:'IBM Plex Mono',monospace;font-size:8.8pt;color:var(--muted)}
+
+@media print{
+  @page{size:A4;margin:11mm 12mm}
+  body{font-size:9.5pt}
+  .sheet{max-width:none;padding:0}
+  h1{font-size:26pt}
+  .row,.fig,.figs{break-inside:avoid}
+  h2{break-after:avoid}
+}
+@media (max-width:680px){
+  .sheet{padding:26px 22px 36px}
+  .head{flex-direction:column;align-items:flex-start}
+  .head .right{text-align:left}
+  .figs{grid-template-columns:1fr 1fr}
+  .cols{grid-template-columns:1fr;gap:0}
+  .row{grid-template-columns:1fr}
+  .stamp{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="head">
+  <h1>Muntadhar Ahmed Jawad</h1>
+  <div class="right">
+    <b>muntzr557@gmail.com</b><br>
+    +964 787 629 4108<br>
+    github.com/wbtio<br>
+    Basra, Iraq — remote
+  </div>
+</div>
+
+<p class="role">AI &amp; Automation Engineer / Full-Stack Developer</p>
+
+<p class="thesis">
+  Most engineers at my stage have projects. I have systems other people
+  depend on every working day — and I built them alone.
+</p>
+
+<div class="figs">
+  <div class="fig"><b>3</b><span>platforms live<br>in production</span></div>
+  <div class="fig"><b>7</b><span>months to ship<br>web + admin + mobile</span></div>
+  <div class="fig"><b>2</b><span>mobile apps<br>Android &amp; iOS</span></div>
+  <div class="fig"><b>1</b><span>engineer on all<br>of the above</span></div>
+</div>
+
+<h2>Delivery record</h2>
+
+<div class="row">
+  <div>
+    <h3>JAZ — corporate digital ecosystem</h3>
+    <p class="sub">IT Manager &amp; Lead Developer · Next.js, React Native, Supabase, n8n · jaz.iq</p>
+    <ul>
+      <li>Led the IT function of a leading international exhibitions and conferences organiser in Iraq — <b>architecture, build, deployment and maintenance, alone</b>.</li>
+      <li>Public website and an admin platform with content management, operations tooling and role-based access for [N] staff.</li>
+      <li>Android and iOS app from one React Native codebase, sharing the platform's backend.</li>
+      <li>[N] recurring departmental workflows automated with n8n — roughly [N] hours of manual work removed per week.</li>
+    </ul>
+  </div>
+  <div class="stamp"><span class="chip">IN PRODUCTION</span><span class="when">Dec 2025 – Jul 2026</span></div>
+</div>
+
+<div class="row">
+  <div>
+    <h3>Al-Amal Center — commerce platform</h3>
+    <p class="sub">Full-Stack Developer · React, React Native, Node.js, PostgreSQL · centeralamal.shop</p>
+    <ul>
+      <li>Storefront, admin dashboard and Android/iOS apps — <b>the whole business, built independently</b>.</li>
+      <li>Real-time inventory, order processing and analytics kept consistent across web and mobile.</li>
+      <li>Operated in production as its only engineer: releases, data, uptime.</li>
+    </ul>
+  </div>
+  <div class="stamp"><span class="chip">IN PRODUCTION</span><span class="when">2024 – 2026</span></div>
+</div>
+
+<div class="row">
+  <div>
+    <h3>METRIX — AI goal-achievement platform</h3>
+    <p class="sub">Product owner &amp; engineer · Next.js, Google Gemini API, Supabase · metrix-bete.vercel.app</p>
+    <ul>
+      <li>A free-text goal becomes a structured, personalised plan through a <b>Gemini generation pipeline</b> I designed.</li>
+      <li>Prompt layer plus validated structured JSON output — so the product can trust what the model returns.</li>
+      <li>Daily and weekly check-ins with progress statistics; Google OAuth; deployed and running.</li>
+    </ul>
+  </div>
+  <div class="stamp"><span class="chip">IN PRODUCTION</span><span class="when">2025 – 2026</span></div>
+</div>
+
+<div class="cols">
+  <div>
+    <h4>How I work</h4>
+    <p class="line"><b>End to end.</b> I take a problem from architecture through deployment and keep it alive afterwards. No handoff gap, because there is no one to hand off to.</p>
+    <p class="line"><b>Shipping over polish.</b> Something clickable in week one, then iterate against real use — every system above reached users this way.</p>
+    <p class="line"><b>Remote by default.</b> Written updates, documented decisions, and a working day that overlaps European and Gulf hours.</p>
+  </div>
+  <div>
+    <h4>Stack</h4>
+    <p class="line"><b>AI</b> Gemini API, OpenAI API, prompt engineering, structured JSON output</p>
+    <p class="line"><b>Automation</b> n8n, REST APIs, webhooks</p>
+    <p class="line"><b>Web</b> React, Next.js, TypeScript</p>
+    <p class="line"><b>Mobile</b> React Native (Android &amp; iOS)</p>
+    <p class="line"><b>Backend</b> Node.js, Python, Supabase, PostgreSQL</p>
+
+    <h4>Background</h4>
+    <p class="line">B.Sc. Computer Science, University of Basrah — expected 2027</p>
+    <p class="line">CS50x, Harvard University via edX — 2024</p>
+    <p class="line">Arabic native · English full professional</p>
+  </div>
+</div>
+
+<div class="foot">
+  <span class="ask">Give me the thing nobody has had time to finish.</span>
+  <span class="how">Available immediately · remote contract or full-time · muntzr557@gmail.com</span>
+</div>
+
+</div>
+
+<!-- =====================================================================
+FILE: 05-premium-outreach-EN.html
+PURPOSE: For when you know a HUMAN opens the file — a founder, a hiring
+manager you messaged on LinkedIn, a referral, an agency owner. Never for
+an online portal: the layout is designed for the eye, not the parser.
+
+WHY IT IS DIFFERENT: it is built as a delivery record rather than a job
+history, because your single strongest claim is that three systems are
+live and you built them alone. The figures row states that in one second,
+the "IN PRODUCTION" stamps prove it, and the closing line asks for exactly
+the work you want.
+
+BEFORE SENDING, EVERY TIME:
+1. Replace every [N] with a real number.
+2. Send it as a PDF, never a link, when replying to a person directly.
+3. Pair it with two sentences in the message body — the file is the proof,
+   the message is the ask.
+
+DO NOT use this file for: Bayt, LinkedIn Easy Apply, or any application
+form. Use cv-01 there.
+
+UPDATE EVERY 6 MONTHS:
+- Update the four figures. They are the first thing read, so they must be
+  current and true.
+- Add a delivery row only when something new is genuinely in production.
+- Rewrite the thesis line if it stops being the boldest true sentence you
+  can write about yourself.
+====================================================================== -->
+</body>
+</html>

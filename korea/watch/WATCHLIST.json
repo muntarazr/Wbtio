@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "purpose": "قائمة المراقبة — صفحات القبول الرسمية التي يفحصها رادار كوريا",
+    "updated": "2026-08-23",
+    "target_signal": "ظهور دليل/إعلان 2027학년도 (خريف 2027 = 후기 · ربيع 2028 = 전기) لقسم الذكاء الاصطناعي",
+    "tiers": {
+      "A": "يُفحص كل ساعة — الأهداف الفعلية",
+      "B": "يُفحص مرة يومياً — الاحتياط والطبقة الثالثة"
+    },
+    "verified_note": "verified:false يعني الرابط لم يُفتح ويُتحقق منه بعد. أول تشغيل للرادار يصحّحه ويقلب القيمة."
+  },
+  "targets": [
+    { "id": "POSTECH-AI",  "name": "POSTECH · كلية الذكاء الاصطناعي", "tier": "A", "verified": true,
+      "urls": ["https://adm-g.postech.ac.kr/ENG/application01/", "https://adm-g.postech.ac.kr/ENG/board/notice/notice-view?PID=1966", "https://ai.postech.ac.kr/sub04"],
+      "email": "grad-admission@postech.ac.kr",
+      "watch_for": ["2027", "후기", "Fall 2027", "application guide", "필기시험"] },
+
+    { "id": "KAIST", "name": "KAIST · قبول الدوليين", "tier": "A", "verified": true,
+      "urls": ["https://admission.kaist.ac.kr/intl-graduate/Admission/YearlyTimelines", "https://admission.kaist.ac.kr/intl-graduate/Admission/Eligibility"],
+      "email": "advanced.adm@kaist.ac.kr",
+      "watch_for": ["2027", "Fall", "timeline", "guideline"] },
+
+    { "id": "UNIST", "name": "UNIST · الدراسات العليا الدولية", "tier": "A", "verified": true,
+      "urls": ["https://admg-intl.unist.ac.kr/admg-eng/community/graduate_admissions.do", "https://admg-intl.unist.ac.kr/admg-eng/index.do"],
+      "email": "adm-g@unist.ac.kr",
+      "watch_for": ["2027", "Fall", "2nd", "guidelines"] },
+
+    { "id": "GIST", "name": "GIST · قبول الدوليين", "tier": "A", "verified": true,
+      "urls": ["https://www.gist.ac.kr/iadm/html/sub02/020101.html", "https://www.gist.ac.kr/iadm/html/sub05/0503.html"],
+      "email": "admis@gist.ac.kr",
+      "watch_for": ["2027", "Fall", "AI", "notice"] },
+
+    { "id": "DGIST", "name": "DGIST · قبول الدوليين", "tier": "A", "verified": true,
+      "urls": ["https://www.dgist.ac.kr/iadm/sub02_01_01.do", "https://www.dgist.ac.kr/iadm/sub02_01_03.do"],
+      "email": "admission@dgist.ac.kr",
+      "watch_for": ["2027", "Fall", "guideline"] },
+
+    { "id": "KHU", "name": "كيونغ هي · AI", "tier": "A", "verified": false,
+      "urls": ["https://iaa.khu.ac.kr", "https://aici.khu.ac.kr"],
+      "email": "aici@khu.ac.kr",
+      "watch_for": ["2027", "후기", "인공지능", "모집요강"] },
+
+    { "id": "SKKU", "name": "سونغ كيون كوان · قسم AI", "tier": "A", "verified": false,
+      "urls": ["https://admission.skku.edu", "https://aai.skku.edu"],
+      "email": "ai.dept@skku.edu",
+      "watch_for": ["2027", "후기", "인공지능", "admission guide"] },
+
+    { "id": "HANYANG", "name": "هانيانغ · الدراسات العليا العامة", "tier": "A", "verified": false,
+      "urls": ["https://oia.hanyang.ac.kr", "https://grad.hanyang.ac.kr"],
+      "email": "intladms@hanyang.ac.kr",
+      "watch_for": ["2027", "후기", "일반대학원", "인공지능"] },
+
+    { "id": "INHA", "name": "إنها · AI", "tier": "A", "verified": false,
+      "urls": ["https://grad.inha.ac.kr", "https://ind.inha.ac.kr"],
+      "email": "gradapply@inha.ac.kr",
+      "watch_for": ["2027", "후기", "인공지능", "Flywire"] },
+
+    { "id": "SNU",     "name": "سيول الوطنية · GSAI",  "tier": "B", "verified": false, "urls": ["https://admission.snu.ac.kr", "https://gsai.snu.ac.kr"], "email": "gsai@snu.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "YONSEI",  "name": "يونسي · AI",           "tier": "B", "verified": false, "urls": ["https://graduate.yonsei.ac.kr", "https://ai.yonsei.ac.kr"], "email": "ai@yonsei.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "KOREA-U", "name": "كوريا · الدراسات العليا", "tier": "B", "verified": false, "urls": ["https://graduate2.korea.ac.kr"], "email": "graduate2@korea.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "CAU",     "name": "تشونغ آنغ · AI",       "tier": "B", "verified": false, "urls": ["https://admission.cau.ac.kr"], "email": "cauai@cau.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "AJOU",    "name": "آجو",                  "tier": "B", "verified": false, "urls": ["https://www.ajou.ac.kr/iadmissions/index.do"], "email": "iss@ajou.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "DONGGUK", "name": "دونغ كوك",             "tier": "B", "verified": false, "urls": ["https://gradu.dongguk.edu"], "email": "dgugs@dongguk.edu", "watch_for": ["2027", "후기"] },
+    { "id": "SOGANG",  "name": "سوغانغ",               "tier": "B", "verified": false, "urls": ["https://gradsch.sogang.ac.kr"], "email": "gradsch@sogang.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "SEJONG",  "name": "سيجونغ",               "tier": "B", "verified": false, "urls": ["https://grad.sejong.ac.kr"], "email": "grad@sejong.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "KW",      "name": "كوانغ وون",            "tier": "B", "verified": false, "urls": ["https://www.kw.ac.kr"], "email": "dhim@kw.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "UOS",     "name": "جامعة سيول",           "tier": "B", "verified": false, "urls": ["https://www.uos.ac.kr"], "email": "engineer@uos.ac.kr", "watch_for": ["2027", "후기"] },
+    { "id": "JNU",     "name": "تشونام الوطنية",       "tier": "B", "verified": false, "urls": ["https://www.jnu.ac.kr"], "email": "internia@jnu.ac.kr", "watch_for": ["2027", "후기"] }
+  ]
+}

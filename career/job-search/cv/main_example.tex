@@ -1,0 +1,187 @@
+%% CV - Muntadhar Ahmed Jawad
+%% Comprehensive overview of all competencies, experience, and achievements.
+%% Use as a master reference when tailoring role-specific CVs.
+%%
+%% SETUP: Run /setup to populate this with your actual information.
+%% Compile with: lualatex main_example.tex
+%% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{banking}
+\moderncvcolor{blue}
+
+% Force the name and section headings to render in moderncv blue (color1).
+% Default banking leaves them black: moderncvstylebanking.sty's \colorlet
+% copies (not aliases) the pre-scheme accent colour, so the name colours are
+% frozen before \moderncvcolor runs. Re-let them after. \namefont is the hook
+% every name-style macro routes through, so this also works on moderncv 2.3.1
+% (Debian/Ubuntu apt), which has no \firstnamestyle/\lastnamestyle at all.
+\renewcommand*{\namefont}{\fontsize{34}{36}\bfseries\upshape}
+\colorlet{firstnamecolor}{color1}
+\colorlet{lastnamecolor}{color1}
+\colorlet{namecolor}{color1}
+\renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
+
+\usepackage[utf8]{inputenc}
+% moderncv loads hyperref itself in an \AtEndPreamble hook, so \hypersetup
+% must go in an \AtEndPreamble of our own: on moderncv < 2.4 a top-level
+% \usepackage{hyperref} clashes with the class's own
+% \RequirePackage[unicode]{hyperref}. From 2.4.0 the class passes its options
+% through \PassOptionsToPackage instead, which is what removes that clash.
+\AtEndPreamble{\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={Muntadhar Ahmed Jawad - CV},
+    % Keep pdfpagemode=UseNone: this block runs after moderncv's own
+    % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
+    % value here would win and open every CV in fullscreen presentation mode.
+    pdfpagemode=UseNone,
+}}
+\usepackage[scale=0.80]{geometry}
+\usepackage{import}
+
+% personal data
+\name{Muntadhar}{Ahmed Jawad}
+% If you have no address to list, DELETE this whole line. \address{}{}{} fails
+% with "There's no line here to end" on every moderncv version.
+\address{Basrah, Iraq --- available for fully remote work}{}{}
+\phone[mobile]{+964 787 629 4108}
+\email{muntzr557@gmail.com}
+\extrainfo{\href{https://github.com/wbtio}{github.com/wbtio}}
+
+\begin{document}
+
+\makecvtitle
+
+% ============================================================
+%     PROFILE STATEMENT
+% ============================================================
+
+\vspace{6pt}
+% NOTE: /apply rewrites this statement for each specific role. This is the neutral default.
+\small{AI \& Automation Engineer and Full-Stack Developer who has shipped and owned complete
+products alone --- public websites, admin dashboards with role-based permissions, cross-platform
+mobile apps, and an e-commerce platform running in production. Builds LLM features that behave
+predictably in production: Gemini and OpenAI APIs behind a prompt layer with validated structured
+JSON output. Automates the repetitive work around them with n8n. Works fully remotely from Basrah,
+Iraq, in English and Arabic.}
+
+% ============================================================
+%     CORE COMPETENCIES
+% ============================================================
+
+\section{Core Competencies}
+\vspace{1pt}
+\begin{itemize}
+
+\item \textbf{LLM Application Development}: Google Gemini API, OpenAI API, prompt engineering,
+structured JSON output with schema validation, generation pipelines.
+
+\item \textbf{Workflow Automation}: n8n, API integration, webhooks, error handling and alerting,
+internal operations dashboards.
+
+\item \textbf{Frontend \& Mobile}: React, Next.js, TypeScript, React Native (Android and iOS from
+a single codebase).
+
+\item \textbf{Backend \& Data}: Node.js, Python, Supabase, PostgreSQL, role-based access control
+(RBAC), REST APIs.
+
+\item \textbf{Delivery}: Production deployment on Vercel, infrastructure ownership, maintenance,
+Git/GitHub, agentic coding with Claude Code.
+
+\end{itemize}
+
+% ============================================================
+%     PROFESSIONAL EXPERIENCE
+% ============================================================
+
+\section{Professional Experience}
+\vspace{3pt}
+\begin{itemize}
+
+% --- Most Recent Role ---
+\item{\cventry{2025--2026}{IT Manager \& Lead Developer}{JAZ (Joint Annual Zone)}{Basrah, Iraq}{}{\vspace{1pt}
+\begin{itemize}
+    \item {Led the IT department of one of Iraq's largest international exhibition and conference organisers, as the sole engineer.}
+    \item {Built \href{https://jaz.iq}{jaz.iq} end to end: public website plus an admin dashboard covering content, operations and role-based permissions.}
+    \item {Shipped an Android and iOS mobile app from a single React Native codebase.}
+    \item {Automated recurring business processes with n8n, replacing manual operations work with monitored workflows.}
+    \item {Owned infrastructure, deployment and ongoing maintenance.}
+\end{itemize}}}
+
+\vspace{3pt}
+
+% --- Previous Role ---
+\item{\cventry{2024--2026}{Full-Stack Developer}{Al-Amal Center (e-commerce project under JAZ)}{Basrah, Iraq}{}{\vspace{1pt}
+\begin{itemize}
+    \item {Built the entire platform single-handedly: storefront, admin dashboard, and Android/iOS app.}
+    \item {Implemented real-time inventory, order processing and analytics.}
+    \item {Live in production at \href{https://centeralamal.shop}{centeralamal.shop}.}
+\end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     SELECTED PROJECTS
+% ============================================================
+
+\section{Selected Projects}
+\vspace{3pt}
+\begin{itemize}
+
+\item{\cventry{2025--2026}{METRIX --- AI planning application}{Next.js, Gemini API, Supabase, Vercel}{\href{https://metrix-bete.vercel.app}{metrix-bete.vercel.app}}{}{\vspace{1pt}
+\begin{itemize}
+    \item {Turns a free-text goal into a structured plan through a Gemini generation pipeline.}
+    \item {Prompt layer producing validated structured JSON output, so downstream code can rely on the shape.}
+    \item {Daily and weekly follow-ups with statistics; Google OAuth sign-in.}
+\end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     EDUCATION
+% ============================================================
+
+\section{Education}
+\vspace{1pt}
+\begin{itemize}
+
+\item{\cventry{expected 2027}{B.Sc. in Computer Science}{University of Basrah}{Basrah, Iraq}{}{\vspace{1pt}
+Fourth year, studied alongside full-time professional work.
+}}
+
+\end{itemize}
+
+% ============================================================
+%     LANGUAGES
+% ============================================================
+
+\section{Languages}
+\vspace{1pt}
+\begin{itemize}
+\item {Arabic (native), English (full professional proficiency).}
+\end{itemize}
+
+% ============================================================
+%     CERTIFICATIONS
+% ============================================================
+
+\section{Certifications}
+\vspace{1pt}
+\begin{itemize}
+\item{\textbf{CS50x --- Introduction to Computer Science} -- Harvard University via edX (2024).}
+\end{itemize}
+
+% ============================================================
+%     REFERENCES
+% ============================================================
+
+\section{References}
+\vspace{1pt}
+\begin{itemize}
+\item{Available upon request.}
+\end{itemize}
+
+\end{document}

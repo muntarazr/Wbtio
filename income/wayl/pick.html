@@ -1,0 +1,148 @@
+<!doctype html>
+<html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اختيار خدمات متجر Wayl</title>
+<style>
+:root{--bg:#FAFAFA;--card:#fff;--ink:#0A0A0A;--muted:#3F3F46;--dim:#71717A;--line:#E4E4E7}
+@media(prefers-color-scheme:dark){:root{--bg:#0A0A0B;--card:#151517;--ink:#FAFAFA;--muted:#D4D4D8;--dim:#8A8A94;--line:#27272A}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"SF Arabic","Geeza Pro",system-ui,sans-serif;
+  line-height:1.6;padding:24px;max-width:1100px;margin:0 auto}
+h1{font-size:1.6rem;letter-spacing:-.5px}
+.sub{color:var(--dim);font-size:.9rem;margin-top:6px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 0;border-bottom:1px solid var(--line);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+button{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  border-radius:10px;padding:9px 16px;cursor:pointer}
+button:hover{border-color:var(--dim)}
+button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.count{margin-inline-start:auto;color:var(--dim);font-size:.9rem;font-variant-numeric:tabular-nums}
+h2{font-size:1rem;color:var(--dim);margin:26px 0 10px;font-weight:600}
+.svc{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:12px;overflow:hidden}
+.hd{padding:14px 16px;border-bottom:1px solid var(--line)}
+.nm{font-weight:600;font-size:1.02rem}
+.ds{color:var(--dim);font-size:.84rem;margin-top:3px}
+.sku{font-size:.7rem;color:var(--dim);letter-spacing:1px;font-family:ui-monospace,monospace}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;vertical-align:1px}
+.tr{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--line);cursor:pointer}
+.tr:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.tr.on{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--ink);flex:none}
+.tn{flex:1;font-size:.92rem}
+.gc{font-size:.68rem;background:var(--ink);color:var(--bg);border-radius:5px;padding:1px 7px;margin-inline-start:6px}
+.hr{font-size:.72rem;color:var(--dim);font-variant-numeric:tabular-nums;margin-inline-start:8px}
+.tp{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600;text-align:left;font-size:.92rem}
+.tp span{display:block;font-weight:400;color:var(--dim);font-size:.74rem}
+#out{width:100%;margin-top:24px;min-height:170px;background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-radius:14px;padding:16px;font-family:ui-monospace,monospace;
+  font-size:.8rem;line-height:1.7;white-space:pre;overflow-x:auto;direction:rtl}
+.note{color:var(--dim);font-size:.82rem;margin-bottom:8px}
+</style></head><body>
+
+<h1>اختيار الخدمات — متجر Wayl</h1>
+<p class="sub">علّم <b>كل درجة</b> راح تنشرها. الدرجة هي «خيار المنتج» بـWayl.
+سعر الصرف 1320 د.ع/$ · الحد الأدنى $15/ساعة · 2026-08-24</p>
+
+<div class="bar">
+  <button onclick="setAll(true)">حدّد الكل</button>
+  <button onclick="setAll(false)">امسح الكل</button>
+  <button onclick="onlyIQ()">العراق فقط</button>
+  <button onclick="onlyEntry()">أرخص درجة فقط</button>
+  <button class="primary" onclick="copyOut()">📋 انسخ المحدَّد</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div id="groups"></div>
+<textarea id="out" readonly placeholder="النص المُولَّد يظهر هنا…"></textarea>
+
+<script>
+const ITEMS = [{"sku":"START-01","name":"جلسة تشخيص — وين تضيع فلوسك ووقتك","cat":"مدخل","kind":"product","desc":"ساعة معك بالمكالمة، وتقرير مكتوب: شنو ينفع يتحسّن بشغلك، وكم يوفّر، وشنو أول خطوة.","group":"مداخل رخيصة","tiers":[{"name":"جلسة + تقرير","price":40,"iqd":"52,800","market":"IQ","hours":2,"delivery":"خلال 3 أيام","rate":19.3,"label":""}]},{"sku":"FIX-01","name":"تسريع موقعك وإصلاح أخطائه","cat":"مدخل","kind":"product","desc":"موقعك بطيء أو فيه أشياء خربانة؟ أفحصه وأصلح اللي يقدر ينصلح، وأگلك الباقي بصراحة.","group":"مداخل رخيصة","tiers":[{"name":"فحص وإصلاح","price":70,"iqd":"92,400","market":"IQ","hours":3,"delivery":"3 أيام","rate":22.5,"label":""}]},{"sku":"SETUP-01","name":"دومين واستضافة وبريد باسم شركتك","cat":"مدخل","kind":"product","desc":"بدل ما تراسل زبائنك من Gmail، يصير عندك بريد باسم شركتك ودومين خاص.","group":"مداخل رخيصة","tiers":[{"name":"إعداد كامل","price":55,"iqd":"72,600","market":"IQ","hours":2,"delivery":"يومان","rate":26.5,"label":""}]},{"sku":"SITE-01","name":"موقع لشركتك","cat":"ويب","kind":"product","desc":"موقع يعرّف بشغلك، سريع، يشتغل على الموبايل، ويطلع بجوجل لما أحد يدوّر عليك.","group":"الخدمات","tiers":[{"name":"بسيط — 3 صفحات","price":250,"iqd":"330,000","market":"IQ","hours":12,"delivery":"7 أيام","rate":20.1,"label":""},{"name":"كامل — 6 صفحات بلغتين","price":550,"iqd":"726,000","market":"IQ","hours":25,"delivery":"14 يوم","rate":21.2,"label":""},{"name":"بلوحة تحكم","price":950,"iqd":"1,254,000","market":"IQ","hours":45,"delivery":"21 يوم","rate":20.4,"label":""},{"name":"نسخة الخليج","price":1800,"iqd":"2,376,000","market":"GC","hours":32,"delivery":"21 يوم","rate":54.3,"label":""}]},{"sku":"LAND-01","name":"صفحة إعلان تجيب لك زبائن","cat":"ويب","kind":"product","desc":"صفحة وحدة مصممة لهدف واحد: الزائر يترك رقمه أو يشتري. تنفع مع إعلانات فيسبوك وانستغرام.","group":"الخدمات","tiers":[{"name":"سريعة","price":120,"iqd":"158,000","market":"IQ","hours":5,"delivery":"3 أيام","rate":23.2,"label":""},{"name":"كاملة + اختبار A/B","price":250,"iqd":"330,000","market":"IQ","hours":10,"delivery":"6 أيام","rate":24.1,"label":""},{"name":"مع إعداد الحملة","price":420,"iqd":"554,000","market":"IQ","hours":16,"delivery":"10 أيام","rate":25.3,"label":""}]},{"sku":"SHOP-01","name":"متجر بيع أونلاين","cat":"ويب","kind":"product","desc":"متجرك الخاص بدومينك — يعرض منتجاتك، يستقبل الطلبات، ويقبل الدفع. مو صفحة انستغرام.","group":"الخدمات","tiers":[{"name":"مبدئي — حتى 10 منتجات","price":320,"iqd":"422,000","market":"IQ","hours":15,"delivery":"7 أيام","rate":20.6,"label":""},{"name":"مبتدئ — حتى 30 منتج","price":700,"iqd":"924,000","market":"IQ","hours":35,"delivery":"14 يوم","rate":19.3,"label":""},{"name":"متوسط — بلا حد","price":1400,"iqd":"1,848,000","market":"IQ","hours":65,"delivery":"21 يوم","rate":20.8,"label":""},{"name":"متقدم","price":2200,"iqd":"2,904,000","market":"IQ","hours":95,"delivery":"30 يوم","rate":22.3,"label":""},{"name":"نسخة الخليج","price":3500,"iqd":"4,620,000","market":"GC","hours":70,"delivery":"30 يوم","rate":48.3,"label":""}]},{"sku":"SALLA-01","name":"متجر سلة أو زد جاهز للبيع","cat":"ويب","kind":"product","desc":"متجرك على منصة سلة أو زد — مُعدّ ومربوط بالدفع والشحن ومخصَّص بألوانك، جاهز تبيع منه.","group":"الخدمات","tiers":[{"name":"إعداد","price":290,"iqd":"383,000","market":"GC","hours":12,"delivery":"6 أيام","rate":23.3,"label":""},{"name":"إعداد + تسويق","price":520,"iqd":"686,000","market":"GC","hours":22,"delivery":"10 أيام","rate":22.8,"label":""},{"name":"متقدم — مع أتمتة","price":850,"iqd":"1,122,000","market":"GC","hours":34,"delivery":"16 يوم","rate":24.1,"label":""}]},{"sku":"APP-01","name":"تطبيق موبايل لمتجرك","cat":"موبايل","kind":"product","desc":"تطبيق أندرويد وآيفون بقاعدة كود واحدة — أرخص 40% من بناء تطبيقين منفصلين.","group":"الخدمات","tiers":[{"name":"أساسي","price":1200,"iqd":"1,584,000","market":"IQ","hours":55,"delivery":"30 يوم","rate":21.1,"label":""},{"name":"كامل","price":2000,"iqd":"2,640,000","market":"IQ","hours":90,"delivery":"45 يوم","rate":21.4,"label":""},{"name":"متقدم","price":3200,"iqd":"4,224,000","market":"IQ","hours":140,"delivery":"60 يوم","rate":22.1,"label":""}]},{"sku":"WA-01","name":"طلبات الواتساب تنحفظ لحالها","cat":"أتمتة","kind":"product","desc":"كل طلب يجيك بالواتساب ينكتب تلقائياً بجدول مرتّب، وينبّهك. ما يضيع ولا طلب بين المحادثات.","group":"الخدمات","tiers":[{"name":"بسيط","price":150,"iqd":"198,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":24.1,"label":""},{"name":"متوسط","price":350,"iqd":"462,000","market":"IQ","hours":14,"delivery":"8 أيام","rate":24.1,"label":""},{"name":"متقدم","price":650,"iqd":"858,000","market":"IQ","hours":26,"delivery":"14 يوم","rate":24.1,"label":""},{"name":"نسخة الخليج","price":1400,"iqd":"1,848,000","market":"GC","hours":28,"delivery":"14 يوم","rate":48.3,"label":""}]},{"sku":"BOT-01","name":"رد آلي على أسئلة زبائنك","cat":"أتمتة","kind":"product","desc":"الأسئلة المتكررة (السعر؟ التوصيل؟ الدوام؟) تنجاوب لحالها 24 ساعة — بالعربي وباللهجة العراقية.","group":"الخدمات","tiers":[{"name":"بسيط","price":200,"iqd":"264,000","market":"IQ","hours":8,"delivery":"5 أيام","rate":24.1,"label":""},{"name":"متوسط","price":450,"iqd":"594,000","market":"IQ","hours":18,"delivery":"10 أيام","rate":24.1,"label":""},{"name":"متقدم","price":800,"iqd":"1,056,000","market":"IQ","hours":32,"delivery":"16 يوم","rate":24.1,"label":""},{"name":"نسخة الخليج","price":1700,"iqd":"2,244,000","market":"GC","hours":34,"delivery":"16 يوم","rate":48.3,"label":""}]},{"sku":"AUTO-01","name":"اربط برامجك ببعضها","cat":"أتمتة","kind":"product","desc":"بدل ما تنقل البيانات بيدك بين برنامج وبرنامج، تنتقل لحالها. كل عملية تكررها يومياً تنفع.","group":"الخدمات","tiers":[{"name":"عملية واحدة","price":120,"iqd":"158,000","market":"IQ","hours":5,"delivery":"4 أيام","rate":23.2,"label":""},{"name":"ثلاث عمليات","price":350,"iqd":"462,000","market":"IQ","hours":14,"delivery":"9 أيام","rate":24.1,"label":""},{"name":"منظومة — حتى 8 عمليات","price":700,"iqd":"924,000","market":"IQ","hours":28,"delivery":"18 يوم","rate":24.1,"label":""}]},{"sku":"PK-MAPS","name":"قائمة عملاء محتملين من خرائط جوجل","cat":"أتمتة جاهزة","kind":"product","desc":"تحدد المجال والمدينة — يجمع لك كل الشركات بأسمائها وأرقامها وعناوينها وتقييماتها بجدول.","group":"الخدمات","tiers":[{"name":"سحبة وحدة","price":140,"iqd":"185,000","market":"IQ","hours":5,"delivery":"3 أيام","rate":27,"label":""},{"name":"متعدد المجالات","price":320,"iqd":"422,000","market":"IQ","hours":11,"delivery":"6 أيام","rate":28.1,"label":""},{"name":"متجدد أسبوعياً","price":580,"iqd":"766,000","market":"IQ","hours":20,"delivery":"10 أيام","rate":28,"label":""}]},{"sku":"PK-WAAI","name":"رد واتساب ذكي يفهم الصوت والصورة","cat":"أتمتة جاهزة","kind":"product","desc":"الزبون يرسل صوتية أو صورة منتج — المساعد يفهمها ويرد. مو بس نص.","group":"الخدمات","tiers":[{"name":"نص وصوت","price":290,"iqd":"383,000","market":"IQ","hours":10,"delivery":"7 أيام","rate":28,"label":""},{"name":"+ صور المنتجات","price":580,"iqd":"766,000","market":"IQ","hours":20,"delivery":"12 يوم","rate":28,"label":""},{"name":"+ أخذ الطلبات","price":980,"iqd":"1,294,000","market":"IQ","hours":34,"delivery":"18 يوم","rate":27.8,"label":""}]},{"sku":"PK-INV","name":"فواتيرك تنقرأ لحالها وتنحفظ بجدول","cat":"أتمتة جاهزة","kind":"product","desc":"صوّر الفاتورة أو حوّلها بالبريد — تنقرأ تلقائياً وتنحفظ بجدول المصاريف مصنَّفة.","group":"الخدمات","tiers":[{"name":"أساسي","price":220,"iqd":"290,000","market":"IQ","hours":8,"delivery":"5 أيام","rate":26.5,"label":""},{"name":"+ تصنيف وتقرير","price":460,"iqd":"607,000","market":"IQ","hours":16,"delivery":"10 أيام","rate":27.7,"label":""},{"name":"+ ربط محاسبي","price":780,"iqd":"1,030,000","market":"IQ","hours":27,"delivery":"16 يوم","rate":27.9,"label":""}]},{"sku":"PK-EXP","name":"مصاريفك من صور الإيصالات","cat":"أتمتة جاهزة","kind":"product","desc":"صوّر الإيصال بالموبايل وارسله — ينحفظ بجدول المصاريف مصنَّفاً، وتوصلك خلاصة كل شهر.","group":"الخدمات","tiers":[{"name":"شخصي","price":170,"iqd":"224,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":27.3,"label":""},{"name":"فريق — حتى 10 موظفين","price":350,"iqd":"462,000","market":"IQ","hours":12,"delivery":"8 أيام","rate":28.1,"label":""}]},{"sku":"PK-CV","name":"فرز السير الذاتية تلقائياً","cat":"أتمتة جاهزة","kind":"product","desc":"تعلن عن وظيفة ويجيك 200 CV؟ تنقرأ كلها وتنرتّب بجدول حسب مطابقتها للشروط.","group":"الخدمات","tiers":[{"name":"أساسي","price":180,"iqd":"238,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":28.9,"label":""},{"name":"+ فرز ومراسلة","price":380,"iqd":"502,000","market":"IQ","hours":13,"delivery":"9 أيام","rate":28.2,"label":""}]},{"sku":"PK-MAIL","name":"فرز رسائلك والرد التلقائي","cat":"أتمتة جاهزة","kind":"product","desc":"كل رسالة تجيك تُصنَّف، وتُكتب لها مسودة رد، وتُوجَّه — والمهم يُصعَّد لك أنت.","group":"الخدمات","tiers":[{"name":"تصنيف وتوجيه","price":250,"iqd":"330,000","market":"IQ","hours":8,"delivery":"5 أيام","rate":30.2,"label":""},{"name":"+ رد تلقائي","price":550,"iqd":"726,000","market":"IQ","hours":18,"delivery":"10 أيام","rate":29.5,"label":""},{"name":"+ متعدد القنوات","price":950,"iqd":"1,254,000","market":"IQ","hours":32,"delivery":"16 يوم","rate":28.6,"label":""}]},{"sku":"PK-RPT","name":"تقريرك الأسبوعي يوصلك كل أحد","cat":"أتمتة جاهزة","kind":"product","desc":"كل أحد الساعة 7 صباحاً يوصلك بريد: شنو صار بشغلك هذا الأسبوع، وشنو تسوي هذا الأسبوع.","group":"الخدمات","tiers":[{"name":"أساسي","price":200,"iqd":"264,000","market":"IQ","hours":7,"delivery":"5 أيام","rate":27.6,"label":""},{"name":"+ متعدد المصادر","price":450,"iqd":"594,000","market":"IQ","hours":16,"delivery":"10 أيام","rate":27.1,"label":""}]},{"sku":"PK-PRICE","name":"راقب أسعار منافسيك يومياً","cat":"أتمتة جاهزة","kind":"product","desc":"كل يوم يفحص أسعار منافسيك، ويرسل لك تنبيه لما ينزل سعر أو ينزل منتج جديد.","group":"الخدمات","tiers":[{"name":"منافس واحد","price":190,"iqd":"251,000","market":"IQ","hours":7,"delivery":"5 أيام","rate":26.2,"label":""},{"name":"حتى 5 منافسين","price":390,"iqd":"515,000","market":"IQ","hours":14,"delivery":"9 أيام","rate":26.9,"label":""},{"name":"+ لوحة وتحليل","price":650,"iqd":"858,000","market":"IQ","hours":23,"delivery":"14 يوم","rate":27.3,"label":""}]},{"sku":"PK-REV","name":"راقب سمعتك وتقييمات زبائنك","cat":"أتمتة جاهزة","kind":"product","desc":"أي تقييم أو تعليق جديد عنك — يوصلك فوراً، والسلبي منه بتنبيه عاجل قبل ما ينتشر.","group":"الخدمات","tiers":[{"name":"منصة واحدة","price":170,"iqd":"224,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":27.3,"label":""},{"name":"+ كل المنصات","price":350,"iqd":"462,000","market":"IQ","hours":12,"delivery":"8 أيام","rate":28.1,"label":""}]},{"sku":"PK-CART","name":"استرجع الزبائن اللي تركوا سلة الشراء","cat":"أتمتة جاهزة","kind":"product","desc":"الزبون حط منتجات بالسلة وما كمّل؟ توصله رسالة واتساب بعد ساعة تذكّره — بلا ما تلاحقه بنفسك.","group":"الخدمات","tiers":[{"name":"تذكير بسيط","price":160,"iqd":"211,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":25.7,"label":""},{"name":"سلسلة كاملة","price":340,"iqd":"449,000","market":"IQ","hours":12,"delivery":"8 أيام","rate":27.3,"label":""}]},{"sku":"PK-FOLLOW","name":"متابعة العميل اللي ما رد عليك","cat":"أتمتة جاهزة","kind":"product","desc":"أرسلت عرض سعر وما رد؟ تتابعه تلقائياً بتذكيرات مهذّبة، وتتوقف فوراً لما يرد.","group":"الخدمات","tiers":[{"name":"أساسي","price":180,"iqd":"238,000","market":"IQ","hours":7,"delivery":"5 أيام","rate":24.8,"label":""},{"name":"+ ذكي ومتعدد القنوات","price":380,"iqd":"502,000","market":"IQ","hours":14,"delivery":"9 أيام","rate":26.2,"label":""}]},{"sku":"PK-BOOK","name":"حجوزات ومواعيد تلقائية بالواتساب","cat":"أتمتة جاهزة","kind":"product","desc":"الزبون يحجز موعده بالواتساب، يتسجّل بتقويمك، ويوصله تذكير — بلا مكالمة ولا دفتر.","group":"الخدمات","tiers":[{"name":"أساسي","price":220,"iqd":"290,000","market":"IQ","hours":8,"delivery":"5 أيام","rate":26.5,"label":""},{"name":"+ متعدد الموظفين","price":450,"iqd":"594,000","market":"IQ","hours":16,"delivery":"10 أيام","rate":27.1,"label":""},{"name":"+ عربون عند الحجز","price":750,"iqd":"990,000","market":"IQ","hours":26,"delivery":"15 يوم","rate":27.8,"label":""}]},{"sku":"PK-BDAY","name":"رسائل المناسبات لزبائنك","cat":"أتمتة جاهزة","kind":"product","desc":"عيد ميلاد زبونك أو ذكرى أول شراء — توصله رسالة باسمه وكوبون. تلقائياً وللأبد.","group":"الخدمات","tiers":[{"name":"أساسي","price":130,"iqd":"172,000","market":"IQ","hours":5,"delivery":"3 أيام","rate":25.1,"label":""},{"name":"+ كامل","price":270,"iqd":"356,000","market":"IQ","hours":10,"delivery":"7 أيام","rate":26.1,"label":""}]},{"sku":"PK-STOCK","name":"تنبيه قبل ما ينفد مخزونك","cat":"أتمتة جاهزة","kind":"product","desc":"يراقب كمياتك ويرسل تنبيهاً قبل النفاد بوقت كافٍ — ويجهّز لك طلب الشراء للمورّد.","group":"الخدمات","tiers":[{"name":"تنبيه","price":150,"iqd":"198,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":24.1,"label":""},{"name":"+ ذكي","price":320,"iqd":"422,000","market":"IQ","hours":12,"delivery":"8 أيام","rate":25.7,"label":""}]},{"sku":"PK-DELIV","name":"تتبع طلبات التوصيل وإشعار الزبون","cat":"أتمتة جاهزة","kind":"product","desc":"كل طلب حالته تتحدث لحالها، والزبون يوصله إشعار بكل مرحلة — بلا ما يتصل يسأل «وين طلبي؟».","group":"الخدمات","tiers":[{"name":"أساسي","price":200,"iqd":"264,000","market":"IQ","hours":7,"delivery":"5 أيام","rate":27.6,"label":""},{"name":"+ مندوبون وتقارير","price":420,"iqd":"554,000","market":"IQ","hours":15,"delivery":"10 أيام","rate":27,"label":""}]},{"sku":"PK-POST","name":"انشر على كل منصاتك بضغطة وحدة","cat":"أتمتة جاهزة","kind":"product","desc":"تكتب المنشور مرة — ينشر على انستغرام وفيسبوك وتيك توك بالوقت اللي تحدده.","group":"الخدمات","tiers":[{"name":"منصتان","price":180,"iqd":"238,000","market":"IQ","hours":7,"delivery":"5 أيام","rate":24.8,"label":""},{"name":"+ كل المنصات","price":380,"iqd":"502,000","market":"IQ","hours":14,"delivery":"9 أيام","rate":26.2,"label":""},{"name":"+ مساعدة بالكتابة","price":620,"iqd":"818,000","market":"IQ","hours":22,"delivery":"13 يوم","rate":27.2,"label":""}]},{"sku":"DATA-01","name":"اجمع لك بيانات السوق والمنافسين","cat":"بيانات","kind":"product","desc":"أسعار المنافسين، أرقام الموردين، قوائم العملاء المحتملين — تنجمع تلقائياً بملف مرتّب ومحدَّث.","group":"الخدمات","tiers":[{"name":"مرة واحدة","price":130,"iqd":"172,000","market":"IQ","hours":6,"delivery":"4 أيام","rate":20.9,"label":""},{"name":"متكرر — يومي أو أسبوعي","price":340,"iqd":"449,000","market":"IQ","hours":14,"delivery":"8 أيام","rate":23.4,"label":""},{"name":"متعدد المصادر","price":620,"iqd":"818,000","market":"IQ","hours":26,"delivery":"14 يوم","rate":23,"label":""}]},{"sku":"DASH-01","name":"لوحة تعرض أرقام شغلك","cat":"بيانات","kind":"product","desc":"أرقامك كلها بشاشة وحدة محدَّثة تلقائياً — بدل ما تفتح خمس ملفات Excel وتجمع بيدك.","group":"الخدمات","tiers":[{"name":"بسيط","price":250,"iqd":"330,000","market":"IQ","hours":10,"delivery":"7 أيام","rate":24.1,"label":""},{"name":"متوسط","price":500,"iqd":"660,000","market":"IQ","hours":20,"delivery":"12 يوم","rate":24.1,"label":""},{"name":"متقدم","price":850,"iqd":"1,122,000","market":"IQ","hours":34,"delivery":"18 يوم","rate":24.1,"label":""}]},{"sku":"AGT-01","name":"مساعد يجاوب من مستندات شركتك","cat":"ذكاء اصطناعي","kind":"product","desc":"ترفع عقودك ولوائحك، وتسأل بلغتك — يجيبك مع الإشارة لمصدر الجواب بالمستند.","group":"الخدمات","tiers":[{"name":"تنفيذ أول — بضمان استرداد","price":600,"iqd":"792,000","market":"IQ","hours":30,"delivery":"21 يوم","rate":19.3,"label":""}]},{"sku":"CARE-01","name":"متابعة شهرية — موقعك بأمان","cat":"اشتراك","kind":"subscription","desc":"نسخ احتياطية، تحديثات أمان، وإصلاح أي عطل. تشتريها كل شهر بضغطة — بلا عقد ولا التزام.","group":"الباقات الشهرية","tiers":[{"name":"أساسي","price":60,"iqd":"79,200","market":"IQ","hours":3,"delivery":"رد خلال 48 ساعة","rate":19.3,"label":""},{"name":"نمو","price":150,"iqd":"198,000","market":"IQ","hours":8,"delivery":"رد خلال 24 ساعة","rate":18.1,"label":""},{"name":"أتمتة مستمرة","price":280,"iqd":"370,000","market":"IQ","hours":14,"delivery":"رد خلال 24 ساعة","rate":19.3,"label":""}]},{"sku":"PAY-DEP","name":"عربون بدء مشروع — 50%","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. الدفعة الأولى من مشروع متفق عليه — المبلغ يُحدَّد بالفاتورة المرسلة لك.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"50% من قيمة العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-MIL","name":"دفعة مرحلية","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. دفعة عند إنجاز مرحلة متفق عليها — تُستعمل بالمشاريع الطويلة فقط.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"حسب العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-FIN","name":"الدفعة النهائية عند التسليم","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. الرصيد المتبقي، يُدفع مقابل تسليم الملفات وكلمات المرور والملكية الكاملة.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"حسب العقد","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-HR","name":"ساعة عمل إضافية خارج نطاق العقد","cat":"أداة دفع","kind":"payment_tool","desc":"أي طلب خارج المتفق عليه يُسعَّر بالساعة. يحمي الطرفين: أنت تعرف الكلفة قبل الموافقة، وأنا ما أشتغل مجاناً.","group":"أدوات الدفع","tiers":[{"name":"البند","price":25,"iqd":"33,000","label":"","hours":null,"delivery":"","rate":null}]},{"sku":"PAY-RSH","name":"رسوم تنفيذ مستعجل","cat":"أداة دفع","kind":"payment_tool","desc":"ليس منتجاً. تقليص مدة التسليم للنصف تقريباً. تُطلب فقط إذا الموعد يهمك أكثر من الكلفة.","group":"أدوات الدفع","tiers":[{"name":"البند","price":null,"iqd":"","label":"+25% على قيمة المشروع","hours":null,"delivery":"","rate":null}]}];
+const COLOR = {'أتمتة':'#059669','ويب':'#0891B2','بيانات':'#7C3AED','موبايل':'#D97706',
+  'ذكاء اصطناعي':'#DB2777','مدخل':'#2563EB','اشتراك':'#475569','أداة دفع':'#52525B'};
+const key = (s, n) => s + '|' + n;
+const sel = new Set();
+const flat = () => ITEMS.flatMap(i => i.tiers.map(t => ({ ...i, t })));
+flat().filter(x => x.kind !== 'payment_tool' && x.t.market !== 'GC')
+      .forEach(x => sel.add(key(x.sku, x.t.name)));
+
+const groups = ['مداخل رخيصة', 'الخدمات', 'الباقات الشهرية', 'أدوات الدفع'];
+document.getElementById('groups').innerHTML = groups.map(g => {
+  const list = ITEMS.filter(i => i.group === g);
+  if (!list.length) return '';
+  return '<h2>' + g + '</h2>' +
+    (g === 'أدوات الدفع' ? '<p class="note">خطوات دفع لا خدمات — انشرها فقط إذا تريد ترسل رابط دفع لكل مرحلة عقد.</p>' : '') +
+    list.map(i => `<div class="svc">
+      <div class="hd">
+        <div class="nm"><span class="dot" style="background:${COLOR[i.cat]}"></span>${i.name}</div>
+        <div class="ds">${i.desc}</div>
+        <div class="sku">${i.sku}</div>
+      </div>
+      ${i.tiers.map(t => `<label class="tr" data-k="${key(i.sku, t.name)}">
+        <input type="checkbox" data-k="${key(i.sku, t.name)}">
+        <span class="tn">${t.name}${t.market === 'GC' ? '<span class="gc">خليج</span>' : ''}${
+          t.rate ? '<span class="hr">' + t.hours + ' ساعة · $' + t.rate + '/ساعة</span>' : ''}</span>
+        <span class="tp">${t.price != null ? '$' + t.price.toLocaleString('en-US') + '<span>' + t.iqd + ' د.ع</span>' : t.label}</span>
+      </label>`).join('')}
+    </div>`).join('');
+}).join('');
+
+function sync() {
+  document.querySelectorAll('input[type=checkbox]').forEach(c => {
+    c.checked = sel.has(c.dataset.k);
+    c.closest('.tr').classList.toggle('on', c.checked);
+  });
+  const picked = flat().filter(x => sel.has(key(x.sku, x.t.name)));
+  document.getElementById('count').textContent =
+    picked.length + ' درجة · ' + new Set(picked.map(x => x.sku)).size + ' منتج بـWayl';
+  render(picked);
+}
+
+function render(p) {
+  if (!p.length) { document.getElementById('out').value = ''; return; }
+  const out = ['الخدمات المختارة للنشر على Wayl:', ''];
+  for (const g of groups) {
+    const gi = p.filter(x => x.group === g);
+    if (!gi.length) continue;
+    out.push(g + ':');
+    for (const sku of [...new Set(gi.map(x => x.sku))]) {
+      const rws = gi.filter(x => x.sku === sku);
+      out.push('  ▸ ' + rws[0].name + ' [' + sku + ']');
+      rws.forEach(x => out.push('      · ' + x.t.name + ' — ' +
+        (x.t.price != null ? '$' + x.t.price + ' / ' + x.t.iqd + ' د.ع' : x.t.label)));
+    }
+    out.push('');
+  }
+  const mo = p.filter(x => x.kind === 'subscription' && x.t.price)
+              .reduce((s, x) => s + x.t.price, 0);
+  out.push('عدد المنتجات بـWayl: ' + new Set(p.map(x => x.sku)).size +
+           ' · عدد الخيارات: ' + p.length);
+  if (mo) out.push('مجموع الباقات الشهرية لو اشتراها عميل واحد: $' + mo + '/شهر');
+  document.getElementById('out').value = out.join('\n');
+}
+
+document.addEventListener('change', e => {
+  if (e.target.type !== 'checkbox') return;
+  e.target.checked ? sel.add(e.target.dataset.k) : sel.delete(e.target.dataset.k);
+  sync();
+});
+
+const setAll = on => { sel.clear(); if (on) flat().forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyIQ = () => { sel.clear(); flat().filter(x => x.t.market !== 'GC' && x.kind !== 'payment_tool')
+  .forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyEntry = () => { sel.clear(); ITEMS.filter(i => i.kind !== 'payment_tool').forEach(i => {
+  const e = i.tiers.reduce((m, t) => (!m || t.price < m.price ? t : m), null);
+  if (e) sel.add(key(i.sku, e.name)); }); sync(); };
+
+async function copyOut() {
+  const t = document.getElementById('out');
+  if (!t.value) return alert('ما محدَّد ولا خدمة.');
+  const btn = event.target;
+  try { await navigator.clipboard.writeText(t.value); }
+  catch { t.removeAttribute('readonly'); t.select(); document.execCommand('copy'); t.setAttribute('readonly',''); }
+  const old = btn.textContent; btn.textContent = '✓ انتُسخ';
+  setTimeout(() => btn.textContent = old, 1600);
+}
+
+sync();
+</script>
+</body></html>

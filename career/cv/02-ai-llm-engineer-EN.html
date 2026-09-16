@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muntadhar Ahmed Jawad — AI / LLM Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#101418; --muted:#454f59; --faint:#6b7580;
+  --rule:#c9d1d9; --accent:#1f4f7a; --chipbg:#eef3f8;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Source Sans 3',-apple-system,'Segoe UI',Arial,sans-serif;
+  font-size:10.6pt;line-height:1.46;
+}
+.sheet{max-width:840px;margin:0 auto;padding:34px 46px 48px}
+
+h1{font-size:23pt;line-height:1.1;margin:0 0 2px;font-weight:700;letter-spacing:-.4px}
+.title{font-size:11.6pt;color:var(--accent);font-weight:600;margin:0 0 7px}
+.contact{font-size:9.6pt;color:var(--muted);margin:0 0 4px;font-family:'IBM Plex Mono',monospace}
+.rule-top{border-bottom:2px solid var(--accent);margin:14px 0 0}
+
+h2{
+  font-size:9.8pt;text-transform:uppercase;letter-spacing:1.4px;color:var(--accent);
+  font-weight:700;margin:18px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--rule);
+}
+h3{font-size:11.4pt;margin:12px 0 1px;font-weight:700}
+h3 .where{font-weight:400;color:var(--muted)}
+.meta{font-size:9.4pt;color:var(--faint);margin:0 0 6px;font-family:'IBM Plex Mono',monospace}
+p{margin:0 0 8px}
+ul{margin:0 0 9px;padding-left:18px}
+li{margin-bottom:4.5px}
+li::marker{color:var(--accent)}
+b.lead{font-weight:600}
+
+.stack p{margin:0 0 5px;font-size:10.2pt}
+.stack b{font-weight:600;color:var(--ink)}
+
+.pending{
+  border:1px dashed var(--rule);background:var(--chipbg);
+  padding:11px 14px;border-radius:5px;margin:10px 0 0;font-size:9.8pt;color:var(--muted);
+}
+.pending b{color:var(--accent)}
+
+@media print{
+  @page{size:A4;margin:12mm 13mm}
+  body{font-size:9.9pt}
+  .sheet{max-width:none;padding:0}
+  h2,h3{break-after:avoid}
+  li,p{break-inside:avoid}
+  .pending{display:none}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>Muntadhar Ahmed Jawad</h1>
+<p class="title">AI / LLM Engineer — production applications, automation, structured output</p>
+<p class="contact">muntzr557@gmail.com · +964 787 629 4108 · github.com/wbtio · Basra, Iraq — fully remote</p>
+<div class="rule-top"></div>
+
+<h2>Summary</h2>
+<p>
+AI engineer who builds LLM features that survive production. I designed and shipped a Gemini-powered
+generation pipeline with a dedicated prompt layer and validated structured JSON output, and I automate
+real business operations with n8n across APIs, webhooks and internal systems. Before specialising in AI,
+I led the IT function at one of Iraq's largest exhibitions and conferences organisers and delivered a
+website, an admin platform and a cross-platform mobile app in seven months — so I bring the delivery
+half of AI engineering, not only the model half. Three platforms in production. Remote-first, available
+immediately.
+</p>
+
+<h2>AI Engineering Stack</h2>
+<div class="stack">
+<p><b>Models &amp; APIs:</b> Google Gemini API, OpenAI API, frontier-model fluency, multi-provider integration</p>
+<p><b>LLM application layer:</b> prompt engineering, structured JSON output with schema validation, error handling and retries, latency and cost awareness</p>
+<p><b>Orchestration &amp; automation:</b> n8n workflow automation, API and webhook integration, event-driven pipelines, tool calling</p>
+<p><b>Application &amp; data:</b> Python, Node.js, TypeScript, Next.js, React, Supabase, PostgreSQL, OAuth</p>
+<p><b>Delivery:</b> deployment on Vercel, production monitoring and maintenance, technical documentation, Git and GitHub</p>
+</div>
+
+<h2>Selected AI Work</h2>
+
+<h3>METRIX — AI Goal-Achievement Platform <span class="where">· metrix-bete.vercel.app</span></h3>
+<p class="meta">Next.js · Google Gemini API · Supabase · Vercel · 2025 – 2026</p>
+<ul>
+  <li><b class="lead">Generation pipeline.</b> Converts a user's free-text goal into a structured, personalised plan — an open-ended natural-language input turned into a schema the rest of the product can rely on.</li>
+  <li><b class="lead">Prompt layer and structured output.</b> Built prompt construction and JSON output handling with validation, so malformed or drifting model responses fail loudly instead of corrupting user data.</li>
+  <li><b class="lead">Product loop, not a demo.</b> Daily and weekly check-ins with progress statistics, Google OAuth authentication, deployed and running in production.</li>
+</ul>
+
+<h3>Operations automation with n8n <span class="where">· JAZ</span></h3>
+<p class="meta">n8n · REST APIs · webhooks · internal dashboards · 2025 – 2026</p>
+<ul>
+  <li>Automated [N] recurring departmental workflows, removing roughly [N] hours of manual work per week across the IT function.</li>
+  <li>Connected internal systems through APIs and webhooks and surfaced the results in operational dashboards for non-technical staff.</li>
+</ul>
+
+<h2>Engineering Experience</h2>
+
+<h3>IT Manager &amp; Lead Developer <span class="where">— JAZ (Joint Annual Zone), Basra</span></h3>
+<p class="meta">December 2025 – July 2026</p>
+<ul>
+  <li>Led the IT department of a leading international exhibitions and conferences organiser in Iraq and delivered its entire digital stack as sole engineer.</li>
+  <li>Architected and deployed jaz.iq: public website plus an admin dashboard with content management, operations and role-based access control.</li>
+  <li>Built and shipped a cross-platform Android and iOS application from one React Native codebase.</li>
+  <li>Owned infrastructure, deployment and maintenance end to end — three platforms live in seven months.</li>
+</ul>
+
+<h3>Full-Stack Developer <span class="where">— Al-Amal Center (e-commerce, affiliated with JAZ)</span></h3>
+<p class="meta">2024 – 2026 · centeralamal.shop</p>
+<ul>
+  <li>Built a complete commerce platform independently: storefront, admin dashboard and Android and iOS apps.</li>
+  <li>Implemented real-time inventory, order processing and analytics, and maintained the platform in production.</li>
+</ul>
+
+<h2>Education &amp; Certification</h2>
+<p><b class="lead">B.Sc. Computer Science</b> — University of Basrah, College of Computer Science · expected 2027 (fourth year)</p>
+<p><b class="lead">CS50x: Introduction to Computer Science</b> — Harvard University via edX · 2024</p>
+
+<h2>Languages</h2>
+<p>Arabic — native · English — full professional proficiency</p>
+
+<div class="pending">
+  <b>Screen note (visible on screen only, hidden when printed):</b> the 2026 AI hiring checklist also screens for
+  RAG and vector databases, agent orchestration, MCP integration, eval design and cost optimisation.
+  Build the three projects in <code>income/market-2026.md</code> §4, then paste the ready-made
+  “Retrieval-Augmented Generation” block from <code>cv-01</code> in above Engineering Experience.
+  Do not add these lines before the projects exist.
+</div>
+
+</div>
+
+<!-- =====================================================================
+FILE: 02-ai-llm-engineer-EN.html
+PURPOSE: For AI / LLM / AI-Automation engineer roles specifically —
+postings that name LLMs, RAG, agents, prompt engineering or orchestration
+(for example the AI Automation Engineer II and AI Ops Engineer roles found
+in the August 2026 search).
+
+WHY IT IS DIFFERENT FROM cv-01: AI work is promoted above general
+engineering, METRIX is presented as primary work rather than a side
+project, and the n8n automation is written as an AI-adjacent engineering
+achievement instead of an admin duty. Your delivery record is the
+differentiator here — most applicants have models without shipping.
+
+BEFORE SENDING, EVERY TIME:
+1. Replace every [N] with a real number.
+2. Rename the title line to the exact posting title where honest.
+3. Print to PDF at A4. The on-screen note block does not print.
+
+UPDATE EVERY 6 MONTHS:
+- Refresh "AI Engineering Stack" against three current postings; this
+  section ages faster than anything else on the page.
+- Add each new AI project at the top of Selected AI Work with one metric.
+- Retire any tool you have not touched in a year.
+====================================================================== -->
+</body>
+</html>

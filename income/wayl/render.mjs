@@ -1,0 +1,942 @@
+#!/usr/bin/env node
+// مولّد متجر Wayl — صور + STORE.md + MARGINS.md + pick.html
+// شغّله بعد أي تعديل سعر أو نص:  node income/wayl/render.mjs
+// خيارات:  --only=SKU,SKU   صور محددة فقط (يتخطى توليد الملفات)
+
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import { fileURLToPath } from 'node:url';
+import { renderCard, toIQD, entryTier } from './card.html.mjs';
+
+const DIR = path.dirname(fileURLToPath(import.meta.url));
+const IMAGES = path.join(DIR, 'images');
+const BROWSER = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser';
+
+const only = (process.argv.find(a => a.startsWith('--only=')) || '')
+  .replace('--only=', '').split(',').filter(Boolean);
+
+if (!fs.existsSync(BROWSER)) {
+  console.error(`✗ المتصفح غير موجود: ${BROWSER}`);
+  console.error('  عدّل ثابت BROWSER أعلاه إلى متصفح Chromium مثبَّت عندك.');
+  process.exit(1);
+}
+
+const data = JSON.parse(fs.readFileSync(path.join(DIR, 'items.json'), 'utf8'));
+const fx = data._meta.fx;
+const FEE = 0.035;                       // عمولة Wayl — باقة البداية
+const FLOOR = 15;                        // $/ساعة — الحد الأدنى المقبول
+
+const logoDataUri = 'data:image/svg+xml;base64,' +
+  fs.readFileSync(path.join(DIR, 'brand', 'logo-solid.svg')).toString('base64');
+
+const ALL = [...data.products, ...data.subscriptions, ...data.payment_items];
+const items = ALL.filter(i => !only.length || only.includes(i.sku));
+
+// ── الصور ────────────────────────────────────────────────────────────────
+fs.mkdirSync(IMAGES, { recursive: true });
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'wayl-'));
+
+console.log(`سعر الصرف: ${fx.rate} د.ع/$ · ${fx.source}\n`);
+const rows = [];
+
+for (const item of items) {
+  const html = path.join(tmp, `${item.sku}.html`);
+  const out = path.join(IMAGES, `${item.sku}.png`);
+  fs.writeFileSync(html, renderCard(item, fx, logoDataUri));
+
+  try {
+    execFileSync(BROWSER, [
+      '--headless', '--disable-gpu', '--hide-scrollbars',
+      '--force-device-scale-factor=1',
+      '--default-background-color=FFFFFFFF',
+      '--window-size=1200,1200',
+      `--screenshot=${out}`,
+      `file://${html}`,
+    ], { stdio: 'pipe', timeout: 60_000 });
+  } catch (err) {
+    rows.push([item.sku, '—', '✗ فشل']);
+    console.error(`✗ ${item.sku}: ${err.message.split('\n')[0]}`);
+    continue;
+  }
+
+  const e = entryTier(item);
+  const label = e ? `من $${e.price}` : item.price != null ? `$${item.price}` : item.price_label;
+  rows.push([item.sku, label, fs.existsSync(out) ? '✓' : '✗']);
+}
+
+fs.rmSync(tmp, { recursive: true, force: true });
+
+const w = [12, 26];
+console.log(['SKU', 'السعر', ''].map((h, i) => h.padEnd(w[i] || 0)).join(''));
+console.log('─'.repeat(46));
+for (const r of rows) console.log(r.map((c, i) => String(c).padEnd(w[i] || 0)).join(''));
+
+const failed = rows.filter(r => r[2] !== '✓').length;
+console.log(`\n${rows.length - failed}/${rows.length} صورة`);
+
+if (only.length) process.exit(failed ? 1 : 0);
+
+// ── الحسابات المشتركة ────────────────────────────────────────────────────
+const money = (p) => `**$${p.toLocaleString('en-US')}** · ${toIQD(p, fx.rate)} د.ع`;
+const net = (p) => p * (1 - FEE);
+const rate = (t) => t.hours ? net(t.price) / t.hours : null;
+
+const priced = ALL.filter(i => i.tiers?.length);
+
+// ── STORE.md ─────────────────────────────────────────────────────────────
+const tierTable = (i) => [
+  '| الدرجة | السعر | يشمل | التسليم |',
+  '|---|---|---|---|',
+  ...i.tiers.map(t => `| ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | ${money(t.price)} | ${(t.includes || []).join(' · ')} | ${t.delivery} |`),
+].join('\n');
+
+const section = (i) => `### ${i.name}
+\`${i.sku}\` · ${i.cat}
+
+${i.short}
+
+${i.tiers?.length ? tierTable(i) : `**${i.price != null ? money(i.price) : i.price_label}**`}
+
+<details><summary><b>الوصف الكامل — انسخه لحقل الوصف بـWayl</b></summary>
+
+${i.desc || i.note}
+
+</details>
+
+---
+`;
+
+fs.writeFileSync(path.join(DIR, 'STORE.md'), `# متجر Wayl — الكتالوج الجاهز للنشر
+
+> 🔴 **ملف مولَّد — لا تعدّله يدوياً.** عدّل \`items.json\` ثم \`node income/wayl/render.mjs\`
+>
+> **التاريخ:** ${data._meta.updated} · **الحساب باسم الأخ، والشغل باسم منتظر**
+> **سعر الصرف:** ${fx.rate} د.ع/$ — ${fx.source} (${fx.date})
+> **العمولة:** 3.5% مُضمَّنة بالأسعار · **الهوامش:** [\`MARGINS.md\`](MARGINS.md)
+
+## ⚠️ حدود المنصة — اقرأها قبل الإدخال
+
+| الحد | الأثر على الإدخال |
+|---|---|
+| 🔴 ${data._meta.platform_limits.recurring} | الباقة الشهرية تُدخَل كمنتج عادي · وترسل رابط الدفع كل شهر |
+| ✅ ${data._meta.platform_limits.options} | **كل خدمة = منتج واحد**، والدرجات تُدخَل بحقل «خيارات المنتج» |
+| ✅ ${data._meta.platform_limits.coupons} | لا تنزّل السعر المعلن بالتفاوض — أعطِ كوبوناً |
+
+*مفحوص ${data._meta.platform_limits.checked}*
+
+---
+
+## أ. مداخل رخيصة — يجرّبك بيها
+
+${data.products.filter(i => i.cat === 'مدخل').map(section).join('\n')}
+## ب. المواقع والمتاجر
+
+${data.products.filter(i => i.cat === 'ويب').map(section).join('\n')}
+## ج. الموبايل
+
+${data.products.filter(i => i.cat === 'موبايل').map(section).join('\n')}
+## د. أتمتة على قياسك
+
+${data.products.filter(i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat)).map(section).join('\n')}
+## هـ. حلول جاهزة للتشغيل — زبائن ومبيعات
+
+> مبنية ومختبَرة مسبقاً. تُركَّب على حالتك بأيام لا أسابيع — ولذلك سعرها أقل من بنائها من الصفر.
+
+${data.products.filter(i => i.sub === 'زبائن ومبيعات').map(section).join('\n')}
+## و. حلول جاهزة للتشغيل — إدارة ومستندات
+
+${data.products.filter(i => i.sub === 'إدارة ومستندات').map(section).join('\n')}
+## ز. بيانات وتقارير
+
+${data.products.filter(i => i.cat === 'بيانات').map(section).join('\n')}
+## ح. الباقات الشهرية
+
+${data.subscriptions.map(section).join('\n')}
+## ط. أدوات الدفع — ليست منتجات
+
+> خطوات دفع لا خدمات تُشترى. تُنشر حتى ترسل رابط دفع لكل مرحلة عقد.
+> سبب الفصل: بند «إساءة تمثيل النشاط» بشروط Wayl.
+
+| SKU | الاسم | القيمة | الغرض |
+|---|---|---|---|
+${data.payment_items.map(i => `| \`${i.sku}\` | ${i.name} | ${i.price != null ? money(i.price) : `**${i.price_label}**`} | ${i.note} |`).join('\n')}
+
+---
+
+## ي. قواعد التفاوض والتسعير
+
+| القاعدة | التفصيل |
+|---|---|
+| **أساس التسعير** | ${data._meta.pricing_basis.rule} |
+| **مرجع السوق** | ${data._meta.pricing_basis.market_research} |
+| **الثقة** | ${data._meta.pricing_basis.confidence} |
+| **العربون** | 50% مقدماً لكل عميل جديد — **بلا استثناء** |
+| **التفاوض** | 🔴 **لا تنزّل السعر المعلن.** أعطِ كوبون خصم، أو انزل درجة، أو اشطب بنداً |
+| **تمدد النطاق** | أي طلب خارج العقد → \`PAY-HR\` |
+| **جلسة التشخيص** | تُخصم من أي مشروع خلال 30 يوم — استعملها كباب دخول لكل صفقة |
+`);
+console.log('✓ STORE.md');
+
+// ── MARGINS.md ───────────────────────────────────────────────────────────
+const all = priced.flatMap(i => i.tiers.map(t => ({ ...t, sku: i.sku, item: i.name })));
+const low = all.filter(t => rate(t) !== null && rate(t) < FLOOR);
+const iq = all.filter(t => t.market !== 'GC' && rate(t));
+const gc = all.filter(t => t.market === 'GC' && rate(t));
+const avg = (a) => a.length ? a.reduce((s, t) => s + rate(t), 0) / a.length : 0;
+
+fs.writeFileSync(path.join(DIR, 'MARGINS.md'), `# هوامش الربح — كل درجة بالساعة
+
+> 🔴 **ملف مولَّد** من \`items.json\`. عدّل \`hours\` أو \`price\` هناك وأعد التوليد.
+> **التاريخ:** ${data._meta.updated}
+
+## الحساب
+
+\`\`\`
+الصافي   = السعر × ${(1 - FEE).toFixed(3)}          (بعد عمولة Wayl ${FEE * 100}%)
+بالساعة  = الصافي ÷ الساعات المقدَّرة
+\`\`\`
+
+**الكلفة الوحيدة عندك هي وقتك** — الأدوات مجانية والميزانية صفر. فالهامش الحقيقي
+ليس ربحاً مقابل تكلفة، بل **سعر ساعتك**.
+
+## الحد الأدنى — من وين جاء
+
+هدفك **$1,500 شهرياً**. الوقت المتاح لشغل العملاء ~**130 ساعة شهرياً**
+(من 80 ساعة أسبوعياً، بعد الجامعة والدراسة والبحث).
+
+\`\`\`
+1,500 ÷ 130 = $11.5/ساعة  ← نقطة التعادل المطلقة
+الحد المعتمد: $${FLOOR}/ساعة   ← بهامش أمان للمراجعات والاجتماعات
+\`\`\`
+
+## الجدول
+
+| SKU | الدرجة | السعر | الصافي | ساعات | **$/ساعة** | الحكم |
+|---|---|---|---|---|---|---|
+${all.slice().sort((a, b) => (rate(b) || 0) - (rate(a) || 0)).map(t =>
+  `| \`${t.sku}\` | ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | $${t.price} | $${net(t.price).toFixed(0)} | ${t.hours} | **$${rate(t).toFixed(1)}** | ${rate(t) >= FLOOR ? '✅' : '🔴 تحت الحد'} |`
+).join('\n')}
+
+## الخلاصة
+
+| المؤشر | القيمة |
+|---|---|
+| متوسط الدرجات العراقية | **$${avg(iq).toFixed(1)}/ساعة** |
+| متوسط الدرجات الخليجية | **$${avg(gc).toFixed(1)}/ساعة** |
+| درجات تحت الحد ($${FLOOR}) | ${low.length ? '🔴 ' + low.map(t => t.sku + '/' + t.name).join(' · ') : '**صفر** ✅'} |
+
+## الحلول الجاهزة — متى تسترد كلفة بنائها
+
+كل حل جاهز يُبنى **مرة واحدة**، وبعدها كل عميل = تركيب فقط.
+
+| الحل | بناء لمرة | تركيب/عميل | الدرجة الأولى | $/ساعة أول بيعة | $/ساعة بعد 5 بيعات |
+|---|---|---|---|---|---|
+${data.products.filter(i => i.build_hours !== undefined).map(i => {
+  const t = entryTier(i);
+  const b = i.build_hours;
+  const first = net(t.price) / (t.hours + b);
+  const fifth = net(t.price) / (t.hours + b / 5);
+  return `| ${i.name} | ${b === 0 ? '**مبني ✅**' : b + ' ساعة'} | ${t.hours} ساعة | $${t.price} | ${first < FLOOR ? '🔴' : ''} $${first.toFixed(1)} | **$${fifth.toFixed(1)}** |`;
+}).join('\n')}
+
+🔴 **هذا الجدول يقول شيئاً واحداً: الحل الجاهز لا يربح من بيعة واحدة.**
+البيعة الأولى تدفع ثمن بنائه — وأغلبها تحت $${FLOOR}/ساعة، وهذا **طبيعي ومقصود**.
+الربح يبدأ من البيعة الثانية، ويستقر فوق **$25/ساعة** من الخامسة.
+
+**القاعدة العملية:** ⚠️ **لا تبني حلاً إلا وعندك عميل أول يدفع ثمن بنائه.**
+ابنِه بمشروع عميل حقيقي، وبِعه بعدها تسع مرات.
+
+✅ **استثناءان يربحان من البيعة الأولى:** \`PK-MAIL\` و\`PK-RPT\` — **مبنيان أصلاً**
+بـ\`income/products/\` بمستودعك، بworkflow وprompts وdemo. **ابدأ بيهما.**
+
+## كم عميل تحتاج للأرضية ($1,500/شهر)
+
+| السيناريو | العدد | الساعات المطلوبة |
+|---|---|---|
+${(() => {
+  const sub = data.subscriptions[0];
+  const scen = [
+    ['باقة «نمو» الشهرية فقط', sub.tiers[1]],
+    ['باقة «أتمتة مستمرة» فقط', sub.tiers[2]],
+    ['«طلبات الواتساب» متوسط', data.products.find(p => p.sku === 'WA-01').tiers[1]],
+    ['«موقع لشركتك» كامل', data.products.find(p => p.sku === 'SITE-01').tiers[1]],
+  ];
+  return scen.map(([n, t]) => {
+    const c = Math.ceil(1500 / net(t.price));
+    return `| ${n} ($${t.price}) | **${c}** | ${c * t.hours} ساعة |`;
+  }).join('\n');
+})()}
+
+🔴 **اقرأ عمود الساعات.** أي سيناريو يتجاوز 130 ساعة شهرياً **غير قابل للتنفيذ**
+مهما بدا الرقم جميلاً. الدخل المتكرر (الباقات الشهرية) هو الوحيد الذي يتراكم
+بلا ما يتضاعف وقتك — لأن عميل الشهر الماضي يدفع بلا شغل جديد.
+`);
+console.log('✓ MARGINS.md');
+
+// ── WAYL-SETUP.md — دليل الإدخال على المنصة ──────────────────────────────
+const collections = [
+  ['ابدأ من هنا',        i => i.cat === 'مدخل',                              'خدمات $40–$70 · هدفها أول تعامل لا الربح'],
+  ['مواقع ومتاجر',       i => i.cat === 'ويب',                                'أعلى طلب بالسوق العربي'],
+  ['أتمتة على قياسك',    i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat),      'تُبنى لحالتك من الصفر'],
+  ['حلول زبائن ومبيعات', i => i.sub === 'زبائن ومبيعات',                       '🔥 جاهزة للتشغيل — أعلى هامش بالمتجر'],
+  ['حلول إدارة ومستندات', i => i.sub === 'إدارة ومستندات',                      'جاهزة للتشغيل'],
+  ['بيانات وتقارير',      i => i.cat === 'بيانات',                             ''],
+  ['تطبيقات موبايل',     i => i.cat === 'موبايل',                             ''],
+  ['باقات شهرية',        i => i.kind === 'subscription',                      '🔴 تُشترى يدوياً — Wayl لا تجدد تلقائياً'],
+  ['مراحل الدفع',        i => i.kind === 'payment_tool',                      'أخفِها عن الواجهة — تُرسل بالرابط فقط'],
+];
+
+const setupRow = (i) => {
+  const t = i.tiers || [];
+  const e = entryTier(i);
+  return `| \`${i.sku}\` | ${i.name} | ${t.length > 1 ? `**${t.length} خيارات** — ${t.map(x => x.name).join(' / ')}` : 'بلا خيارات'} | ${e ? `$${e.price}` : i.price != null ? `$${i.price}` : i.price_label} | \`images/${i.sku}.png\` |`;
+};
+
+fs.writeFileSync(path.join(DIR, 'WAYL-SETUP.md'), `# دليل الإدخال على Wayl — خطوة بخطوة
+
+> 🔴 **ملف مولَّد** من \`items.json\`. النصوص الجاهزة للنسخ بـ[\`STORE.md\`](STORE.md).
+> **التاريخ:** ${data._meta.updated} · **الحساب باسم الأخ، والشغل باسم منتظر**
+
+## القاعدة الحاكمة — لا تخالفها
+
+> ### 🔴 **${ALL.filter(i => (i.tiers || []).length > 1).length} خدمة بخيارات = ${ALL.filter(i => (i.tiers || []).length > 1).length} منتج بـWayl، لا ${priced.reduce((s, i) => s + i.tiers.length, 0)}.**
+> الدرجات تُدخَل بحقل **«خيارات المنتج»** داخل المنتج الواحد.
+
+**ليش هذا مهم:**
+- منتج واحد بثلاث خيارات = صفحة وحدة، صورة وحدة، ورابط واحد ترسله للعميل
+- ${priced.reduce((s, i) => s + i.tiers.length, 0)} منتج منفصل = فوضى بالمتجر، والعميل ما يقارن بين الدرجات
+- توفّر عليك ~ساعتين إدخال
+
+---
+
+## 1. ترتيب المتجر — المجموعات
+
+أنشئ المجموعات بهذا الترتيب. **الترتيب مقصود**: الرخيص أولاً حتى يدخل الزائر بلا خوف.
+
+| # | المجموعة | كم منتج | لماذا هنا |
+|---|---|---|---|
+${collections.map(([n, f, why], idx) => {
+  const c = ALL.filter(f).length;
+  return `| ${idx + 1} | **${n}** | ${c} | ${why || '—'} |`;
+}).join('\n')}
+
+---
+
+## 2. جدول الإدخال الكامل
+
+${collections.map(([n, f]) => {
+  const list = ALL.filter(f);
+  if (!list.length) return '';
+  return `### ${n}
+
+| SKU | اسم المنتج بـWayl | خيارات المنتج | السعر المعروض | الصورة |
+|---|---|---|---|---|
+${list.map(setupRow).join('\n')}
+`;
+}).join('\n')}
+
+---
+
+## 3. حقول كل منتج — من وين تجيب كل حقل
+
+| حقل Wayl | من وين | ملاحظة |
+|---|---|---|
+| **اسم المنتج** | عمود «اسم المنتج» أعلاه | لا تضيف SKU للاسم — العميل ما يهمه |
+| **الوصف** | \`STORE.md\` ← «الوصف الكامل» تحت كل خدمة | انسخه كما هو · يحتوي الشفافية بالكلف |
+| **السعر** | سعر **أرخص** خيار | الخيارات الأغلى تضيف فرقها |
+| **خيارات المنتج** | عمود «خيارات المنتج» أعلاه | اسم الخيار + فرق السعر عن الأساسي |
+| **الصورة** | \`income/wayl/images/<SKU>.png\` | 1200×1200 · جاهزة |
+| **المخزون** | 🔴 **اتركه غير محدود** | خدمات لا بضاعة — لا تحدّد كمية |
+
+### فروق أسعار الخيارات — احسبها مرة وخلص
+
+${priced.filter(i => i.tiers.length > 1).map(i => {
+  const base = entryTier(i);
+  return `**${i.name}** \`${i.sku}\` — السعر الأساسي **$${base.price}**
+${i.tiers.filter(t => t.name !== base.name).map(t => `- ${t.name}: **+$${t.price - base.price}**`).join('\n')}
+`;
+}).join('\n')}
+
+---
+
+## 4. الباقات الشهرية — الحل العملي
+
+🔴 **${data._meta.platform_limits.recurring}**
+
+**شلون تشتغل بلا اشتراك متجدد:**
+
+1. أدخلها كمنتج عادي — سعرها = **شهر واحد**
+2. العميل يشتري أول شهر من المتجر
+3. **يوم 25 من كل شهر:** ترسل له رابط دفع الشهر الجاي مع تقرير قصير بشنو سويت
+4. إذا ما دفع خلال 5 أيام — توقف الخدمة وتخبره
+
+> 💡 **هذا الحد صار ميزة بيعية.** الوصف يقول حرفياً: «ما راح ينسحب من بطاقتك بلا علمك · ما أكو عقد ولا رسوم إلغاء».
+> العميل العربي يخاف من الاشتراكات المتجددة — **وأنت تبيعه العكس**.
+
+---
+
+## 5. أدوات الدفع — أخفِها عن الواجهة
+
+الخمسة بند بمجموعة «مراحل الدفع» **ما ينشرون بالصفحة الرئيسية**.
+
+- أنشئها كمنتجات، بس **أخفِها من العرض** إن أمكن
+- استعمالها الوحيد: ترسل رابطها للعميل بعد الاتفاق
+- سبب الإخفاء: زائر يشوف «دفعة مرحلية — حسب العقد» يرتبك، ومحتمل تُقرأ كتمثيل غير دقيق للنشاط ([شروط Wayl](https://wayl.io/terms))
+
+---
+
+## 6. الكوبونات — سلاح التفاوض
+
+✅ Wayl تدعم كوبونات خصم. **استعملها بدل ما تنزّل السعر المعلن.**
+
+| الحالة | الكوبون |
+|---|---|
+| عميل يفاوض | كوبون شخصي 10% بصلاحية 7 أيام — الاستعجال يقفل الصفقة |
+| أول 3 عملاء (لبناء التقييمات) | كوبون 25% مقابل **تقييم مكتوب + إذن بعرض العمل** |
+| عميل رجع لمشروع ثاني | كوبون 15% ولاء |
+| جلسة التشخيص | كوبون بقيمتها الكاملة يُخصم من المشروع |
+
+🔴 **لا تعدّل السعر المعلن أبداً.** السعر المعلن مرة ينزل = سقفك الجديد للأبد.
+
+---
+
+## 7. قبل ما تنشر — فحص أخير
+
+- [ ] كل منتج له صورة من \`images/\`
+- [ ] الوصف منسوخ كاملاً من \`STORE.md\` (بما فيه أسطر ⚠️ الشفافية)
+- [ ] الخيارات مُدخَلة كخيارات، **لا منتجات منفصلة**
+- [ ] المخزون غير محدود بكل المنتجات
+- [ ] «مراحل الدفع» مخفية عن الواجهة
+- [ ] 🔴 **\`WAYL-TEST\` منفَّذ** — استلمت 20$ وسحبتها فعلاً قبل أي عميل حقيقي
+`);
+console.log('✓ WAYL-SETUP.md');
+
+// ── product/ — مجلد الخدمات بالجذر، فئة فئة ─────────────────────────────
+const ROOT = path.resolve(DIR, '..', '..', 'product');
+const GROUPS = [
+  ['01-entry',       'ابدأ من هنا',                    i => i.cat === 'مدخل',                          'خدمات رخيصة هدفها أول تعامل لا الربح · تُعرض أولاً بالمتجر'],
+  ['02-web',         'مواقع ومتاجر',                    i => i.cat === 'ويب',                            'أعلى طلب بالسوق العربي · تصميم البطاقة بإطار متصفح'],
+  ['03-mobile',      'تطبيقات موبايل',                  i => i.cat === 'موبايل',                         'قاعدة كود واحدة لأندرويد وآيفون · بطاقة بهيكل جهاز'],
+  ['04-automation',  'أتمتة على قياسك',                 i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat),  'تُبنى لحالة العميل من الصفر · بطاقة بمسار وأسهم'],
+  ['05-ready-sales', 'حلول جاهزة — زبائن ومبيعات',      i => i.sub === 'زبائن ومبيعات',                  'مبنية مسبقاً · تُركَّب بأيام · بطاقة بخطوات مرقّمة وختم'],
+  ['06-ready-ops',   'حلول جاهزة — إدارة ومستندات',     i => i.sub === 'إدارة ومستندات',                 'نفس النموذج: ابنِ مرة، بِع مراراً'],
+  ['07-data',        'بيانات وتقارير',                  i => i.cat === 'بيانات',                         'بطاقة بشبكة خلايا'],
+  ['08-monthly',     'باقات شهرية',                     i => i.kind === 'subscription',                  '🔴 Wayl لا تجدد تلقائياً — رابط دفع كل شهر · بطاقة بأسابيع'],
+  ['09-payment',     'مراحل الدفع',                     i => i.kind === 'payment_tool',                  'أخفِها عن الواجهة — تُرسل بالرابط فقط · بطاقة بقصاصة'],
+];
+
+fs.rmSync(ROOT, { recursive: true, force: true });
+fs.mkdirSync(ROOT, { recursive: true });
+
+const deltas = (i) => {
+  const base = entryTier(i);
+  if (!base || i.tiers.length < 2) return '';
+  return `\n### فروق أسعار الخيارات — أدخلها بـWayl كما هي\n\nالسعر الأساسي للمنتج: **$${base.price}** (${base.name})\n\n| الخيار | الفرق المضاف | السعر النهائي |\n|---|---|---|\n${
+    i.tiers.filter(t => t.name !== base.name)
+      .map(t => `| ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | **+$${t.price - base.price}** | $${t.price} · ${toIQD(t.price, fx.rate)} د.ع |`).join('\n')}\n`;
+};
+
+const waylFile = (i, g) => `# ${i.name}
+
+\`${i.sku}\` · ${g[1]} · ${(i.tiers || []).length || 1} ${(i.tiers || []).length > 1 ? 'خيارات' : 'خيار'}
+
+> **هذا الملف = حقول Wayl جاهزة للنسخ.** لا تعدّله — عدّل \`income/wayl/items.json\`
+> وشغّل \`node income/wayl/render.mjs\`.
+
+## 1️⃣ اسم المنتج
+
+\`\`\`
+${i.name}
+\`\`\`
+
+## 2️⃣ الوصف — انسخه كاملاً
+
+\`\`\`
+${i.desc || i.note}
+\`\`\`
+
+## 3️⃣ السعر الأساسي
+
+${(() => {
+  const e = entryTier(i);
+  if (e) return `**$${e.price}** · ${toIQD(e.price, fx.rate)} د.ع${i.kind === 'subscription' ? ' /شهر' : ''}  \n*(سعر أرخص خيار — الباقي يُضاف كفروق أدناه)*`;
+  if (i.price != null) return `**$${i.price}** · ${toIQD(i.price, fx.rate)} د.ع`;
+  return `**${i.price_label}** — 🔴 مبلغ مفتوح. أدخله بأقل قيمة ممكنة واذكر الآلية بالوصف.`;
+})()}
+
+## 4️⃣ الخيارات
+${i.tiers?.length > 1 ? `
+| الخيار | السعر | يشمل | التسليم |
+|---|---|---|---|
+${i.tiers.map(t => `| ${t.name}${t.market === 'GC' ? ' 🌍' : ''} | $${t.price} · ${toIQD(t.price, fx.rate)} د.ع | ${(t.includes || []).join(' · ')} | ${t.delivery} |`).join('\n')}
+${deltas(i)}` : '\nبلا خيارات — منتج بسعر واحد.\n'}
+## 5️⃣ الصورة
+
+![${i.sku}](card.png)
+
+**\`card.png\`** بنفس المجلد · 1200×1200 · **بلا سعر وبلا درجات على الصورة** —
+الأسعار بحقل الوصف حصراً.
+
+## 6️⃣ إعدادات أخرى
+
+| الحقل | القيمة |
+|---|---|
+| المخزون | **غير محدود** — خدمة لا بضاعة |
+| المجموعة | ${g[1]} |
+| الظهور | ${i.kind === 'payment_tool' ? '🔴 **مخفي** — يُرسل بالرابط فقط' : 'ظاهر'} |
+${i.build_hours !== undefined ? `| ⚠️ بناء لمرة واحدة | ${i.build_hours === 0 ? '**مبني أصلاً** بـ`income/products/`' : `${i.build_hours} ساعة — لا تبعه قبل ما تبنيه`} |\n` : ''}
+---
+
+⬅️ [رجوع لفئة ${g[1]}](../README.md) · [كل الفئات](../../README.md)
+`;
+
+const idx = [];
+for (const g of GROUPS) {
+  const [slug, title, filter, why] = g;
+  const list = ALL.filter(filter);
+  if (!list.length) continue;
+  const gdir = path.join(ROOT, slug);
+  fs.mkdirSync(gdir, { recursive: true });
+
+  for (const i of list) {
+    const sdir = path.join(gdir, i.sku);
+    fs.mkdirSync(sdir, { recursive: true });
+    fs.writeFileSync(path.join(sdir, 'wayl.md'), waylFile(i, g));
+    const img = path.join(IMAGES, `${i.sku}.png`);
+    if (fs.existsSync(img)) fs.copyFileSync(img, path.join(sdir, 'card.png'));
+  }
+
+  fs.writeFileSync(path.join(gdir, 'README.md'), `# ${title}
+
+${why}
+
+**${list.length} ${list.length === 1 ? 'خدمة' : 'خدمة'}** · كل مجلد فيه \`card.png\` + \`wayl.md\` (حقول جاهزة للنسخ)
+
+| # | الخدمة | المجلد | خيارات | يبدأ من |
+|---|---|---|---|---|
+${list.map((i, k) => {
+  const e = entryTier(i);
+  return `| ${k + 1} | ${i.name} | [\`${i.sku}/\`](${i.sku}/wayl.md) | ${(i.tiers || []).length || 1} | ${e ? `$${e.price}` : i.price != null ? `$${i.price}` : i.price_label} |`;
+}).join('\n')}
+
+⬅️ [كل الفئات](../README.md)
+`);
+  idx.push([slug, title, list.length, why, list]);
+}
+
+fs.writeFileSync(path.join(ROOT, 'README.md'), `# خدمات wbtio — مقسومة على الفئات
+
+> 🔴 **مجلد مولَّد بالكامل.** المصدر \`income/wayl/items.json\` — عدّله ثم
+> \`node income/wayl/render.mjs\`. أي تعديل يدوي هنا يُمحى بالتوليد القادم.
+>
+> **التاريخ:** ${data._meta.updated} · **${ALL.length} خدمة · ${priced.reduce((s, i) => s + i.tiers.length, 0)} خيار · ${idx.length} فئة**
+
+## قاعدتان بتصميم البطاقات
+
+1. 🔴 **لا سعر ولا قائمة درجات على الصورة.** الصورة تجاوب «شنو راح أحصل عليه؟» فقط.
+   الأسعار والدرجات بحقل الوصف — وهي جاهزة بملف \`wayl.md\` لكل خدمة.
+2. 🔴 **لكل فئة تخطيط بصري مختلف** — لا قالب واحد مكرَّر 36 مرة.
+   الويب بإطار متصفح · الموبايل بهيكل جهاز · الأتمتة بمسار وأسهم ·
+   الحلول الجاهزة بخطوات مرقّمة وختم · البيانات بشبكة · الذكاء الاصطناعي بعُقد ·
+   الاشتراك بأسابيع · مراحل الدفع بقصاصة · المدخل بتوسيط.
+
+## الفئات
+
+| # | الفئة | خدمات | التصميم والدور |
+|---|---|---|---|
+${idx.map(([slug, title, n, why]) => `| ${slug.slice(0, 2)} | **[${title}](${slug}/README.md)** | ${n} | ${why} |`).join('\n')}
+
+## البنية
+
+\`\`\`
+product/
+${idx.map(([slug, title, n, , list]) => `  ${slug}/            ${title} (${n})
+    README.md
+${list.slice(0, 2).map(i => `    ${i.sku}/
+      card.png       الصورة 1200×1200
+      wayl.md        حقول Wayl جاهزة للنسخ`).join('\n')}${list.length > 2 ? `\n    …و${list.length - 2} غيرها` : ''}`).join('\n')}
+\`\`\`
+
+## المراجع
+
+| للشغل على | الملف |
+|---|---|
+| الإدخال خطوة بخطوة | [\`income/wayl/WAYL-SETUP.md\`](../income/wayl/WAYL-SETUP.md) |
+| الكتالوج الكامل بمكان واحد | [\`income/wayl/STORE.md\`](../income/wayl/STORE.md) |
+| هوامش الربح و$/ساعة | [\`income/wayl/MARGINS.md\`](../income/wayl/MARGINS.md) |
+| نظام الهوية والألوان | [\`income/wayl/brand/BRAND.md\`](../income/wayl/brand/BRAND.md) |
+| اختيار ما تنشره | [\`income/wayl/pick.html\`](../income/wayl/pick.html) |
+`);
+console.log(`✓ product/ — ${idx.length} فئة · ${ALL.length} خدمة`);
+
+// ── pick.html ────────────────────────────────────────────────────────────
+const pick = priced.map(i => ({
+  sku: i.sku, name: i.name, cat: i.kind === 'subscription' ? 'اشتراك' : i.cat,
+  kind: i.kind, desc: i.short,
+  group: i.kind === 'subscription' ? 'الباقات الشهرية'
+       : i.cat === 'مدخل' ? 'مداخل رخيصة' : 'الخدمات',
+  tiers: i.tiers.map(t => ({
+    name: t.name, price: t.price, iqd: toIQD(t.price, fx.rate),
+    market: t.market, hours: t.hours, delivery: t.delivery,
+    rate: rate(t) ? +rate(t).toFixed(1) : null, label: '',
+  })),
+})).concat(data.payment_items.map(i => ({
+  sku: i.sku, name: i.name, cat: 'أداة دفع', kind: 'payment_tool',
+  desc: i.note, group: 'أدوات الدفع',
+  tiers: [{ name: 'البند', price: i.price ?? null, iqd: i.price != null ? toIQD(i.price, fx.rate) : '',
+            label: i.price_label || '', hours: null, delivery: '', rate: null }],
+})));
+
+fs.writeFileSync(path.join(DIR, 'pick.html'), `<!doctype html>
+<html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اختيار خدمات متجر Wayl</title>
+<style>
+:root{--bg:#FAFAFA;--card:#fff;--ink:#0A0A0A;--muted:#3F3F46;--dim:#71717A;--line:#E4E4E7}
+@media(prefers-color-scheme:dark){:root{--bg:#0A0A0B;--card:#151517;--ink:#FAFAFA;--muted:#D4D4D8;--dim:#8A8A94;--line:#27272A}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"SF Arabic","Geeza Pro",system-ui,sans-serif;
+  line-height:1.6;padding:24px;max-width:1100px;margin:0 auto}
+h1{font-size:1.6rem;letter-spacing:-.5px}
+.sub{color:var(--dim);font-size:.9rem;margin-top:6px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 0;border-bottom:1px solid var(--line);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+button{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  border-radius:10px;padding:9px 16px;cursor:pointer}
+button:hover{border-color:var(--dim)}
+button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.count{margin-inline-start:auto;color:var(--dim);font-size:.9rem;font-variant-numeric:tabular-nums}
+h2{font-size:1rem;color:var(--dim);margin:26px 0 10px;font-weight:600}
+.svc{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:12px;overflow:hidden}
+.hd{padding:14px 16px;border-bottom:1px solid var(--line)}
+.nm{font-weight:600;font-size:1.02rem}
+.ds{color:var(--dim);font-size:.84rem;margin-top:3px}
+.sku{font-size:.7rem;color:var(--dim);letter-spacing:1px;font-family:ui-monospace,monospace}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:7px;vertical-align:1px}
+.tr{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--line);cursor:pointer}
+.tr:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.tr.on{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--ink);flex:none}
+.tn{flex:1;font-size:.92rem}
+.gc{font-size:.68rem;background:var(--ink);color:var(--bg);border-radius:5px;padding:1px 7px;margin-inline-start:6px}
+.hr{font-size:.72rem;color:var(--dim);font-variant-numeric:tabular-nums;margin-inline-start:8px}
+.tp{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600;text-align:left;font-size:.92rem}
+.tp span{display:block;font-weight:400;color:var(--dim);font-size:.74rem}
+#out{width:100%;margin-top:24px;min-height:170px;background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-radius:14px;padding:16px;font-family:ui-monospace,monospace;
+  font-size:.8rem;line-height:1.7;white-space:pre;overflow-x:auto;direction:rtl}
+.note{color:var(--dim);font-size:.82rem;margin-bottom:8px}
+</style></head><body>
+
+<h1>اختيار الخدمات — متجر Wayl</h1>
+<p class="sub">علّم <b>كل درجة</b> راح تنشرها. الدرجة هي «خيار المنتج» بـWayl.
+سعر الصرف ${fx.rate} د.ع/$ · الحد الأدنى $${FLOOR}/ساعة · ${data._meta.updated}</p>
+
+<div class="bar">
+  <button onclick="setAll(true)">حدّد الكل</button>
+  <button onclick="setAll(false)">امسح الكل</button>
+  <button onclick="onlyIQ()">العراق فقط</button>
+  <button onclick="onlyEntry()">أرخص درجة فقط</button>
+  <button class="primary" onclick="copyOut()">📋 انسخ المحدَّد</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div id="groups"></div>
+<textarea id="out" readonly placeholder="النص المُولَّد يظهر هنا…"></textarea>
+
+<script>
+const ITEMS = ${JSON.stringify(pick)};
+const COLOR = {'أتمتة':'#059669','ويب':'#0891B2','بيانات':'#7C3AED','موبايل':'#D97706',
+  'ذكاء اصطناعي':'#DB2777','مدخل':'#2563EB','اشتراك':'#475569','أداة دفع':'#52525B'};
+const key = (s, n) => s + '|' + n;
+const sel = new Set();
+const flat = () => ITEMS.flatMap(i => i.tiers.map(t => ({ ...i, t })));
+flat().filter(x => x.kind !== 'payment_tool' && x.t.market !== 'GC')
+      .forEach(x => sel.add(key(x.sku, x.t.name)));
+
+const groups = ['مداخل رخيصة', 'الخدمات', 'الباقات الشهرية', 'أدوات الدفع'];
+document.getElementById('groups').innerHTML = groups.map(g => {
+  const list = ITEMS.filter(i => i.group === g);
+  if (!list.length) return '';
+  return '<h2>' + g + '</h2>' +
+    (g === 'أدوات الدفع' ? '<p class="note">خطوات دفع لا خدمات — انشرها فقط إذا تريد ترسل رابط دفع لكل مرحلة عقد.</p>' : '') +
+    list.map(i => \`<div class="svc">
+      <div class="hd">
+        <div class="nm"><span class="dot" style="background:\${COLOR[i.cat]}"></span>\${i.name}</div>
+        <div class="ds">\${i.desc}</div>
+        <div class="sku">\${i.sku}</div>
+      </div>
+      \${i.tiers.map(t => \`<label class="tr" data-k="\${key(i.sku, t.name)}">
+        <input type="checkbox" data-k="\${key(i.sku, t.name)}">
+        <span class="tn">\${t.name}\${t.market === 'GC' ? '<span class="gc">خليج</span>' : ''}\${
+          t.rate ? '<span class="hr">' + t.hours + ' ساعة · $' + t.rate + '/ساعة</span>' : ''}</span>
+        <span class="tp">\${t.price != null ? '$' + t.price.toLocaleString('en-US') + '<span>' + t.iqd + ' د.ع</span>' : t.label}</span>
+      </label>\`).join('')}
+    </div>\`).join('');
+}).join('');
+
+function sync() {
+  document.querySelectorAll('input[type=checkbox]').forEach(c => {
+    c.checked = sel.has(c.dataset.k);
+    c.closest('.tr').classList.toggle('on', c.checked);
+  });
+  const picked = flat().filter(x => sel.has(key(x.sku, x.t.name)));
+  document.getElementById('count').textContent =
+    picked.length + ' درجة · ' + new Set(picked.map(x => x.sku)).size + ' منتج بـWayl';
+  render(picked);
+}
+
+function render(p) {
+  if (!p.length) { document.getElementById('out').value = ''; return; }
+  const out = ['الخدمات المختارة للنشر على Wayl:', ''];
+  for (const g of groups) {
+    const gi = p.filter(x => x.group === g);
+    if (!gi.length) continue;
+    out.push(g + ':');
+    for (const sku of [...new Set(gi.map(x => x.sku))]) {
+      const rws = gi.filter(x => x.sku === sku);
+      out.push('  ▸ ' + rws[0].name + ' [' + sku + ']');
+      rws.forEach(x => out.push('      · ' + x.t.name + ' — ' +
+        (x.t.price != null ? '$' + x.t.price + ' / ' + x.t.iqd + ' د.ع' : x.t.label)));
+    }
+    out.push('');
+  }
+  const mo = p.filter(x => x.kind === 'subscription' && x.t.price)
+              .reduce((s, x) => s + x.t.price, 0);
+  out.push('عدد المنتجات بـWayl: ' + new Set(p.map(x => x.sku)).size +
+           ' · عدد الخيارات: ' + p.length);
+  if (mo) out.push('مجموع الباقات الشهرية لو اشتراها عميل واحد: $' + mo + '/شهر');
+  document.getElementById('out').value = out.join('\\n');
+}
+
+document.addEventListener('change', e => {
+  if (e.target.type !== 'checkbox') return;
+  e.target.checked ? sel.add(e.target.dataset.k) : sel.delete(e.target.dataset.k);
+  sync();
+});
+
+const setAll = on => { sel.clear(); if (on) flat().forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyIQ = () => { sel.clear(); flat().filter(x => x.t.market !== 'GC' && x.kind !== 'payment_tool')
+  .forEach(x => sel.add(key(x.sku, x.t.name))); sync(); };
+const onlyEntry = () => { sel.clear(); ITEMS.filter(i => i.kind !== 'payment_tool').forEach(i => {
+  const e = i.tiers.reduce((m, t) => (!m || t.price < m.price ? t : m), null);
+  if (e) sel.add(key(i.sku, e.name)); }); sync(); };
+
+async function copyOut() {
+  const t = document.getElementById('out');
+  if (!t.value) return alert('ما محدَّد ولا خدمة.');
+  const btn = event.target;
+  try { await navigator.clipboard.writeText(t.value); }
+  catch { t.removeAttribute('readonly'); t.select(); document.execCommand('copy'); t.setAttribute('readonly',''); }
+  const old = btn.textContent; btn.textContent = '✓ انتُسخ';
+  setTimeout(() => btn.textContent = old, 1600);
+}
+
+sync();
+</script>
+</body></html>`);
+console.log('✓ pick.html');
+
+// ── store.html — معاينة المتجر ───────────────────────────────────────────
+const md = (x) => (x || '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+  .replace(/`(.+?)`/g, '<code>$1</code>')
+  .replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+
+const CATS = [
+  ['ابدأ من هنا',                 i => i.cat === 'مدخل'],
+  ['مواقع ومتاجر',                i => i.cat === 'ويب'],
+  ['تطبيقات موبايل',              i => i.cat === 'موبايل'],
+  ['أتمتة على قياسك',             i => ['أتمتة', 'ذكاء اصطناعي'].includes(i.cat)],
+  ['حلول جاهزة — زبائن ومبيعات',  i => i.sub === 'زبائن ومبيعات'],
+  ['حلول جاهزة — إدارة ومستندات', i => i.sub === 'إدارة ومستندات'],
+  ['بيانات وتقارير',              i => i.cat === 'بيانات'],
+  ['باقات شهرية',                 i => i.kind === 'subscription'],
+];
+
+const shop = CATS.flatMap(([cat, f]) => ALL.filter(f).map(i => {
+  const e = entryTier(i);
+  return {
+    sku: i.sku, name: i.name, cat, short: i.short, desc: md(i.desc || i.note),
+    from: e ? e.price : i.price, fromIQD: e ? toIQD(e.price, fx.rate) : i.price != null ? toIQD(i.price, fx.rate) : '',
+    sub: i.kind === 'subscription',
+    tiers: (i.tiers || []).map(t => ({
+      name: t.name, price: t.price, iqd: toIQD(t.price, fx.rate),
+      gc: t.market === 'GC', delivery: t.delivery, includes: t.includes || [],
+    })),
+  };
+}));
+
+fs.writeFileSync(path.join(DIR, 'store.html'), `<!doctype html>
+<html dir="rtl" lang="ar"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>wbtio — الخدمات</title>
+<style>
+:root{--bg:#FBFBFC;--card:#fff;--ink:#0A0A0A;--mut:#52525B;--dim:#8A8A94;--line:#E7E7EA;--r:16px}
+@media(prefers-color-scheme:dark){:root{--bg:#0A0A0B;--card:#141416;--ink:#FAFAFA;--mut:#C4C4CC;--dim:#8A8A94;--line:#27272A}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"SF Arabic","Geeza Pro",system-ui,sans-serif;line-height:1.6}
+header{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:20}
+.hin{max-width:1080px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:40px;height:40px;border-radius:10px}
+.hin b{font-size:1.15rem}.hin small{color:var(--dim);font-size:.8rem}
+nav{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;overflow-x:auto;
+  scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{font:inherit;font-size:.86rem;white-space:nowrap;border:1px solid var(--line);
+  background:var(--card);color:var(--mut);border-radius:999px;padding:8px 16px;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+main{max-width:1080px;margin:0 auto;padding:8px 20px 60px}
+h2.sec{font-size:.95rem;color:var(--dim);margin:26px 0 12px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  cursor:pointer;transition:transform .12s,box-shadow .12s;text-align:right}
+.p:hover{transform:translateY(-3px);box-shadow:0 8px 24px #0000001a}
+.p img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.pb{padding:13px 15px 16px}
+.pn{font-weight:600;font-size:.95rem;line-height:1.35}
+.pp{margin-top:7px;font-size:.88rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.pp b{color:var(--ink)}
+.pp i{font-style:normal;color:var(--dim)}
+.tag{display:inline-block;margin-top:8px;font-size:.7rem;color:var(--dim);
+  border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+/* صفحة المنتج */
+#ov{position:fixed;inset:0;background:#00000088;backdrop-filter:blur(3px);z-index:50;
+  display:none;overflow-y:auto;padding:24px}
+#ov.open{display:block}
+.sheet{max-width:820px;margin:0 auto;background:var(--bg);border-radius:20px;overflow:hidden;
+  border:1px solid var(--line)}
+.sh-top{display:flex;gap:0;flex-wrap:wrap;background:var(--card)}
+.sh-top img{width:340px;max-width:100%;aspect-ratio:1;object-fit:cover}
+.sh-hd{flex:1;min-width:260px;padding:26px 24px;display:flex;flex-direction:column}
+.sh-hd h3{font-size:1.4rem;line-height:1.3}
+.sh-hd p{color:var(--mut);font-size:.92rem;margin-top:10px}
+.price{margin-top:auto;padding-top:18px}
+.price b{font-size:1.7rem}.price span{display:block;color:var(--dim);font-size:.88rem}
+.buy{margin-top:14px;width:100%;font:inherit;font-weight:600;font-size:.95rem;
+  background:var(--ink);color:var(--bg);border:0;border-radius:12px;padding:13px;cursor:pointer}
+.sh-bd{padding:24px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;cursor:pointer}
+.opt.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.opt input{margin-top:5px;accent-color:var(--ink);width:17px;height:17px;flex:none}
+.opt .ot{flex:1}
+.opt .on1{font-weight:600;font-size:.94rem}
+.opt .oi{color:var(--dim);font-size:.8rem;margin-top:3px}
+.opt .op{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums;text-align:left}
+.opt .op span{display:block;font-weight:400;color:var(--dim);font-size:.76rem}
+.gc{font-size:.66rem;background:var(--ink);color:var(--bg);border-radius:5px;padding:1px 6px;margin-inline-start:5px}
+.desc{margin-top:24px;color:var(--mut);font-size:.93rem}
+.desc p{margin:0 0 12px}.desc b{color:var(--ink)}
+.desc code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.85em}
+.x{position:absolute;inset-inline-end:34px;top:34px;width:38px;height:38px;border-radius:50%;
+  border:0;background:var(--card);color:var(--ink);font-size:1.3rem;cursor:pointer;z-index:60}
+h4{font-size:.82rem;color:var(--dim);margin-bottom:10px;font-weight:600}
+footer{text-align:center;color:var(--dim);font-size:.8rem;padding:30px 20px 50px}
+</style></head><body>
+
+<header>
+  <div class="hin">
+    <img class="logo" src="brand/logo-solid.svg" alt="wbtio">
+    <div><b>wbtio</b><br><small>خدمات برمجة وأتمتة أعمال</small></div>
+  </div>
+  <nav id="nav"></nav>
+</header>
+
+<main id="main"></main>
+<footer>معاينة محلية · ${ALL.length} خدمة · سعر الصرف ${fx.rate} د.ع/$ · ${data._meta.updated}<br>
+الأسعار مُضمَّنة عمولة الدفع 3.5%</footer>
+
+<div id="ov"><button class="x" onclick="close_()">✕</button><div id="sheet"></div></div>
+
+<script>
+const P = ${JSON.stringify(shop)};
+const CATS = [...new Set(P.map(p => p.cat))];
+let cur = 'الكل';
+
+document.getElementById('nav').innerHTML =
+  ['الكل', ...CATS].map(c => \`<button data-c="\${c}" class="\${c === cur ? 'on' : ''}">\${c}\${
+    c === 'الكل' ? ' (' + P.length + ')' : ' (' + P.filter(p => p.cat === c).length + ')'}</button>\`).join('');
+
+const card = p => \`<div class="p" onclick="open_('\${p.sku}')">
+  <img src="images/\${p.sku}.png" alt="\${p.name}" loading="lazy">
+  <div class="pb"><div class="pn">\${p.name}</div>
+    <div class="pp">\${p.tiers.length > 1 ? '<i>يبدأ من</i> ' : ''}<b>$\${p.from}</b>\${p.sub ? '/شهر' : ''}
+      <i>· \${p.fromIQD} د.ع</i></div>
+    \${p.tiers.length > 1 ? \`<span class="tag">\${p.tiers.length} خيارات</span>\` : ''}
+  </div></div>\`;
+
+function draw() {
+  const m = document.getElementById('main');
+  const cats = cur === 'الكل' ? CATS : [cur];
+  m.innerHTML = cats.map(c => {
+    const list = P.filter(p => p.cat === c);
+    if (!list.length) return '';
+    return \`<h2 class="sec">\${c}</h2><div class="grid">\${list.map(card).join('')}</div>\`;
+  }).join('');
+  document.querySelectorAll('#nav button').forEach(b =>
+    b.classList.toggle('on', b.dataset.c === cur));
+}
+
+document.getElementById('nav').onclick = e => {
+  if (!e.target.dataset.c) return;
+  cur = e.target.dataset.c; draw(); scrollTo(0, 0);
+};
+
+let pick = 0;
+function open_(sku) {
+  const p = P.find(x => x.sku === sku); pick = 0;
+  document.getElementById('sheet').innerHTML = \`<div class="sheet">
+    <div class="sh-top">
+      <img src="images/\${p.sku}.png" alt="\${p.name}">
+      <div class="sh-hd"><h3>\${p.name}</h3><p>\${p.short || ''}</p>
+        <div class="price" id="pz"></div>
+        <button class="buy">أضف للسلة — معاينة فقط</button>
+      </div>
+    </div>
+    <div class="sh-bd">
+      \${p.tiers.length > 1 ? \`<h4>اختر الخيار</h4><div class="opts" id="opts">\${
+        p.tiers.map((t, k) => \`<label class="opt" onclick="setT('\${sku}',\${k})">
+          <input type="radio" name="t" \${k ? '' : 'checked'}>
+          <span class="ot"><span class="on1">\${t.name}\${t.gc ? '<span class="gc">خليج</span>' : ''}</span>
+            <span class="oi">\${t.includes.join(' · ')}\${t.delivery ? ' — ' + t.delivery : ''}</span></span>
+          <span class="op">$\${t.price}<span>\${t.iqd} د.ع</span></span>
+        </label>\`).join('')}</div>\` : ''}
+      <div class="desc"><h4 style="margin-top:22px">الوصف</h4><p>\${p.desc}</p></div>
+    </div></div>\`;
+  setT(sku, 0);
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function setT(sku, k) {
+  const p = P.find(x => x.sku === sku); pick = k;
+  const t = p.tiers[k] || { price: p.from, iqd: p.fromIQD, delivery: '' };
+  document.getElementById('pz').innerHTML =
+    \`<b>$\${t.price}</b>\${p.sub ? '/شهر' : ''}<span>\${t.iqd} د.ع\${t.delivery ? ' · ' + t.delivery : ''}</span>\`;
+  document.querySelectorAll('#opts .opt').forEach((o, j) => {
+    o.classList.toggle('on', j === k);
+    o.querySelector('input').checked = j === k;
+  });
+}
+
+const close_ = () => { document.getElementById('ov').classList.remove('open'); document.body.style.overflow = ''; };
+document.getElementById('ov').onclick = e => { if (e.target.id === 'ov') close_(); };
+addEventListener('keydown', e => e.key === 'Escape' && close_());
+
+draw();
+</script>
+</body></html>`);
+console.log('✓ store.html');
+
+if (low.length) {
+  console.log(`\n🔴 ${low.length} درجة تحت $${FLOOR}/ساعة: ${low.map(t => t.sku + '/' + t.name).join(', ')}`);
+} else {
+  console.log(`\n✅ كل الدرجات فوق $${FLOOR}/ساعة · متوسط العراق $${avg(iq).toFixed(1)} · الخليج $${avg(gc).toFixed(1)}`);
+}
+
+process.exit(failed ? 1 : 0);

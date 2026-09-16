@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="wbtio">
+  <rect width="64" height="64" rx="14" fill="#12161F"/>
+  <!-- الشكل المصمت: الحرف L -->
+  <path d="M9 9 H23 V41 H40 V55 H9 Z" fill="#F4F1EC"/>
+  <!-- الشكل المفرّغ المتشابك: ⌐ معكوسة -->
+  <path d="M28 9 H55 V55 H46 V18 H28 Z" fill="none" stroke="#F4F1EC" stroke-width="5"/>
+  <!-- النواة -->
+  <rect x="28" y="24" width="9" height="17" fill="#F4F1EC"/>
+</svg>

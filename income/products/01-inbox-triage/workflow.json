@@ -1,0 +1,240 @@
+{
+  "name": "AI Inbox Triage & Auto-Reply — wbtio",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inbox-triage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Incoming Message",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-680, 0],
+      "webhookId": "inbox-triage"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalize any channel (email / WhatsApp / web form) into one shape.\n// Keeping this in ONE place is what makes the rest of the workflow channel-agnostic.\nconst out = [];\n\nfor (const item of $input.all()) {\n  const b = item.json.body ?? item.json;\n\n  const text = String(b.text ?? b.message ?? b.body ?? '').trim();\n  if (!text) {\n    throw new Error('Empty message body — nothing to classify.');\n  }\n\n  out.push({\n    json: {\n      message_id: String(b.id ?? b.message_id ?? $execution.id),\n      channel: String(b.channel ?? 'email').toLowerCase(),\n      from_name: String(b.from_name ?? b.name ?? '').trim(),\n      from_address: String(b.from ?? b.from_address ?? b.email ?? '').trim(),\n      subject: String(b.subject ?? '').trim(),\n      // Hard cap: keeps token cost predictable per message.\n      text: text.slice(0, 4000),\n      received_at: b.received_at ?? new Date().toISOString()\n    }\n  });\n}\n\nreturn out;"
+      },
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "Normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-460, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  model: 'claude-haiku-4-5-20251001',\n  max_tokens: 1024,\n  system: $vars.TRIAGE_SYSTEM_PROMPT,\n  tools: [{\n    name: 'triage',\n    description: 'Classify the customer message and draft a reply.',\n    input_schema: {\n      type: 'object',\n      properties: {\n        category: { type: 'string', enum: ['sales','support','complaint','billing','spam','other'] },\n        urgency: { type: 'string', enum: ['low','normal','high'] },\n        language: { type: 'string', description: 'ISO 639-1 code of the customer message' },\n        summary: { type: 'string', description: 'One sentence, in English, for the internal log' },\n        needs_human: { type: 'boolean', description: 'True when a wrong automated reply would cost the business money or trust' },\n        reply: { type: 'string', description: 'Draft reply in the SAME language as the customer' }\n      },\n      required: ['category','urgency','language','summary','needs_human','reply']\n    }\n  }],\n  tool_choice: { type: 'tool', name: 'triage' },\n  messages: [{\n    role: 'user',\n    content: 'Channel: ' + $json.channel + '\\nFrom: ' + $json.from_name + ' <' + $json.from_address + '>\\nSubject: ' + $json.subject + '\\n\\n' + $json.text\n  }]\n}) }}",
+        "options": { "timeout": 30000, "response": { "response": { "neverError": false } } }
+      },
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Classify + Draft (Claude)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-240, 0],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_ME", "name": "Anthropic API (x-api-key)" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Forced tool use guarantees a tool_use block, but never trust that blindly:\n// a malformed response here would silently poison every downstream branch.\nconst out = [];\n\nfor (const [i, item] of $input.all().entries()) {\n  const block = (item.json.content ?? []).find(c => c.type === 'tool_use');\n  if (!block || !block.input) {\n    throw new Error('No tool_use block in model response — check the API payload.');\n  }\n\n  const t = block.input;\n  const source = $('Normalize').all()[i].json;\n\n  // Escalate on anything the model flagged, plus complaints regardless of its own judgement.\n  const escalate = t.needs_human === true\n    || t.urgency === 'high'\n    || t.category === 'complaint';\n\n  out.push({\n    json: {\n      ...source,\n      category: t.category,\n      urgency: t.urgency,\n      language: t.language,\n      summary: t.summary,\n      reply: t.reply,\n      route: t.category === 'spam' ? 'drop' : (escalate ? 'human' : 'auto'),\n      input_tokens: item.json.usage?.input_tokens ?? 0,\n      output_tokens: item.json.usage?.output_tokens ?? 0\n    }\n  });\n}\n\nreturn out;"
+      },
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "Parse + Route",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-20, 0]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "version": 2 },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "auto",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "auto reply"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "version": 2 },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "human",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "escalate"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "version": 2 },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "drop",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "spam"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "name": "Route",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [200, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.from_address }}",
+        "subject": "={{ $json.subject ? 'Re: ' + $json.subject : 'Re: your message' }}",
+        "emailType": "text",
+        "message": "={{ $json.reply }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000006",
+      "name": "Send Auto Reply",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [440, -160],
+      "webhookId": "auto-reply",
+      "credentials": {
+        "gmailOAuth2": { "id": "REPLACE_ME", "name": "Client Gmail" }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": { "__rl": true, "value": "#inbox-escalations", "mode": "name" },
+        "text": "=:rotating_light: *{{ $json.urgency.toUpperCase() }}* — {{ $json.category }}\n*From:* {{ $json.from_name }} <{{ $json.from_address }}>\n*Summary:* {{ $json.summary }}\n\n*Suggested reply (review before sending):*\n> {{ $json.reply }}",
+        "otherOptions": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000007",
+      "name": "Escalate to Team",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [440, 0],
+      "webhookId": "escalate",
+      "credentials": {
+        "slackApi": { "id": "REPLACE_ME", "name": "Client Slack" }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "REPLACE_WITH_SHEET_ID", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "log", "mode": "name" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "received_at": "={{ $json.received_at }}",
+            "channel": "={{ $json.channel }}",
+            "from": "={{ $json.from_address }}",
+            "category": "={{ $json.category }}",
+            "urgency": "={{ $json.urgency }}",
+            "language": "={{ $json.language }}",
+            "route": "={{ $json.route }}",
+            "summary": "={{ $json.summary }}",
+            "input_tokens": "={{ $json.input_tokens }}",
+            "output_tokens": "={{ $json.output_tokens }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000008",
+      "name": "Log Row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [680, -80],
+      "credentials": {
+        "googleSheetsOAuth2Api": { "id": "REPLACE_ME", "name": "Client Google Sheets" }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, route: $json.route, category: $json.category, urgency: $json.urgency }) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000009",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, -80]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, route: 'drop' }) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000010",
+      "name": "Respond (Spam)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [440, 180]
+    }
+  ],
+  "connections": {
+    "Incoming Message": { "main": [[{ "node": "Normalize", "type": "main", "index": 0 }]] },
+    "Normalize": { "main": [[{ "node": "Classify + Draft (Claude)", "type": "main", "index": 0 }]] },
+    "Classify + Draft (Claude)": { "main": [[{ "node": "Parse + Route", "type": "main", "index": 0 }]] },
+    "Parse + Route": { "main": [[{ "node": "Route", "type": "main", "index": 0 }]] },
+    "Route": {
+      "main": [
+        [{ "node": "Send Auto Reply", "type": "main", "index": 0 }],
+        [{ "node": "Escalate to Team", "type": "main", "index": 0 }],
+        [{ "node": "Respond (Spam)", "type": "main", "index": 0 }]
+      ]
+    },
+    "Send Auto Reply": { "main": [[{ "node": "Log Row", "type": "main", "index": 0 }]] },
+    "Escalate to Team": { "main": [[{ "node": "Log Row", "type": "main", "index": 0 }]] },
+    "Log Row": { "main": [[{ "node": "Respond", "type": "main", "index": 0 }]] }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveExecutionProgress": true
+  },
+  "tags": [{ "name": "wbtio-product" }]
+}
